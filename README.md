@@ -28,3 +28,8 @@ Projeto construído durante o 2/3° módulo do curso de DS.
 ![preview](./.github/loginPage.png)
 ## Tela da HOME
 ![preview](./.github/homePage.png)
++
+## Tela da PÁGINA DO PRODUTO
+![preview](./.github/productPage.png)
++
+c
