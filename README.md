@@ -30,3 +30,7 @@ Projeto construído durante o 2/3° módulo do curso de DS.
 ![preview](./.github/homePage.png)
 ## Tela da PÁGINA DO PRODUTO
 ![preview](./.github/productPage.png)
+## Tela da PÁGINA DAS AVALIAÇÕES DO PRODUTO
+![preview](./.github/productPageReviews.png)
+## Tela da PÁGINA DO USUÁRIO
+![preview](./.github/userPage.png)
