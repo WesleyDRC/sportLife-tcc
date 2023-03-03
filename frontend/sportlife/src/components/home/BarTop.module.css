@@ -1,0 +1,9 @@
+.container{
+	display: flex;
+	justify-content: space-between;
+	background-color: #158A8A;
+	color: white;
+	text-transform: uppercase;
+	padding: 5px;
+	font-weight: 700;
+}
