@@ -1,6 +1,11 @@
+import Register from "./pages/Register";
+import Login from "./pages/Login"
+import AppRoutes from "./routes/AppRoutes"
+
 function App() {
   return (
-    <h1> App </h1>
+    <AppRoutes />
+
   )
 }
 

@@ -1,0 +1,40 @@
+.formInput{
+	display: flex;
+	justify-content: center;
+}
+
+.formInput input{
+	border: none;
+	border-bottom: 1px solid white;
+	background-color: transparent;
+	color: white;
+	width: 350px;
+	margin-bottom: 30px;
+	font-size:1.6rem;
+	padding-left: 5px;
+}
+
+.formInput input:focus{
+	outline: 0;
+	font-weight: 200;
+}
+
+.formInput input::placeholder{
+	color: white;
+	font-weight: 200;
+	font-size: 1.4rem;
+}
+
+.formInputPass{
+	position: relative;
+}
+
+.eyePass{
+	position: absolute;
+	right: 0;
+	cursor: pointer;
+}
+
+.notEye{
+	display: none;
+}

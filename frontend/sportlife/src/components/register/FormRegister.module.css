@@ -1,0 +1,107 @@
+.container{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border-radius:10px;
+	border: 1px solid rgba(255, 255, 255, 0.295);
+	backdrop-filter: blur(17.5px);
+	padding:20px ;
+	box-shadow: 0px 0px 2px rgba(255, 255, 255, 0.555);
+}
+
+.formLogo{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	align-items: center;
+}
+
+.formLogo img{
+	width: 120px;
+	height: 120px;
+}
+
+.formLogo p{
+	margin-top: -25px;
+	font-size: 2rem;
+	font-weight: 800;
+	margin-bottom: 20px;
+}
+
+.formLogo span{
+	color: white;
+}
+
+.formInput{
+	display: flex;
+	justify-content: center;
+}
+
+.formInput input{
+	border: none;
+	border-bottom: 1px solid white;
+	background-color: transparent;
+	color: white;
+	width: 350px;
+	margin-bottom: 30px;
+	font-size:1.6rem;
+	padding-left: 5px;
+}
+
+.formInput input:focus{
+	outline: 0;
+	font-weight: 200;
+}
+
+.formInput input::placeholder{
+	color: white;
+	font-weight: 200;
+	font-size: 1.4rem;
+}
+
+.formInputPass{
+	position: relative;
+}
+
+.eyePass{
+	position: absolute;
+	right: 0;
+	cursor: pointer;
+}
+
+.formBtn{
+	display: flex;
+	justify-content: center;
+	margin-bottom:5px;
+}
+
+.formBtn button{
+	width: 350px;
+	padding: 15px;
+	background-color: #317B96;
+	color: white;
+	border: none;
+	border-radius: 8px;
+	font-size: 1.6rem;
+	cursor: pointer;
+}
+
+.formBtn button:hover{
+	transition: .8s;
+	color: #317B96;
+	background-color: rgb(223, 223, 223);
+}
+
+.formNotRegister{
+	text-align: center;
+	color: white;
+	font-weight: 300;
+	font-size: 1.2rem;
+}
+
+.formNotRegister span{
+	color: #158A8A;
+	font-weight: 600;
+	cursor: pointer;
+}
