@@ -1,7 +1,6 @@
 import styles from './NavBar.module.css'
 import {FaSearch} from "react-icons/fa";
 import {FaHeart} from "react-icons/fa";
-import {FaUserAlt} from "react-icons/fa";
 import {FaShoppingCart} from "react-icons/fa";
 
 export default function NavBar(){
@@ -14,15 +13,15 @@ export default function NavBar(){
 			<div className={styles.navOptions}>
 				<p>Masculino</p>
 				<p>Feminino</p>
-				<p>03 Por R$99</p>
-				<p>Acessórios</p>
-				<p>Lançamentos</p>
-				<p>Kits</p>
+				<p>Esportes</p>
+				<p>Novidades</p>
 			</div>
-			<div>
-				<FaSearch className={styles.icons} />
+			<div className={styles.searchBar}>
+				<form action="">
+					<input type='text' placeholder='Procurar . . .' />
+					<button type='submit'><FaSearch className={styles.searchIcon} /> </button>
+				</form>
 				<FaHeart className={styles.icons} />
-				<FaUserAlt className={styles.icons} />
 				<FaShoppingCart className={styles.icons} />
 			</div>
 		</div>

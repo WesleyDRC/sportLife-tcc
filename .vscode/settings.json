@@ -1,78 +1,78 @@
 {
-    //workbench
-    "workbench.iconTheme": "material-icon-theme",
-    "workbench.startupEditor": "newUntitledFile",
-    "workbench.sideBar.location": "left",
-    "workbench.view.experimental.allowMovingToNewContainer": true,
-    //limite de editores(aba) abertos
-    "workbench.editor.limit.enabled": true, //Enable this feature (off by default).
-    //"workbench.editor.limit.perEditorGroup": //Whether to apply the limit per editor group or across all groups.
-    "workbench.editor.limit.value": 6, //The maximum number of open editors (10 by default).
-    //======================================================================//
-    // Configuraçao de formato e correcao do codigo (eslint) automatica (prettier)
+  //workbench
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.startupEditor": "newUntitledFile",
+  "workbench.sideBar.location": "left",
+  "workbench.view.experimental.allowMovingToNewContainer": true,
+  //limite de editores(aba) abertos
+  "workbench.editor.limit.enabled": true, //Enable this feature (off by default).
+  //"workbench.editor.limit.perEditorGroup": //Whether to apply the limit per editor group or across all groups.
+  "workbench.editor.limit.value": 6, //The maximum number of open editors (10 by default).
+  //======================================================================//
+  // Configuraçao de formato e correcao do codigo (eslint) automatica (prettier)
+  "editor.formatOnSave": true,
+  "eslint.validate": ["javascript", "typescript"],
+  // Enable per-language
+  "[javascript]": {
     "editor.formatOnSave": true,
-    "eslint.validate": ["javascript", "typescript"],
-    // Enable per-language
-    "[javascript]": {
-      "editor.formatOnSave": true,
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[typescript]": {
-      "editor.formatOnSave": true,
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true
-    },
-    "eslint.packageManager": "yarn",
-    //======================================================================//
-    "editor.fontSize": 14,
-    "editor.lineHeight": 24,
-    "editor.fontFamily": "'Fira Code'",
-    "editor.fontLigatures": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.packageManager": "yarn",
+  //======================================================================//
+  "editor.fontSize": 14,
+  "editor.lineHeight": 24,
+  "editor.fontFamily": "'Fira Code'",
+  "editor.fontLigatures": true,
 
-    "editor.renderControlCharacters": false,
-    "editor.renderLineHighlight": "gutter",
-    "editor.insertSpaces": false,
-    "editor.tabSize": 2,
-    //files
-    "files.eol": "\n",
-    "files.insertFinalNewline": true,
-    "files.trimFinalNewlines": true,
-    "files.trimTrailingWhitespace": true,
-    //explorer
-    "explorer.confirmDelete": false,
-    "explorer.confirmDragAndDrop": false,
-    //git
-    "git.enableSmartCommit": true,
-    "git.autofetch": true,
-    "git.confirmSync": false,
-    "workbench.colorTheme": "Deep Ocean - Blue",
-    "[vue]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[javascriptreact]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[typescriptreact]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "terminal.integrated.tabs.enabled": true,
-    "explorer.compactFolders": false,
-    "customizeUI.stylesheet": {
-      "[id='workbench.view.explorer'] .pane-body ": "font-family: 'Inconsolata'; font-size: 14px;",
-      "[id='workbench.view.explorer'] .monaco-icon-label.folder-icon > .monaco-icon-label-container > .monaco-icon-name-container > .label-name": "font-weight: 900; filter: brightness(1.5);"
-    },
-    "customizeUI.fontSizeMap": {
-      "13px": "13px",
-      "monospace": "14px"
-    },
-    "customizeUI.font.monospace": "14px",
-    "vsicons.presets.tsOfficial": true,
-    "vsicons.presets.jsonOfficial": true,
-    "vsicons.presets.jsOfficial": true,
-    "[jsonc]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "window.zoomLevel": 0
-  }
+  "editor.renderControlCharacters": false,
+  "editor.renderLineHighlight": "gutter",
+  "editor.insertSpaces": false,
+  "editor.tabSize": 2,
+  //files
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  //explorer
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  //git
+  "git.enableSmartCommit": true,
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "workbench.colorTheme": "Deep Ocean - Blue",
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "terminal.integrated.tabs.enabled": true,
+  "explorer.compactFolders": false,
+  "customizeUI.stylesheet": {
+    "[id='workbench.view.explorer'] .pane-body ": "font-family: 'Inconsolata'; font-size: 14px;",
+    "[id='workbench.view.explorer'] .monaco-icon-label.folder-icon > .monaco-icon-label-container > .monaco-icon-name-container > .label-name": "font-weight: 900; filter: brightness(1.5);"
+  },
+  "customizeUI.fontSizeMap": {
+    "13px": "13px",
+    "monospace": "14px"
+  },
+  "customizeUI.font.monospace": "14px",
+  "vsicons.presets.tsOfficial": true,
+  "vsicons.presets.jsonOfficial": true,
+  "vsicons.presets.jsOfficial": true,
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "window.zoomLevel": 0
+}

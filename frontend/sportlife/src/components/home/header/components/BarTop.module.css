@@ -1,0 +1,33 @@
+.container{
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	background-color: rgb(244, 245, 249);
+	text-transform: uppercase;
+	font-weight: 700;
+	max-height: 40px;
+}
+
+.container p{
+	padding: 5px;
+	margin-right: 50px;
+	cursor: pointer;
+}
+
+.container p:hover{
+	transition: .3s;
+	animation: swingText ease-in-out .5s 1;
+	color: #158A8A;
+}
+
+@keyframes swingText{
+	0%{
+		transform:translateY(0px);
+	}
+	50%{
+		transform:translateY(1px);
+	}
+	100%{
+		transform:translateY(0px);
+	}
+}
