@@ -1,6 +1,6 @@
 {
   //workbench
-  "workbench.iconTheme": "material-icon-theme",
+  "workbench.iconTheme": "icons",
   "workbench.startupEditor": "newUntitledFile",
   "workbench.sideBar.location": "left",
   "workbench.view.experimental.allowMovingToNewContainer": true,

@@ -1,4 +1,3 @@
-import React from 'react';
 import BarTop from './components/BarTop';
 import NavBar from './components/NavBar';
 
