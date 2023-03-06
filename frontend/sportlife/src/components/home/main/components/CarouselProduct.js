@@ -22,7 +22,7 @@ export default function CarouselProduct(props){
 
 	return(
 		<div className={styles.container}>
-			<p className={styles.title}>MAIS VISTOS</p>
+			<p className={styles.title}>{props.titleCarousel}</p>
 			<div className={styles.carousel}>
 				<IoIosArrowBack className={styles.arrowLeft} onClick={handleLeftClick} />
 				<div className={styles.promotions} ref={carousel}>

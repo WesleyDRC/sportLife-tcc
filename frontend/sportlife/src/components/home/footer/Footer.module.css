@@ -1,0 +1,13 @@
+.container{
+	background-color: rgb(244, 245, 249);
+	width: 100%;
+	position: absolute;
+	bottom: 100;
+}
+
+.container img{
+	width: 50px;
+	height: 50px;
+	display: block;
+	margin: 10px auto;
+}

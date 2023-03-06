@@ -3,6 +3,7 @@
 	flex-direction: column;
 	width: 260px;
 	background: linear-gradient(215.05deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.17924) 0%, rgba(0, 0, 0, 0.0159838) 92.01%, rgba(0, 0, 0, 0) 100%), #FFFFFF;
+	cursor: pointer;
 }
 
 .product img{
