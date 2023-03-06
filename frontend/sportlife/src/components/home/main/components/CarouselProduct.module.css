@@ -1,5 +1,5 @@
 .title{
-	margin: 50px;
+	margin: 50px 0 50px 0;
 	font-size: 2.4rem;
 	font-weight: 900;
 	font-family: 'Lato', sans-serif;
@@ -10,29 +10,37 @@
 	justify-content: space-between;
 	align-items: center;
 	margin-bottom: 50px;
+	position: relative;
 }
 
 .promotions{
 	display: flex;
-	max-width: 80vw;
 	overflow: hidden;
 	scroll-behavior: smooth;
 }
 
-.arrow{
-	color: white;
-	background-color: #317B96;
+.arrowLeft,
+.arrowRight{
+	color: black;
 	width:40px;
 	height: 40px ;
 	padding: 8px;
 	border-radius: 50%;
-	margin: 0px 50px;
 	cursor: pointer;
 	transition: .5s;
+	position: absolute;
 }
 
-.arrow:hover{
+.arrowLeft {
+	left: 0;
+}
+.arrowRight {
+	right: 0;
+}
+
+.arrowLeft:hover,
+.arrowRight:hover
+{
 	color: #317B96;
-	background-color: white;
-	box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.192);
+	transform: scale(1.2);
 }
