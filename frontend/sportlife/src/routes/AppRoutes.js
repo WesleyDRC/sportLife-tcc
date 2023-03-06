@@ -33,7 +33,7 @@ export default function Routes() {
 			},
 
 			{
-				path: '/home',
+				path: '/',
 				element: <Home />,
 				errorElement: <ErrorPage />
 			},
