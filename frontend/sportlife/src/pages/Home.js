@@ -9,6 +9,7 @@ export default function Home(){
 		<div className={styles.container}>
 			<Header />
 			<Main />
+			<Footer />
 		</div>
 	)
 }
