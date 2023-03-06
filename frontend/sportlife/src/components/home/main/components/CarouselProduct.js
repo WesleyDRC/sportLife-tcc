@@ -39,7 +39,6 @@ export default function CarouselProduct(props){
 				</div>
 				<FaArrowRight className={styles.arrow} onClick={handleRightClick} />
 			</div>
-
 		</div>
 	)
 }
