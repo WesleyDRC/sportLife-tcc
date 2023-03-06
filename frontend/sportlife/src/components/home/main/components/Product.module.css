@@ -1,20 +1,23 @@
 .product{
 	display: flex;
 	flex-direction: column;
-	background-color: rgb(228, 228, 228);
-	border-radius: 10px;
-	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.192);
-	padding: 10px;
-	height: 400px;
-	margin: 0px 20px ;
+	width: 260px;
+	background: linear-gradient(215.05deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.17924) 0%, rgba(0, 0, 0, 0.0159838) 92.01%, rgba(0, 0, 0, 0) 100%), #FFFFFF;
 }
 
 .product img{
-	height: 300px;
+	width: 260px;
+	height: 260px;
 }
 
-.product p{
-	text-align: center;
-	margin: 0px;
-	margin-top: 12px;
+.product .name{
+	font-family: 'Anton', sans-serif;
+	font-size: 1.4rem;
+	padding: 10px 0 0 0;
+}
+.product .price{
+	font-family: 'Montserrat', sans-serif;
+	color: red;
+	font-size: 1.4rem;
+	font-weight: 600;
 }

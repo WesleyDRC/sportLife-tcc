@@ -22,20 +22,21 @@ export default function CarouselProduct(props){
 
 	return(
 		<div className={styles.container}>
-			<p>Mais Vistos</p>
+			<p className={styles.title}>MAIS VISTOS</p>
 			<div className={styles.carousel}>
 				<FaArrowLeft className={styles.arrow} onClick={handleLeftClick} />
 				<div className={styles.promotions} ref={carousel}>
-						<Product src={'https://i.imgur.com/LTnbPIK.jpg'} name={'Camisa preta'}  />
-						<Product src={'https://i.imgur.com/sPqRXIE.jpg'} name={'Camisa preta'}  />
-						<Product src={'https://i.imgur.com/LTnbPIK.jpg'} name={'Camisa preta'}  />
-						<Product src={'https://i.imgur.com/sPqRXIE.jpg'} name={'Camisa preta'}  />
-						<Product src={'https://i.imgur.com/LTnbPIK.jpg'} name={'Camisa preta'}  />
-						<Product src={'https://i.imgur.com/LTnbPIK.jpg'} name={'Camisa preta'}  />
-						<Product src={'https://i.imgur.com/sPqRXIE.jpg'} name={'Camisa preta'}  />
-						<Product src={'https://i.imgur.com/LTnbPIK.jpg'} name={'Camisa preta'}  />
-						<Product src={'https://i.imgur.com/sPqRXIE.jpg'} name={'Camisa preta'}  />
-						<Product src={'https://i.imgur.com/LTnbPIK.jpg'} name={'Camisa preta'}  />
+						<Product src={'https://i.imgur.com/pnoGRSq.png'} name={'CAMISETA NIKE SPORTSWEAR ICON FUTURA'} price={"R$ 59,99"}/>
+						<Product src={'https://i.imgur.com/pnoGRSq.png'} name={'CAMISETA NIKE SPORTSWEAR ICON FUTURA'} price={"R$ 59,99"}/>
+						<Product src={'https://i.imgur.com/pnoGRSq.png'} name={'CAMISETA NIKE SPORTSWEAR ICON FUTURA'} price={"R$ 59,99"}/>
+						<Product src={'https://i.imgur.com/pnoGRSq.png'} name={'CAMISETA NIKE SPORTSWEAR ICON FUTURA'} price={"R$ 59,99"}/>
+						<Product src={'https://i.imgur.com/pnoGRSq.png'} name={'CAMISETA NIKE SPORTSWEAR ICON FUTURA'} price={"R$ 59,99"}/>
+						<Product src={'https://i.imgur.com/pnoGRSq.png'} name={'CAMISETA NIKE SPORTSWEAR ICON FUTURA'} price={"R$ 59,99"}/>
+						<Product src={'https://i.imgur.com/pnoGRSq.png'} name={'CAMISETA NIKE SPORTSWEAR ICON FUTURA'} price={"R$ 59,99"}/>
+						<Product src={'https://i.imgur.com/pnoGRSq.png'} name={'CAMISETA NIKE SPORTSWEAR ICON FUTURA'} price={"R$ 59,99"}/>
+						<Product src={'https://i.imgur.com/pnoGRSq.png'} name={'CAMISETA NIKE SPORTSWEAR ICON FUTURA'} price={"R$ 59,99"}/>
+						<Product src={'https://i.imgur.com/pnoGRSq.png'} name={'CAMISETA NIKE SPORTSWEAR ICON FUTURA'} price={"R$ 59,99"}/>
+						<Product src={'https://i.imgur.com/pnoGRSq.png'} name={'CAMISETA NIKE SPORTSWEAR ICON FUTURA'} price={"R$ 59,99"}/>
 				</div>
 				<FaArrowRight className={styles.arrow} onClick={handleRightClick} />
 			</div>
