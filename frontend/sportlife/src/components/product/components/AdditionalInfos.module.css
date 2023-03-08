@@ -1,0 +1,21 @@
+hr{
+	margin-top: 0;
+	margin-bottom: 10px;
+}
+
+p{
+	margin-bottom: 0px;
+}
+
+.container{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 50px 150px;
+	color:#777777;
+}
+
+.container div{
+	display: flex;
+	justify-content: space-between;
+}

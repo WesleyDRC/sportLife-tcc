@@ -1,0 +1,30 @@
+.container{
+	margin-top: 50px;
+}
+
+.line{
+	margin: 0px;
+}
+
+.options{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+
+}
+
+.addInfos, .assessements{
+	margin: 0px 20px;
+	padding: 0px;
+	cursor: pointer;
+	text-transform: uppercase;
+	font-weight: 700;
+}
+
+.borderTop{
+	border-top: 2px solid #317B96;
+}
+
+.carousel{
+	margin-bottom: 50px;
+}
