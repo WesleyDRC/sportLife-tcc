@@ -5,6 +5,7 @@ import Register from '../pages/Register'
 import ErrorPage from '../pages/ErrorPage'
 import Home from '../pages/Home'
 import ProductPage from '../pages/ProductPage'
+import ProfilePage from '../pages/ProfilePage'
 
 export default function Routes() {
 
@@ -42,6 +43,12 @@ export default function Routes() {
 			{
 				path: '/product',
 				element: <ProductPage />,
+				errorElement: <ErrorPage />
+			},
+
+			{
+				path: '/profile',
+				element: <ProfilePage />,
 				errorElement: <ErrorPage />
 			},
 	])
