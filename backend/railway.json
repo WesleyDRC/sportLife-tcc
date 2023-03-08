@@ -5,6 +5,7 @@
     "buildCommand": "yarn build"
   },
   "deploy": {
+    "startCommand": "yarn build",
     "restartPolicyType": "ON_FAILURE",
     "restartPolicyMaxRetries": 10
   }
