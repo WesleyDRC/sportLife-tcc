@@ -2,7 +2,6 @@ import React from 'react';
 import styles from './FormRegister.module.css'
 import Input from '../login/FormInput';
 
-
 export default function FormRegister(){
 	return(
 		<div className={styles.container}>

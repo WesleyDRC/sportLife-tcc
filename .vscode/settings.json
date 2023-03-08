@@ -11,16 +11,19 @@
   //======================================================================//
   // Configuraçao de formato e correcao do codigo (eslint) automatica (prettier)
   "editor.formatOnSave": true,
-  "eslint.validate": ["javascript", "typescript"],
   // Enable per-language
   "[javascript]": {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescript]": {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.formatOnSave": false,
   },
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
@@ -47,7 +50,7 @@
   "git.enableSmartCommit": true,
   "git.autofetch": true,
   "git.confirmSync": false,
-  "workbench.colorTheme": "Deep Ocean - Blue",
+  "workbench.colorTheme": "Material Deep Ocean",
   "[vue]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -55,7 +58,8 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": false
   },
   "terminal.integrated.tabs.enabled": true,
   "explorer.compactFolders": false,
