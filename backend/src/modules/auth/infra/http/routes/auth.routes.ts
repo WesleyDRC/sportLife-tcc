@@ -1,13 +1,14 @@
 import { celebrate, Joi, Segments} from 'celebrate'
 import { Router } from 'express'
-
+import SignInController from '../controllers/SignInController'
 import SignUpController from '../controllers/SignUpController'
 
 const authRoutes = Router()
 const signUpController = new SignUpController()
+const signInController = new SignInController()
 
 authRoutes.post(
-	"/signup",
+	"/signUp",
 	celebrate({
 		[Segments.BODY]: {
 			name: Joi.string(),
@@ -16,6 +17,17 @@ authRoutes.post(
 		},
 	}),
 	signUpController.handle
+)
+
+authRoutes.post(
+	"/signIn",
+	celebrate({
+		[Segments.BODY]: {
+			email: Joi.string(),
+			password: Joi.string()
+		}
+	}),
+	signInController.handle
 )
 
 export default authRoutes
