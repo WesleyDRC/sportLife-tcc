@@ -1,0 +1,33 @@
+.container{
+	margin-right: 50px;
+}
+
+.userPhoto{
+	display: flex;
+	align-items: center;
+}
+
+.userPhoto img {
+	width: 75px;
+	height: 75px;
+	border-radius: 50%;
+	border: 1px solid rgb(102, 102, 102);
+}
+
+.userPhoto p{
+	margin-left: 10px;
+	font-size: 1.8rem;
+}
+
+.options{
+	margin-top: 10px;
+	font-size: 2rem;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+
+.select{
+	color: #317B96;
+	font-weight: 700;
+	font-size:2.2rem;
+}
