@@ -7,9 +7,9 @@ class SignUpController {
 
 		const signUpUseCase = container.resolve(SignUpUseCase)
 
-		const { name, email, password } = request.body
+		const { email, password } = request.body
 
-		const token = await signUpUseCase.execute({name, email, password})
+		const token = await signUpUseCase.execute({email, password})
 
 		return response.json({token})
 	}
