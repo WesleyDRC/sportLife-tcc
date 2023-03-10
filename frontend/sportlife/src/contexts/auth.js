@@ -35,7 +35,7 @@ export const AuthProvider = ({children}) => {
         }
     }
 
-    const SignUp = async ({email, password}) => {
+    const SignUp = async (email, password) => {
         try {
             const response = await AxiosRepository.createUser({email, password})
             console.log(response)

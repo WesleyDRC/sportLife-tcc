@@ -18,7 +18,7 @@ export class AuthRepository implements IAuthRepository {
 
 	async create({ email, password }: IStoreUserDto): Promise<string> {
 		const user = new User()
-		
+
     user.email = email
     user.password = password
 
@@ -32,7 +32,7 @@ export class AuthRepository implements IAuthRepository {
     const foundUser = await this.ormRepository.find({
       where: {email}
     });
-
+		
     return Promise.resolve(foundUser);
   }
 
