@@ -9,7 +9,7 @@ class AxiosRepository {
     }
 
     async createUser({email, password}) {
-        return this.#axiosClient.post("/auth/signup", {
+        return this.#axiosClient.post("/auth/signUp", {
             email,
             password
         })

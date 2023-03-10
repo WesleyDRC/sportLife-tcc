@@ -23,6 +23,7 @@ export class SignUpUseCase implements IUseCase {
 
 	async execute({email, password}: IStoreUserDto): Promise<string> {
     const foundUser = await this.authRepository.findByEmail(email);
+		console.log(foundUser)
 		if (foundUser.length > 0) {
       throw new AppError(userConstants.ALREADY_REGISTERED, 400);
     }

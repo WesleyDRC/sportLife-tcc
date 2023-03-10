@@ -8,17 +8,17 @@ export const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
 
-    useEffect(() => {
-    const userToken = localStorage.getItem("user_token");
+  //   useEffect(() => {
+  //   const userToken = localStorage.getItem("user_token");
 
-    if (userToken) {
-      api.defaults.headers.Authorization = `Bearer ${JSON.parse(userToken)}`;
-      setUser(JSON.parse(userToken));
-    }
-        setTimeout(() => {
-            setLoading(false)
-        }, 1000);
-  }, []);
+  //   if (userToken) {
+  //     api.defaults.headers.Authorization = `Bearer ${JSON.parse(userToken)}`;
+  //     setUser(JSON.parse(userToken));
+  //   }
+  //       setTimeout(() => {
+  //           setLoading(false)
+  //       }, 1000);
+  // }, []);
 
     const SignIn = async (email, password) => {
         try {
@@ -37,7 +37,8 @@ export const AuthProvider = ({children}) => {
 
     const SignUp = async ({email, password}) => {
         try {
-            await AxiosRepository.createUser({email, password})
+            const response = await AxiosRepository.createUser({email, password})
+            console.log(response)
         } catch (error) {
       if (error.response.status !== error.response.status.ok) {
         return error.response.data.message;

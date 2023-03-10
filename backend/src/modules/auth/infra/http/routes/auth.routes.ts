@@ -9,13 +9,6 @@ const signInController = new SignInController()
 
 authRoutes.post(
 	"/signUp",
-	celebrate({
-		[Segments.BODY]: {
-			name: Joi.string(),
-			email: Joi.string(),
-			password: Joi.string(),
-		},
-	}),
 	signUpController.handle
 )
 

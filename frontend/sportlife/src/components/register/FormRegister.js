@@ -44,7 +44,7 @@ export default function FormRegister() {
         </p>
       </div>
       <div className={styles.formRegister}>
-        <form method="post" autoComplete="off" onSubmit={(e) => submit(e)}>
+        <form autoComplete="off" onSubmit={(e) => submit(e)}>
           <Input
             type="email"
             placeholder="Email"
