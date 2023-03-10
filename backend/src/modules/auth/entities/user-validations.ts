@@ -21,11 +21,10 @@ function hasMinPasswordLengthRequired(password: string): boolean {
 }
 
 export default function mustAttentionIn(
-  name: string,
   email: string,
   password: string,
 ): void | string {
-  if (!hasMinNameLengthRequired(name)) return userConstants.INVALID_NAME_ERROR;
+  // if (!hasMinNameLengthRequired(name)) return userConstants.INVALID_NAME_ERROR;
 
   if (!hasCorrectEmailFormatRequired(email))
     return userConstants.INVALID_EMAIL_ERROR;

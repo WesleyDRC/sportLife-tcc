@@ -16,9 +16,9 @@ export class AuthRepository implements IAuthRepository {
 		this.ormRepository = AppDataSource.getRepository(User)
 	}
 
-	async create({ name, email, password }: IStoreUserDto): Promise<string> {
+	async create({ email, password }: IStoreUserDto): Promise<string> {
 		const user = new User()
-    user.name = name
+		
     user.email = email
     user.password = password
 
