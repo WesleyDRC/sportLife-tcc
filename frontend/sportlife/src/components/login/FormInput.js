@@ -3,7 +3,7 @@ import styles from './FormInput.module.css'
 export default function Input(props) {
   return (
     <div className={`${styles.formInput} ${styles.formInputPass}`}>
-      <input type={props.type} placeholder={props.placeholder} />
+      <input type={props.type} placeholder={props.placeholder} onChange={props.onChange} value={props.value}/>
       <div className={props.eye ? styles.eyePass : styles.notEye}>
         <svg
           width="17"

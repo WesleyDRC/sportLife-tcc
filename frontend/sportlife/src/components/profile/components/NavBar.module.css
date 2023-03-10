@@ -1,5 +1,6 @@
 .container{
-	margin-right: 50px;
+	display: flex;
+
 }
 
 .userPhoto{
@@ -24,10 +25,4 @@
 	font-size: 2rem;
 	text-transform: uppercase;
 	cursor: pointer;
-}
-
-.select{
-	color: #317B96;
-	font-weight: 700;
-	font-size:2.2rem;
 }

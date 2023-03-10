@@ -1,8 +1,35 @@
-import React from 'react';
+import React, {useState} from 'react';
+import { useNavigate } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 import styles from './FormRegister.module.css'
 import Input from '../login/FormInput';
 
 export default function FormRegister(){
+
+	const { SignUp } = useAuth();
+	const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+	const [confirmPass, setConfirmPass] = useState("");
+	const navigate = useNavigate();
+	const [error, setError] = useState("");
+
+	const submit = async (e) => {
+    e.preventDefault();
+    if (!email | !password) {
+      setError("Preencha todos os campos");
+      return;
+    }
+
+    const response = await SignUp(email, password);
+
+    if (response) {
+      setError(response);
+      return;
+    }
+
+    navigate("/");
+  }
+
 	return(
 		<div className={styles.container}>
 				<div className={styles.formLogo}>
@@ -10,10 +37,10 @@ export default function FormRegister(){
 					<p>Sport<span>Life</span></p>
 				</div>
 				<div className={styles.formRegister}>
-					<form method='post' autoComplete='off'>
-						<Input type='text' placeholder='Email' eye={false} />
-						<Input type='password' placeholder='Senha' eye={true} />
-						<Input type='password' placeholder='Confirme sua senha' eye={true} />
+					<form method='post' autoComplete='off' onSubmit={(e) => submit(e)}>
+						<Input type='text' placeholder='Email' eye={false} value={email} onChange={(e) => [setEmail(e.target.value)]} />
+						<Input type='password' placeholder='Senha' eye={true} value={password} onChange={(e) => [setPassword(e.target.value)]} />
+						<Input type='password' placeholder='Confirme sua senha' eye={true} value={confirmPass} onChange={(e) => [setConfirmPass(e.target.value)]} />
 						<div className={styles.formBtn}>
 							<button type='submit'>Registrar</button>
 						</div>

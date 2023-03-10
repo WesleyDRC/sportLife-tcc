@@ -1,10 +1,6 @@
 import styles from './PersonalData.module.css'
 
-export default function PersonalData(props){
-	function teste(){
-		props.setNmr(props.nmr + 1)
-		console.log(props.nmr)
-	}
+export default function PersonalData(){
 	return(
 		<div>
 			<h1>Dados Pessoais</h1>
@@ -39,7 +35,7 @@ export default function PersonalData(props){
 						<p className={`${styles.infoResponse}`}>(12)12345-6789</p>
 					</div>
 				</div>
-				<p className={styles.edit} onClick={teste}>EDITAR</p>
+				<p className={styles.edit}>EDITAR</p>
 						</div>
 			</div>
 	)
