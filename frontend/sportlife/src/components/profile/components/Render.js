@@ -16,7 +16,9 @@ export default function Render(props){
 		return(
 			<Request />
 		)
-	}else if(props.page == 'exit'){
-		<Exit />
+	}else{
+		return(
+			<Exit />
+		)
 	}
 }

@@ -18,28 +18,15 @@ export default function NavBar(){
 	}
 
 	function addressClick(){
-		personal.classList.remove("select")
-		address.classList.add("select")
-		requests.classList.remove("select")
-		exit.classList.remove("select")
 		setPage('address')
 	}
 
 	function requestsClick(){
-		personal.classList.remove("select")
-		address.classList.remove("select")
-		requests.classList.add("select")
-		exit.classList.remove("select")
 		setPage('requests')
 	}
 
 	function exitClick(){
-		personal.classList.remove("select")
-		address.classList.remove("select")
-		requests.classList.remove("select")
-		exit.classList.add("select")
 		setPage('exit')
-		console.log(page)
 	}
 
 	return(

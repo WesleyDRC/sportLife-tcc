@@ -1,3 +1,13 @@
+label{
+	color:white;
+	display: block;
+}
+
+.error{
+	text-align: center;
+	margin-bottom: 20px;
+}
+
 .container{
 	position: absolute;
 	top: 50%;

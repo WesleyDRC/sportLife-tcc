@@ -8,10 +8,9 @@ class AxiosRepository {
         this.#axiosClient = api;
     }
 
-    async createUser({email, name, password}) {
+    async createUser({email, password}) {
         return this.#axiosClient.post("/auth/signup", {
             email,
-            name,
             password
         })
     }
