@@ -20,7 +20,7 @@ authRoutes.post(
 )
 
 authRoutes.post(
-	"/signIn",
+	"/",
 	celebrate({
 		[Segments.BODY]: {
 			email: Joi.string(),
