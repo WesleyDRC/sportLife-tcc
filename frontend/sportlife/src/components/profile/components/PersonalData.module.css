@@ -1,0 +1,38 @@
+p{
+	margin: 0px;
+}
+
+h1{
+	font-weight: 700;
+}
+
+.container{
+	width: 520px;
+	border: 1px solid #777777;
+	padding: 10px;
+}
+
+.infoResponse{
+	color: #777777;
+}
+
+.infoQuest{
+	font-weight: 700;
+}
+
+.subCont{
+	display: grid;
+	grid-template-columns: 300px 220px;
+	margin-bottom: 20px;
+}
+
+.marginDetail{
+	margin-bottom: 20px;
+}
+
+.edit{
+	font-weight: 700;
+	text-decoration: underline;
+	text-align: end;
+	cursor: pointer;
+}
