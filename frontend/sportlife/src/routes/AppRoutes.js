@@ -1,5 +1,8 @@
 import {creatRoot} from 'react-router-dom'
 import {createBrowserRouter, RouterProvider, Navigate} from 'react-router-dom'
+
+import useAuth from '../hooks/useAuth'
+
 import Login from '../pages/Login'
 import Register from '../pages/Register'
 import ErrorPage from '../pages/ErrorPage'
@@ -9,17 +12,17 @@ import ProfilePage from '../pages/ProfilePage'
 
 export default function Routes() {
 
-// 	const Private = ({ children }) => {
-// 	const { authenticated, loading } = useAuth()
+	const Private = ({ children }) => {
+	const { authenticated, loading } = useAuth()
 
-// 	if(loading) {
-// 			return <div className='loading'> Carregando..... </div>
-// 	}
-// 	if (!authenticated) {
-// 		return <Navigate to="/login" />;
-// 	}
-// 	return children;
-// }
+	if(loading) {
+			return <div className='loading'> Carregando..... </div>
+	}
+	if (!authenticated) {
+		return <Navigate to="/" />;
+	}
+	return children;
+}
 
 	const router = createBrowserRouter([
 			{
@@ -48,7 +51,7 @@ export default function Routes() {
 
 			{
 				path: '/profile',
-				element: <ProfilePage />,
+				element: <Private> <ProfilePage /> </Private>,
 				errorElement: <ErrorPage />
 			},
 	])

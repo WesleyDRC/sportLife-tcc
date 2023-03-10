@@ -8,17 +8,17 @@ export const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
 
-  //   useEffect(() => {
-  //   const userToken = localStorage.getItem("user_token");
+    useEffect(() => {
+    const userToken = localStorage.getItem("user_token");
 
-  //   if (userToken) {
-  //     api.defaults.headers.Authorization = `Bearer ${JSON.parse(userToken)}`;
-  //     setUser(JSON.parse(userToken));
-  //   }
-  //       setTimeout(() => {
-  //           setLoading(false)
-  //       }, 1000);
-  // }, []);
+    if (userToken) {
+      api.defaults.headers.Authorization = `Bearer ${JSON.parse(userToken)}`;
+      setUser(JSON.parse(userToken));
+    }
+        setTimeout(() => {
+            setLoading(false)
+        }, 1000);
+  }, []);
 
     const SignIn = async (email, password) => {
         try {

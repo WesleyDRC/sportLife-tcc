@@ -1,8 +1,34 @@
-import React from 'react';
+import React, {useState} from 'react';
+import { useNavigate } from "react-router-dom";
 import styles from './FormLogin.module.css'
 import Input from './FormInput';
+import useAuth from "../../hooks/useAuth";
 
 export default function FormLogin(){
+	const { SignIn } = useAuth();
+	const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+	const navigate = useNavigate();
+  const [error, setError] = useState("");
+
+	const submit = async (e) => {
+    e.preventDefault();
+    if (!email | !password) {
+      setError("Preencha todos os campos");
+      return;
+    }
+
+    const response = await SignIn(email, password);
+		console.log(response)
+
+    if (response) {
+      setError(response);
+      return;
+    }
+
+    navigate("/");
+  };
+
 	return(
 		<div className={styles.container}>
 				<div className={styles.formLogo}>
@@ -10,9 +36,9 @@ export default function FormLogin(){
 					<p>Sport<span>Life</span></p>
 				</div>
 				<div className={styles.formLogin}>
-					<form method='post' autoComplete='off'>
-						<Input type='text' placeholder='Email' eye={false} />
-						<Input type='password' placeholder='Senha' eye={true} />
+					<form method='post' autoComplete='off' onSubmit={(e) => submit(e)}>
+						<Input type='email' placeholder='Email' eye={false} value={email} onChange={(e) => [setEmail(e.target.value)]} />
+						<Input type='password' placeholder='Senha' eye={true} value={password} onChange={(e) => [setPassword(e.target.value)]} />
 						<div className={styles.formBtn}>
 							<button type='submit'>Entrar</button>
 						</div>
