@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import { useNavigate } from "react-router-dom";
+import {Link} from 'react-router-dom'
 import styles from './FormLogin.module.css'
 import Input from './FormInput';
 import useAuth from "../../hooks/useAuth";
@@ -43,7 +44,7 @@ export default function FormLogin(){
 							<button type='submit'>Entrar</button>
 						</div>
 						<div className={styles.formNotRegister}>
-							<p>Não tem conta? <span>Registre-se</span> </p>
+							<p>Não tem conta? <Link to="/register"><span>Registre-se</span></Link> </p>
 						</div>
 					</form>
 				</div>

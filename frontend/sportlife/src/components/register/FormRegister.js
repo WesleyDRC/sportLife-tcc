@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import {Link} from 'react-router-dom'
 import useAuth from "../../hooks/useAuth";
 import styles from "./FormRegister.module.css";
 import Input from "../login/FormInput";
@@ -32,7 +33,7 @@ export default function FormRegister() {
       return;
     }
 
-    navigate("/");
+    navigate("/login");
   };
 
   return (
@@ -72,7 +73,7 @@ export default function FormRegister() {
           </div>
           <div className={styles.formNotRegister}>
             <p>
-              Já possui uma conta? <span>Faça login</span>{" "}
+              Já possui uma conta? <Link to="/login"><span>Faça login</span></Link>
             </p>
           </div>
         </form>
