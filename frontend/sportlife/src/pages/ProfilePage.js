@@ -9,7 +9,7 @@ export default function ProfilPage(){
 		<div className={styles.container}>
 			<Header />
 			<Profile />
-			<Footer />
+			
 		</div>
 	)
 }

@@ -8,7 +8,11 @@ import Register from '../pages/Register'
 import ErrorPage from '../pages/ErrorPage'
 import Home from '../pages/Home'
 import ProductPage from '../pages/ProductPage'
-import ProfilePage from '../pages/ProfilePage'
+import PersonalDataPage from '../pages/PersonalDataPage'
+import AddressPage from '../pages/AddressPage'
+import RequestPage from '../pages/RequestPage'
+import Exit from '../pages/ExitPage'
+import ExitPage from '../pages/ExitPage'
 
 export default function Routes() {
 
@@ -50,8 +54,26 @@ export default function Routes() {
 			},
 
 			{
-				path: '/profile',
-				element: <Private> <ProfilePage /> </Private>,
+				path: '/personaldata',
+				element: <Private> <PersonalDataPage /> </Private>,
+				errorElement: <ErrorPage />
+			},
+
+			{
+				path: '/address',
+				element: <Private> <AddressPage /> </Private>,
+				errorElement: <ErrorPage />
+			},
+
+			{
+				path: '/request',
+				element: <Private> <RequestPage /> </Private>,
+				errorElement: <ErrorPage />
+			},
+
+			{
+				path: '/exit',
+				element: <Private> <ExitPage /> </Private>,
 				errorElement: <ErrorPage />
 			},
 	])

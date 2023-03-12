@@ -1,6 +1,47 @@
+.quest{
+	margin-left: 0px;
+	text-align: center;
+	font-family: 'Anton';
+	font-weight: 100;
+	font-size: 2.8rem;
+}
+
+button{
+	border: none;
+	background-color: transparent;
+	padding: 5px 20px;
+}
+
 .subContainer{
-	width: 520px;
-	margin-left: 50px;
-	border: 1px solid #777777;
-	padding: 10px;
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 30vw;
+	height: 30vh;
+	background-color: rgb(244, 245, 249);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border-radius: 10px;
+	box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.24);
+}
+
+.subContainer .buttons{
+	margin: 0 auto;
+	margin-top: 50px;
+}
+
+.subContainer .buttons .backButton a{
+	margin-right: 50px;
+	color: black;
+	text-transform: capitalize;
+}
+
+.subContainer .buttons .exitButton{
+	border: none;
+	background-color: #317B96;
+	color: white;
+	border-radius: 5px;
 }
