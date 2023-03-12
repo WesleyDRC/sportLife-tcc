@@ -1,5 +1,6 @@
-import { Entity, Column, PrimaryColumn } from "typeorm";
+import { Entity, Column, PrimaryColumn, OneToOne, JoinColumn } from "typeorm";
 import {v4 as uuidv4} from "uuid"
+import { UserAddress } from "../../../../users/infra/typeorm/entities/UserAddress";
 
 @Entity()
 export class User {
@@ -27,6 +28,9 @@ export class User {
 		length: 255
 	})
 	password: string
+
+	@OneToOne(type => UserAddress, user => User)
+	user_address: UserAddress
 
 	constructor() {
 		if(!this.id) this.id = uuidv4()

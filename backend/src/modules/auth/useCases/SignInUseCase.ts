@@ -22,7 +22,7 @@ export default class SignInUseCase implements IUseCase {
 	async execute({email, password}: IUserCredentials): Promise<string> {
 		const foundUser = await this.authRepository.findByEmail(email)
 
-		if(!foundUser) throw new AppError(userConstants.NOT_FOUND, 404)
+		if(foundUser.length === 0) throw new AppError(userConstants.NOT_FOUND, 404)
 
 		const isCorrectPassword = await this.encryptManager.compareHash(
 			password,
