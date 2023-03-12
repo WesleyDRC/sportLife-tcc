@@ -13,6 +13,7 @@ import AddressPage from '../pages/AddressPage'
 import RequestPage from '../pages/RequestPage'
 import Exit from '../pages/ExitPage'
 import ExitPage from '../pages/ExitPage'
+import FormPage from '../pages/FormPage'
 
 export default function Routes() {
 
@@ -55,7 +56,7 @@ export default function Routes() {
 
 			{
 				path: '/personaldata',
-				element: <Private> <PersonalDataPage /> </Private>,
+				element:  <PersonalDataPage />,
 				errorElement: <ErrorPage />
 			},
 
@@ -74,6 +75,12 @@ export default function Routes() {
 			{
 				path: '/exit',
 				element: <Private> <ExitPage /> </Private>,
+				errorElement: <ErrorPage />
+			},
+
+			{
+				path: '/form',
+				element: <FormPage />,
 				errorElement: <ErrorPage />
 			},
 	])

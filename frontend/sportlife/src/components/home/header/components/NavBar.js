@@ -1,14 +1,15 @@
 import styles from './NavBar.module.css'
-import {FaSearch} from "react-icons/fa";
-import {FaHeart} from "react-icons/fa";
-import {FaShoppingCart} from "react-icons/fa";
+import {FaSearch, FaHeart, FaShoppingCart  } from "react-icons/fa";
+import {Link} from 'react-router-dom'
 
 export default function NavBar(){
 	return(
 		<div className={styles.container}>
-			<div className={styles.logo}>
-				<img src='https://i.imgur.com/BUAhj3p.png' alt='Logo SportLife' />
-				<p>SportLife</p>
+			<div>
+				<Link className={styles.logo} to= '/'>
+					<img src='https://i.imgur.com/BUAhj3p.png' alt='Logo SportLife' />
+					<p>SportLife</p>
+				</Link>
 			</div>
 			<div className={styles.navOptions}>
 				<p>Masculino</p>
