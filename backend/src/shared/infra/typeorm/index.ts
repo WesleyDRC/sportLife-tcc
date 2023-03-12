@@ -14,10 +14,10 @@ export const AppDataSource = new DataSource({
   database: process.env.DB_NAME,
   entities: [User, UserAddress],
   synchronize: true,
-  ssl: false,
+  ssl: true,
   extra: {
     ssl: {
-      rejectUnauthorized: false
+      rejectUnauthorized: true
     }
   }
 })
