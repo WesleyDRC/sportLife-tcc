@@ -9,20 +9,23 @@ class User {
 
   private readonly _password: string;
 
-  private constructor(name: string, email: string, password: string) {
+  private readonly _confirmPassword: string;
+
+  private constructor(name: string, email: string, password: string, confirmPassword: string) {
     this._name = name;
     this._email = email;
     this._password = password;
+    this._confirmPassword = confirmPassword
   }
 
-  public static create(name: string, email: string, password: string): User {
-    const attentionPoint = mustAttentionIn(name, email, password);
+  public static create(name: string, email: string, password: string, confirmPassword: string): User {
+    const attentionPoint = mustAttentionIn(email, password, confirmPassword);
 
     if (attentionPoint) {
       throw new AppError(attentionPoint, 400);
     }
 
-    return new User(name, email, password);
+    return new User(name, email, password, confirmPassword);
   }
 
   get password(): string {

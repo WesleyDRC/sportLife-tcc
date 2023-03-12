@@ -14,13 +14,14 @@ authRoutes.post(
 			name: Joi.string(),
 			email: Joi.string(),
 			password: Joi.string(),
+			confirmPassword: Joi.string()
 		},
 	}),
 	signUpController.handle
 )
 
 authRoutes.post(
-	"/signIn",
+	"/",
 	celebrate({
 		[Segments.BODY]: {
 			email: Joi.string(),

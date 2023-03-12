@@ -5,4 +5,5 @@ export default {
   INVALID_PASSWORD_ERROR: 'Senha inválida. Muito curta.',
   NOT_FOUND: 'Usuário não encontrado com o e-mail informado',
   INCORRECT_PASSWORD: 'Senha incorreta, tente novamente.',
+  INVALID_CORRECT_PASSWORD: 'As senhas digitadas não coincidem! Tente novamente.'
 };

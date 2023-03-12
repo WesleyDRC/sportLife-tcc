@@ -1,11 +1,5 @@
 import userConstants from '../constants/userConstants';
 
-function hasMinNameLengthRequired(name: string): boolean {
-  if (name.length < 10) return false;
-
-  return true;
-}
-
 function hasCorrectEmailFormatRequired(email: string): boolean {
   const [beforeDomain, afterDomain] = email.split('@');
 
@@ -20,16 +14,24 @@ function hasMinPasswordLengthRequired(password: string): boolean {
   return true;
 }
 
+function isCorrectPassword(password: string, confirmPassword: string): boolean {
+  if(password !== confirmPassword) return false;
+
+  return true
+}
+
 export default function mustAttentionIn(
-  name: string,
   email: string,
   password: string,
+  confirmPassword: string
 ): void | string {
-  if (!hasMinNameLengthRequired(name)) return userConstants.INVALID_NAME_ERROR;
 
   if (!hasCorrectEmailFormatRequired(email))
     return userConstants.INVALID_EMAIL_ERROR;
 
   if (!hasMinPasswordLengthRequired(password))
     return userConstants.INVALID_PASSWORD_ERROR;
+
+  if(!isCorrectPassword(password, confirmPassword))
+    return userConstants.INVALID_CORRECT_PASSWORD
 }
