@@ -21,28 +21,21 @@ export class SignUpUseCase implements IUseCase {
 		private encryptManager: IEncryptManager
 	) {}
 
-<<<<<<< HEAD
-	async execute({email, password}: IStoreUserDto): Promise<string> {
-=======
 	async execute({name, email, password, confirmPassword}: IStoreUserDto): Promise<string> {
->>>>>>> backend
     const foundUser = await this.authRepository.findByEmail(email);
 
 		if (foundUser.length > 0) {
       throw new AppError(userConstants.ALREADY_REGISTERED, 400);
     }
 
-<<<<<<< HEAD
-		const user = User.create(email, password)
-=======
 		const user = User.create(name, email, password, confirmPassword)
->>>>>>> backend
 
 		const encryptedPassword = await this.encryptManager.generateHash(
       user.password
     );
 
 		const userId = await this.authRepository.create({
+			name,
       email,
       password: encryptedPassword,
     });

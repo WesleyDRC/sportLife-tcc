@@ -7,15 +7,9 @@ class SignUpController {
 
 		const signUpUseCase = container.resolve(SignUpUseCase)
 
-<<<<<<< HEAD
-		const { email, password } = request.body
-
-		const token = await signUpUseCase.execute({email, password})
-=======
 		const { name, email, password, confirmPassword } = request.body
 
 		const token = await signUpUseCase.execute({ name, email, password, confirmPassword })
->>>>>>> backend
 
 		return response.json({token})
 	}

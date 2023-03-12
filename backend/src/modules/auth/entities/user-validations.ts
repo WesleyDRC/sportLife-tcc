@@ -25,10 +25,6 @@ export default function mustAttentionIn(
   password: string,
   confirmPassword: string
 ): void | string {
-<<<<<<< HEAD
-  // if (!hasMinNameLengthRequired(name)) return userConstants.INVALID_NAME_ERROR;
-=======
->>>>>>> backend
 
   if (!hasCorrectEmailFormatRequired(email))
     return userConstants.INVALID_EMAIL_ERROR;
