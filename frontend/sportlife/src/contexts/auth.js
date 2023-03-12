@@ -46,10 +46,16 @@ export const AuthProvider = ({children}) => {
         }
     }
 
+    const SignOut = () => {
+      setUser(null);
+      api.defaults.headers.Authorization = null;
+      localStorage.removeItem("user_token");
+    };
+
     return (
         <AuthContext.Provider
             value={{
-                user, SignIn, authenticated: !!user, loading, SignUp
+                user, SignIn, authenticated: !!user, loading, SignUp, SignOut
             }}
         >
             {children}

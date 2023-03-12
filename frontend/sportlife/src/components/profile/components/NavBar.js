@@ -1,32 +1,35 @@
-import { useState, useRef } from 'react'
+import { useRef, useState } from 'react'
+import {Link} from 'react-router-dom'
 
 import styles from './NavBar.module.css'
-import Render from './Render'
+
 
 export default function NavBar(){
-
-	const [page, setPage] = useState('personal')
 
 	const personal = useRef()
 	const address = useRef()
 	const requests = useRef()
-	const exit = useRef()
+
+	const [personalSel, setPersonalSel] = useState(true)
+	const [addressSel, setAddressSel] = useState(false)
+	const [requestSel,setRequestSel] = useState(false)
 
 	function personalClick(){
-		personal.current.className ='select'
-		setPage('personal')
+		setPersonalSel(true)
+		setAddressSel(false)
+		setRequestSel(false)
 	}
 
 	function addressClick(){
-		setPage('address')
+		setPersonalSel(false)
+		setAddressSel(true)
+		setRequestSel(false)
 	}
 
 	function requestsClick(){
-		setPage('requests')
-	}
-
-	function exitClick(){
-		setPage('exit')
+		setPersonalSel(false)
+		setAddressSel(false)
+		setRequestSel(true)
 	}
 
 	return(
@@ -36,12 +39,11 @@ export default function NavBar(){
 						<img src='https://i.imgur.com/MC3pcrf.png' alt='Foto do user' />
 						<p>Olá, Pablin !</p>
 					</div>
-					<p ref={personal} onClick={personalClick} className={styles.options }>Dados Pessoais</p>
-					<p ref={address} onClick={addressClick} className={styles.options}>Endereços</p>
-					<p ref={requests} onClick={requestsClick} className={styles.options}>Pedidos</p>
-					<p ref={exit} onClick={exitClick} className={styles.options}>Sair</p>
+					<p ref={personal} onClick={personalClick}  className={styles.optionMargin}  ><Link  className={personalSel? styles.select : styles.options} to="/personaldata">Dados Pessoais</Link></p>
+					<p ref={address} onClick={addressClick} className={styles.optionMargin}><Link className={addressSel? styles.select : styles.options} to="/address">Endereços</Link></p>
+					<p ref={requests} onClick={requestsClick} className={styles.optionMargin}><Link className={requestSel? styles.select : styles.options} to="/request">Pedidos</Link></p>
+					<p className={styles.optionMargin}><Link className={styles.options} to="/exit">Sair</Link></p>
 				</div>
-				<Render page={page} />
 		</div>
 	)
 

@@ -21,8 +21,20 @@
 }
 
 .options{
-	margin-top: 10px;
 	font-size: 2rem;
 	text-transform: uppercase;
 	cursor: pointer;
+	color: black;
+}
+
+.optionMargin{
+	margin-top: 10px;
+}
+
+.select{
+	font-size: 2rem;
+	text-transform: uppercase;
+	cursor: pointer;
+	color: #317B96;
+	font-weight: 700;
 }

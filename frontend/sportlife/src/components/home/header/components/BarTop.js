@@ -20,7 +20,7 @@ export default function BarTop(){
 	}else{
 		return(
 			<div className={styles.container}>
-				<Link to="/profile">
+				<Link to="/personaldata">
 					Minha Conta
 				</Link>
 			</div>
