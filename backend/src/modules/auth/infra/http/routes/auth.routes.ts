@@ -9,6 +9,17 @@ const signInController = new SignInController()
 
 authRoutes.post(
 	"/signUp",
+<<<<<<< HEAD
+=======
+	celebrate({
+		[Segments.BODY]: {
+			name: Joi.string(),
+			email: Joi.string(),
+			password: Joi.string(),
+			confirmPassword: Joi.string()
+		},
+	}),
+>>>>>>> backend
 	signUpController.handle
 )
 

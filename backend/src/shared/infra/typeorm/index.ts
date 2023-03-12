@@ -1,7 +1,9 @@
 /* eslint-disable no-debugger, no-console */
 import "mysql2"
-import { User } from "../../../modules/auth/infra/typeorm/entities/User";
 import { DataSource } from 'typeorm';
+
+import { User } from "../../../modules/auth/infra/typeorm/entities/User";
+import { UserAddress } from "../../../modules/users/infra/typeorm/entities/UserAddress";
 
 export const AppDataSource = new DataSource({
   type: "mysql",
@@ -10,12 +12,12 @@ export const AppDataSource = new DataSource({
   username: process.env.DB_USER,
   password: process.env.DB_PASS,
   database: process.env.DB_NAME,
-  entities: [User],
+  entities: [User, UserAddress],
   synchronize: true,
-  ssl: true,
+  ssl: false,
   extra: {
     ssl: {
-      rejectUnauthorized: true
+      rejectUnauthorized: false
     }
   }
 })
