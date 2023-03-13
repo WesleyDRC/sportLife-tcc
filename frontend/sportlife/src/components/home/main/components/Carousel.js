@@ -11,7 +11,7 @@ export default function Carousel(){
 						<img src="https://i.imgur.com/ywsZfnj.png" class="d-block w-100" alt="imagem 2 do carrossel" />
 					</div>
 					<div class="carousel-item">
-						<img src="https://i.imgur.com/UvsWtHd.png" class="d-block w-100" alt="imagem 3 do carrossel" />
+						<img src="https://i.imgur.com/5Egfcqm.png" class="d-block w-100" alt="imagem 3 do carrossel" />
 					</div>
 				</div>
 				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
