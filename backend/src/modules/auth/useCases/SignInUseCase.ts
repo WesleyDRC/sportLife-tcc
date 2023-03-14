@@ -29,7 +29,7 @@ export default class SignInUseCase implements IUseCase {
 			foundUser[0].password
 		)
 
-		if(!isCorrectPassword) throw new AppError(userConstants.INVALID_PASSWORD_ERROR, 401)
+		if(!isCorrectPassword) throw new AppError(userConstants.INCORRECT_PASSWORD, 401)
 
 		const token = this.tokenManager.generate(foundUser[0].id)
 
