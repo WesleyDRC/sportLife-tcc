@@ -1,14 +1,83 @@
 .container{
-	background-color: rgb(244, 245, 249);
+	background-color:rgb(244, 245, 249);
 	margin-top: 50px;
 	width: 100%;
 	position: relative;
 	bottom: 0;
+	display: flex;
+	justify-content: space-between;
+	color:black ;
+	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.466);
 }
 
-.container img{
+.firstInfos, .secondInfos, .thirdInfos, .fourthInfos, .fifthInfos{
+	margin:20px 40px 10px 40px;
+}
+
+.logo{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.logo img{
 	width: 50px;
 	height: 50px;
-	display: block;
-	margin: 10px auto;
+}
+
+.logo p{
+	margin-top: -10px;
+	font-size: 1.8rem;
+	font-weight: 700;
+	color: black;
+	margin-bottom: 8px;
+}
+
+.socialMedia p{
+	font-size: 1.8rem;
+}
+
+.socialMedia .icons{
+	display: flex;
+	justify-content: space-between;
+}
+
+.socialMedia .icon{
+	font-size: 2.6rem;
+	cursor: pointer;
+}
+
+.title{
+	font-size: 2rem;
+	font-weight: 800;
+	margin-bottom: 15px;
+}
+
+.options{
+	font-size: 1.6rem;
+	font-weight: 200;
+	margin-bottom: 5px;
+	cursor: pointer;
+}
+
+.fourthInfos{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.fourthInfos img{
+	width: 180px;
+}
+
+.fifthInfos img{
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	border: 1px solid black;
+}
+
+.fifthInfos .devs{
+	display: flex;
+	justify-content: space-between;
 }

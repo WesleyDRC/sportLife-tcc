@@ -1,5 +1,7 @@
 import styles from './PersonalDataPage.module.css'
 
+
+
 import Header from '../components/home/header/Header'
 import NavBar from '../components/profile/components/NavBar'
 import Address from '../components/profile/components/Address'
@@ -10,7 +12,7 @@ export default function PersonalDataPage(){
 		<div>
 			<Header />
 			<div className={styles.container}>
-				<NavBar />
+				<NavBar personalData={false} address={true} request={false} />
 				<Address />
 			</div>
 		</div>

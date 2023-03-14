@@ -10,7 +10,7 @@ export default function PersonalDataPage(){
 		<div>
 			<Header />
 			<div className={styles.container}>
-				<NavBar />
+				<NavBar personalData={false} address={false} request={true} />
 				<Request />
 			</div>
 		</div>

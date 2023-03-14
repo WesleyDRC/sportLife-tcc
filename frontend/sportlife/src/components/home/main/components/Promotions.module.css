@@ -1,11 +1,19 @@
 .container{
 	display: flex;
-	justify-content: space-between;
-	margin: 50px 0px;
+	justify-content: center;
+	background-color: black;
+	margin: 0 auto;
+	margin-top: 50px;
+	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.281);
+	border-radius: 5px;
 }
 
 .container img{
-	border-radius:10px;
-	width: 300px;
-	height: 100%;
+	width: calc(1250px/3);
+	height: 300px;
+}
+
+.teste{
+	border-left: 1px solid white;
+	border-right: 1px solid white;
 }
