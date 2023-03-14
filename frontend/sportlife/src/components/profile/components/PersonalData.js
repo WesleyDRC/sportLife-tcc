@@ -48,7 +48,7 @@ export default function PersonalData(){
 							<p className={`${styles.infoResponse}`}>{user.phone}</p>
 						</div>
 					</div>
-					<Link to='/form'>
+					<Link to='/user/edit'>
 						<p className={styles.edit}>EDITAR</p>
 					</Link>
 					</div>

@@ -79,7 +79,7 @@ export default function Routes() {
 			},
 
 			{
-				path: '/user/form',
+				path: '/user/edit',
 				element: <Private> <FormPage /> </Private>,
 				errorElement: <ErrorPage />
 			},
