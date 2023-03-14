@@ -55,31 +55,31 @@ export default function Routes() {
 			},
 
 			{
-				path: '/personaldata',
+				path: '/user/personaldata',
 				element: <Private> <PersonalDataPage /></Private>,
 				errorElement: <ErrorPage />
 			},
 
 			{
-				path: '/address',
+				path: '/user/address',
 				element: <Private> <AddressPage /> </Private>,
 				errorElement: <ErrorPage />
 			},
 
 			{
-				path: '/request',
+				path: '/user/request',
 				element: <Private> <RequestPage /> </Private>,
 				errorElement: <ErrorPage />
 			},
 
 			{
-				path: '/exit',
+				path: '/user/exit',
 				element: <Private> <ExitPage /> </Private>,
 				errorElement: <ErrorPage />
 			},
 
 			{
-				path: '/form',
+				path: '/user/form',
 				element: <Private> <FormPage /> </Private>,
 				errorElement: <ErrorPage />
 			},

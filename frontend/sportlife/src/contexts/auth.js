@@ -35,9 +35,9 @@ export const AuthProvider = ({children}) => {
         }
     }
 
-    const SignUp = async (email, password) => {
+    const SignUp = async (email, password, confirmPassword) => {
         try {
-            const response = await AxiosRepository.createUser({email, password})
+            const response = await AxiosRepository.createUser({email, password, confirmPassword})
             console.log(response)
         } catch (error) {
       if (error.response.status !== error.response.status.ok) {

@@ -54,6 +54,7 @@ export default function FormLogin() {
             value={password}
             onChange={(e) => [setPassword(e.target.value)]}
           />
+          <label className={styles.labelError}> <p className={styles.error}>{error}</p>  </label>
           <div className={styles.formBtn}>
             <button type="submit">Entrar</button>
           </div>

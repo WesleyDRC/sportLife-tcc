@@ -25,7 +25,7 @@ export default function FormRegister() {
       return;
 		}
 
-    const response = await SignUp(email, password);
+    const response = await SignUp(email, password, confirmPass);
 		console.log(response)
 
     if (response) {
