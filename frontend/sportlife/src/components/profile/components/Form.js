@@ -6,17 +6,25 @@ import useUser from "../../../hooks/useUser";
 
 export default function Form() {
   const { updateUser, user } = useUser();
-	const [name, setName] = useState(user.name)
+	const [firstName, setFirstName] = useState(user.name)
 	const [lastName, setLasName] = useState()
 	const [cpf, setCpf] = useState()
-	const [gender, setGender] = useState()
+	const [gender, setGender] = useState("")
 	const [dateBirth, setDateBirth] = useState()
-	const [phone, setPhone] = useState()
+	const [telephone, setTelephone] = useState()
+  const [selectValue, setSelectValue] = useState("")
 	const navigate = useNavigate()
+
+  function manipulateGender(){
+    if(selectValue == 'M') setGender("M")
+    if(selectValue == 'F') setGender("F")
+    if(selectValue == '') setGender("")
+  }
 
 	const submit = async (e) =>{
 		e.preventDefault();
-		const response = await updateUser(user.id,name)
+    manipulateGender();
+		const response = await updateUser(user.id,firstName, lastName,cpf, gender, dateBirth, telephone)
 		alert(response.data.message)
 		navigate('/user/personaldata')
 	}
@@ -32,8 +40,8 @@ export default function Form() {
               <input
                 type="text"
                 placeholder="Digite seu nome"
-                value={name}
-                onChange={(e) => [setName(e.target.value)]}
+                value={firstName}
+                onChange={(e) => [setFirstName(e.target.value)]}
               />
             </div>
             <div>
@@ -59,12 +67,11 @@ export default function Form() {
             </div>
             <div>
               <label for="sex">Gênero</label>
-              <input
-								id="sex"
-								type="text"
-								placeholder="Digite seu gênero"
-								value={gender}
-								onChange={(e) => [setGender(e.target.value)]}/>
+              <select id="gender" value={gender} onChange={e => setGender(e.target.value)}>
+                <option value='' selected>Opcional</option>
+                <option value='M'>Masculino</option>
+                <option value='F'>Feminino</option>
+              </select>
             </div>
           </div>
           <div className={styles.subContainer}>
@@ -82,8 +89,8 @@ export default function Form() {
                 id="celNumber"
                 type="number"
                 placeholder="Digite seu celular"
-								value={phone}
-                onChange={(e) => [setPhone(e.target.value)]}
+								value={telephone}
+                onChange={(e) => [setTelephone(e.target.value)]}
               />
             </div>
           </div>
