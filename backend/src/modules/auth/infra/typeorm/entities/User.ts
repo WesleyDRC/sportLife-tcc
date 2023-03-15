@@ -2,7 +2,7 @@ import { Entity, Column, PrimaryColumn, OneToOne, JoinColumn } from "typeorm";
 import {v4 as uuidv4} from "uuid"
 import { UserAddress } from "../../../../users/infra/typeorm/entities/UserAddress";
 
-@Entity()
+@Entity("user")
 export class User {
 	@PrimaryColumn({
 		type: "varchar",
@@ -15,7 +15,41 @@ export class User {
 		length: 255,
 		nullable: true
 	})
-	name: string
+	firstName: string
+
+	@Column({
+		type: "varchar",
+		length: 255,
+		nullable: true
+	})
+	lastName: string
+
+	@Column({
+		type: "varchar",
+		length: 11,
+		nullable: true
+	})
+	CPF: string
+
+	@Column({
+		type: "varchar",
+		length: 1,
+		nullable: true
+	})
+	gender: string
+
+	@Column({
+		type: "date",
+		nullable: true
+	})
+	dateBirth: string
+
+	@Column({
+		type: "varchar",
+		length: 11,
+		nullable: true
+	})
+	telephone: string
 
 	@Column({
 		type: "varchar",

@@ -1,6 +1,11 @@
 export default interface IUser {
   readonly id: string;
-  name: string | null;
+  firstName?: string;
+  lastName?: string;
+  CPF?: string;
+  gender?: string;
+  dateBirth?: string;
+  telephone?: string;
   email: string;
   password: string;
 }
