@@ -1,8 +1,10 @@
-import { Entity, PrimaryColumn, Column, ManyToOne, JoinColumn} from "typeorm";
+import { Entity, PrimaryColumn, Column, ManyToOne, JoinColumn, OneToMany} from "typeorm";
 import { v4 as uuidv4 } from "uuid";
 import { Categories } from './Categories'
 import { Discount } from "./Discount";
 import { Inventory } from "./Inventory";
+import { Sizes } from "./Sizes";
+import { Assessments } from "./Assessments";
 
 @Entity("products")
 export class Product {
@@ -32,15 +34,36 @@ export class Product {
 	description: string;
 
 	@Column({
-		type: "varchar",
-		length: "45"
+		type: "float"
 	})
-	color: string;
+	price: number
+
+	@Column({
+		type: "varchar",
+		length: "1"
+	})
+	sexo: string;
+
+	@Column({
+		type: "varchar",
+		length: "255"
+	})
+	colors: string;
 
 	@Column({
 		type: "float"
 	})
-	price: number
+	weight: number;
+
+	@Column({
+		type: "float"
+	})
+	height: number;
+
+	@Column({
+		type: "float"
+	})
+	width: number;
 
 	@Column()
 	categories_id: string
@@ -50,6 +73,9 @@ export class Product {
 
 	@Column()
 	discount_id: string
+
+	@Column()
+	sizes_id: string
 
 	// Primeiro parametro retorna a entidade, o segundo parametro retorna a chave estrangeira
 	@ManyToOne(() => Categories, (categories) => categories.id )
@@ -63,6 +89,13 @@ export class Product {
 	@ManyToOne(() => Inventory, (inventory) => inventory.id)
 	@JoinColumn({ name: "inventory_id"})
 	inventory: Inventory
+
+	@ManyToOne(() => Sizes, (sizes) => sizes.id)
+	@JoinColumn({ name: "sizes_id"})
+	sizes: Sizes
+
+	@OneToMany(() => Assessments, assessments => assessments.product)
+	assessments: Assessments[]
 
 	constructor() {
 		if(!this.id) this.id = uuidv4()

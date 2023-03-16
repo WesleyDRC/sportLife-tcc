@@ -2,6 +2,7 @@ import { getRepository, Repository } from "typeorm";
 import { AppDataSource } from "../../../../../../shared/infra/typeorm";
 import IListProductsDTO from "../../../../dtos/IListProductDTO";
 import {IProductRepository} from "../../../../repositories/IProductRepository";
+import { Assessments } from "../entities/Assessments";
 import { Product } from "../entities/Product";
 
 
@@ -18,6 +19,7 @@ export class ProductRepository implements IProductRepository {
 			.leftJoinAndSelect("products.categories", "categories")
 			.leftJoinAndSelect("products.discount", "discount")
 			.leftJoinAndSelect("products.inventory", "inventory")
+			.leftJoinAndSelect("products.assessments", "assessments")
 
 			if(category) {
 				productQuery.where({ categories: category})

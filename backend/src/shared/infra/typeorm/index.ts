@@ -8,6 +8,8 @@ import { Product } from "../../../modules/products/infra/http/typeorm/entities/P
 import { Categories } from "../../../modules/products/infra/http/typeorm/entities/Categories";
 import { Inventory } from "../../../modules/products/infra/http/typeorm/entities/Inventory";
 import { Discount } from "../../../modules/products/infra/http/typeorm/entities/Discount";
+import { Sizes } from "../../../modules/products/infra/http/typeorm/entities/Sizes";
+import { Assessments } from "../../../modules/products/infra/http/typeorm/entities/Assessments";
 
 export const AppDataSource = new DataSource({
   type: "mysql",
@@ -16,7 +18,7 @@ export const AppDataSource = new DataSource({
   username: process.env.DB_USER,
   password: process.env.DB_PASS,
   database: process.env.DB_NAME,
-  entities: [User, UserAddress, Product, Categories, Inventory, Discount],
+  entities: [User, UserAddress, Product, Categories, Inventory, Discount, Sizes, Assessments],
   synchronize: true,
   ssl: false,
   extra: {

@@ -3,14 +3,17 @@ import { AppDataSource } from "../../../../../shared/infra/typeorm";
 import { IUsersRepository } from "../../../repositories/IUsersRepository";
 import { User } from "../../../../auth/infra/typeorm/entities/User";
 import { UserAddress } from "../entities/UserAddress";
+import { Assessments } from "../../../../products/infra/http/typeorm/entities/Assessments";
 
 export class UsersRepository implements IUsersRepository {
   private ormRepository: Repository<User>;
   private ormRepositoryUserAddress: Repository<UserAddress>;
+  private ormRepositoryAssessments: Repository<Assessments>;
 
   constructor() {
     this.ormRepository = AppDataSource.getRepository(User);
     this.ormRepositoryUserAddress = AppDataSource.getRepository(UserAddress);
+    this.ormRepositoryAssessments = AppDataSource.getRepository(Assessments);
   }
 
   public async getUsers(): Promise<any> {
@@ -44,10 +47,10 @@ export class UsersRepository implements IUsersRepository {
       .set({
         firstName,
         lastName,
-				CPF,
-				gender,
-				dateBirth,
-				telephone
+        CPF,
+        gender,
+        dateBirth,
+        telephone,
       })
       .where("id = :userId", { userId })
       .execute();
@@ -58,29 +61,38 @@ export class UsersRepository implements IUsersRepository {
     const response = await this.ormRepositoryUserAddress
       .createQueryBuilder("user_address")
       .leftJoinAndSelect("user_address.user", "user")
-      .where("user_address.userId = :userId", { userId })
+      .where("user_address.user_id = :userId", { userId })
       .getOne();
     return Promise.resolve(response);
   }
 
-  public async createAddress(
-    userId,
-    city,
-    postal_code,
-    country,
-    telephone,
-    mobile
-  ): Promise<any> {
+  public async createAddress(userId, city, postal_code, country): Promise<any> {
     const userAddress = new UserAddress();
     userAddress.user = userId;
     userAddress.city = city;
     userAddress.postal_code = postal_code;
     userAddress.country = country;
-    userAddress.telephone = telephone;
-    userAddress.mobile = mobile;
 
     await this.ormRepositoryUserAddress.save(userAddress);
 
     return Promise.resolve(userAddress);
+  }
+
+  public async createAssessments(
+    stars: number,
+    assessment: string,
+    userId: string,
+    productId: string
+  ): Promise<any> {
+    const userAssessments = new Assessments();
+
+    userAssessments.stars = stars;
+    userAssessments.assessments = assessment;
+    userAssessments.user_id = userId;
+    userAssessments.product_id = productId;
+
+    await this.ormRepositoryAssessments.save(userAssessments);
+
+    return Promise.resolve(userAssessments);
   }
 }
