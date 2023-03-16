@@ -14,11 +14,11 @@ input[type=number] {
  appearance: textfield;
 }
 
-input[type=date]{
+input[type=date], select{
 	width: 236px;
 }
 
-input{
+input, select{
 	padding: 5px 15px;
 	margin-bottom: 10px;
 	border: 1px solid rgba(0, 0, 0, 0.5);
@@ -49,4 +49,8 @@ input{
 .positionButton{
 	display: flex;
 	justify-content: end;
+}
+
+input[type=date], option::placeholder{
+	color: #777;
 }

@@ -15,8 +15,8 @@ export default function NavBar(props){
 				<div className={styles.subContainer}>
 					<div className={styles.userPhoto}>
 						<img src='https://i.imgur.com/MC3pcrf.png' alt='Foto do user' />
-						{ user.name ? (
-							<p>Olá, {user.name} !</p>
+						{ user.firstName ? (
+							<p>Olá, {user.firstName} !</p>
 						): <p>Olá!</p>}
 
 					</div>

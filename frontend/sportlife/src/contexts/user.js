@@ -21,9 +21,9 @@ export const UserProvider = ({ children }) =>{
     }
   };
 
-	const updateUser = async (id, name) => {
+	const updateUser = async (id, firstName, lastName,CPF, gender, dateBirth, telephone) => {
     try {
-      return await AxiosRepository.updateUser(id, name);
+      return await AxiosRepository.updateUser(id, firstName, lastName,CPF, gender, dateBirth, telephone);
     } catch (error) {
       console.log(error);
     }

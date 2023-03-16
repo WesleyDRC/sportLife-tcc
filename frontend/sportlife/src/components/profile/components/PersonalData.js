@@ -14,6 +14,12 @@ export default function PersonalData(){
 		getInfoUser()
 	}, [authenticated])
 
+	function manipulateGender(user){
+		if(user.gender == 'M') return 'Masculino'
+		if (user.gender == 'F') return 'Feminino'
+		return ''
+	}
+
 		return(
 			<div>
 				<h1>Dados Pessoais</h1>
@@ -21,7 +27,7 @@ export default function PersonalData(){
 					<div className={styles.subCont}>
 						<div>
 							<p className={styles.infoQuest}>Nome</p>
-							<p className={`${styles.infoResponse}`}>{user.name}</p>
+							<p className={`${styles.infoResponse}`}>{user.firstName}</p>
 						</div>
 						<div>
 							<p className={styles.infoQuest}>Sobrenome</p>
@@ -33,11 +39,11 @@ export default function PersonalData(){
 					<div className={styles.subCont}>
 						<div>
 							<p className={styles.infoQuest}>CPF</p>
-							<p className={`${styles.infoResponse} ${styles.marginDetail}`}>{user.cpf}</p>
+							<p className={`${styles.infoResponse} ${styles.marginDetail}`}>{user.CPF}</p>
 						</div>
 						<div>
 							<p className={styles.infoQuest}>Gênero</p>
-							<p className={`${styles.infoResponse} ${styles.marginDetail}`}>{user.gender}</p>
+							<p className={`${styles.infoResponse} ${styles.marginDetail}`}>{manipulateGender(user)}</p>
 						</div>
 						<div>
 							<p className={styles.infoQuest}>Data de Nascimento</p>
@@ -45,7 +51,7 @@ export default function PersonalData(){
 						</div>
 						<div>
 							<p className={styles.infoQuest}>Telefone</p>
-							<p className={`${styles.infoResponse}`}>{user.phone}</p>
+							<p className={`${styles.infoResponse}`}>{user.telephone}</p>
 						</div>
 					</div>
 					<Link to='/user/edit'>

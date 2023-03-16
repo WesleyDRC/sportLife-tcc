@@ -1,0 +1,47 @@
+.card{
+	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.411);
+	width: 300px;
+	padding-bottom: 8px;
+	border-radius: 5px;
+}
+
+.card img{
+	width: 300px;
+	background-color: #ebebeb;
+}
+
+.card .name{
+	margin: 8px;
+	font-weight: 700;
+	font-size: 2rem;
+}
+
+.card .price{
+	margin: 0px 8px;
+	color: #00a650;
+	font-weight: 500;
+}
+
+.buy{
+	background-color:#317B96 ;
+	margin: 8px;
+	color: white;
+	border-radius: 5px;
+	width: 100%;
+	display: block;
+	transition: 1s;
+}
+
+.buyNone{
+	background-color:#317B96 ;
+	margin: 8px;
+	color: white;
+	border-radius: 5px;
+	width: 100%;
+	display: none;
+}
+
+.positionButton{
+	display: flex;
+	justify-content: center;
+}

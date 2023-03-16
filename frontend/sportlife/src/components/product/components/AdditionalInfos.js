@@ -9,8 +9,8 @@ export default function AdditionalInfos(){
 			</div>
 			<hr/>
 			<div>
-				<p>Dimensões</p>
-				<p>1,5 x 18 x 15 cm</p>
+				<p>Altura / Largura</p>
+				<p>1.60M / 60cm</p>
 			</div>
 			<hr/>
 			<div>
