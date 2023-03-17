@@ -58,7 +58,7 @@ export default function FormRegister() {
             placeholder="Senha"
             eye={true}
             value={password}
-            onChange={(e) => [setPassword(e.target.value)]}
+            não aceitar
           />
           <Input
             type="password"

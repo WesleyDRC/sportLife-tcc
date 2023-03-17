@@ -3,13 +3,14 @@ a{
 }
 
 label{
-	color:white;
 	display: block;
 }
 
 .error{
 	text-align: center;
+	color:white;
 	margin-bottom: 20px;
+	max-width: 350px;
 }
 
 .container{

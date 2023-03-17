@@ -1,0 +1,20 @@
+.subContainer{
+	width: 520px;
+	margin-left: 50px;
+	border: 1px solid #777777;
+	border-radius: 10px;
+	padding: 10px;
+}
+
+.button{
+	margin-top: 10px;
+	border: none;
+	background-color: #317B96;
+	color: white;
+	border-radius: 5px;
+}
+
+.positionButton{
+	display: flex;
+	justify-content: end;
+}
