@@ -3,18 +3,14 @@ import { IProductRepository } from "../repositories/IProductRepository";
 import { Product } from "../infra/http/typeorm/entities/Product";
 
 @injectable()
-export default class ListProductsUseCase {
+export default class UpdateViewsUseCase {
   constructor(
     @inject("ProductRepository")
     private productRepository: IProductRepository
   ) {}
 
-  public async execute(
-    category?: string,
-    orderBy?: string,
-    filter?: { [key: string]: string }
-  ): Promise<Product[]> {
-    const products = await this.productRepository.listAll({ category, orderBy, filter });
-    return products;
+  public async execute(id: string): Promise<Product[]> {
+    const product = await this.productRepository.updateViews(id);
+    return product;
   }
 }

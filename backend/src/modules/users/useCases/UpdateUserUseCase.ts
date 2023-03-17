@@ -18,6 +18,9 @@ export class UpdateUserUseCase implements IUseCase {
     dateBirth,
     telephone,
   }) {
+
+    
+
     return await this.usersRepository.updateUser(
       userId,
       firstName,

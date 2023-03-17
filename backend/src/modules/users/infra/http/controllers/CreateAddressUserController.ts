@@ -9,9 +9,9 @@ export default class CreateAddressUserController {
 
 		const userId = request.user.id
 
-		const { city, postal_code, country, telephone, mobile} = request.body
+		const { city, postal_code, country} = request.body
 
-		const userAddress = await createAddressUserUseCase.execute({userId, city, postal_code, country, telephone, mobile})
+		const userAddress = await createAddressUserUseCase.execute({userId, city, postal_code, country,})
 
 		return response.json({ userAddress })
 

@@ -28,22 +28,11 @@ export class UserAddress {
 	})
 	country: string
 
-	@Column({
-		type: "varchar",
-		length: 255,
-		nullable: true
-	})
-	telephone: string
-
-	@Column({
-		type: "varchar",
-		length: 255,
-		nullable: true
-	})
-	mobile: string
+	@Column()
+	user_id: string
 
 	@OneToOne(type=> User, user_address => UserAddress)
-	@JoinColumn()
+	@JoinColumn({name: "user_id"})
 	user: User
 
 	constructor() {

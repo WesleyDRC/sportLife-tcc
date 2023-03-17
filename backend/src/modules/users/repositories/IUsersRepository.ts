@@ -14,7 +14,7 @@ export interface IUsersRepository {
   ): Promise<any>;
 
   getAddressUser(userId: string): Promise<any>;
-	
+
   createAddress(
     userId: string,
     city: string,
@@ -23,4 +23,11 @@ export interface IUsersRepository {
     telephone?: string,
     mobile?: string
   ): Promise<any>;
+
+  createAssessments(
+    stars: number,
+    assessment: string,
+    userId: string,
+    productId: string
+  ): Promise<any>
 }
