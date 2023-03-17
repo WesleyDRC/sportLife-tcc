@@ -3,6 +3,11 @@
 	width: 300px;
 	padding-bottom: 8px;
 	border-radius: 5px;
+	transition: .1s;
+}
+
+.card:hover{
+	box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.411);
 }
 
 .card img{
@@ -23,13 +28,13 @@
 }
 
 .buy{
+	transition:1s;
 	background-color:#317B96 ;
 	margin: 8px;
 	color: white;
 	border-radius: 5px;
 	width: 100%;
 	display: block;
-	transition: 1s;
 }
 
 .buyNone{
