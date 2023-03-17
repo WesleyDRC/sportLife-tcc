@@ -68,7 +68,7 @@ export class UsersRepository implements IUsersRepository {
 
   public async createAddress(userId, city, postal_code, country): Promise<any> {
     const userAddress = new UserAddress();
-    userAddress.user = userId;
+    userAddress.user_id = userId;
     userAddress.city = city;
     userAddress.postal_code = postal_code;
     userAddress.country = country;

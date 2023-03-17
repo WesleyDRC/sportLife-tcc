@@ -65,6 +65,11 @@ export class Product {
 	})
 	width: number;
 
+	@Column({
+		type: "int"
+	})
+	views: number;
+
 	@Column()
 	categories_id: string
 
