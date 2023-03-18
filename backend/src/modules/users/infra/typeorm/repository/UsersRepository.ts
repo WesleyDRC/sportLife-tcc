@@ -3,7 +3,7 @@ import { AppDataSource } from "../../../../../shared/infra/typeorm";
 import { IUsersRepository } from "../../../repositories/IUsersRepository";
 import { User } from "../../../../auth/infra/typeorm/entities/User";
 import { UserAddress } from "../entities/UserAddress";
-import { Assessments } from "../../../../products/infra/http/typeorm/entities/Assessments";
+import { Assessments } from "../../../../products/infra/typeorm/entities/Assessments";
 
 export class UsersRepository implements IUsersRepository {
   private ormRepository: Repository<User>;

@@ -16,8 +16,8 @@ class AxiosRepository {
         })
     }
 
-    async updateUser(id, firstName, lastName, CPF, gender, dateBirth, telephone) {
-        return this.#axiosClient.patch(`/users/${id}`, {
+    async updateUser(firstName, lastName, CPF, gender, dateBirth, telephone) {
+        return this.#axiosClient.patch(`/users/`, {
             firstName,
             lastName,
             CPF,

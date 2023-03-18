@@ -12,19 +12,11 @@ export default function Form() {
 	const [gender, setGender] = useState("")
 	const [dateBirth, setDateBirth] = useState()
 	const [telephone, setTelephone] = useState()
-  const [selectValue, setSelectValue] = useState("")
 	const navigate = useNavigate()
-
-  function manipulateGender(){
-    if(selectValue == 'M') setGender("M")
-    if(selectValue == 'F') setGender("F")
-    if(selectValue == '') setGender("")
-  }
 
 	const submit = async (e) =>{
 		e.preventDefault();
-    manipulateGender();
-		const response = await updateUser(user.id,firstName, lastName,cpf, gender, dateBirth, telephone)
+		const response = await updateUser(firstName, lastName,cpf, gender, dateBirth, telephone)
 		alert(response.data.message)
 		navigate('/user/personaldata')
 	}

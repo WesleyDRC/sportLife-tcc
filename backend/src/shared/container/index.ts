@@ -8,7 +8,7 @@ import { IUsersRepository } from "../../modules/users/repositories/IUsersReposit
 import { UsersRepository } from "../../modules/users/infra/typeorm/repository/UsersRepository";
 
 import { IProductRepository } from "../../modules/products/repositories/IProductRepository";
-import { ProductRepository } from "../../modules/products/infra/http/typeorm/repository/ProductRepository";
+import { ProductRepository } from "../../modules/products/infra/typeorm/repository/ProductRepository";
 
 container.registerSingleton<IAuthRepository>("AuthRepository", AuthRepository)
 container.registerSingleton<IUsersRepository>("UsersRepository", UsersRepository)

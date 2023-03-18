@@ -4,12 +4,12 @@ import { DataSource } from 'typeorm';
 
 import { User } from "../../../modules/auth/infra/typeorm/entities/User";
 import { UserAddress } from "../../../modules/users/infra/typeorm/entities/UserAddress";
-import { Product } from "../../../modules/products/infra/http/typeorm/entities/Product";
-import { Categories } from "../../../modules/products/infra/http/typeorm/entities/Categories";
-import { Inventory } from "../../../modules/products/infra/http/typeorm/entities/Inventory";
-import { Discount } from "../../../modules/products/infra/http/typeorm/entities/Discount";
-import { Sizes } from "../../../modules/products/infra/http/typeorm/entities/Sizes";
-import { Assessments } from "../../../modules/products/infra/http/typeorm/entities/Assessments";
+import { Product } from "../../../modules/products/infra/typeorm/entities/Product";
+import { Categories } from "../../../modules/products/infra/typeorm/entities/Categories";
+import { Inventory } from "../../../modules/products/infra/typeorm/entities/Inventory";
+import { Discount } from "../../../modules/products/infra/typeorm/entities/Discount";
+import { Sizes } from "../../../modules/products/infra/typeorm/entities/Sizes";
+import { Assessments } from "../../../modules/products/infra/typeorm/entities/Assessments";
 
 export const AppDataSource = new DataSource({
   type: "mysql",

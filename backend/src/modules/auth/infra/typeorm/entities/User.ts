@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryColumn, OneToOne, OneToMany } from "typeorm";
 import {v4 as uuidv4} from "uuid"
 import { UserAddress } from "../../../../users/infra/typeorm/entities/UserAddress";
-import { Assessments } from "../../../../products/infra/http/typeorm/entities/Assessments";
+import { Assessments } from "../../../../products/infra/typeorm/entities/Assessments";
 
 @Entity("user")
 export class User {

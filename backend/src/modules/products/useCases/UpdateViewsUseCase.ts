@@ -1,6 +1,6 @@
 import { inject, injectable } from "tsyringe";
 import { IProductRepository } from "../repositories/IProductRepository";
-import { Product } from "../infra/http/typeorm/entities/Product";
+import { Product } from "../infra/typeorm/entities/Product";
 
 @injectable()
 export default class UpdateViewsUseCase {
