@@ -1,10 +1,11 @@
-import { Entity, PrimaryColumn, Column, ManyToOne, JoinColumn, OneToMany} from "typeorm";
+import { Entity, PrimaryColumn, Column, ManyToOne, JoinColumn, OneToMany, OneToOne} from "typeorm";
 import { v4 as uuidv4 } from "uuid";
 import { Categories } from './Categories'
 import { Discount } from "./Discount";
 import { Inventory } from "./Inventory";
 import { Sizes } from "./Sizes";
 import { Assessments } from "./Assessments";
+import { CartItems } from "../../../../order/infra/typeorm/entities/CartItem";
 
 @Entity("products")
 export class Product {
@@ -101,6 +102,9 @@ export class Product {
 
 	@OneToMany(() => Assessments, assessments => assessments.product)
 	assessments: Assessments[]
+
+	@OneToMany(() => CartItems, cart_items => cart_items.user)
+	cart_items: CartItems[]
 
 	constructor() {
 		if(!this.id) this.id = uuidv4()

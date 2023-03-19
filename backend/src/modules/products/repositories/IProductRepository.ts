@@ -1,6 +1,6 @@
 import IListProductsDTO from "../dtos/IListProductDTO";
 import IStoreProductDTO from "../dtos/IStoreProductDTO";
-import { Product } from "../infra/http/typeorm/entities/Product";
+import { Product } from "../infra/typeorm/entities/Product";
 
 export interface IProductRepository {
   listAll({ filter, category }: IListProductsDTO): Promise<Product[]>;

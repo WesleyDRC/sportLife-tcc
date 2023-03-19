@@ -1,4 +1,4 @@
-import { getRepository, Repository } from "typeorm";
+import { Repository } from "typeorm";
 import { AppDataSource } from "../../../../../shared/infra/typeorm";
 import IListProductsDTO from "../../../dtos/IListProductDTO";
 import IStoreProductDTO from "../../../dtos/IStoreProductDTO";

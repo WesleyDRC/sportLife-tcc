@@ -10,6 +10,10 @@ import { UsersRepository } from "../../modules/users/infra/typeorm/repository/Us
 import { IProductRepository } from "../../modules/products/repositories/IProductRepository";
 import { ProductRepository } from "../../modules/products/infra/typeorm/repository/ProductRepository";
 
+import { IOrderRepository } from "../../modules/order/repositories/IOrderRepository";
+import { OrderRepository } from "../../modules/order/infra/typeorm/repository/OrderRepository";
+
 container.registerSingleton<IAuthRepository>("AuthRepository", AuthRepository)
 container.registerSingleton<IUsersRepository>("UsersRepository", UsersRepository)
 container.registerSingleton<IProductRepository>("ProductRepository", ProductRepository)
+container.registerSingleton<IOrderRepository>("OrderRepository", OrderRepository)
