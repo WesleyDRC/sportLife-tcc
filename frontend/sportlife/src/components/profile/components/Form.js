@@ -6,7 +6,7 @@ import useUser from "../../../hooks/useUser";
 
 export default function Form() {
   const { updateUser, user } = useUser();
-	const [firstName, setFirstName] = useState(user.name)
+	const [firstName, setFirstName] = useState(user.firstName)
 	const [lastName, setLasName] = useState()
 	const [cpf, setCpf] = useState()
 	const [gender, setGender] = useState("")
