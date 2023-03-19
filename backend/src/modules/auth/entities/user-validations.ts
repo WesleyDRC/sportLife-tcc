@@ -9,7 +9,7 @@ function hasCorrectEmailFormatRequired(email: string): boolean {
 }
 
 function hasMinPasswordLengthRequired(password: string): boolean {
-  if (password.length < 10) return false;
+  if (password.length < 5) return false;
 
   return true;
 }
