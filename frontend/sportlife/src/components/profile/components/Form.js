@@ -7,11 +7,11 @@ import useUser from "../../../hooks/useUser";
 export default function Form() {
   const { updateUser, user } = useUser();
 	const [firstName, setFirstName] = useState(user.firstName)
-	const [lastName, setLasName] = useState()
-	const [cpf, setCpf] = useState()
-	const [gender, setGender] = useState("")
-	const [dateBirth, setDateBirth] = useState()
-	const [telephone, setTelephone] = useState()
+	const [lastName, setLastName] = useState(user.lastName)
+	const [cpf, setCpf] = useState(user.CPF)
+	const [gender, setGender] = useState(user.gender)
+	const [dateBirth, setDateBirth] = useState(user.dateBirth)
+	const [telephone, setTelephone] = useState(user.telephone)
 	const navigate = useNavigate()
 
 	const submit = async (e) =>{
@@ -28,8 +28,9 @@ export default function Form() {
         <form onSubmit={(e) => {submit(e)}}>
           <div className={styles.subContainer}>
             <div>
-              <label>Nome</label>
+              <label htmlFor="name">Nome</label>
               <input
+                id='name'
                 type="text"
                 placeholder="Digite seu nome"
                 value={firstName}
@@ -37,28 +38,29 @@ export default function Form() {
               />
             </div>
             <div>
-              <label for="lastName">Sobrenome</label>
+              <label htmlFor="lastName">Sobrenome</label>
               <input
                 id="lastName"
                 type="text"
                 placeholder="Digite seu sobrenome"
                 value={lastName}
-                onChange={(e) => [setLasName(e.target.value)]}
+                onChange={(e) => [setLastName(e.target.value)]}
               />
             </div>
           </div>
           <div className={styles.subContainer}>
             <div>
-              <label for="CPF">CPF</label>
+              <label htmlFor="CPF">CPF</label>
               <input
 								id="CPF"
-								type="text"
+								type="number"
 								placeholder="Digite seu CPF"
+                maxLength='11'
 								value={cpf}
 								onChange={(e) => [setCpf(e.target.value)]} />
             </div>
             <div>
-              <label for="sex">Gênero</label>
+              <label htmlFor="sex">Gênero</label>
               <select id="gender" value={gender} onChange={e => setGender(e.target.value)}>
                 <option value='' selected>Opcional</option>
                 <option value='M'>Masculino</option>
@@ -68,7 +70,7 @@ export default function Form() {
           </div>
           <div className={styles.subContainer}>
             <div>
-              <label for="date">Data de nascimento</label>
+              <label htmlFor="date">Data de nascimento</label>
               <input
 								id="date"
 								type="date"
@@ -76,7 +78,7 @@ export default function Form() {
 								onChange={(e) => [setDateBirth(e.target.value)]}/>
             </div>
             <div>
-              <label for="celNumber">Número de celular</label>
+              <label htmlFor="celNumber">Número de celular</label>
               <input
                 id="celNumber"
                 type="number"
@@ -90,7 +92,6 @@ export default function Form() {
         	<button type="submit" className={styles.button}>Salvar</button>
         </div>
         </form>
-
       </div>
     </div>
   );

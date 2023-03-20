@@ -7,11 +7,13 @@ export const UserContext = createContext({});
 
 export const UserProvider = ({ children }) =>{
 	const [user, setUser] = useState([]);
+  const [address, setAddress] = useState([])
 	const { authenticated } = useAuth();
 
   useEffect(() => {
     getInfoUser();
   }, [authenticated]);
+
 	const getInfoUser = async () => {
     try {
       const response = await api.get("/users/user");
@@ -29,11 +31,31 @@ export const UserProvider = ({ children }) =>{
     }
   };
 
+  const createAddress = async (city,cep,country,road,neighborhood,number,complement) => {
+    try {
+      return await AxiosRepository.createAddress(city,cep,country,road,neighborhood,number,complement);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getAddress = async () => {
+    try {
+      const response = await AxiosRepository.getAddress();
+      setAddress(response.data.userAddress)
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
 	return (
     <UserContext.Provider
       value={{
 				getInfoUser,
 				updateUser,
+        createAddress,
+        getAddress,
+        address,
 				user
       }}
     >

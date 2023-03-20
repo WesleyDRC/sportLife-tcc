@@ -26,6 +26,26 @@ class AxiosRepository {
             telephone
         })
     }
+
+    async createAddress(city,postal_code,country,road,neighborhood,number,complement) {
+        return this.#axiosClient.post(`/users/address`, {
+            city,
+            postal_code,
+            country,
+            road,
+            neighborhood,
+            number,
+            complement
+        })
+    }
+
+    async getAddress() {
+        return this.#axiosClient.get(`/users/address`)
+     }
+
+     async findAll() {
+        return this.axiosClient.get("/products")
+       }
 }
 
 export default new AxiosRepository()
