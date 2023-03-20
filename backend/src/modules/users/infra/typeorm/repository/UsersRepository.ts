@@ -66,12 +66,17 @@ export class UsersRepository implements IUsersRepository {
     return Promise.resolve(response);
   }
 
-  public async createAddress(userId, city, postal_code, country): Promise<any> {
+  public async createAddress(userId, city, postal_code, country, road, neighborhood, number, complement): Promise<any> {
     const userAddress = new UserAddress();
+
     userAddress.user_id = userId;
     userAddress.city = city;
     userAddress.postal_code = postal_code;
     userAddress.country = country;
+    userAddress.road = road
+    userAddress.neighborhood = neighborhood
+    userAddress.complement = complement
+    userAddress.number = number
 
     await this.ormRepositoryUserAddress.save(userAddress);
 

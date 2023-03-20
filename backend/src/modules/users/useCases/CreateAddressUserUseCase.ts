@@ -10,7 +10,7 @@ export default class CreateAddressUserUseCase implements IUseCase{
 		private usersRepository: IUsersRepository
 	){}
 
-	async execute({userId, city, postal_code, country}) {
-		return await this.usersRepository.createAddress(userId, city, postal_code, country)
+	async execute({userId, city, postal_code, country, road, neighborhood, number, complement}) {
+		return await this.usersRepository.createAddress(userId, city, postal_code, country, road, neighborhood, number, complement)
 	}
 }

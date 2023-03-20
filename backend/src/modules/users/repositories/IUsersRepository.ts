@@ -20,8 +20,10 @@ export interface IUsersRepository {
     city: string,
     postal_code: string,
     country: string,
-    telephone?: string,
-    mobile?: string
+    road:string,
+    neighborhood:string,
+    number: number,
+    complement?:string,
   ): Promise<any>;
 
   createAssessments(
