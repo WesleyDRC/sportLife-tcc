@@ -48,10 +48,9 @@ export class UserAddress {
 	complement: string
 
 	@Column({
-		type: "varchar",
-		length: 255
+		type: "int"
 	})
-	number: string
+	number: number
 
 	@Column()
 	user_id: string
