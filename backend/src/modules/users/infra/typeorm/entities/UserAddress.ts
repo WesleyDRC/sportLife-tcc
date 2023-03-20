@@ -28,6 +28,30 @@ export class UserAddress {
 	})
 	country: string
 
+	@Column({
+		type: "varchar",
+		length: 255
+	})
+	road: string
+
+	@Column({
+		type: "varchar",
+		length: 255,
+	})
+	neighborhood: string
+
+	@Column({
+		type: "varchar",
+		length: 255,
+		nullable: true
+	})
+	complement: string
+
+	@Column({
+		type: "int"
+	})
+	number: number
+
 	@Column()
 	user_id: string
 
