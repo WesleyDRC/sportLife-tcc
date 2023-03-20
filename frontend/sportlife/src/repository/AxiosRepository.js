@@ -1,51 +1,58 @@
 import { api } from "../services/api";
 
 class AxiosRepository {
+  #axiosClient;
 
-    #axiosClient;
+  constructor() {
+    this.#axiosClient = api;
+  }
 
-    constructor() {
-        this.#axiosClient = api;
-    }
+  async createUser({ email, password, confirmPassword }) {
+    return await this.#axiosClient.post("/auth/signUp", {
+      email,
+      password,
+      confirmPassword,
+    });
+  }
 
-    async createUser({email, password,confirmPassword}) {
-        return await this.#axiosClient.post("/auth/signUp", {
-            email,
-            password,
-            confirmPassword
-        })
-    }
+  async updateUser(firstName, lastName, CPF, gender, dateBirth, telephone) {
+    return this.#axiosClient.patch(`/users/`, {
+      firstName,
+      lastName,
+      CPF,
+      gender,
+      dateBirth,
+      telephone,
+    });
+  }
 
-    async updateUser(firstName, lastName, CPF, gender, dateBirth, telephone) {
-        return this.#axiosClient.patch(`/users/`, {
-            firstName,
-            lastName,
-            CPF,
-            gender,
-            dateBirth,
-            telephone
-        })
-    }
+  async createAddress(
+    city,
+    postal_code,
+    country,
+    road,
+    neighborhood,
+    number,
+    complement
+  ) {
+    return this.#axiosClient.post(`/users/address`, {
+      city,
+      postal_code,
+      country,
+      road,
+      neighborhood,
+      number,
+      complement,
+    });
+  }
 
-    async createAddress(city,postal_code,country,road,neighborhood,number,complement) {
-        return this.#axiosClient.post(`/users/address`, {
-            city,
-            postal_code,
-            country,
-            road,
-            neighborhood,
-            number,
-            complement
-        })
-    }
+  async getAddress() {
+    return this.#axiosClient.get(`/users/address`);
+  }
 
-    async getAddress() {
-        return this.#axiosClient.get(`/users/address`)
-     }
-
-     async findAll() {
-        return this.axiosClient.get("/products")
-       }
+  async findAll() {
+    return this.#axiosClient.get("/products");
+  }
 }
 
-export default new AxiosRepository()
+export default new AxiosRepository();

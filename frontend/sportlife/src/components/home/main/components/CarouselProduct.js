@@ -1,46 +1,56 @@
-import {useRef} from 'react'
-import styles from './CarouselProduct.module.css'
+import { useRef } from "react";
+import styles from "./CarouselProduct.module.css";
 
-import {IoIosArrowBack} from "react-icons/io"
-import {IoIosArrowForward} from "react-icons/io"
+import priceBRL from '../../../../utils/formatPrice'
 
-import Product from './Product';
+import { IoIosArrowBack } from "react-icons/io";
+import { IoIosArrowForward } from "react-icons/io";
 
-export default function CarouselProduct(props){
+import Product from "./Product";
 
-	const carousel = useRef(null)
+export default function CarouselProduct(props) {
+  const carousel = useRef(null);
 
-	const handleLeftClick = (e) => {
-		e.preventDefault()
-		carousel.current.scrollLeft -= carousel.current.offsetWidth
-	}
+  const handleLeftClick = (e) => {
+    e.preventDefault();
+    carousel.current.scrollLeft -= carousel.current.offsetWidth;
+  };
 
-	const handleRightClick = (e) => {
-		e.preventDefault()
-		carousel.current.scrollLeft += carousel.current.offsetWidth
-	}
+  const handleRightClick = (e) => {
+    e.preventDefault();
+    carousel.current.scrollLeft += carousel.current.offsetWidth;
+  };
 
-	return(
-		<div className={styles.container}>
-			<p className={styles.title}>{props.titleCarousel}</p>
-			<div className={styles.carousel}>
-				<IoIosArrowBack className={styles.arrowLeft} onClick={handleLeftClick} />
-				<div className={styles.promotions} ref={carousel}>
-						<Product src={'https://i.imgur.com/pnoGRSq.png'} name={'CAMISETA NIKE SPORTSWEAR ICON FUTURA'} price={"R$ 59,99"}/>
-						<Product src={'https://i.imgur.com/pnoGRSq.png'} name={'CAMISETA NIKE SPORTSWEAR ICON FUTURA'} price={"R$ 59,99"}/>
-						<Product src={'https://i.imgur.com/pnoGRSq.png'} name={'CAMISETA NIKE SPORTSWEAR ICON FUTURA'} price={"R$ 59,99"}/>
-						<Product src={'https://i.imgur.com/pnoGRSq.png'} name={'CAMISETA NIKE SPORTSWEAR ICON FUTURA'} price={"R$ 59,99"}/>
-						<Product src={'https://i.imgur.com/pnoGRSq.png'} name={'CAMISETA NIKE SPORTSWEAR ICON FUTURA'} price={"R$ 59,99"}/>
-						<Product src={'https://i.imgur.com/pnoGRSq.png'} name={'CAMISETA NIKE SPORTSWEAR ICON FUTURA'} price={"R$ 59,99"}/>
-						<Product src={'https://i.imgur.com/pnoGRSq.png'} name={'CAMISETA NIKE SPORTSWEAR ICON FUTURA'} price={"R$ 59,99"}/>
-						<Product src={'https://i.imgur.com/pnoGRSq.png'} name={'CAMISETA NIKE SPORTSWEAR ICON FUTURA'} price={"R$ 59,99"}/>
-						<Product src={'https://i.imgur.com/pnoGRSq.png'} name={'CAMISETA NIKE SPORTSWEAR ICON FUTURA'} price={"R$ 59,99"}/>
-						<Product src={'https://i.imgur.com/pnoGRSq.png'} name={'CAMISETA NIKE SPORTSWEAR ICON FUTURA'} price={"R$ 59,99"}/>
-						<Product src={'https://i.imgur.com/pnoGRSq.png'} name={'CAMISETA NIKE SPORTSWEAR ICON FUTURA'} price={"R$ 59,99"}/>
-				</div>
-				<IoIosArrowForward className={styles.arrowRight} onClick={handleRightClick} />
-			</div>
+  return (
+    <div className={styles.container}>
+      <p className={styles.title}>{props.titleCarousel}</p>
+      <div className={styles.carousel}>
+        <IoIosArrowBack
+          className={styles.arrowLeft}
+          onClick={handleLeftClick}
+        />
+        <div className={styles.promotions} ref={carousel}>
+           {props.products && props.products.length > 0 ? (
+            props.products.map((item,i) => (
+              <Product
+                key={item.id}
+								src={"https://i.imgur.com/pnoGRSq.png"}
+								name={props.products[i].name}
+								price={priceBRL(props.products[i].price)}
+              />
+            ))
+          ) : (
+            <tr>
+              <td className={styles.notfound}> Não há produtos em estoque </td>
+            </tr>
+          )}
 
-		</div>
-	)
+        </div>
+        <IoIosArrowForward
+          className={styles.arrowRight}
+          onClick={handleRightClick}
+        />
+      </div>
+    </div>
+  );
 }
