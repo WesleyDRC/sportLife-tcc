@@ -1,11 +1,19 @@
-import {useState, useRef} from 'react'
+import {useState, useRef, useEffect} from 'react'
 
 import {FaShoppingCart} from "react-icons/fa";
 
 import styles from './ProductInfos.module.css'
 
+import AxiosRepository from '../../../repository/AxiosRepository';
+
+import priceBRL from '../../../utils/formatPrice'
+
+import { useParams } from "react-router-dom";
+
 export default function ProductInfos(){
 	const [amount, setAmout] = useState(0)
+	const [product, setProduct] = useState([]);
+	let { id } = useParams();
 
 	const subtract = useRef()
 	const add = useRef()
@@ -22,10 +30,16 @@ export default function ProductInfos(){
 		}
 	}
 
+	useEffect(() => {
+    AxiosRepository.findOneProduct(id).then((resp) => {
+      setProduct(resp.data);
+    });
+  }, []);
+
 	return(
 		<div className={styles.container}>
-			<p className={styles.name}>Camisa Nike SportWear Icon Futura</p>
-			<p className={styles.price}>R$49,99</p>
+			<p className={styles.name}>{product.name}</p>
+			<p className={styles.price}>{priceBRL(product ? product.price : '0')}</p>
 			<p className={styles.color}>Cor</p>
 
 			<p className={styles.size}>Tamanhos</p>

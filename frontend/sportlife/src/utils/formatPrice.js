@@ -1,5 +1,8 @@
 export default function priceBRL(value) {
-	return value.toLocaleString("pt-br", {
+	return value ? value.toLocaleString("pt-br", {
+			style: "currency",
+			currency: "BRL",
+	}) : "0".toLocaleString("pt-br", {
 			style: "currency",
 			currency: "BRL",
 	})

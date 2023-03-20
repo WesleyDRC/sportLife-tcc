@@ -49,7 +49,7 @@ export default function Routes() {
 			},
 
 			{
-				path: '/product',
+				path: '/product/:id',
 				element: <ProductPage />,
 				errorElement: <ErrorPage />
 			},

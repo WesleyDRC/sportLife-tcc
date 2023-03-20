@@ -53,6 +53,10 @@ class AxiosRepository {
   async findAll() {
     return this.#axiosClient.get("/products");
   }
+
+  async findOneProduct(id) {
+    return this.#axiosClient.get(`products/${id}`);
+  }
 }
 
 export default new AxiosRepository();
