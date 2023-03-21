@@ -40,13 +40,13 @@ export default function FormAddress(){
 							/>
 							</div>
 							<div>
-								<label htmlFor='road'>Rua</label>
+							<label htmlFor='country'>País</label>
 								<input
 									type='text'
-									id='road'
-									placeholder='Digite sua rua'
-									value={road}
-									onChange={(e) => [setRoad(e.target.value)]}
+									id='country'
+									placeholder='Digite seu país'
+									value={country}
+									onChange={(e) => [setCountry(e.target.value)]}
 								/>
 							</div>
 					</div>
@@ -62,13 +62,13 @@ export default function FormAddress(){
 							/>
 							</div>
 							<div>
-								<label htmlFor='country'>País</label>
+							<label htmlFor='road'>Rua</label>
 								<input
 									type='text'
-									id='country'
-									placeholder='Digite seu país'
-									value={country}
-									onChange={(e) => [setCountry(e.target.value)]}
+									id='road'
+									placeholder='Digite sua rua'
+									value={road}
+									onChange={(e) => [setRoad(e.target.value)]}
 								/>
 							</div>
 					</div>

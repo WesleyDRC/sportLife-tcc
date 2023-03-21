@@ -57,6 +57,10 @@ class AxiosRepository {
   async findOneProduct(id) {
     return this.#axiosClient.get(`products/${id}`);
   }
+
+  async findAssessmentProduct(id) {
+    return this.#axiosClient.get(`products/${id}/assessments`);
+  }
 }
 
 export default new AxiosRepository();

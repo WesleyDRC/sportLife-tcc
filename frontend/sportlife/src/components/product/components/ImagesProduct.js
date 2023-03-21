@@ -1,11 +1,15 @@
-import {useRef} from 'react'
+import {useRef, useEffect, useState} from 'react'
 import styles from './ImagesProduct.module.css'
+import AxiosRepository from '../../../repository/AxiosRepository';
+import { useParams } from "react-router-dom";
 
 export default function ImagesProduct(){
 	const mainPhoto = useRef()
 	const image1 = useRef()
 	const image2 = useRef()
 	const image3 = useRef()
+	const [product, setProduct] = useState([]);
+	let { id } = useParams();
 
 	function changeImage1(){
 		mainPhoto.current.src = image1.current.src
@@ -19,13 +23,19 @@ export default function ImagesProduct(){
 		mainPhoto.current.src = image3.current.src
 	}
 
+	useEffect(() => {
+    AxiosRepository.findOneProduct(id).then((resp) => {
+      setProduct(resp.data);
+    });
+  }, []);
+
 	return(
 		<div className={styles.container}>
-			<img className={styles.mainPhoto} ref={mainPhoto} src='https://i.imgur.com/pnoGRSq.png' alt='Imagem do produto' />
+			<img className={styles.mainPhoto} ref={mainPhoto} src={product.imageMain} alt='Imagem do produto' />
 			<div className={styles.otherPhotos}>
-				<img ref={image1} onClick={changeImage1} src='https://i.imgur.com/pnoGRSq.png' alt='Imagem do produto' />
-				<img ref={image2} onClick={changeImage2} src='https://i.imgur.com/r1TaY1h.png' alt='Imagem do produto' />
-				<img ref={image3} onClick={changeImage3} src='https://i.imgur.com/9vTRQeQ.png' alt='Imagem do produto' />
+				<img ref={image1} onClick={changeImage1} src={product.imageMain} alt='Imagem do produto' />
+				<img ref={image2} onClick={changeImage2} src={product.imageSecondary} alt='Imagem do produto' />
+				<img ref={image3} onClick={changeImage3} src={product.imageTertiary} alt='Imagem do produto' />
 			</div>
 		</div>
 	)

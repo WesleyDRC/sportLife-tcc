@@ -17,6 +17,7 @@
 	display: flex;
 	overflow: hidden;
 	scroll-behavior: smooth;
+	gap: 10px;
 }
 
 .arrowLeft,
@@ -29,6 +30,7 @@
 	cursor: pointer;
 	transition: .5s;
 	position: absolute;
+	z-index: 1;
 }
 
 .arrowLeft {
@@ -42,5 +44,5 @@
 .arrowRight:hover
 {
 	color: #317B96;
-	transform: scale(1.2);
+	transform: scale(1.3);
 }

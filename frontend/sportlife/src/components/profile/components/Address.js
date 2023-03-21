@@ -19,8 +19,18 @@ export default function Address(){
 				<div className={styles.subContainer}>
 					<div className={styles.display}>
 						<div>
-							<p className={styles.quest}>CEP</p>
+						<p className={styles.quest}>CEP</p>
 							<p  className={styles.res}>{address.postal_code}</p>
+						</div>
+						<div>
+						<p className={styles.quest}>País</p>
+							<p  className={styles.res}>{address.country}</p>
+						</div>
+					</div>
+					<div className={styles.display}>
+						<div>
+							<p className={styles.quest}>Cidade</p>
+							<p  className={styles.res}>{address.city}</p>
 						</div>
 						<div>
 							<p className={styles.quest}>Rua</p>
@@ -37,16 +47,7 @@ export default function Address(){
 							<p  className={styles.res}>{address.number}</p>
 						</div>
 					</div>
-					<div className={styles.display}>
-						<div>
-							<p className={styles.quest}>País</p>
-							<p  className={styles.res}>{address.country}</p>
-						</div>
-						<div>
-							<p className={styles.quest}>Cidade</p>
-							<p  className={styles.res}>{address.city}</p>
-						</div>
-					</div>
+
 					<p className={styles.quest}>Complemento</p>
 					<p className={styles.res}>{address.complement}</p>
 					<Link to="/user/editAddress">

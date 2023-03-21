@@ -34,7 +34,7 @@ export default function CarouselProduct(props) {
             props.products.map((item,i) => (
               <Product
                 id = {props.products[i].id}
-								src={props.products[i].imageUrl}
+								src={props.products[i].imageMain}
 								name={props.products[i].name}
 								price={priceBRL(props.products[i].price)}
               />

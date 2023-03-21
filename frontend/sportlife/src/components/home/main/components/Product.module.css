@@ -2,28 +2,39 @@
 	display: flex;
 	flex-direction: column;
 	width: 260px;
-	background: #ebebeb;
 	cursor: pointer;
-	border-right: 1px solid rgba(0, 0, 0, 0.61);
 }
 
 .product:hover{
 	transition: .3s;
-	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-	background-color: #cecece;
 }
 
-.product img{
+.product .productImg{
+	overflow: hidden;
 	width: 260px;
 	height: 260px;
-	border-bottom: 1px solid rgba(0, 0, 0, 0.61);
+}
+
+.product .productImg img{
+	width: 100%;
+}
+
+.product .productImg img:hover{
+	transition: 1s;
+	transform: scale(1.1);
 }
 
 .product .name{
+	overflow: hidden;
+	text-transform: uppercase;
 	font-family: 'Anton', sans-serif;
 	font-size: 1.4rem;
 	margin: 5px 10px 0px 10px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	word-wrap: break-word;
 }
+
 .product .price{
 	font-family: 'Montserrat', sans-serif;
 	color: #00a650;

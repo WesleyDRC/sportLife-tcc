@@ -1,13 +1,20 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import styles from './Render.module.css'
 import AdditionalInfos from './AdditionalInfos'
 import Assessements from './Assessments'
 import CarouselProduct from "../../home/main/components/CarouselProduct"
+import AxiosRepository from '../../../repository/AxiosRepository'
 
 export default function Render(){
 	const [page, setPage] = useState(0)
 	const ass = document.getElementById('ass')
 	const info = document.getElementById('info')
+	const [products, setProducts] = useState();
+  useEffect(() => {
+    AxiosRepository.findAll().then((resp) => {
+      setProducts(resp.data);
+    });
+  }, []);
 	function AssView(){
 			setPage(1)
 	}
@@ -15,7 +22,7 @@ export default function Render(){
 		setPage(0)
 	}
 
-	if(page == 0){
+	if(page === 0){
 		return(
 			<div className={styles.container}>
 				<hr className={styles.line} />
@@ -24,7 +31,7 @@ export default function Render(){
 					<p className={styles.assessements} onClick={AssView} id='ass'>Avaliações</p>
 				</div>
 				<AdditionalInfos />
-				<CarouselProduct titleCarousel="ITENS RELACIONADOS" />
+				<CarouselProduct products={products} titleCarousel="ITENS RELACIONADOS" />
 			</div>
 		)
 	}else{
@@ -36,7 +43,7 @@ export default function Render(){
 					<p className={`${styles.assessements} ${styles.borderTop}`} >Avaliações</p>
 				</div>
 				<Assessements />
-				<CarouselProduct titleCarousel="ITENS RELACIONADOS" />
+				<CarouselProduct products={products} titleCarousel="ITENS RELACIONADOS" />
 			</div>
 		)
 	}
