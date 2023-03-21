@@ -40,9 +40,9 @@ export default function CarouselProduct(props) {
               />
             ))
           ) : (
-            <tr>
+            <p>
               <td className={styles.notfound}> Não há produtos em estoque </td>
-            </tr>
+            </p>
           )}
 
         </div>

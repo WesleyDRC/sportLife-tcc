@@ -1,0 +1,23 @@
+.assessments{
+	width: 350px;
+}
+
+.container h1{
+	margin: 0px;
+}
+
+.star{
+	color: gold;
+	margin-top: 10px;
+	font-size: 2.6rem;
+}
+
+.container .comment{
+	font-size: 1.4rem;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.container .username{
+	font-weight: 700;
+}
