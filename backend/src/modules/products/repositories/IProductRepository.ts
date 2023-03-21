@@ -7,7 +7,10 @@ export interface IProductRepository {
   findById(id: string): Promise<Product | null>;
   getAssessments(id: string): Promise<any>;
   create({
-    imageUrl,
+    imageMain,
+    imageSecondary,
+    imageTertiary,
+    imageQuaternary,
     name,
     description,
     sexo,

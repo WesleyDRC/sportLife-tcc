@@ -58,7 +58,10 @@ export class ProductRepository implements IProductRepository {
   }
 
   async create({
-    imageUrl,
+    imageMain,
+    imageSecondary,
+    imageTertiary,
+    imageQuaternary,
     name,
     description,
     sexo,
@@ -74,7 +77,10 @@ export class ProductRepository implements IProductRepository {
     sizes_id,
   }: IStoreProductDTO): Promise<Product> {
     const product = new Product();
-    product.imageUrl = imageUrl;
+    product.imageMain = imageMain;
+    product.imageSecondary = imageSecondary;
+    product.imageTertiary = imageTertiary;
+    product.imageQuaternary = imageQuaternary;
     product.name = name;
     product.description = description;
     product.sexo = sexo;

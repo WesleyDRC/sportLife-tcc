@@ -7,7 +7,10 @@ export default class CreateProductController {
     const createProductUseCase = container.resolve(CreateProductUseCase);
 
     const {
-      imageUrl,
+      imageMain,
+      imageSecondary,
+      imageTertiary,
+      imageQuaternary,
       name,
       description,
       sexo,
@@ -25,7 +28,10 @@ export default class CreateProductController {
     const views = 0;
 
     const product = await createProductUseCase.execute({
-			imageUrl,
+      imageMain,
+      imageSecondary,
+      imageTertiary,
+      imageQuaternary,
 			name,
 			description,
 			sexo,

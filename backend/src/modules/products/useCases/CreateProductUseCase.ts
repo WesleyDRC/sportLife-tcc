@@ -12,7 +12,10 @@ export default class CreateProductUseCase {
 	) {}
 
 	public async execute({
-		imageUrl,
+    imageMain,
+    imageSecondary,
+    imageTertiary,
+    imageQuaternary,
 		name,
 		description,
 		sexo,
@@ -29,7 +32,16 @@ export default class CreateProductUseCase {
 	}: IStoreProductDTO) {
 
 
-		if(!imageUrl) {
+		if(!imageMain) {
+      throw new AppError(productConstants.IMAGE_URL_REQUIRED, 400);
+		}
+		if(!imageSecondary) {
+      throw new AppError(productConstants.IMAGE_URL_REQUIRED, 400);
+		}
+		if(!imageTertiary) {
+      throw new AppError(productConstants.IMAGE_URL_REQUIRED, 400);
+		}
+		if(!imageQuaternary) {
       throw new AppError(productConstants.IMAGE_URL_REQUIRED, 400);
 		}
 		if(!name) {
@@ -70,7 +82,10 @@ export default class CreateProductUseCase {
 		}
 
 		const product = await this.productRepository.create({
-			imageUrl,
+			imageMain,
+			imageSecondary,
+			imageTertiary,
+			imageQuaternary,
 			name,
 			description,
 			sexo,
