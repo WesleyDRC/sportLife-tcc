@@ -19,8 +19,25 @@ export class Product {
 		type: "varchar",
 		length: 255
 	})
-	imageUrl: string
+	imageMain: string
 
+	@Column({
+		type: "varchar",
+		length: 255
+	})
+	imageSecondary: string
+
+	@Column({
+		type: "varchar",
+		length: 255
+	})
+	imageTertiary: string
+
+	@Column({
+		type: "varchar",
+		length: 255
+	})
+	imageQuaternary: string
 
 	@Column({
 		type: "varchar",
