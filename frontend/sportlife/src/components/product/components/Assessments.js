@@ -2,13 +2,28 @@ import styles from './Assessments.module.css';
 
 import CardAssessment from './CardAssessment';
 
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useRef} from 'react'
 
 import {useParams} from 'react-router-dom'
 
 import AxiosRepository from '../../../repository/AxiosRepository'
 
+import { IoIosArrowBack } from "react-icons/io";
+import { IoIosArrowForward } from "react-icons/io";
+
 export default function Assessments(){
+  const carousel = useRef(null);
+
+  const handleLeftClick = (e) => {
+    e.preventDefault();
+    carousel.current.scrollLeft -= carousel.current.offsetWidth;
+  };
+
+  const handleRightClick = (e) => {
+    e.preventDefault();
+    carousel.current.scrollLeft += carousel.current.offsetWidth;
+  };
+
 	const [assessments, setAssessments] = useState([]);
 	let { id } = useParams();
 
@@ -17,25 +32,41 @@ export default function Assessments(){
 			console.log(resp.data)
       setAssessments(resp.data);
     });
-  }, []);
+  }, [id]);
 
 	return(
 		<div className={styles.container}>
-			<h1>Avaliações dos Clientes({assessments.length})</h1>
-			{assessments && assessments.length > 0 ? (
+			<h1 className={styles.title}>Avaliações dos Clientes({assessments.length})</h1>
+      <div className={styles.carousel}>
+        <div className={styles.promotions} ref={carousel}>
+        {assessments && assessments.length > 0 ? (
             assessments.map((item,i) => (
-              <CardAssessment
-                id = {assessments[i].id}
-								star ={assessments[i].stars}
-								name={assessments[i].user.firstName}
-								comment={assessments[i].assessments}
-              />
+              <div className={styles.teste}>
+                <CardAssessment
+                  id = {assessments[i].id}
+                  star ={assessments[i].stars}
+                  name={assessments[i].user.firstName}
+                  comment={assessments[i].assessments}
+                />
+              </div>
             ))
-          ) : (
+            ) : (
             <p>
-              <td className={styles.notfound}> Não há produtos em estoque </td>
+              <td className={styles.notfound}> Não há avaliações deste produto </td>
             </p>
           )}
+        </div>
+      </div>
+      <div className={styles.arrows}>
+          <IoIosArrowBack
+            className={styles.arrowLeft}
+            onClick={handleLeftClick}
+          />
+          <IoIosArrowForward
+            className={styles.arrowRight}
+            onClick={handleRightClick}
+          />
+        </div>
 		</div>
 	)
 }

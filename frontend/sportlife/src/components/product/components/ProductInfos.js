@@ -34,7 +34,7 @@ export default function ProductInfos(){
     AxiosRepository.findOneProduct(id).then((resp) => {
       setProduct(resp.data);
     });
-  }, []);
+  }, [id]);
 
 	return(
 		<div className={styles.container}>
