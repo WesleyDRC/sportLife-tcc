@@ -11,10 +11,10 @@ export default class ListProductsUseCase {
 
   public async execute(
     category?: string,
-    orderBy?: string,
+    order?: string,
     filter?: { [key: string]: string }
   ): Promise<Product[]> {
-    const products = await this.productRepository.listAll({ category, orderBy, filter });
+    const products = await this.productRepository.listAll({ category, order, filter });
     return products;
   }
 }

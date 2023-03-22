@@ -7,12 +7,11 @@ export default class ListProductsController {
 	public async handle(request: Request, response: Response): Promise<Response> {
 		const listProductsUseCase = container.resolve(ListProductsUseCase)
 
-		const { category, orderBy, filter } = request.body
+		const { category, order } = request.headers
 
 		const products = await listProductsUseCase.execute(
-			category ? category : "",
-			orderBy ? orderBy : "",
-			filter ? filter : ""
+			category ? String(category) : "",
+			order ? String(order) : "",
 		)
 
 		return response.json(products)

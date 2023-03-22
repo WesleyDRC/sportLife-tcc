@@ -25,6 +25,17 @@ export interface IUsersRepository {
     number: number,
     complement?:string,
   ): Promise<any>;
+  
+  updateAddress(
+    userId,
+    city,
+    postal_code,
+    country,
+    road,
+    neighborhood,
+    number,
+    complement
+  ) : Promise<any>
 
   createAssessments(
     stars: number,
