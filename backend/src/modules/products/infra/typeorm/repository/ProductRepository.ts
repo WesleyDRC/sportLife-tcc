@@ -15,7 +15,7 @@ export class ProductRepository implements IProductRepository {
     this.ormRepositoryAssessment = AppDataSource.getRepository(Assessments);
   }
 
-  async listAll({ category, orderBy }: IListProductsDTO): Promise<Product[]> {
+  async listAll({ category, order }: IListProductsDTO): Promise<Product[]> {
     const productQuery = this.ormRepository
       .createQueryBuilder("products")
       .leftJoinAndSelect("products.categories", "categories")
@@ -27,8 +27,8 @@ export class ProductRepository implements IProductRepository {
       productQuery.where({ categories_id: category });
     }
 
-    if(orderBy) {
-      productQuery.orderBy(`products.${orderBy}`, 'DESC')
+    if(order) {
+      productQuery.orderBy(`products.${order}`, 'DESC')
     }
 
     const products = await productQuery.getMany();
