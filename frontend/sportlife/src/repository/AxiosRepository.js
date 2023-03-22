@@ -70,8 +70,17 @@ class AxiosRepository {
     });
   }
 
-  async findAll() {
-    return this.#axiosClient.get("/products");
+  async findAll({category, order}) {
+    return this.#axiosClient.get("/products", {
+      headers: {
+        category:category,
+        order: order
+      },
+    });
+  }
+
+  async updateViewProduct(id) {
+    return this.#axiosClient.patch(`products/${id}/views`);
   }
 
   async findOneProduct(id) {
@@ -81,8 +90,6 @@ class AxiosRepository {
   async findAssessmentProduct(id) {
     return this.#axiosClient.get(`products/${id}/assessments`);
   }
-
-
 }
 
 export default new AxiosRepository();

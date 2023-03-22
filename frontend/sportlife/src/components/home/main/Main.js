@@ -11,7 +11,7 @@ import styles from "./Main.module.css";
 export default function Main() {
   const [products, setProducts] = useState();
   useEffect(() => {
-    AxiosRepository.findAll().then((resp) => {
+    AxiosRepository.findAll({order:'views'}).then((resp) => {
       setProducts(resp.data);
     });
   }, []);
