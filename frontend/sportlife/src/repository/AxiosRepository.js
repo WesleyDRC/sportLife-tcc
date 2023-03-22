@@ -50,6 +50,26 @@ class AxiosRepository {
     return this.#axiosClient.get(`/users/address`);
   }
 
+  async updateAddress(
+    city,
+    postal_code,
+    country,
+    road,
+    neighborhood,
+    number,
+    complement
+  ) {
+    return this.#axiosClient.patch(`/users/address`, {
+      city,
+      postal_code,
+      country,
+      road,
+      neighborhood,
+      number,
+      complement,
+    });
+  }
+
   async findAll() {
     return this.#axiosClient.get("/products");
   }
@@ -61,6 +81,8 @@ class AxiosRepository {
   async findAssessmentProduct(id) {
     return this.#axiosClient.get(`products/${id}/assessments`);
   }
+
+
 }
 
 export default new AxiosRepository();

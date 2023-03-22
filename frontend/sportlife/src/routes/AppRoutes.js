@@ -14,6 +14,7 @@ import ExitPage from '../pages/ExitPage'
 import FormPage from '../pages/FormPage'
 import CategoryPage from '../pages/Categorypage'
 import FormAddress from '../pages/FormAddress'
+import CreateAddress from '../pages/CreateAddress'
 
 export default function Routes() {
 
@@ -81,6 +82,12 @@ export default function Routes() {
 			{
 				path: '/user/edit',
 				element: <Private> <FormPage /> </Private>,
+				errorElement: <ErrorPage />
+			},
+
+			{
+				path: '/user/createAddress',
+				element: <CreateAddress />,
 				errorElement: <ErrorPage />
 			},
 

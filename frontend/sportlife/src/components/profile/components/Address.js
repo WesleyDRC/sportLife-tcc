@@ -62,7 +62,7 @@ export default function Address(){
 				<h1>Endereços</h1>
 				<div className={styles.subContainer}>
 					<p className={styles.mensage}>Você não tem nenhum endereço cadastrado</p>
-					<Link to="/user/editAddress">
+					<Link to="/user/createAddress">
 						<p className={styles.edit}>Cadastrar endereço</p>
 					</Link>
 				</div>

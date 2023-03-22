@@ -3,7 +3,7 @@ import styles from './FormAddress.module.css'
 import NavBar from '../components/profile/components/NavBar'
 
 import Header from '../components/home/header/Header'
-import EditFormAddress from '../components/profile/components/EditFormAddress'
+import CreateFormAddress from '../components/profile/components/CreateFormAddress'
 
 export default function FormAddress(){
 	return(
@@ -11,7 +11,7 @@ export default function FormAddress(){
 			<Header />
 			<div className={styles.container}>
 				<NavBar personalData={false} address={true} request={false}/>
-				<EditFormAddress title={'Edite seu endereço'}/>
+				<CreateFormAddress title={'Cadastre seu endereço'}/>
 			</div>
 		</div>
 	)

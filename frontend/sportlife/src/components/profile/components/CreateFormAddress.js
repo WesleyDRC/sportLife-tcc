@@ -1,11 +1,11 @@
-import styles from './EditFormAddress.module.css'
+import styles from './CreateFormAddress.module.css'
 
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import useUser from '../../../hooks/useUser'
 
-export default function FormAddress({title}){
+export default function CreateFormAddress({title}){
 	const [cep,setCep] = useState()
 	const [road,setRoad] = useState()
 	const [city,setCity] = useState()
@@ -13,12 +13,12 @@ export default function FormAddress({title}){
 	const [neighborhood,setNeighborhood] = useState()
 	const [number,setNumber] = useState()
 	const [complement,setComplement] = useState()
-	const {updateAddress} = useUser()
+	const {createAddress} = useUser()
 	const navigate = useNavigate()
 
 	const submit = async (e) =>{
 		e.preventDefault();
-		const response = await updateAddress(city,cep,country,road,neighborhood,number,complement)
+		const response = await createAddress(city,cep,country,road,neighborhood,number,complement)
 		alert(response.data.message)
 		navigate('/user/address')
 	}
