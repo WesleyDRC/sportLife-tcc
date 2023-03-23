@@ -21,3 +21,17 @@
 	box-shadow: 0px 0px 2px black;
 	cursor: pointer;
 }
+
+.teste{
+	width: 900px;
+}
+
+.opacityTrue{
+	opacity: .4;
+	transition: .5s;
+}
+
+.opacityNone{
+	opacity: 1;
+	transition: .5s;
+}

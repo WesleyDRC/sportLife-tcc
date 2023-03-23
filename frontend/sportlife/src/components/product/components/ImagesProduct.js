@@ -9,18 +9,22 @@ export default function ImagesProduct(){
 	const image2 = useRef()
 	const image3 = useRef()
 	const [product, setProduct] = useState([]);
+	const [centralImage,setCentralImage] = useState(1)
 	let { id } = useParams();
 
 	function changeImage1(){
 		mainPhoto.current.src = image1.current.src
+		setCentralImage(1)
 	}
 
 	function changeImage2(){
 		mainPhoto.current.src = image2.current.src
+		setCentralImage(2)
 	}
 
 	function changeImage3(){
 		mainPhoto.current.src = image3.current.src
+		setCentralImage(3)
 	}
 
 	useEffect(() => {
@@ -33,9 +37,9 @@ export default function ImagesProduct(){
 		<div className={styles.container}>
 			<img className={styles.mainPhoto} ref={mainPhoto} src={product.imageMain} alt='Imagem do produto' />
 			<div className={styles.otherPhotos}>
-				<img ref={image1} onClick={changeImage1} src={product.imageMain} alt='Imagem do produto' />
-				<img ref={image2} onClick={changeImage2} src={product.imageSecondary} alt='Imagem do produto' />
-				<img ref={image3} onClick={changeImage3} src={product.imageTertiary} alt='Imagem do produto' />
+				<img ref={image1} className={centralImage == 1 ? styles.opacityTrue : styles.opacityNone} onClick={changeImage1} src={product.imageMain} alt='Imagem do produto' />
+				<img ref={image2} className={centralImage == 2 ? styles.opacityTrue : styles.opacityNone} onClick={changeImage2} src={product.imageSecondary} alt='Imagem do produto' />
+				<img ref={image3} className={centralImage == 3 ? styles.opacityTrue : styles.opacityNone} onClick={changeImage3} src={product.imageTertiary} alt='Imagem do produto' />
 			</div>
 		</div>
 	)
