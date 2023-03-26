@@ -7,11 +7,9 @@ import AxiosRepository from '../../../repository/AxiosRepository'
 
 export default function Render(){
 	const [page, setPage] = useState(0)
-	const ass = document.getElementById('ass')
-	const info = document.getElementById('info')
 	const [products, setProducts] = useState();
   useEffect(() => {
-    AxiosRepository.findAll().then((resp) => {
+    AxiosRepository.findAll({}).then((resp) => {
       setProducts(resp.data);
     });
   }, []);

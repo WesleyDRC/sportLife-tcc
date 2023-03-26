@@ -51,8 +51,8 @@ export default function Assessments(){
               </div>
             ))
             ) : (
-            <p>
-              <td className={styles.notfound}> Não há avaliações deste produto </td>
+            <p className={styles.notfound}>
+              Não há avaliações deste produto
             </p>
           )}
         </div>

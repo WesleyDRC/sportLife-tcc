@@ -71,10 +71,16 @@ class AxiosRepository {
   }
 
   async findAll({category, order}) {
+    if(!category) {
+      category = ""
+    }
+    if(!order) {
+      order = ""
+    }
     return this.#axiosClient.get("/products", {
       headers: {
-        category:category,
-        order: order
+        category: category,
+        order: (order ? order : "")
       },
     });
   }
