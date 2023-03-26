@@ -33,6 +33,7 @@ export default function CarouselProduct(props) {
            {props.products && props.products.length > 0 ? (
             props.products.map((item,i) => (
               <Product
+                key={item.id}
                 id = {props.products[i].id}
 								src={props.products[i].imageMain}
 								name={props.products[i].name}
@@ -40,8 +41,8 @@ export default function CarouselProduct(props) {
               />
             ))
           ) : (
-            <p>
-              <td className={styles.notfound}> Não há produtos em estoque </td>
+            <p className={styles.notfound}>
+              Não há avaliações deste produto
             </p>
           )}
 

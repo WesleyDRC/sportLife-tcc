@@ -42,6 +42,7 @@ export class ProductRepository implements IProductRepository {
       .leftJoinAndSelect("products.categories", "categories")
       .leftJoinAndSelect("products.discount", "discount")
       .leftJoinAndSelect("products.inventory", "inventory")
+      .leftJoinAndSelect("products.sizes", "sizes")
       .where("products.id = :id", { id })
       .getOne();
     return productQuery;
