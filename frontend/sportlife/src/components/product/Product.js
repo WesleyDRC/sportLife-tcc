@@ -4,11 +4,11 @@ import Render from './components/Render'
 
 import styles from './Product.module.css'
 
-export default function PageProduct(){
-	return(
+export default function PageProduct(props){
+		return(
 		<div className={styles.container}>
 			<div className={styles.imageAndButtons}>
-				<ImagesProduct />
+				<ImagesProduct modalZoom={props.modalZoom} setModalZoom={props.setModalZoom} />
 				<ProductInfos />
 			</div>
 				<Render />

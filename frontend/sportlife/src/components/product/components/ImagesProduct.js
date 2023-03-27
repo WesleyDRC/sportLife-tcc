@@ -3,15 +3,16 @@ import styles from './ImagesProduct.module.css'
 import AxiosRepository from '../../../repository/AxiosRepository';
 import { useParams } from "react-router-dom";
 
-export default function ImagesProduct(){
+export default function ImagesProduct(props){
 	const mainPhoto = useRef()
 	const image1 = useRef()
 	const image2 = useRef()
 	const image3 = useRef()
 	const [product, setProduct] = useState([]);
 	const [centralImage,setCentralImage] = useState(1)
-	const [teste,setTeste] = useState()
 	let { id } = useParams();
+	let setModalZoom = props.setModalZoom
+	let modalZoom = props.modalZoom
 
 	function changeImage1(){
 		mainPhoto.current.src = image1.current.src
@@ -28,8 +29,8 @@ export default function ImagesProduct(){
 		setCentralImage(3)
 	}
 
-	function testee(){
-		console.log("funfou")
+	function zoomImage(){
+		setModalZoom(true)
 	}
 
 	useEffect(() => {
@@ -39,18 +40,13 @@ export default function ImagesProduct(){
   }, [id]);
 
 	return(
-		<div className={`${styles.container} ${styles.teste}`}>
-			<img className={styles.mainPhoto} onClick={testee} ref={mainPhoto} src={product.imageMain} alt='Imagem do produto' />
-			<div className={styles.otherPhotos}>
-				<img ref={image1} className={centralImage == 1 ? styles.opacityTrue : styles.opacityNone} onClick={changeImage1} src={product.imageMain} alt='Imagem do produto' />
-				<img ref={image2} className={centralImage == 2 ? styles.opacityTrue : styles.opacityNone} onClick={changeImage2} src={product.imageSecondary} alt='Imagem do produto' />
-				<img ref={image3} className={centralImage == 3 ? styles.opacityTrue : styles.opacityNone} onClick={changeImage3} src={product.imageTertiary} alt='Imagem do produto' />
-			</div>
-			<div className={styles.modalImage}>
-				<div>
-					<img src={product.imageMain} alt='Imagem do produto' />
+		<div className={styles.container}>
+				<img className={styles.mainPhoto} onClick={zoomImage} ref={mainPhoto} src={product.imageMain} alt='Imagem do produto' />
+				<div className={styles.otherPhotos}>
+					<img ref={image1} className={centralImage == 1 ? styles.opacityTrue : styles.opacityNone} onClick={changeImage1} src={product.imageMain} alt='Imagem do produto' />
+					<img ref={image2} className={centralImage == 2 ? styles.opacityTrue : styles.opacityNone} onClick={changeImage2} src={product.imageSecondary} alt='Imagem do produto' />
+					<img ref={image3} className={centralImage == 3 ? styles.opacityTrue : styles.opacityNone} onClick={changeImage3} src={product.imageTertiary} alt='Imagem do produto' />
 				</div>
-			</div>
 		</div>
 	)
 }

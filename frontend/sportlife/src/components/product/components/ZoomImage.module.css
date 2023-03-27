@@ -1,0 +1,46 @@
+.modalImage{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 1000;
+}
+
+.modalImage div img{
+	border-radius: 10px;
+	border: 1px solid rgb(145, 145, 145);
+	box-shadow: 0px 0px 2px rgb(145, 145, 145);
+}
+
+.otherPhotos{
+	display: flex;
+	justify-content: space-between;
+	margin-top: 10px;
+}
+
+.otherPhotos img{
+	width: 100px;
+	height: 100px;
+	border: 1px solid rgb(145, 145, 145);
+	box-shadow: 0px 0px 2px rgb(145, 145, 145);
+	cursor: pointer;
+}
+
+.buttonClose{
+	position: absolute;
+	right: 0;
+	font-size: 30px;
+	margin-right: 20px;
+	margin-top: 10px;
+	cursor: pointer;
+}
+
+.opacityTrue{
+	opacity: .4;
+	transition: .5s;
+}
+
+.opacityNone{
+	opacity: 1;
+	transition: .5s;
+}
