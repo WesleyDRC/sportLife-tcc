@@ -20,7 +20,7 @@
 }
 
 .product .productImg img:hover{
-	transition: 1s;
+	transition: .3s;
 	transform: scale(1.1);
 }
 

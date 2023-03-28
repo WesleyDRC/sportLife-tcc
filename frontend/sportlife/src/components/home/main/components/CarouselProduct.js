@@ -42,7 +42,7 @@ export default function CarouselProduct(props) {
             ))
           ) : (
             <p className={styles.notfound}>
-              Não há avaliações deste produto
+              Carregando Produtos
             </p>
           )}
 
