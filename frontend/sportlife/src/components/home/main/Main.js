@@ -9,18 +9,21 @@ import InfoBox from "./components/InfoBox";
 import styles from "./Main.module.css";
 
 export default function Main() {
-  const [products, setProducts] = useState();
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true)
   useEffect(() => {
     AxiosRepository.findAll({order:'views'}).then((resp) => {
       setProducts(resp.data);
-    });
+      setLoading(false)
+    }).catch((error) => {setLoading(false)
+      console.log(error)});
   }, []);
   return (
     <main className={styles.container}>
       <Carousel />
       <Promotions />
-      <CarouselProduct products={products} titleCarousel="MAIS VISTOS" />
-      <CarouselProduct products={products} titleCarousel="LANÇAMENTOS" />
+      <CarouselProduct loading={loading} products={products} titleCarousel="MAIS VISTOS" />
+      <CarouselProduct loading={loading} products={products} titleCarousel="LANÇAMENTOS" />
       <InfoBox />
     </main>
   );

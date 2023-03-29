@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import styles from "./CarouselProduct.module.css";
 
 import priceBRL from '../../../../utils/formatPrice'
@@ -7,6 +7,8 @@ import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 
 import Product from "./Product";
+
+import Loading from "./Loading";
 
 export default function CarouselProduct(props) {
   const carousel = useRef(null);
@@ -30,7 +32,7 @@ export default function CarouselProduct(props) {
           onClick={handleLeftClick}
         />
         <div className={styles.promotions} ref={carousel}>
-           {props.products && props.products.length > 0 ? (
+           {props.products && props.products.length > 0 && (
             props.products.map((item,i) => (
               <Product
                 key={item.id}
@@ -40,12 +42,9 @@ export default function CarouselProduct(props) {
 								price={priceBRL(props.products[i].price)}
               />
             ))
-          ) : (
-            <p className={styles.notfound}>
-              Carregando Produtos
-            </p>
           )}
-
+          {props.loading && <Loading />}
+          {props.loading === false && props.products.length === 0 && <p>Não há produtos</p>}
         </div>
         <IoIosArrowForward
           className={styles.arrowRight}

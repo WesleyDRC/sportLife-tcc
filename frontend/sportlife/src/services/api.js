@@ -16,7 +16,6 @@ api.interceptors.request.use(async (config) => {
     if(userToken) {
       config.headers.Authorization = `Bearer ${JSON.parse(userToken)}`
     }
-
     return config
   } catch (error) {
     console.log(error)
