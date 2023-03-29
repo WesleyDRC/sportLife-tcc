@@ -25,7 +25,6 @@ label{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	align-items: center;
 }
 
 .formLogo img{
@@ -78,4 +77,22 @@ label{
 	color: #158A8A;
 	font-weight: 600;
 	cursor: pointer;
+}
+
+@media (max-width:430px){
+	.container{
+		width: 350px;
+	}
+}
+
+@media (max-width:360px){
+	.container{
+		width: 300px;
+	}
+}
+
+@media (max-width:310px){
+	.container{
+		width: 280px;
+	}
 }

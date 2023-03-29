@@ -6,11 +6,13 @@ p{
 	margin: 5px 50px;
 	font-size: 3.2rem;
 	font-family: 'Anton';
+	width: 500px;
 }
 
 .name{
 	font-weight: 600;
 	text-transform: uppercase;
+	width: 100%;
 }
 
 .price{
