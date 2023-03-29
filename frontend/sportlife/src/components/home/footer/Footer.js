@@ -37,9 +37,9 @@ export default function Footer(){
 					<p className={styles.title}>Layout e Desenvolvimento</p>
 					<div className={styles.devs}>
 						<img src='https://i.imgur.com/MC3pcrf.png' alt='developers and layout'/>
-						<img src='https://i.imgur.com/WocFUUe.jpg' alt='developers and layout'/>
 						<img src='https://i.imgur.com/MC3pcrf.png' alt='developers and layout'/>
-						<img src='https://i.imgur.com/WocFUUe.jpg' alt='developers and layout'/>
+						<img src='https://i.imgur.com/MC3pcrf.png' alt='developers and layout'/>
+						<img src='https://i.imgur.com/MC3pcrf.png' alt='developers and layout'/>
 						<img src='https://i.imgur.com/MC3pcrf.png' alt='developers and layout'/>
 					</div>
 				</div>

@@ -81,3 +81,62 @@
 	display: flex;
 	justify-content: space-between;
 }
+
+
+@media (max-width:1338px){
+.container{
+	justify-content: center;
+}
+
+	.title{
+		font-size: 1.6rem;
+	}
+
+	.fifthInfos{
+		display: none;
+	}
+}
+
+@media (max-width:930px){
+	.fourthInfos{
+		display: none;
+	}
+}
+
+@media (max-width:655px){
+	.container{
+		flex-direction: column;
+	}
+
+	.socialMedia p{
+		text-align: center;
+		margin-top: 25px;
+	}
+
+	.socialMedia .icons{
+		justify-content: center;
+		margin-bottom: 25px ;
+	}
+
+	.socialMedia .icon{
+		margin: 10px 25px;
+	}
+
+	.secondInfos, .thirdInfos{
+		text-align: center;
+	}
+
+	.fourthInfos{
+		display: flex;
+		margin: 50px ;
+	}
+
+	.fifthInfos{
+		display: flex;
+		flex-direction: column;
+	}
+
+	.fifthInfos{
+		text-align: center;
+	}
+}
