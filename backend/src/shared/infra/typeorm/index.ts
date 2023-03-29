@@ -1,6 +1,6 @@
 /* eslint-disable no-debugger, no-console */
-import "mysql2"
-import { DataSource } from 'typeorm';
+import "mysql2";
+import { DataSource } from "typeorm";
 
 import { User } from "../../../modules/auth/infra/typeorm/entities/User";
 import { UserAddress } from "../../../modules/users/infra/typeorm/entities/UserAddress";
@@ -11,6 +11,8 @@ import { Discount } from "../../../modules/products/infra/typeorm/entities/Disco
 import { Sizes } from "../../../modules/products/infra/typeorm/entities/Sizes";
 import { Assessments } from "../../../modules/products/infra/typeorm/entities/Assessments";
 import { CartItems } from "../../../modules/order/infra/typeorm/entities/CartItem";
+import { OrderDetails } from "../../../modules/order/infra/typeorm/entities/OrderDetails";
+import { OrderProducts } from "../../../modules/order/infra/typeorm/entities/OrderProducts";
 
 export const AppDataSource = new DataSource({
   type: "mysql",
@@ -19,15 +21,27 @@ export const AppDataSource = new DataSource({
   username: process.env.DB_USER,
   password: process.env.DB_PASS,
   database: process.env.DB_NAME,
-  entities: [User, UserAddress, Product, Categories, Inventory, Discount, Sizes, Assessments, CartItems],
+  entities: [
+    User,
+    UserAddress,
+    Product,
+    Categories,
+    Inventory,
+    Discount,
+    Sizes,
+    Assessments,
+    CartItems,
+    OrderDetails,
+    OrderProducts
+  ],
   synchronize: true,
   ssl: false,
   extra: {
     ssl: {
-      rejectUnauthorized: false
-    }
-  }
-})
+      rejectUnauthorized: false,
+    },
+  },
+});
 
 AppDataSource.initialize()
   .then(() => {

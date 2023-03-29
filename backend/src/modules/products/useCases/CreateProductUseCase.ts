@@ -15,7 +15,6 @@ export default class CreateProductUseCase {
     imageMain,
     imageSecondary,
     imageTertiary,
-    imageQuaternary,
 		name,
 		description,
 		sexo,
@@ -39,9 +38,6 @@ export default class CreateProductUseCase {
       throw new AppError(productConstants.IMAGE_URL_REQUIRED, 400);
 		}
 		if(!imageTertiary) {
-      throw new AppError(productConstants.IMAGE_URL_REQUIRED, 400);
-		}
-		if(!imageQuaternary) {
       throw new AppError(productConstants.IMAGE_URL_REQUIRED, 400);
 		}
 		if(!name) {
@@ -85,7 +81,6 @@ export default class CreateProductUseCase {
 			imageMain,
 			imageSecondary,
 			imageTertiary,
-			imageQuaternary,
 			name,
 			description,
 			sexo,

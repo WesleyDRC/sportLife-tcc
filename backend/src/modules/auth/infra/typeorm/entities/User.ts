@@ -3,6 +3,7 @@ import {v4 as uuidv4} from "uuid"
 import { UserAddress } from "../../../../users/infra/typeorm/entities/UserAddress";
 import { Assessments } from "../../../../products/infra/typeorm/entities/Assessments";
 import { CartItems } from "../../../../order/infra/typeorm/entities/CartItem";
+import { OrderDetails } from "../../../../order/infra/typeorm/entities/OrderDetails";
 
 @Entity("user")
 export class User {
@@ -76,6 +77,9 @@ export class User {
 
 	@OneToMany(() => CartItems, cart_items => cart_items.user)
 	cart_items: CartItems[]
+
+	@OneToMany(() => OrderDetails, order => order.user)
+	order: OrderDetails
 
 	constructor() {
 		if(!this.id) this.id = uuidv4()
