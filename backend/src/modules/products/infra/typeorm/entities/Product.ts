@@ -6,6 +6,7 @@ import { Inventory } from "./Inventory";
 import { Sizes } from "./Sizes";
 import { Assessments } from "./Assessments";
 import { CartItems } from "../../../../order/infra/typeorm/entities/CartItem";
+import { OrderProducts } from "../../../../order/infra/typeorm/entities/OrderProducts";
 
 @Entity("products")
 export class Product {
@@ -32,12 +33,6 @@ export class Product {
 		length: 255
 	})
 	imageTertiary: string
-
-	@Column({
-		type: "varchar",
-		length: 255
-	})
-	imageQuaternary: string
 
 	@Column({
 		type: "varchar",
@@ -122,6 +117,9 @@ export class Product {
 
 	@OneToMany(() => CartItems, cart_items => cart_items.user)
 	cart_items: CartItems[]
+
+	@OneToMany( type => OrderProducts, order => order.product)
+	order_products: OrderProducts[]
 
 	constructor() {
 		if(!this.id) this.id = uuidv4()

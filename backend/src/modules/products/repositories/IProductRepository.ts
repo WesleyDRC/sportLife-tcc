@@ -1,6 +1,11 @@
 import IListProductsDTO from "../dtos/IListProductDTO";
 import IStoreProductDTO from "../dtos/IStoreProductDTO";
 import { Product } from "../infra/typeorm/entities/Product";
+import IUpdateProductsQuantityDTO from "../dtos/IUpdateProductsQuantityDTO";
+
+interface IFindProducts {
+  id: string;
+}
 
 export interface IProductRepository {
   listAll({ filter, category }: IListProductsDTO): Promise<Product[]>;
@@ -10,7 +15,6 @@ export interface IProductRepository {
     imageMain,
     imageSecondary,
     imageTertiary,
-    imageQuaternary,
     name,
     description,
     sexo,
@@ -25,4 +29,7 @@ export interface IProductRepository {
     sizes_id,
   }: IStoreProductDTO): Promise<Product>;
   updateViews(id): Promise<any>
+  findAllById(products: IFindProducts[]): Promise<Product[]>;
+  updateQuantity(products: IUpdateProductsQuantityDTO[]): Promise<Product[]>;
+
 }
