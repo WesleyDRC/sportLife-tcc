@@ -32,10 +32,9 @@ export class AuthRepository implements IAuthRepository {
     const foundUser = await this.ormRepository.find({
       where: {email}
     });
-		
+
     return Promise.resolve(foundUser);
   }
-
 
 
 }

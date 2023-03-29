@@ -2,7 +2,6 @@ export default interface IStoreProductDTO {
 	imageMain: string,
 	imageSecondary: string,
 	imageTertiary: string,
-	imageQuaternary: string,
 	name: string,
 	description:  string,
 	sexo:  string,
