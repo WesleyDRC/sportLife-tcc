@@ -8,10 +8,13 @@ import AxiosRepository from '../../../repository/AxiosRepository'
 export default function Render(){
 	const [page, setPage] = useState(0)
 	const [products, setProducts] = useState();
+	const [loading, setLoading] = useState(true);
   useEffect(() => {
     AxiosRepository.findAll({}).then((resp) => {
       setProducts(resp.data);
-    });
+			setLoading(false)
+    }).catch((error) => {setLoading(false)
+      console.log(error)});
   }, []);
 	function AssView(){
 			setPage(1)
@@ -29,7 +32,7 @@ export default function Render(){
 					<p className={styles.assessements} onClick={AssView} id='ass'>Avaliações</p>
 				</div>
 				<AdditionalInfos />
-				<CarouselProduct products={products} titleCarousel="ITENS RELACIONADOS" />
+				<CarouselProduct loading={loading} products={products} titleCarousel="ITENS RELACIONADOS" />
 			</div>
 		)
 	}else{
@@ -41,7 +44,7 @@ export default function Render(){
 					<p className={`${styles.assessements} ${styles.borderTop}`} >Avaliações</p>
 				</div>
 				<Assessements />
-				<CarouselProduct products={products} titleCarousel="ITENS RELACIONADOS" />
+				<CarouselProduct loading={loading} products={products} titleCarousel="ITENS RELACIONADOS" />
 			</div>
 		)
 	}
