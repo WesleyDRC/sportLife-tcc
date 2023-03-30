@@ -14,14 +14,18 @@
 	transition: .5s;
 }
 
+.otherPhotos div,
 .otherPhotos img{
 	width: 120px;
 	height: 120px;
-	background-color: grey;
 	margin: 10px 0px;
 	border-radius: 10px;
-	box-shadow: 0px 0px 2px black;
 	cursor: pointer;
+}
+
+.otherPhotos div img{
+	width: 50px;
+	height: 50px;
 }
 
 .opacityTrue{
