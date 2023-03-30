@@ -1,3 +1,7 @@
+hr{
+	display: none;
+}
+
 .container{
 	background-color:rgb(244, 245, 249);
 	margin-top: 50px;
@@ -84,59 +88,48 @@
 
 
 @media (max-width:1338px){
-.container{
-	justify-content: center;
-}
-
-	.title{
-		font-size: 1.6rem;
+	hr{
+		margin: 50px 100px;
+		display: block;
 	}
 
-	.fifthInfos{
-		display: none;
-	}
-}
-
-@media (max-width:930px){
-	.fourthInfos{
-		display: none;
-	}
-}
-
-@media (max-width:655px){
 	.container{
 		flex-direction: column;
 	}
 
-	.socialMedia p{
+	.socialMedia{
 		text-align: center;
-		margin-top: 25px;
 	}
 
 	.socialMedia .icons{
 		justify-content: center;
-		margin-bottom: 25px ;
 	}
 
-	.socialMedia .icon{
-		margin: 10px 25px;
+	.socialMedia .icons .icon{
+		margin: 0px 20px;
 	}
 
-	.secondInfos, .thirdInfos{
+	.title, .options{
 		text-align: center;
 	}
 
-	.fourthInfos{
-		display: flex;
-		margin: 50px ;
+	.fifthInfos .devs{
+		justify-content: center;
 	}
 
-	.fifthInfos{
-		display: flex;
+	.fifthInfos .devs img{
+		margin: 0px 10px;
+	}
+}
+
+@media (max-width:375px){
+	.fifthInfos .devs {
 		flex-direction: column;
+		justify-content: center;
 	}
 
-	.fifthInfos{
-		text-align: center;
+	.fifthInfos .devs img{
+		margin: 0 auto;
+		margin-bottom: 10px;
 	}
 }
