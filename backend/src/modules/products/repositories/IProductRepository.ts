@@ -31,5 +31,5 @@ export interface IProductRepository {
   updateViews(id): Promise<any>
   findAllById(products: IFindProducts[]): Promise<Product[]>;
   updateQuantity(products: IUpdateProductsQuantityDTO[]): Promise<Product[]>;
-
+  updateQuantityInventory(id: string, newQuantity: number): Promise<any>
 }
