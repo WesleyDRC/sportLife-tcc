@@ -1,4 +1,4 @@
-hr{
+.line{
 	display: none;
 }
 
@@ -88,7 +88,7 @@ hr{
 
 
 @media (max-width:1338px){
-	hr{
+	.line{
 		margin: 50px 100px;
 		display: block;
 	}
