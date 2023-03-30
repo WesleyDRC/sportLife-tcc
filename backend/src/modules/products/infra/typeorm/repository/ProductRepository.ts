@@ -8,8 +8,8 @@ import IUpdateProductsQuantityDTO from "../../../dtos/IUpdateProductsQuantityDTO
 import { IProductRepository } from "../../../repositories/IProductRepository";
 import { Assessments } from "../entities/Assessments";
 import { Product } from "../entities/Product";
+import { Inventory } from "../entities/Inventory";
 import AppError from "../../../../../shared/errors/AppError";
-import { type } from "os";
 
 interface IFindProducts {
   id: string;
@@ -18,10 +18,12 @@ interface IFindProducts {
 export class ProductRepository implements IProductRepository {
   private ormRepository: Repository<Product>;
   private ormRepositoryAssessment: Repository<Assessments>;
+  private ormRepositoryInventory: Repository<Inventory>;
 
   constructor() {
     this.ormRepository = AppDataSource.getRepository(Product);
     this.ormRepositoryAssessment = AppDataSource.getRepository(Assessments);
+    this.ormRepositoryInventory = AppDataSource.getRepository(Inventory);
   }
 
   async listAll({ category, order }: IListProductsDTO): Promise<Product[]> {
@@ -143,7 +145,7 @@ export class ProductRepository implements IProductRepository {
   ): Promise<Product[]> {
     const productsData = await this.findAllById(products);
 
-    const newProducts = productsData.map((productData) => {
+    const newProducts = productsData.map(async (productData) => {
       const productFind = products.find(
         (product) => product.id === productData.id
       );
@@ -159,12 +161,29 @@ export class ProductRepository implements IProductRepository {
       const newProduct = productData;
 
       newProduct.inventory.quantity -= productFind.quantity;
+      await this.updateQuantityInventory(newProduct.inventory_id, newProduct.inventory.quantity)
 
-      return newProduct;
+      return newProduct
     });
 
-    await this.ormRepository.save(newProducts);
+    const updateProducts = await Promise.all(newProducts)
 
-    return newProducts;
+    return updateProducts;
+  }
+
+  async updateQuantityInventory(id: string, newQuantity) {
+    const inventory = await this.ormRepositoryInventory.manager.findOneBy(Inventory, {
+      id,
+    });
+    inventory.quantity = newQuantity;
+
+    await this.ormRepository.manager.save(inventory);
+
+    return inventory;
   }
 }
+
+
+// newProduct.inventory.quantity -= productFind.quantity;
+
+// return newProduct;
