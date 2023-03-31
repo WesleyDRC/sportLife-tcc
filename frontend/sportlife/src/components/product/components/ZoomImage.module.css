@@ -44,3 +44,14 @@
 	opacity: 1;
 	transition: .5s;
 }
+
+.mainPhoto{
+	background-color: rgb(244, 245, 249);
+	width: 770px;
+	height: 770px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 1000;
+}
