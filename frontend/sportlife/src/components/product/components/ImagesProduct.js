@@ -76,6 +76,4 @@ export default function ImagesProduct(props){
 			</div>
 		)
 	}
-
-
 }

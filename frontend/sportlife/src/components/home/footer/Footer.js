@@ -20,23 +20,19 @@ export default function Footer(){
 						</div>
 					</div>
 				</div>
-				<hr className={styles.line} />
 				<div className={styles.secondInfos}>
 					<p className={styles.title}>Institucional</p>
 					<p className={styles.options}>Quem somos ?</p>
 				</div>
-				<hr className={styles.line} />
 				<div className={styles.thirdInfos}>
 					<p className={styles.title}>Saiba mais</p>
 					<p className={styles.options}>Entre em contato</p>
 					<p className={styles.options}>Dúvidas frequentes</p>
 				</div>
-				<hr className={styles.line} />
 				<div className={styles.fourthInfos}>
 					<p className={styles.title}>Formas de pagamento</p>
 					<img src='https://i.imgur.com/m7WBBao.png' alt='payment methods'/>
 				</div>
-				<hr className={styles.line} />
 				<div className={styles.fifthInfos}>
 					<p className={styles.title}>Layout e Desenvolvimento</p>
 					<div className={styles.devs}>
