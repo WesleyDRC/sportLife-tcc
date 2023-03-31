@@ -35,6 +35,12 @@
 	cursor: pointer;
 }
 
+.buttonClose:hover{
+	transition: .3s;
+	transform: scale(1.2);
+	color: #317B96;
+}
+
 .opacityTrue{
 	opacity: .4;
 	transition: .5s;
