@@ -1,7 +1,7 @@
 .mainPhoto{
 	width: 28vw;
 	height: 50vh;
-	background-color: grey;
+	background-color: rgb(244, 245, 249);
 	border-radius: 10px;
 	box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.425);
 	cursor: zoom-in;
@@ -21,6 +21,7 @@
 	margin: 10px 0px;
 	border-radius: 10px;
 	cursor: pointer;
+	background-color: rgb(244, 245, 249);
 }
 
 .otherPhotos div img{

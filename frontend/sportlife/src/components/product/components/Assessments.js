@@ -45,7 +45,7 @@ export default function Assessments(){
                 <CardAssessment
                   id = {assessments[i].id}
                   star ={assessments[i].stars}
-                  name={assessments[i].user.firstName}
+                  user={assessments[i].user.firstName}
                   comment={assessments[i].assessments}
                 />
               </div>
