@@ -1,0 +1,33 @@
+.container{
+	margin: 100px 0px;
+}
+
+.title{
+	text-align: center;
+	font-size: 2.4rem;
+	text-transform: uppercase;
+	font-weight: 700;
+	margin-bottom: 20px;
+}
+
+.photos{
+	width: 1280px;
+	display: flex;
+}
+
+.photos img{
+	width: calc(1220px / 4);
+	height: 550px;
+}
+
+.photos img:hover{
+	cursor: pointer;
+}
+
+.photos .img1,.photos .img2, .photos .img3 {
+	margin: 0px 20px 0px 0px;
+}
+
+.photos .img4{
+	margin: 0px;
+}

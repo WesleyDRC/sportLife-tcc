@@ -5,6 +5,7 @@ import Carousel from "./components/Carousel";
 import Promotions from "./components/Promotions";
 import CarouselProduct from "./components/CarouselProduct";
 import InfoBox from "./components/InfoBox";
+import NavigationImage from "./components/navigationImage";
 
 import styles from "./Main.module.css";
 
@@ -23,6 +24,7 @@ export default function Main() {
       <Carousel />
       <Promotions />
       <CarouselProduct loading={loading} products={products} titleCarousel="MAIS VISTOS" />
+      <NavigationImage />
       <CarouselProduct loading={loading} products={products} titleCarousel="LANÇAMENTOS" />
       <InfoBox />
     </main>
