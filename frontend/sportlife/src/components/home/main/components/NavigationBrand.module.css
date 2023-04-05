@@ -1,0 +1,36 @@
+.title{
+	margin-top: 50px;
+	font-size: 2.4rem;
+	text-align: center;
+	text-transform: uppercase;
+	font-weight: 700;
+	margin-bottom: 20px;
+}
+
+.photosContainer{
+	display: flex;
+	justify-content: space-between;
+}
+
+.logo{
+	filter: brightness(0);
+	width: 100px;
+	height: 100px;
+}
+
+.logo:hover{
+	transition: .3s;
+	filter: brightness();
+	cursor: pointer;
+}
+
+.containerCards{
+	display: flex;
+	justify-content: space-between;
+	margin-top: 50px;
+}
+
+.containerCards img{
+	width: 420px;
+	cursor: pointer;
+}
