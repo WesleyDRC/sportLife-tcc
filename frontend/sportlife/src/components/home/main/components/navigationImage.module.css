@@ -31,3 +31,54 @@
 .photos .img4{
 	margin: 0px;
 }
+
+.carousel{
+	display: none;
+}
+
+@media (max-width:1300px){
+	.photos{
+		display: none;
+	}
+	
+	.carousel{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 10px;
+		position: relative;
+	}
+
+	.promotions{
+		display: flex;
+		overflow: hidden;
+		scroll-behavior: smooth;
+		gap: 10px;
+	}
+
+	.arrowLeft,
+	.arrowRight{
+		color: black;
+		width:40px;
+		height: 40px ;
+		padding: 8px;
+		border-radius: 50%;
+		cursor: pointer;
+		transition: .5s;
+		position: absolute;
+		z-index: 1;
+	}
+
+	.arrowLeft {
+		left: 0;
+	}
+	.arrowRight {
+		right: 0;
+	}
+
+	.arrowLeft:hover,
+	.arrowRight:hover
+	{
+		color: #317B96;
+	}
+}

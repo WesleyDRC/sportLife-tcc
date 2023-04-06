@@ -3,7 +3,7 @@ import styles from './NavigationBrand.module.css'
 export default function NavigationBrand(){
 	return(
 		<div className={styles.container}>
-			<p className={styles.title}>Navegue por marcas !</p>
+			<p className={styles.title}>Navegue por marcas</p>
 			<div className={styles.photosContainer}>
 				<img className={styles.logo} src='https://i.imgur.com/LkO860L.png' alt='Logo Puma'/>
 				<img className={styles.logo} src='https://i.imgur.com/wAYQLwf.png' alt='Logo Fila'/>
