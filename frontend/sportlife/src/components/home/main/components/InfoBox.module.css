@@ -3,3 +3,10 @@
 	justify-content: center;
 	margin-bottom: 10px;
 }
+
+@media (max-width:600px){
+	.container{
+		display: grid;
+		grid-template-columns: 48% 48%;
+	}
+}
