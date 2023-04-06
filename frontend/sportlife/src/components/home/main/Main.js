@@ -23,13 +23,13 @@ export default function Main() {
   return (
     <main className={styles.container}>
       <Carousel />
-      <Promotions />
+      <InfoBox />
       <CarouselProduct loading={loading} products={products} titleCarousel="MAIS VISTOS" />
       <NavigationImage />
       <CarouselProduct loading={loading} products={products} titleCarousel="LANÇAMENTOS" />
       <NavigationBrand />
       <CarouselProduct loading={loading} products={products} titleCarousel="VOCÊ PODE GOSTAR" />
-      <InfoBox />
+
     </main>
   );
 }
