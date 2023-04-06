@@ -1,3 +1,5 @@
+import './Carousel.module.css'
+
 export default function Carousel(){
 
 	return(

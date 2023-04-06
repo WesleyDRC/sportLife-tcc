@@ -40,7 +40,7 @@
 	.photos{
 		display: none;
 	}
-	
+
 	.carousel{
 		display: flex;
 		justify-content: center;
@@ -54,6 +54,10 @@
 		overflow: hidden;
 		scroll-behavior: smooth;
 		gap: 10px;
+	}
+
+	.promotions img{
+		height: 550px;
 	}
 
 	.arrowLeft,

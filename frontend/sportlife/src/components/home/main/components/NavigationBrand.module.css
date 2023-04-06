@@ -38,3 +38,73 @@
 	width: 420px;
 	cursor: pointer;
 }
+
+.carousel{
+	display: none;
+}
+
+@media (max-width:1300px){
+	.photosContainer{
+		display: none;
+	}
+
+	.carousel{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 10px;
+		position: relative;
+	}
+
+	.logos{
+		display: flex;
+		overflow: hidden;
+		scroll-behavior: smooth;
+	}
+
+	.logos img{
+		margin:0px 50px;
+	}
+
+	.arrowLeft,
+	.arrowRight{
+		color: black;
+		width:40px;
+		height: 40px ;
+		padding: 8px;
+		border-radius: 50%;
+		cursor: pointer;
+		transition: .5s;
+		position: absolute;
+		z-index: 1;
+	}
+
+	.arrowLeft {
+		left: 0;
+	}
+	.arrowRight {
+		right: 0;
+	}
+
+	.arrowLeft:hover,
+	.arrowRight:hover
+	{
+		color: #317B96;
+	}
+
+	.containerCards img{
+		width: 32vw;
+	}
+}
+
+@media(max-width:620px){
+	.containerCards{
+		display: grid;
+		grid-template-columns: 47vw 47vw;
+	}
+
+	.containerCards img{
+		margin-top: 20px;
+		width: 100%;
+	}
+}
