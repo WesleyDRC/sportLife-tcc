@@ -5,8 +5,8 @@ import Carousel from "./components/Carousel";
 import Promotions from "./components/Promotions";
 import CarouselProduct from "./components/CarouselProduct";
 import InfoBox from "./components/InfoBox";
-import NavigationImage from "./components/NavigationImage";
 import NavigationBrand from "./components/NavigationBrand";
+import NavigationImage from "./components/NavigationImage";
 
 import styles from "./Main.module.css";
 
