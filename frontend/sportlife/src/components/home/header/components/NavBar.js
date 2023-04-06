@@ -1,29 +1,46 @@
 import styles from './NavBar.module.css'
 import {FaSearch, FaHeart, FaShoppingCart  } from "react-icons/fa";
+import {AiOutlineMenu  } from "react-icons/ai";
 import {Link} from 'react-router-dom'
 
 export default function NavBar(){
 	return(
 		<div className={styles.container}>
-			<div>
-				<Link className={styles.logo} to= '/'>
-					<img src='https://i.imgur.com/BUAhj3p.png' alt='Logo SportLife' />
-					<p>SportLife</p>
-				</Link>
+			<div className={styles.navBar}>
+				<div>
+					<Link className={styles.logo} to= '/'>
+						<img src='https://i.imgur.com/BUAhj3p.png' alt='Logo SportLife' />
+						<p>SportLife</p>
+					</Link>
+				</div>
+				<div className={styles.navOptions}>
+					<p>Masculino</p>
+					<p>Feminino</p>
+					<p>Esportes</p>
+					<p>Novidades</p>
+				</div>
+				<div className={styles.searchBar}>
+					<form action="">
+						<input type='text' placeholder='Procurar . . .' />
+						<button type='submit'><FaSearch className={styles.searchIcon} /> </button>
+					</form>
+					<FaHeart className={styles.icons} />
+					<FaShoppingCart className={styles.icons} />
+				</div>
 			</div>
-			<div className={styles.navOptions}>
-				<p>Masculino</p>
-				<p>Feminino</p>
-				<p>Esportes</p>
-				<p>Novidades</p>
-			</div>
-			<div className={styles.searchBar}>
+			<div className={styles.burguer}>
+				<div>
+					<Link className={styles.logoMobile} to= '/'>
+						<img src='https://i.imgur.com/BUAhj3p.png' alt='Logo SportLife' />
+					</Link>
+				</div>
 				<form action="">
-					<input type='text' placeholder='Procurar . . .' />
-					<button type='submit'><FaSearch className={styles.searchIcon} /> </button>
-				</form>
-				<FaHeart className={styles.icons} />
-				<FaShoppingCart className={styles.icons} />
+						<input className={styles.searchBarMobile} type='text' placeholder='Procurar . . .' />
+						<button className={styles.searchButtonMobile} type='submit'><FaSearch className={styles.searchIconMobile} /> </button>
+					</form>
+				<Link to='/optionsNavigation'>
+					<AiOutlineMenu className={styles.burguerIcon} />
+				</Link>
 			</div>
 		</div>
 	)

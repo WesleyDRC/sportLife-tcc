@@ -1,4 +1,4 @@
-.container{
+.navBar{
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -13,7 +13,7 @@
 	cursor: pointer;
 }
 
-.logo img{
+.logo img, .logoMobile img{
 	width: 50px;
 	height: 50px;
 	margin-bottom: -8px;
@@ -21,7 +21,7 @@
 
 .logo p{
 	font-size: 1.8rem;
-	font-weight: 700;
+	font-weight: 600;
 	margin:0;
 	color: black;
 }
@@ -69,17 +69,22 @@
 	outline: 0;
 }
 
-.searchBar button{
+.searchBar button, .searchButtonMobile{
 	border: none;
 	padding: .5rem .8rem;
 	background-color: #317B96;
 	border-radius: 0px 5px 5px 0px;
+	margin-top: 10px;
 }
 
-.searchBar .searchIcon{
+.searchBar .searchIcon, .searchIconMobile{
 	color: white;
-	font-size: 1rem;
+	font-size: 1.8rem;
 	cursor: pointer;
+}
+
+.burguer{
+	display: none;
 }
 
 @keyframes swingText{
@@ -91,5 +96,49 @@
 	}
 	100%{
 		transform:translateY(0px);
+	}
+}
+
+@media (max-width:1050px){
+	.burguerIcon{
+		font-size: 3rem;
+		margin:0px 20px;
+		cursor: pointer;
+	}
+
+	.navBar{
+		display: none;
+	}
+
+	.logo, .logoMobile img{
+		margin:20px;
+	}
+
+	.burguer{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.searchBarMobile{
+		border:none;
+		background-color: rgb(244, 245, 249);
+		padding: .5rem;
+		border-radius:5px 0px 0px 5px;
+		width: 60vw;
+	}
+
+	@media (max-width:532px){
+		.logoMobile{
+			display: none;
+		}
+
+		.searchBarMobile{
+			margin-left: 10px;
+		}
+
+		.burguerIcon{
+			margin: 0px 10px;
+		}
 	}
 }
