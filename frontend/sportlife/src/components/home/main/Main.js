@@ -22,14 +22,15 @@ export default function Main() {
   return (
     <main className={styles.container}>
       <Carousel />
-      <InfoBox />
-      <CircleNavigate />
-      <CarouselProduct loading={loading} products={products} titleCarousel="MAIS VISTOS" />
-      <ImageBrowsing />
-      <CarouselProduct loading={loading} products={products} titleCarousel="LANÇAMENTOS" />
-      <NavigationBrand />
-      <CarouselProduct loading={loading} products={products} titleCarousel="VOCÊ PODE GOSTAR" />
-
+      <div className={styles.subContainer}>
+        <InfoBox />
+        <CircleNavigate />
+        <CarouselProduct loading={loading} products={products} titleCarousel="MAIS VISTOS" />
+        <ImageBrowsing />
+        <CarouselProduct loading={loading} products={products} titleCarousel="LANÇAMENTOS" />
+        <NavigationBrand />
+        <CarouselProduct loading={loading} products={products} titleCarousel="VOCÊ PODE GOSTAR" />
+      </div>
     </main>
   );
 }
