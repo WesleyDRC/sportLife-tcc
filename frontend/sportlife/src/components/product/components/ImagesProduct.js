@@ -14,7 +14,6 @@ export default function ImagesProduct(props){
 	const [loading, setLoading] = useState(true);
 	let { id } = useParams();
 	let setModalZoom = props.setModalZoom
-	let modalZoom = props.modalZoom
 
 	function changeImage1(){
 		mainPhoto.current.src = image1.current.src

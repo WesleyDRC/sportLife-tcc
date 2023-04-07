@@ -55,9 +55,9 @@ export default function ZoomImage(props){
 						<img src={product.imageMain} ref={mainPhoto} alt='Imagem do produto' />
 					</div>
 						<div className={styles.otherPhotos}>
-							<img ref={image1} className={centralImage == 1 ? styles.opacityTrue : styles.opacityNone} onClick={changeImage1}  src={product.imageMain} alt='Imagem do produto' />
-							<img ref={image2} className={centralImage == 2 ? styles.opacityTrue : styles.opacityNone} onClick={changeImage2}  src={product.imageSecondary} alt='Imagem do produto' />
-							<img ref={image3} className={centralImage == 3 ? styles.opacityTrue : styles.opacityNone} onClick={changeImage3}  src={product.imageTertiary} alt='Imagem do produto' />
+							<img ref={image1} className={centralImage === 1 ? styles.opacityTrue : styles.opacityNone} onClick={changeImage1}  src={product.imageMain} alt='Imagem do produto' />
+							<img ref={image2} className={centralImage === 2 ? styles.opacityTrue : styles.opacityNone} onClick={changeImage2}  src={product.imageSecondary} alt='Imagem do produto' />
+							<img ref={image3} className={centralImage === 3 ? styles.opacityTrue : styles.opacityNone} onClick={changeImage3}  src={product.imageTertiary} alt='Imagem do produto' />
 						</div>
 				</div>
 			</div>

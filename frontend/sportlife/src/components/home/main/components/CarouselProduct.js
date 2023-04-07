@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import styles from "./CarouselProduct.module.css";
 
 import priceBRL from '../../../../utils/formatPrice'

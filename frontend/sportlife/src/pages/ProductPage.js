@@ -10,14 +10,13 @@ import { useEffect, useState } from "react";
 import ZoomImage from "../components/product/components/ZoomImage";
 
 export default function Home(){
-	const [zoomProduct, setZoomProduct] = useState()
 	const [modalZoom, setModalZoom] = useState(false)
 	let { id } = useParams();
 
 	useEffect(() => {
     AxiosRepository.updateViewProduct(id)
   }, [id]);
-	if(modalZoom == false){
+	if(modalZoom === false){
 		return(
 			<div className={styles.container}>
 				<Header />
