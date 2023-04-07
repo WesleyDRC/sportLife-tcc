@@ -55,6 +55,12 @@ export default function NavigationBrand(){
 				<img src='https://i.imgur.com/v5BiuP5.png' alt='Card Nike'/>
 				<img src='https://i.imgur.com/4LAS4h7.png' alt='Card Adidas'/>
 			</div>
+
+			<div className={styles.containerCardsMobile}>
+				<img src='https://i.imgur.com/XKfWMGs.png' alt='Card Puma'/>
+				<img src='https://i.imgur.com/j94vfCd.png' alt='Card Nike'/>
+				<img src='https://i.imgur.com/Dm9fRls.png' alt='Card Adidas'/>
+			</div>
 		</div>
 	)
 }

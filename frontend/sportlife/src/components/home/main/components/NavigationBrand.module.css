@@ -40,9 +40,10 @@
 	cursor: pointer;
 }
 
-.carousel{
+.carousel, .containerCardsMobile{
 	display: none;
 }
+
 
 @media (max-width:1300px){
 	.photosContainer{
@@ -98,14 +99,17 @@
 	}
 }
 
-@media(max-width:620px){
+@media(max-width:750px){
 	.containerCards{
-		display: grid;
-		grid-template-columns: 47vw 47vw;
+		display: none;
 	}
 
-	.containerCards img{
-		margin-top: 20px;
-		width: 100%;
+	.containerCardsMobile{
+		display: flex;
+		flex-direction: column;
+	}
+
+	.containerCardsMobile img{
+		margin-bottom: 20px;
 	}
 }
