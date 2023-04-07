@@ -7,13 +7,13 @@ export default function Carousel(){
 			<div id="carouselExampleAutoplaying" className="carousel slide" data-bs-ride="carousel">
 				<div className="carousel-inner">
 					<div className="carousel-item active">
-						<img src="https://i.imgur.com/1YHrkru.png" className="d-block w-100" alt="imagem 1 do carrossel" />
+						<img src="https://i.imgur.com/1YHrkru.png" className="d-block w-100" width='100vw' height='500px' alt="imagem 1 do carrossel" />
 					</div>
 					<div className="carousel-item">
-						<img src="https://i.imgur.com/ywsZfnj.png" className="d-block w-100" alt="imagem 2 do carrossel" />
+						<img src="https://i.imgur.com/ywsZfnj.png" className="d-block w-100" width='100vw' height='500px' alt="imagem 2 do carrossel" />
 					</div>
 					<div className="carousel-item">
-						<img src="https://i.imgur.com/5Egfcqm.png" className="d-block w-100" alt="imagem 3 do carrossel" />
+						<img src="https://i.imgur.com/5Egfcqm.png" className="d-block w-100" width='100vw' height='500px' alt="imagem 3 do carrossel" />
 					</div>
 				</div>
 				<button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">

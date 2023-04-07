@@ -5,6 +5,7 @@ import styles from "./Main.module.css";
 import Carousel from "./components/Carousel";
 import CarouselProduct from "./components/CarouselProduct";
 import InfoBox from "./components/InfoBox";
+import CircleNavigate from "./components/CircleNavigate"
 import NavigationBrand from "./components/NavigationBrand";
 import ImageBrowsing from "./components/ImageBrowsing";
 
@@ -22,6 +23,7 @@ export default function Main() {
     <main className={styles.container}>
       <Carousel />
       <InfoBox />
+      <CircleNavigate />
       <CarouselProduct loading={loading} products={products} titleCarousel="MAIS VISTOS" />
       <ImageBrowsing />
       <CarouselProduct loading={loading} products={products} titleCarousel="LANÇAMENTOS" />
