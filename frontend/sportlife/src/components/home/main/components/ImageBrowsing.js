@@ -1,11 +1,11 @@
-import styles from './NavigationImage.module.css';
+import styles from './ImageBrowsing.module.css';
 
 import { useRef } from 'react';
 
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 
-export default function NavigationImage(){
+export default function ImageBrowsing(){
   const Carousel = useRef(null);
 
   const handleLeftClick = (e) => {
