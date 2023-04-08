@@ -1,9 +1,18 @@
 import styles from './NavBar.module.css'
+
 import {FaSearch, FaHeart, FaShoppingCart  } from "react-icons/fa";
 import {AiOutlineMenu  } from "react-icons/ai";
+
 import {Link} from 'react-router-dom'
 
+import useCart from '../../../../hooks/useCart';
+
+import ShoppingCart from './ShoppingCart';
+
 export default function NavBar(){
+
+	const { manupilationCartOpen, openCart } = useCart()
+
 	return(
 		<div className={styles.container}>
 			<div className={styles.navBar}>
@@ -25,7 +34,7 @@ export default function NavBar(){
 						<button type='submit'><FaSearch className={styles.searchIcon} /> </button>
 					</form>
 					<FaHeart className={styles.icons} />
-					<FaShoppingCart className={styles.icons} />
+					<FaShoppingCart onClick={manupilationCartOpen} className={styles.icons} />
 				</div>
 			</div>
 			<div className={styles.burguer}>
@@ -42,6 +51,7 @@ export default function NavBar(){
 					<AiOutlineMenu className={styles.burguerIcon} />
 				</Link>
 			</div>
+			{openCart && <ShoppingCart/>}
 		</div>
 	)
 }
