@@ -50,7 +50,6 @@ export default function ProductInfos(){
 					<p className={styles.amount}>{amount}</p>
 					<button ref={add} className={styles.add} onClick={addOne}>+</button>
 				</div>
-					<button className={styles.buy}>Comprar</button>
 			</div>
 			<button className={styles.addCar}> <FaShoppingCart /><span>Adicionar ao carrinho</span></button>
 		</div>
