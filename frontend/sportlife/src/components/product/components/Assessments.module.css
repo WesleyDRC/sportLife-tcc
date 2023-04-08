@@ -4,6 +4,17 @@
 	margin-top: 50px;
 }
 
+.texts{
+	display: flex;
+	justify-content: space-between;
+}
+
+.addComent{
+	font-size: 1.8rem;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
 .title{
 	margin: 0px;
 	margin-bottom: 20px;

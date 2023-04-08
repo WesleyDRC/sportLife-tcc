@@ -36,7 +36,10 @@ export default function Assessments(){
 
 	return(
 		<div className={styles.container}>
-			<h1 className={styles.title}>Avaliações dos Clientes({assessments.length})</h1>
+			<div className={styles.texts}>
+        <h1 className={styles.title}>Avaliações dos Clientes({assessments.length})</h1>
+        <p className={styles.addComent}>Adicionar um comentário</p>
+      </div>
       <div className={styles.carousel}>
         <div className={styles.promotions} ref={carousel}>
         {assessments && assessments.length > 0 ? (
