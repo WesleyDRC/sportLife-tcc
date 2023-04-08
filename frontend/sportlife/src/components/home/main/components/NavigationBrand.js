@@ -5,6 +5,8 @@ import { useRef } from 'react';
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 
+import ImagesBrowsingCard from './ImagesBrowsingCard'
+
 export default function NavigationBrand(){
 	const Carousel = useRef(null);
 
@@ -51,9 +53,9 @@ export default function NavigationBrand(){
 			</div>
 
 			<div className={styles.containerCards}>
-				<img src='https://i.imgur.com/0Lq4onL.png' alt='Card Puma'/>
-				<img src='https://i.imgur.com/v5BiuP5.png' alt='Card Nike'/>
-				<img src='https://i.imgur.com/4LAS4h7.png' alt='Card Adidas'/>
+				<ImagesBrowsingCard link='https://i.imgur.com/szq1zLD.png' title='PUMA' descrition='Confira os melhores produtos da Puma !'/>
+				<ImagesBrowsingCard link='https://i.imgur.com/AnT0I2S.png' title='NIKE' descrition='Confira os melhores produtos da Nike !'/>
+				<ImagesBrowsingCard link='https://i.imgur.com/2e6wb8R.png' title='ADIDAS' descrition='Confira os melhores produtos da Adidas !'/>
 			</div>
 
 			<div className={styles.containerCardsMobile}>

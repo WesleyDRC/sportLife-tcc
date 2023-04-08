@@ -8,6 +8,7 @@ import InfoBox from "./components/InfoBox";
 import CircleNavigate from "./components/CircleNavigate"
 import NavigationBrand from "./components/NavigationBrand";
 import ImageBrowsing from "./components/ImageBrowsing";
+import ImagesBrowsingCard from "./components/ImagesBrowsingCard";
 
 export default function Main() {
   const [products, setProducts] = useState([]);

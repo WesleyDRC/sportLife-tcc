@@ -30,14 +30,10 @@
 }
 
 .containerCards{
-	display: flex;
-	justify-content: space-between;
-	margin-top: 50px;
-}
-
-.containerCards img{
-	width: 420px;
-	cursor: pointer;
+	width: 100%;
+	display: grid;
+	grid-template-columns: auto auto auto;
+	grid-gap: 10px;
 }
 
 .carousel, .containerCardsMobile{

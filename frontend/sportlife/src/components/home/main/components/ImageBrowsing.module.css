@@ -12,25 +12,9 @@
 }
 
 .photos{
-	width: 1280px;
-	display: flex;
-}
-
-.photos img{
-	width: calc(1220px / 4);
-	height: 550px;
-}
-
-.photos img:hover{
-	cursor: pointer;
-}
-
-.photos .img1,.photos .img2, .photos .img3 {
-	margin: 0px 20px 0px 0px;
-}
-
-.photos .img4{
-	margin: 0px;
+	display: grid;
+	grid-template-columns: auto auto auto auto;
+	grid-gap: 10px;
 }
 
 .carousel{
@@ -50,14 +34,14 @@
 		position: relative;
 	}
 
-	.promotions{
+	.spotsContainer{
 		display: flex;
 		overflow: hidden;
 		scroll-behavior: smooth;
 		gap: 10px;
 	}
 
-	.promotions img{
+	.spotsContainer img{
 		height: 550px;
 	}
 
