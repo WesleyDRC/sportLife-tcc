@@ -3,7 +3,7 @@ import { AppDataSource } from "../../../../../shared/infra/typeorm";
 import { IOrderRepository } from "../../../repositories/IOrderRepository";
 import { IStoreCartDto } from "../../../dtos/IStoreCartDto";
 
-import { CartItems } from "../entities/CartItem";
+import { CartItems } from "../../../../cart/infra/typeorm/entities/CartItem";
 import { OrderDetails } from "../entities/OrderDetails";
 import { OrderProducts } from "../entities/OrderProducts";
 import ICreateOrderDTO from "../../../dtos/ICreateOrderDTO";
@@ -19,32 +19,7 @@ export class OrderRepository implements IOrderRepository {
     this.ormRepositoryOrderProducts = AppDataSource.getRepository(OrderProducts)
   }
 
-  public async createCart({
-    quantity,
-    created_at,
-    userId,
-    productId,
-  }: IStoreCartDto): Promise<any> {
-		const cart = new CartItems()
-		cart.quantity = quantity;
-		cart.created_at = created_at,
-		cart.user_id = userId
-		cart.product_id = productId
 
-		await this.ormRepositoryCart.save(cart)
-
-    return Promise.resolve(cart)
-  }
-
-  public async findProductById({productId, userId}): Promise<any> {
-    const product = await this.ormRepositoryCart.find({
-      where: {
-        product_id : productId,
-        user_id: userId
-      }
-    })
-    return Promise.resolve(product);
-  }
 
   public async updateQuantityProductCart({productId,userId, quantity}): Promise<any> {
     const product = await this.ormRepositoryCart
@@ -71,7 +46,7 @@ export class OrderRepository implements IOrderRepository {
 
   public async createOrder({ user, products}: ICreateOrderDTO): Promise<OrderDetails> {
 
-    
+
     const order = this.ormRepositoryOrderDetails.create({
       user: user[0],
       order_products: products

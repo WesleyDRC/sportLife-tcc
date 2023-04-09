@@ -5,7 +5,7 @@ import { Discount } from "./Discount";
 import { Inventory } from "./Inventory";
 import { Sizes } from "./Sizes";
 import { Assessments } from "./Assessments";
-import { CartItems } from "../../../../order/infra/typeorm/entities/CartItem";
+import { CartItems } from "../../../../cart/infra/typeorm/entities/CartItem";
 import { OrderProducts } from "../../../../order/infra/typeorm/entities/OrderProducts";
 
 @Entity("products")
@@ -115,7 +115,7 @@ export class Product {
 	@OneToMany(() => Assessments, assessments => assessments.product)
 	assessments: Assessments[]
 
-	@OneToMany(() => CartItems, cart_items => cart_items.user)
+	@OneToMany(() => CartItems, cart_items => cart_items.product)
 	cart_items: CartItems[]
 
 	@OneToMany( type => OrderProducts, order => order.product)

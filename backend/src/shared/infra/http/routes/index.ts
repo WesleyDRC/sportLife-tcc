@@ -2,8 +2,9 @@ import { Router } from "express";
 
 import authRoutes from "../../../../modules/auth/infra/http/routes/auth.routes";
 import usersRoutes from "../../../../modules/users/infra/http/routes/users.routes";
-import productRouter from "../../../../modules/products/infra/http/routes/product.routes";
-import orderRouter from "../../../../modules/order/infra/http/routes/order.routes";
+import productRoutes from "../../../../modules/products/infra/http/routes/product.routes";
+import orderRoutes from "../../../../modules/order/infra/http/routes/order.routes";
+import cartRoutes from "../../../../modules/cart/infra/http/routes/cart.routes";
 
 const routes = Router()
 
@@ -15,8 +16,10 @@ routes.use("/auth", authRoutes)
 
 routes.use("/users", usersRoutes)
 
-routes.use("/products", productRouter)
+routes.use("/products", productRoutes)
 
-routes.use("/order", orderRouter)
+routes.use("/order", orderRoutes)
+
+routes.use("/cart", cartRoutes)
 
 export default routes;

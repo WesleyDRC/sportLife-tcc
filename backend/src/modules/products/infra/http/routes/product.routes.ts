@@ -6,36 +6,36 @@ import GetAssessmentController from "../controllers/GetAssessmentsController";
 import CreateProductController from "../controllers/CreateProductController";
 import UpdateViewsController from "../controllers/UpdateViewsController";
 
-const productRouter = Router()
+const productRoutes = Router()
 const listProductsController = new ListProductsController()
 const getProductByIdController = new GetProductByIdController()
 const getAssessmentController = new GetAssessmentController()
 const createProductController = new CreateProductController()
 const updateViewsController = new UpdateViewsController()
 
-productRouter.get(
+productRoutes.get(
 	"/",
 	listProductsController.handle
 )
 
-productRouter.get(
+productRoutes.get(
 	"/:id",
 	getProductByIdController.handle
 )
 
-productRouter.get(
+productRoutes.get(
 	"/:id/assessments",
 	getAssessmentController.handle
 )
 
-productRouter.post(
+productRoutes.post(
 	"/",
 	createProductController.handle
 )
 
-productRouter.patch(
+productRoutes.patch(
 	"/:id/views",
 	updateViewsController.handle
 )
 
-export default productRouter
+export default productRoutes

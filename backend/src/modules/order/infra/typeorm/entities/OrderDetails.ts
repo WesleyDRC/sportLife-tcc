@@ -28,8 +28,8 @@ export class OrderDetails {
 	user: User
 	// order.order => referenciando order dentro da entidade orderProducts o atributo order(FK)
 	@OneToMany(type => OrderProducts, order => order.order,  {
-    cascade: true, //
-    eager: true, //
+    cascade: true, 
+    eager: true,
   })
 	order_products: OrderProducts[]
 

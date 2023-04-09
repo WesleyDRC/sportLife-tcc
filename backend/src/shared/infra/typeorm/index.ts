@@ -10,9 +10,11 @@ import { Inventory } from "../../../modules/products/infra/typeorm/entities/Inve
 import { Discount } from "../../../modules/products/infra/typeorm/entities/Discount";
 import { Sizes } from "../../../modules/products/infra/typeorm/entities/Sizes";
 import { Assessments } from "../../../modules/products/infra/typeorm/entities/Assessments";
-import { CartItems } from "../../../modules/order/infra/typeorm/entities/CartItem";
 import { OrderDetails } from "../../../modules/order/infra/typeorm/entities/OrderDetails";
 import { OrderProducts } from "../../../modules/order/infra/typeorm/entities/OrderProducts";
+
+import { Cart } from "../../../modules/cart/infra/typeorm/entities/Cart";
+import { CartItems } from "../../../modules/cart/infra/typeorm/entities/CartItem";
 
 export const AppDataSource = new DataSource({
   type: "mysql",
@@ -30,6 +32,7 @@ export const AppDataSource = new DataSource({
     Discount,
     Sizes,
     Assessments,
+    Cart,
     CartItems,
     OrderDetails,
     OrderProducts
