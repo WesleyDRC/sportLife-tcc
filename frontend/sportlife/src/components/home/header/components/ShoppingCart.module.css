@@ -43,6 +43,12 @@ aside{
 	margin-left: 10px;
 }
 
+.closeButton:hover{
+	transition: .3s;
+	color: #317B96;
+	cursor: pointer;
+}
+
 .finalizeOrder{
 	border-top: 1px solid #B5B6BB;
 }
