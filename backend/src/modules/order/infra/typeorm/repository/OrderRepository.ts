@@ -19,8 +19,6 @@ export class OrderRepository implements IOrderRepository {
     this.ormRepositoryOrderProducts = AppDataSource.getRepository(OrderProducts)
   }
 
-
-
   public async updateQuantityProductCart({productId,userId, quantity}): Promise<any> {
     const product = await this.ormRepositoryCart
       .createQueryBuilder("cart_items")

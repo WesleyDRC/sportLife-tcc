@@ -28,6 +28,6 @@ export default class CreateCartController {
 
 		const createCart = await createCartUseCase.execute(data)
 
-		return response.status(200).json(createCart)
+		return response.status(201).json({cart: createCart})
 	}
 }

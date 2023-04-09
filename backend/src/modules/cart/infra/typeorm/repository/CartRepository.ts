@@ -29,6 +29,12 @@ export class CartRepository implements ICartRepository {
     this.ormRepositoryUser = AppDataSource.getRepository(User);
   }
 
+  public async getCart(userId: string): Promise<Cart> {
+    const cart = await this.ormRepositoryCart.findOne({ where: { user_id: userId}, relations: ["items"]})
+
+    return cart
+  }
+
   public async addProductToCart(userId: string, cartItemDTO: ICartItemDTO) {
     let user = await this.ormRepositoryUser.findOne({
       where: { id: userId },
@@ -99,4 +105,6 @@ export class CartRepository implements ICartRepository {
 
     return cart;
   }
+
+
 }
