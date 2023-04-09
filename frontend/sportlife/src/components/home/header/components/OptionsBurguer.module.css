@@ -1,16 +1,55 @@
-.closeButton{
-	font-size: 3rem;
+.container{
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+	background: rgba(0, 0, 0, 0.644);
+	right: 0;
+	top: 0;
+	z-index: 2;
+}
+
+.asideBurguer{
+	width: 45vw;
+	height: 100vh;
+	background-color: white;
 	position: absolute;
 	right: 0;
-	margin: 10px 20px;
+	top: 0;
+	z-index: 3;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+}
+
+.headerBurguer{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.headerBurguer h2{
+	font-size: 2.8rem;
+	font-weight: 900;
+	margin: 0px;
+}
+
+.headerBurguer svg{
+	font-size: 3.6rem;
+}
+
+.headerBurguer svg:hover{
+	transition: .3s;
+	color: #317B96;
+	cursor: pointer;
 }
 
 .options{
-	font-size: 2.2rem;
 	text-align: center;
-	margin-bottom: 20px;
+	font-size: 2.4rem;
+	margin-top: 30px;
 }
 
-.firstOption{
-	margin-top: 75px;
+.options p{
+	margin-bottom: 20px;
+	cursor: pointer;
 }

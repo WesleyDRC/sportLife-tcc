@@ -1,21 +1,33 @@
 import styles from './OptionsBurguer.module.css'
 
+import useBurguer from '../../../../hooks/useBurguer';
+
 import {CgClose} from "react-icons/cg";
 
-import { Link } from 'react-router-dom';
-
 export default function OptionsBurguer(){
+
+	const { manupilationBurguerClose, setOpenBurguer } = useBurguer()
+
+	function keepContinue(){
+		window.location.reload()
+		setOpenBurguer(false)
+	}
 	return(
 		<div className={styles.container}>
-			<Link to='/'>
-				<CgClose className={styles.closeButton}/>
-			</Link>
-			<p className={`${styles.options} ${styles.firstOption}`}>Masculino</p>
-			<p className={styles.options}>Feminino</p>
-			<p className={styles.options}>Esportes</p>
-			<p className={styles.options}>Novidades</p>
-			<p className={styles.options}>Produtos Salvos</p>
-			<p className={styles.options}>Meu Carrinho</p>
+			<div className={styles.asideBurguer}>
+				<header className={styles.headerBurguer}>
+					<h2>Navegue pelo site</h2>
+					<CgClose onClick={keepContinue} />
+				</header>
+				<div className={styles.options}>
+					<p>Masculino</p>
+					<p>Feminino</p>
+					<p>Esportes</p>
+					<p>Novidades</p>
+					<p>Produtos Salvos</p>
+					<p>Meu Carrinho</p>
+				</div>
+			</div>
 		</div>
 	)
 }

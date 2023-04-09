@@ -15,7 +15,6 @@ import FormPage from '../pages/FormPage'
 import CategoryPage from '../pages/Categorypage'
 import FormAddress from '../pages/FormAddress'
 import CreateAddress from '../pages/CreateAddress'
-import OptionsBurguerPage from '../pages/OptionsBurguerPage'
 
 export default function Routes() {
 
@@ -101,12 +100,6 @@ export default function Routes() {
 			{
 				path: '/category',
 				element: <CategoryPage />,
-				errorElement: <ErrorPage />
-			},
-
-			{
-				path: '/optionsNavigation',
-				element: <OptionsBurguerPage />,
 				errorElement: <ErrorPage />
 			},
 	])
