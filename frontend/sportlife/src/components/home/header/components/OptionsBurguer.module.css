@@ -53,3 +53,29 @@
 	margin-bottom: 20px;
 	cursor: pointer;
 }
+
+@media (max-width:745px){
+	.headerBurguer h2{
+		font-size: 1.8rem;
+	}
+
+	.headerBurguer svg{
+		font-size: 2rem;
+	}
+
+	.options{
+		font-size: 1.6rem;
+	}
+}
+
+@media (max-width:530px){
+	.headerBurguer h2{
+		opacity:0;
+	}
+}
+
+@media (max-width:370px){
+	.options{
+		font-size: 1.1rem;
+	}
+}
