@@ -129,12 +129,12 @@
 	}
 
 	@media (max-width:532px){
-		.logoMobile{
+		.burguer div{
 			display: none;
 		}
 
 		.searchBarMobile{
-			margin-left: 10px;
+			margin-left: 20px;
 		}
 
 		.burguerIcon{

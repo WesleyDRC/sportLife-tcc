@@ -49,7 +49,7 @@ export default function NavBar(){
 				<form action="">
 						<input className={styles.searchBarMobile} type='text' placeholder='Procurar . . .' />
 						<button className={styles.searchButtonMobile} type='submit'><FaSearch className={styles.searchIconMobile} /> </button>
-					</form>
+				</form>
 					<AiOutlineMenu onClick={manupilationBurguerOpen} className={styles.burguerIcon} />
 			</div>
 			{openCart && <ShoppingCart/>}
