@@ -28,3 +28,10 @@
 .carousel{
 	margin-bottom: 50px;
 }
+
+@media (max-width:420px){
+	.options p{
+		font-size: 1.4rem;
+		text-align: center;
+	}
+}
