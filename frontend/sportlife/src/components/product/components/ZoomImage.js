@@ -52,7 +52,7 @@ export default function ZoomImage(props){
 				<CgClose onClick={closeZoom} className={styles.buttonClose} />
 				<div className={styles.modalImage}>
 					<div className={props.modalZoom ? styles.modalOn : styles.modalOff}>
-						<img src={product.imageMain} ref={mainPhoto} alt='Imagem do produto' />
+						<img className={styles.centerImage} src={product.imageMain} ref={mainPhoto} alt='Imagem do produto' />
 					</div>
 						<div className={styles.otherPhotos}>
 							<img ref={image1} className={centralImage === 1 ? styles.opacityTrue : styles.opacityNone} onClick={changeImage1}  src={product.imageMain} alt='Imagem do produto' />
