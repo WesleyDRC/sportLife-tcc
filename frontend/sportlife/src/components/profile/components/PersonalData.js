@@ -31,11 +31,11 @@ export default function PersonalData(){
 						</div>
 						<div>
 							<p className={styles.infoQuest}>Sobrenome</p>
-							<p className={`${styles.infoResponse}`}>{user.lastName}</p>
+							<p className={`${styles.infoResponse} ${styles.lastNameResponse}`}>{user.lastName}</p>
 						</div>
 					</div>
-					<p className={styles.infoQuest}>Email</p>
-					<p className={`${styles.infoResponse} ${styles.marginDetail}`}>{user.email}</p>
+						<p className={styles.infoQuest}>Email</p>
+						<p className={`${styles.infoResponse} ${styles.marginDetail}`}>{user.email}</p>
 					<div className={styles.subCont}>
 						<div>
 							<p className={styles.infoQuest}>CPF</p>

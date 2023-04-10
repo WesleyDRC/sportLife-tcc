@@ -12,7 +12,6 @@ export default function PersonalDataPage(){
 			<div className={styles.container}>
 				<NavBar personalData={true} address={false} request={false}/>
 				<PersonalData />
-
 			</div>
 		</div>
 	)

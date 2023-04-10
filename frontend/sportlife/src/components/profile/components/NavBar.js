@@ -20,10 +20,12 @@ export default function NavBar(props){
 						): <p>Olá!</p>}
 
 					</div>
-					<p className={styles.optionMargin}><Link className={manipulation[0]? styles.select : styles.options} to="/user/personaldata">Dados Pessoais</Link></p>
-					<p className={styles.optionMargin}><Link className={manipulation[1]? styles.select : styles.options} to="/user/address">Endereços</Link></p>
-					<p className={styles.optionMargin}><Link className={manipulation[2]? styles.select : styles.options} to="/user/request">Pedidos</Link></p>
-					<p className={styles.optionMargin}><Link className={styles.options} to="/user/exit">Sair</Link></p>
+					<div className={styles.optionsNavigate}>
+						<p className={styles.optionMargin}><Link className={manipulation[0]? styles.select : styles.options} to="/user/personaldata">Dados Pessoais</Link></p>
+						<p className={styles.optionMargin}><Link className={manipulation[1]? styles.select : styles.options} to="/user/address">Endereços</Link></p>
+						<p className={styles.optionMargin}><Link className={manipulation[2]? styles.select : styles.options} to="/user/request">Pedidos</Link></p>
+						<p className={styles.optionMargin}><Link className={styles.options} to="/user/exit">Sair</Link></p>
+					</div>
 				</div>
 		</div>
 	)
