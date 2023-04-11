@@ -8,6 +8,7 @@ import {useParams} from 'react-router-dom'
 
 import AxiosRepository from '../../../repository/AxiosRepository'
 
+
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 
@@ -29,7 +30,6 @@ export default function Assessments(){
 
 	useEffect(() => {
     AxiosRepository.findAssessmentProduct(id).then((resp) => {
-			console.log(resp.data)
       setAssessments(resp.data);
     });
   }, [id]);

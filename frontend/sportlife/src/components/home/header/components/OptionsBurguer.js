@@ -8,7 +8,7 @@ import {CgClose} from "react-icons/cg";
 
 export default function OptionsBurguer(){
 
-	const { manupilationBurguerClose, setOpenBurguer } = useBurguer()
+	const { setOpenBurguer } = useBurguer()
 
 	function keepContinue(){
 		setOpenBurguer(false)
