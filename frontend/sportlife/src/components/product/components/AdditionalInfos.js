@@ -14,7 +14,6 @@ export default function AdditionalInfos(){
 	useEffect(() => {
     AxiosRepository.findOneProduct(id).then((resp) => {
       setProduct(resp.data);
-			console.log(product)
     });
   }, [id]);
 	return(

@@ -12,7 +12,7 @@ export default function ShoppingCart(){
 	const { manupilationCartClose, setOpenCart } = useCart()
 
 	function keepContinue(){
-		window.location.reload()
+		window.location.href="https://sport-life-tcc.vercel.app/";
 		setOpenCart(false)
 	}
 
@@ -36,7 +36,7 @@ export default function ShoppingCart(){
 							<p className={styles.totalPrice}>R$ 0,00</p>
 						</div>
 						<button className={styles.btn}>FINALIZAR COMPRA</button>
-						<Link to='/' onClick={keepContinue}>CONTINUE COMPRANDO</Link>
+						<p className={styles.keepContinue} onClick={keepContinue}>CONTINUE COMPRANDO</p>
 					</div>
 				</aside>
 			</div>

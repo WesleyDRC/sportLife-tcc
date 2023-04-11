@@ -11,7 +11,6 @@ export default function OptionsBurguer(){
 	const { manupilationBurguerClose, setOpenBurguer } = useBurguer()
 
 	function keepContinue(){
-		window.location.reload()
 		setOpenBurguer(false)
 	}
 
