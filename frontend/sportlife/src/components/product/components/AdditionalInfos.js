@@ -31,7 +31,7 @@ export default function AdditionalInfos(){
 			<hr/>
 			<div>
 				<p>Tamanho</p>
-				<p>{}</p>
+				<p>{product.sizes}</p>
 			</div>
 			<hr/>
 			<div>

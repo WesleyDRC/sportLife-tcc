@@ -2,6 +2,8 @@ import styles from './OptionsBurguer.module.css'
 
 import useBurguer from '../../../../hooks/useBurguer';
 
+import {Link} from 'react-router-dom'
+
 import {CgClose} from "react-icons/cg";
 
 export default function OptionsBurguer(){
@@ -12,6 +14,13 @@ export default function OptionsBurguer(){
 		window.location.reload()
 		setOpenBurguer(false)
 	}
+
+	function closeBurguer(){
+		setOpenBurguer(false);
+		document.documentElement.style.overflow = 'auto';
+		document.body.scroll = "yes";
+	}
+
 	return(
 		<div className={styles.container}>
 			<div className={styles.asideBurguer}>
@@ -20,12 +29,13 @@ export default function OptionsBurguer(){
 					<CgClose onClick={keepContinue} />
 				</header>
 				<div className={styles.options}>
-					<p>Masculino</p>
-					<p>Feminino</p>
-					<p>Esportes</p>
-					<p>Novidades</p>
-					<p>Produtos Salvos</p>
-					<p>Meu Carrinho</p>
+					<Link to ='/'><p onClick={closeBurguer}>Home</p></Link>
+					<p onClick={closeBurguer}>Masculino</p>
+					<p onClick={closeBurguer}>Feminino</p>
+					<p onClick={closeBurguer}>Esportes</p>
+					<p onClick={closeBurguer}>Novidades</p>
+					<p onClick={closeBurguer}>Produtos Salvos</p>
+					<p onClick={closeBurguer}>Meu Carrinho</p>
 				</div>
 			</div>
 		</div>
