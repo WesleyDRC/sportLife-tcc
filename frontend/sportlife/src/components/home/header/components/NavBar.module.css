@@ -128,13 +128,24 @@
 		width: 60vw;
 	}
 
-	@media (max-width:532px){
-		.burguer div{
-			display: none;
+	@media (max-width:535px){
+		.searchBarMobile{
+			width: 85%;
+		}
+	}
+
+	@media (max-width:400px){
+		.burguerIcon{
+			font-size: 4rem;
+		}
+
+		.logo, .logoMobile img{
+			width: 40px;
+			height:40px;
 		}
 
 		.searchBarMobile{
-			margin-left: 20px;
+			width: 75%;
 		}
 
 		.burguerIcon{
