@@ -33,3 +33,25 @@
 .mensage{
 	margin-bottom: 50px;
 }
+
+@media (max-width:760px){
+	.container{
+		width: 96vw;
+	}
+
+	h1{
+		margin: 0px 0px 20px 0px;
+	}
+
+	.subContainer{
+		margin: 0px;
+		width: 96vw;
+	}
+}
+
+@media (max-width:440px){
+	.display{
+		display: flex;
+		flex-direction: column;
+	}
+}

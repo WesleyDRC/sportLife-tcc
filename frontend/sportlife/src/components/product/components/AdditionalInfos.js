@@ -14,6 +14,7 @@ export default function AdditionalInfos(){
 	useEffect(() => {
     AxiosRepository.findOneProduct(id).then((resp) => {
       setProduct(resp.data);
+			console.log(product)
     });
   }, [id]);
 	return(
@@ -30,7 +31,7 @@ export default function AdditionalInfos(){
 			<hr/>
 			<div>
 				<p>Tamanho</p>
-				<p>M,G,GG</p>
+				<p>{}</p>
 			</div>
 			<hr/>
 			<div>
