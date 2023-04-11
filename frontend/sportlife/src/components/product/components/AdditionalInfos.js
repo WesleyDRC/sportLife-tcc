@@ -25,12 +25,12 @@ export default function AdditionalInfos(){
 			<hr/>
 			<div>
 				<p>Altura / Largura</p>
-				<p>{product.height}/ {product.width}</p>
+				<p>{product.height}/{product.width}</p>
 			</div>
 			<hr/>
 			<div>
 				<p>Tamanho</p>
-				<p>P, M , G, GG</p>
+				<p>M,G,GG</p>
 			</div>
 			<hr/>
 			<div>

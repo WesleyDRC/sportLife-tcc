@@ -1,6 +1,5 @@
 .container{
 	display: flex;
-
 }
 
 .userPhoto{
@@ -12,7 +11,6 @@
 	width: 75px;
 	height: 75px;
 	border-radius: 50%;
-
 	border: 1px solid rgb(102, 102, 102);
 }
 
@@ -38,4 +36,33 @@
 	cursor: pointer;
 	color: #317B96;
 	font-weight: 700;
+}
+
+@media (max-width:760px){
+	.optionsNavigate{
+		width: 100vw;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		padding: 0px 20px 50px 20px;
+	}
+
+	.optionsNavigate p a{
+		font-size: 1.4rem;
+	}
+
+	.userPhoto{
+		display: none;
+	}
+}
+
+@media (max-width:365px){
+	.optionsNavigate{
+		padding: 0px;
+		margin-bottom: 50px;
+	}
+
+	.optionsNavigate p a{
+		font-size: 1.2rem;
+	}
 }

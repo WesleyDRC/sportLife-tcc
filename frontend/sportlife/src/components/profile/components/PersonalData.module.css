@@ -29,7 +29,7 @@ h1{
 
 .subCont{
 	display: grid;
-	grid-template-columns: 300px 220px;
+	grid-template-columns: 60% 40%;
 	margin-bottom: 20px;
 }
 
@@ -42,4 +42,34 @@ h1{
 	text-decoration: underline;
 	text-align: end;
 	cursor: pointer;
+}
+
+@media (max-width:760px){
+	h1{
+		margin: 0px 0px 20px 0px;
+	}
+
+	.container{
+		margin: 0px;
+		width: 96vw;
+	}
+}
+
+@media (max-width:440px){
+	.subCont{
+		display: flex;
+		flex-direction: column;
+	}
+
+	.infoResponse{
+		margin-bottom: 20px;
+	}
+
+	.lastNameResponse{
+		margin-bottom: 0px;
+	}
+
+	.marginDetail{
+		margin-bottom: 20px;
+	}
 }

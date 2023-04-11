@@ -1,5 +1,5 @@
 .mainPhoto{
-	width: 28vw;
+	width:100%;
 	height: 50vh;
 	background-color: rgb(244, 245, 249);
 	border-radius: 10px;
@@ -8,7 +8,7 @@
 }
 
 .otherPhotos{
-	width: 28vw;
+	width: 100%;
 	display: flex;
 	justify-content: space-between;
 	transition: .5s;
@@ -37,4 +37,39 @@
 .opacityNone{
 	opacity: 1;
 	transition: .5s;
+}
+
+@media (max-width:1280px){
+	.container{
+		margin-left: 50px;
+	}
+}
+
+@media (max-width:900px){
+	.container{
+		margin: 0px;
+	}
+
+	img{
+		margin: 0px;
+	}
+
+	.mainPhoto{
+		display: block;
+		margin: 0 auto;
+		width: 95%;
+		height: 100%;
+	}
+
+	.otherPhotos{
+		width: 95%;
+		margin: 0 auto;
+	}
+}
+
+@media (max-width:500px){
+	.otherPhotos img{
+		width:50px;
+		height: 50px;
+	}
 }
