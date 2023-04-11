@@ -15,5 +15,4 @@ export default {
 	CATEGORY_REQUIRED: 'Você deve inserir a CATEGORIA do produto!',
 	INVENTORY_REQUIRED: 'Você deve inserir o ID do INVENTÁRIO do produto!',
 	DISCOUNT_REQUIRED: 'Você deve inserir o ID do DESCONTO do produto!',
-	SIZES_REQUIRED: 'Você deve inserir o ID dos TAMANHOS do produto!',
 };

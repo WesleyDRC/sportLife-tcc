@@ -30,7 +30,6 @@ export default class CreateProductUseCase {
 		discount_id,
 	}: IStoreProductDTO) {
 
-
 		if(!imageMain) {
       throw new AppError(productConstants.IMAGE_URL_REQUIRED, 400);
 		}
