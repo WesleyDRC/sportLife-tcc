@@ -24,12 +24,11 @@ export default class CreateProductUseCase {
 		height,
 		width,
 		views,
+		sizes,
 		categories_id,
 		inventory_id,
 		discount_id,
-		sizes_id,
 	}: IStoreProductDTO) {
-
 
 		if(!imageMain) {
       throw new AppError(productConstants.IMAGE_URL_REQUIRED, 400);
@@ -73,9 +72,6 @@ export default class CreateProductUseCase {
 		if(!discount_id) {
       throw new AppError(productConstants.DISCOUNT_REQUIRED, 400);
 		}
-		if(!sizes_id) {
-      throw new AppError(productConstants.SIZES_REQUIRED, 400);
-		}
 
 		const product = await this.productRepository.create({
 			imageMain,
@@ -90,10 +86,10 @@ export default class CreateProductUseCase {
 			height,
 			width,
 			views,
+			sizes,
 			categories_id,
 			inventory_id,
-			discount_id,
-			sizes_id,
+			discount_id
 		})
 
 		return product

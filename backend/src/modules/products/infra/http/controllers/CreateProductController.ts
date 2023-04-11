@@ -18,10 +18,10 @@ export default class CreateProductController {
       weight,
       height,
       width,
+      sizes,
       categories_id,
       inventory_id,
       discount_id,
-      sizes_id,
     } = request.body;
 
     const views = 0;
@@ -39,10 +39,10 @@ export default class CreateProductController {
 			height,
 			width,
       views,
+      sizes,
 			categories_id,
 			inventory_id,
 			discount_id,
-			sizes_id,
 		});
 
     return response.json(product);

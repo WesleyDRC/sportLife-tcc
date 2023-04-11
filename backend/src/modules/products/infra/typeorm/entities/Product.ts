@@ -3,7 +3,6 @@ import { v4 as uuidv4 } from "uuid";
 import { Categories } from './Categories'
 import { Discount } from "./Discount";
 import { Inventory } from "./Inventory";
-import { Sizes } from "./Sizes";
 import { Assessments } from "./Assessments";
 import { CartItems } from "../../../../cart/infra/typeorm/entities/CartItem";
 import { OrderProducts } from "../../../../order/infra/typeorm/entities/OrderProducts";
@@ -83,6 +82,12 @@ export class Product {
 	})
 	views: number;
 
+	@Column({
+		type: "varchar",
+		length: 255
+	})
+	sizes: string;
+
 	@Column()
 	categories_id: string
 
@@ -91,9 +96,6 @@ export class Product {
 
 	@Column()
 	discount_id: string
-
-	@Column()
-	sizes_id: string
 
 	// Primeiro parametro retorna a entidade, o segundo parametro retorna a chave estrangeira
 	@ManyToOne(() => Categories, (categories) => categories.id )
@@ -107,10 +109,6 @@ export class Product {
 	@ManyToOne(() => Inventory, (inventory) => inventory.id)
 	@JoinColumn({ name: "inventory_id"})
 	inventory: Inventory
-
-	@ManyToOne(() => Sizes, (sizes) => sizes.id)
-	@JoinColumn({ name: "sizes_id"})
-	sizes: Sizes
 
 	@OneToMany(() => Assessments, assessments => assessments.product)
 	assessments: Assessments[]

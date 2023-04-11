@@ -32,7 +32,7 @@ export class ProductRepository implements IProductRepository {
       .leftJoinAndSelect("products.categories", "categories")
       .leftJoinAndSelect("products.discount", "discount")
       .leftJoinAndSelect("products.inventory", "inventory")
-      .leftJoinAndSelect("products.assessments", "assessments");
+      .leftJoinAndSelect("products.assessments", "assessments")
 
     if (category) {
       productQuery.where({ categories_id: category });
@@ -60,7 +60,6 @@ export class ProductRepository implements IProductRepository {
       .leftJoinAndSelect("products.categories", "categories")
       .leftJoinAndSelect("products.discount", "discount")
       .leftJoinAndSelect("products.inventory", "inventory")
-      .leftJoinAndSelect("products.sizes", "sizes")
       .where("products.id = :id", { id })
       .getOne();
     return productQuery;
@@ -89,10 +88,10 @@ export class ProductRepository implements IProductRepository {
     height,
     width,
     views,
+    sizes,
     categories_id,
     inventory_id,
     discount_id,
-    sizes_id,
   }: IStoreProductDTO): Promise<Product> {
     const product = new Product();
     product.imageMain = imageMain;
@@ -107,10 +106,10 @@ export class ProductRepository implements IProductRepository {
     product.height = height;
     product.width = width;
     product.views = views;
+    product.sizes = sizes;
     product.categories_id = categories_id;
     product.inventory_id = inventory_id;
     product.discount_id = discount_id;
-    product.sizes_id = sizes_id;
 
     await this.ormRepository.save(product);
 
