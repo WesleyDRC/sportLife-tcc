@@ -23,10 +23,10 @@ export interface IProductRepository {
     weight,
     height,
     width,
+    sizes,
     categories_id,
     inventory_id,
     discount_id,
-    sizes_id,
   }: IStoreProductDTO): Promise<Product>;
   updateViews(id): Promise<any>
   findAllById(products: IFindProducts[]): Promise<Product[]>;
