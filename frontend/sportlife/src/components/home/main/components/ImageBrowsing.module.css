@@ -71,3 +71,9 @@
 		color: #317B96;
 	}
 }
+
+@media (max-width:380px){
+	.title{
+		font-size: 2rem;
+	}
+}

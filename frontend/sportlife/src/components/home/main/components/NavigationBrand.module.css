@@ -109,3 +109,9 @@
 		margin-bottom: 20px;
 	}
 }
+
+@media (max-width:380px){
+	.title{
+		font-size: 2rem;
+	}
+}

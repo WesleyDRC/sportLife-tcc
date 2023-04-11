@@ -50,3 +50,9 @@
 		grid-template-columns: auto auto;
 	}
 }
+
+@media (max-width:380px){
+	.title{
+		font-size: 2rem;
+	}
+}
