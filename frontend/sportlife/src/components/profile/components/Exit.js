@@ -17,7 +17,7 @@ export default function Exit(){
 			<div className={styles.subContainer}>
 				<h1 className={styles.quest}>Tem certeza que deseja sair ?</h1>
 				<div className={styles.buttons}>
-					<button className={styles.backButton}><Link to="/user/personaldata">Voltar</Link></button>
+					<button className={styles.backButton}><Link to="/user/personaldata"><p>Cancelar</p></Link></button>
 					<button className={styles.exitButton} onClick={logout}>Sair</button>
 				</div>
 			</div>

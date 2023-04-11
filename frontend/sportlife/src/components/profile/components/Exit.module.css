@@ -45,3 +45,42 @@ button{
 	color: white;
 	border-radius: 5px;
 }
+
+@media (max-width:1200px){
+	.quest{
+		font-size: 1.8rem;
+	}
+
+	.subContainer{
+		height: 20vh;
+	}
+}
+
+@media (max-width:900px){
+	.buttons{
+		display: flex;
+		flex-direction: column;
+		width: 75%;
+	}
+
+	.backButton{
+		padding: 0px;
+		text-align: center;
+	}
+}
+
+@media (max-width:800px){
+	.subContainer{
+		width: 50vw;
+	}
+	.quest{
+		text-align:center;
+		max-width: 65%;
+	}
+}
+
+@media (max-width:400px){
+	.subContainer{
+		width: 65vw;
+	}
+}
