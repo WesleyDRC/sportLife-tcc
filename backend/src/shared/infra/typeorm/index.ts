@@ -8,7 +8,6 @@ import { Product } from "../../../modules/products/infra/typeorm/entities/Produc
 import { Categories } from "../../../modules/products/infra/typeorm/entities/Categories";
 import { Inventory } from "../../../modules/products/infra/typeorm/entities/Inventory";
 import { Discount } from "../../../modules/products/infra/typeorm/entities/Discount";
-import { Sizes } from "../../../modules/products/infra/typeorm/entities/Sizes";
 import { Assessments } from "../../../modules/products/infra/typeorm/entities/Assessments";
 import { OrderDetails } from "../../../modules/order/infra/typeorm/entities/OrderDetails";
 import { OrderProducts } from "../../../modules/order/infra/typeorm/entities/OrderProducts";
@@ -30,7 +29,6 @@ export const AppDataSource = new DataSource({
     Categories,
     Inventory,
     Discount,
-    Sizes,
     Assessments,
     Cart,
     CartItems,
