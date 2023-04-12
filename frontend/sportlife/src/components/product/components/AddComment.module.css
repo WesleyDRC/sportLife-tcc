@@ -40,7 +40,7 @@
 	margin: 0 auto;
 	background-color: rgb(244, 245, 249);
 	width: 95%;
-	height: 100px;
+	height: 120px;
 	resize: none;
 	border-radius: 8px;
 	padding:5px;
@@ -61,4 +61,44 @@
 	background-color: #317B96;
 	border-radius: 8px;
 	color: white;
+}
+
+@media(max-width:1260px){
+	.comment{
+		height: 160px;
+	}
+}
+
+@media(max-width:1030px){
+	.comment{
+		height: 180px;
+	}
+}
+
+@media(max-width:845px){
+	.container{
+		padding: 20px;
+		width: 80%;
+	}
+
+	.comment{
+		height: 220px;
+	}
+
+	.stars svg{
+		font-size: 6rem;
+	}
+}
+
+
+@media(max-width:400px){
+	.container{
+		padding: 20px;
+		width: 95%;
+	}
+
+	.stars svg{
+		margin: 15px 5px;
+		font-size: 8rem;
+	}
 }

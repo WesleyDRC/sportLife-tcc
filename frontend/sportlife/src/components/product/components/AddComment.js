@@ -33,7 +33,7 @@ export default function AddComment(){
 
 	return(
 		<div className={styles.container}>
-			<h1 className={styles.title}>Adicione um Comentario !</h1>
+			<h1 className={styles.title}>Adicione um Comentario</h1>
 			<div className={styles.stars}>
 				<AiFillStar className={amountStars >= 1? styles.starsGold : styles.normalStar} onClick={oneStar}/>
 				<AiFillStar className={amountStars >= 2? styles.starsGold : styles.normalStar} onClick={twoStar}/>
