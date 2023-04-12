@@ -3,6 +3,7 @@ import  {AuthProvider} from './contexts/auth'
 import { UserProvider } from "./contexts/user";
 import { CartProvider } from "./contexts/cart";
 import { BurguerProvider } from "./contexts/burguer";
+import { CommentProvider } from "./contexts/comment";
 
 function App() {
   return (
@@ -10,7 +11,9 @@ function App() {
       <UserProvider>
         <CartProvider>
           <BurguerProvider>
-            <AppRoutes />
+            <CommentProvider>
+              <AppRoutes />
+            </CommentProvider>
           </BurguerProvider>
         </CartProvider>
       </UserProvider>
