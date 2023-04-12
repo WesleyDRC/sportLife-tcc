@@ -26,3 +26,47 @@
 .inputsContainer div{
 	margin-right: 30px;
 }
+
+@media (max-width:760px){
+	.container h1{
+		margin-left: 20px;
+	}
+	
+	.subContainer{
+		display: block;
+		margin: 0 auto;
+		width: 95%;
+	}
+
+	.inputsContainer{
+		justify-content: space-between;
+	}
+}
+
+@media (max-width:555px){
+	.subContainer{
+		display: block;
+		margin: 0 auto;
+		width: 95%;
+	}
+
+	input{
+		width: 180px;
+	}
+}
+
+@media (max-width:430px){
+	.subContainer{
+		display: block;
+		margin: 0 auto;
+		width: 95%;
+	}
+
+	.inputsContainer{
+		flex-direction: column;
+	}
+
+	input{
+		width: 236px;
+	}
+}

@@ -57,7 +57,7 @@ input[type=date], option::placeholder{
 }
 
 @media (max-width:760px){
-	h1{
+	.title{
 		margin-left: 20px;
 	}
 

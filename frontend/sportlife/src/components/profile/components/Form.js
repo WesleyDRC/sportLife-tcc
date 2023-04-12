@@ -23,7 +23,7 @@ export default function Form() {
 
   return (
     <div>
-      <h1>Adicione seus dados !</h1>
+      <h1 className={styles.title}>Adicione seus dados !</h1>
       <div className={styles.container}>
         <form onSubmit={(e) => {submit(e)}}>
           <div className={styles.subContainer}>
