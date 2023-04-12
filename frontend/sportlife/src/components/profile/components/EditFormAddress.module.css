@@ -21,8 +21,33 @@
 
 .inputsContainer{
 	display: flex;
+	justify-content: space-between;
 }
 
 .inputsContainer div{
 	margin-right: 30px;
+}
+
+@media (max-width:760px){
+	.subContainer{
+		display: block;
+		margin: 0 auto;
+		width: 95%;
+	}
+}
+
+@media (max-width:480px){
+	input{
+		width: 150px;
+	}
+}
+
+@media (max-width:380px){
+	input{
+		width: 236px;
+	}
+
+	.inputsContainer{
+		flex-direction: column;
+	}
 }
