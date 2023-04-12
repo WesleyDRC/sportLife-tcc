@@ -106,5 +106,51 @@ export class CartRepository implements ICartRepository {
     return cart;
   }
 
+  public async deleteProductCart(userId: string, productId: string) {
+
+    let user = await this.ormRepositoryUser.findOne({
+      where: { id: userId }
+    });
+
+    if (!user) {
+      throw new AppError(`User with ID ${userId} not found`, 404);
+    }
+
+    let cart = await this.ormRepositoryCart.findOne({
+      where: { user_id: userId },
+      relations: ["items"]
+    });
+
+    if (!cart) {
+      cart = new Cart();
+      cart.user_id = userId;
+      await this.ormRepositoryCart.save(cart);
+    }
+
+    cart = await this.ormRepositoryCart.findOne({
+      where: { id: cart.id },
+      relations: ["items"],
+    });
+
+    const productInCart = cart.items.find((item) => {
+      return item.product_id === productId
+    })
+
+    if(!productInCart) {
+      throw new AppError(`Product with ID ${productId} not found in this cart`, 404);
+    }
+
+    let cartItem = await this.ormRepositoryCartItems.findOne({
+      where: {
+        product_id: productId,
+      },
+    });
+
+    if(cartItem) {
+      await this.ormRepositoryCartItems.remove(cartItem)
+    }
+
+    return cartItem
+  }
 
 }
