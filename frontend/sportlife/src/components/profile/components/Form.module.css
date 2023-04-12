@@ -14,14 +14,15 @@ input[type=number] {
  appearance: textfield;
 }
 
-input[type=date], select{
-	width: 236px;
+input[type=date]{
+	width: 235px;
 }
 
 input, select{
 	padding: 5px 15px;
 	margin-bottom: 10px;
 	border: 1px solid rgba(0, 0, 0, 0.5);
+	width: 235px;
 }
 
 .container{
@@ -53,4 +54,32 @@ input, select{
 
 input[type=date], option::placeholder{
 	color: #777;
+}
+
+@media (max-width:760px){
+	h1{
+		margin-left: 20px;
+	}
+
+	.container{
+		display: block;
+		margin: 0 auto;
+		width: 95%;
+	}
+}
+
+@media (max-width:550px){
+	input, select, input[type=date]{
+		width: 200px;
+	}
+}
+
+@media (max-width:470px){
+	.subContainer{
+		flex-direction: column;
+	}
+
+	input, select, input[type=date]{
+		width: 236px;
+	}
 }
