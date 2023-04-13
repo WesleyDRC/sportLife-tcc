@@ -11,7 +11,7 @@ import priceBRL from '../../../utils/formatPrice'
 import { useParams } from "react-router-dom";
 
 export default function ProductInfos(){
-	const [amount, setAmout] = useState(0)
+	let [amount, setAmout] = useState(1)
 	const [product, setProduct] = useState([]);
 	let { id } = useParams();
 
@@ -23,16 +23,17 @@ export default function ProductInfos(){
 	}
 
 	const subOne = () => {
-		if(amount === 0){
-			setAmout(amount = 0)
+		if(amount === 1){
+			setAmout(amount = 1)
 		}else{
-			setAmout(amount - 1)
+			setAmout(amount -1)
 		}
 	}
 
 	useEffect(() => {
     AxiosRepository.findOneProduct(id).then((resp) => {
       setProduct(resp.data);
+			console.log(product)
     });
   }, [id]);
 
@@ -40,11 +41,11 @@ export default function ProductInfos(){
 		<div className={styles.container}>
 			<p className={styles.name}>{product.name}</p>
 			<p className={styles.price}>{priceBRL(product ? product.price : '0')}</p>
-			<p className={styles.color}>Cor</p>
-
+			<p className={styles.color}>Cores</p>
+			<div className={styles.teste} style={{backgroundColor:product.colors}} ></div>
 			<p className={styles.size}>Tamanhos</p>
-
-			<div className={styles.counterAndBuy}>
+			<p className={styles.availableSizes}>{product.sizes}</p>
+			<div className={styles.counterAndBuy} >
 				<div className={styles.counter}>
 					<button ref={subtract} className={styles.sub} onClick={subOne}>-</button>
 					<p className={styles.amount}>{amount}</p>
