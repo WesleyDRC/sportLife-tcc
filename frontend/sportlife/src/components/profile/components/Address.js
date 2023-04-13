@@ -6,7 +6,6 @@ import {Link} from 'react-router-dom'
 
 export default function Address(){
 	const {address,getAddress} = useUser()
-	console.log(address)
 
 	useEffect(() => {
 		getAddress()
@@ -20,11 +19,11 @@ export default function Address(){
 					<div className={styles.display}>
 						<div>
 						<p className={styles.quest}>CEP</p>
-							<p  className={styles.res}>{address.postal_code}</p>
+							<p className={styles.res}>{address.postal_code}</p>
 						</div>
 						<div>
 						<p className={styles.quest}>País</p>
-							<p  className={styles.res}>{address.country}</p>
+							<p className={styles.res}>{address.country}</p>
 						</div>
 					</div>
 					<div className={styles.display}>

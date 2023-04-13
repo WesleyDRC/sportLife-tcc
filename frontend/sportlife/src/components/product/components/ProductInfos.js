@@ -15,6 +15,9 @@ export default function ProductInfos(){
 	const [product, setProduct] = useState([]);
 	let { id } = useParams();
 
+
+	// var tamanhos = tam.split(",")
+
 	const subtract = useRef()
 	const add = useRef()
 
@@ -33,7 +36,8 @@ export default function ProductInfos(){
 	useEffect(() => {
     AxiosRepository.findOneProduct(id).then((resp) => {
       setProduct(resp.data);
-			console.log(product)
+			let tam = product.sizes;
+			console.log(tam)
     });
   }, [id]);
 
@@ -44,7 +48,7 @@ export default function ProductInfos(){
 			<p className={styles.color}>Cores</p>
 			<div className={styles.teste} style={{backgroundColor:product.colors}} ></div>
 			<p className={styles.size}>Tamanhos</p>
-			<p className={styles.availableSizes}>{product.sizes}</p>
+			<p className={styles.availableSizes}>{}</p>
 			<div className={styles.counterAndBuy} >
 				<div className={styles.counter}>
 					<button ref={subtract} className={styles.sub} onClick={subOne}>-</button>
