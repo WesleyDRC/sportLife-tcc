@@ -41,7 +41,7 @@ export default function AddComment(){
 				<AiFillStar className={amountStars >= 4? styles.starsGold : styles.normalStar} onClick={fourStar}/>
 				<AiFillStar className={amountStars == 5? styles.starsGold : styles.normalStar} onClick={fiveStar}/>
 			</div>
-			<textarea className={styles.comment} maxLength='200'/>
+			<textarea className={styles.comment} maxLength='255'/>
 			<div className={styles.buttons}>
 				<button onClick={manupilationCommentClose} className={styles.cancelButton}>Cancelar</button>
 				<button className={styles.sendButton}>Enviar</button>
