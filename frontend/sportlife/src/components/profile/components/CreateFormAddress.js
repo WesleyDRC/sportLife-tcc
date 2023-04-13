@@ -16,13 +16,27 @@ export default function CreateFormAddress({title}){
 	const {createAddress} = useUser()
 	const navigate = useNavigate()
 
+	if(cep != undefined && cep.length === 8){
+		let url = `https://viacep.com.br/ws/${cep}/json`
+		fetch(url)
+		.then((res) => res.json())
+		.then((data) =>{
+			if(data.erro == true){
+			}else{
+				setRoad(data.logradouro)
+				setCity(data.localidade)
+				setNeighborhood(data.bairro)
+				setCountry("Brasil")
+			}
+		})
+	}
+
 	const submit = async (e) =>{
 		e.preventDefault();
 		const response = await createAddress(city,cep,country,road,neighborhood,number,complement)
 		alert(response.data.message)
 		navigate('/user/address')
 	}
-
 	return(
 		<div className={styles.container}>
 			<h1>{title}</h1>
