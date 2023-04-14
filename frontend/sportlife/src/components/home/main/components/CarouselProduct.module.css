@@ -45,7 +45,6 @@
 .arrowRight:hover
 {
 	color: #317B96;
-	transform: scale(1.3);
 }
 
 @media(max-width:380px){
