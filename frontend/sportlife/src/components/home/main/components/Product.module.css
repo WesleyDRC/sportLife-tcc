@@ -38,6 +38,13 @@
 	word-wrap: break-word;
 }
 
+.product .category{
+	font-family: 'Montserrat', sans-serif;
+	font-size: 1.4rem;
+	color: darkgray;
+	margin: 0px 10px 0px 10px;
+}
+
 .product .price{
 	font-family: 'Montserrat', sans-serif;
 	color: #00a650;

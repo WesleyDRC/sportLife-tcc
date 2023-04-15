@@ -15,9 +15,6 @@ export default function ProductInfos(){
 	const [product, setProduct] = useState([]);
 	let { id } = useParams();
 
-
-	// var tamanhos = tam.split(",")
-
 	const subtract = useRef()
 	const add = useRef()
 
@@ -36,8 +33,6 @@ export default function ProductInfos(){
 	useEffect(() => {
     AxiosRepository.findOneProduct(id).then((resp) => {
       setProduct(resp.data);
-			let tam = product.sizes;
-			console.log(tam)
     });
   }, [id]);
 
