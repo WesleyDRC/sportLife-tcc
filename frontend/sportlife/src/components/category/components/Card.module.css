@@ -3,7 +3,7 @@
 	padding-bottom: 8px;
 	transition: .1s;
 	cursor: pointer;
-	margin: 0px 40px;
+	margin: 0px 20px;
 }
 
 .card:hover{
@@ -52,4 +52,35 @@
 .positionButton{
 	display: flex;
 	justify-content: center;
+}
+
+@media (max-width:1345px){
+	.card, .card img{
+		width: 302px;
+	}
+}
+
+@media (max-width:1050px){
+	.card, .card img{
+		width: 402px;
+	}
+}
+
+@media (max-width:905px){
+	.card, .card img{
+		width: 302px;
+	}
+}
+
+@media (max-width:701px){
+	.card, .card img{
+		width: 402px;
+	}
+}
+
+@media (max-width:460px){
+	.card, .card img{
+		width: 252px;
+		margin: 0px;
+	}
 }
