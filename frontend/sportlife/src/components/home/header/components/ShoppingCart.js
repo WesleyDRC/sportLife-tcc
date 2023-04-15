@@ -5,6 +5,8 @@ import useCart from '../../../../hooks/useCart';
 import {CgClose} from "react-icons/cg";
 import {BsBag} from "react-icons/bs";
 
+import ProductCart from './ProductCart';
+
 import { Link } from 'react-router-dom';
 
 export default function ShoppingCart(){
@@ -26,6 +28,13 @@ export default function ShoppingCart(){
 						</div>
 						<CgClose className={styles.closeButton} onClick={manupilationCartClose} />
 					</header>
+
+					<div className={styles.itemsCart}>
+						<ProductCart />
+						<ProductCart />
+						<ProductCart />
+					</div>
+
 					<div className={styles.finalizeOrder}>
 						<div className={styles.subTotal}>
 							<p>SUB-TOTAL ( 0 produtos )</p>
