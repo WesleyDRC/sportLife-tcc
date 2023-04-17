@@ -87,6 +87,11 @@ aside{
 .itemsCart{
 	margin-top: 20px;
 	height: 100%;
+	overflow: auto;
+}
+
+.itemsCart::-webkit-scrollbar {
+  display: none;
 }
 
 @media (max-width:1090px){

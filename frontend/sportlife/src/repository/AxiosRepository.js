@@ -97,12 +97,13 @@ class AxiosRepository {
     return this.#axiosClient.get(`products/${id}/assessments`);
   }
 
-  async addItemCart(productId, quantity){
+  async addItemCart(productId, quantity, size){
     const data = {
       "products": [
         {
           "productId": productId,
-          "quantity": quantity
+          "quantity": quantity,
+          "size":size
         }
       ]
     };

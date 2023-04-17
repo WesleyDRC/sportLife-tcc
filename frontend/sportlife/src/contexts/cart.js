@@ -20,10 +20,10 @@ export const CartProvider = ({children}) => {
         document.body.scroll = "yes";
 	}
 
-    const addItem = async (productId, quantity) => {
+    const addItem = async (productId, quantity, size) => {
         try{
             manupilationCartOpen()
-            await AxiosRepository.addItemCart(productId, quantity)
+            await AxiosRepository.addItemCart(productId, quantity, size)
         }catch(error){
             console.log(error)
         }

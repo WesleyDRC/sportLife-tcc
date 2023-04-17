@@ -15,6 +15,7 @@ import useCart from '../../../hooks/useCart'
 export default function ProductInfos(){
 	const [product, setProduct] = useState([]);
 	let [amount, setAmout] = useState(1)
+	let [size, setSize] = useState("M")
 	let { id } = useParams();
 
 	const subtract = useRef()
@@ -55,7 +56,7 @@ export default function ProductInfos(){
 					<button ref={add} className={styles.add} onClick={addOne}>+</button>
 				</div>
 			</div>
-			<button onClick={() => addItem(id , amount)} className={styles.addCar}> <FaShoppingCart /><span>Adicionar ao carrinho</span></button>
+			<button onClick={() => addItem(id , amount, size)} className={styles.addCar}> <FaShoppingCart /><span>Adicionar ao carrinho</span></button>
 		</div>
 	)
 }
