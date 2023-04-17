@@ -49,6 +49,12 @@
 	}
 }
 
+@media (max-width:760px){
+	.container h1{
+		margin-left: 0px;
+	}
+}
+
 @media (max-width:440px){
 	.display{
 		display: flex;

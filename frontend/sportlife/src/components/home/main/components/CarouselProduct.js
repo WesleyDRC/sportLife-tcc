@@ -39,6 +39,8 @@ export default function CarouselProduct(props) {
                 id = {props.products[i].id}
 								src={props.products[i].imageMain}
 								name={props.products[i].name}
+                sexo={props.products[i].sexo}
+                category={props.products[i].categories.name}
 								price={priceBRL(props.products[i].price)}
               />
             ))

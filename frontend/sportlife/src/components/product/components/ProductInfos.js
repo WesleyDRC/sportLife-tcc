@@ -10,9 +10,11 @@ import priceBRL from '../../../utils/formatPrice'
 
 import { useParams } from "react-router-dom";
 
+import useCart from '../../../hooks/useCart'
+
 export default function ProductInfos(){
-	const [amount, setAmout] = useState(0)
 	const [product, setProduct] = useState([]);
+	let [amount, setAmout] = useState(1)
 	let { id } = useParams();
 
 	const subtract = useRef()
@@ -23,12 +25,14 @@ export default function ProductInfos(){
 	}
 
 	const subOne = () => {
-		if(amount === 0){
-			setAmout(amount = 0)
+		if(amount === 1){
+			setAmout(amount = 1)
 		}else{
-			setAmout(amount - 1)
+			setAmout(amount -1)
 		}
 	}
+
+	const { addItem } = useCart()
 
 	useEffect(() => {
     AxiosRepository.findOneProduct(id).then((resp) => {
@@ -40,18 +44,18 @@ export default function ProductInfos(){
 		<div className={styles.container}>
 			<p className={styles.name}>{product.name}</p>
 			<p className={styles.price}>{priceBRL(product ? product.price : '0')}</p>
-			<p className={styles.color}>Cor</p>
-
+			<p className={styles.color}>Cores</p>
+			<div className={styles.teste} style={{backgroundColor:product.colors}} ></div>
 			<p className={styles.size}>Tamanhos</p>
-
-			<div className={styles.counterAndBuy}>
+			<p className={styles.availableSizes}>{}</p>
+			<div className={styles.counterAndBuy} >
 				<div className={styles.counter}>
 					<button ref={subtract} className={styles.sub} onClick={subOne}>-</button>
 					<p className={styles.amount}>{amount}</p>
 					<button ref={add} className={styles.add} onClick={addOne}>+</button>
 				</div>
 			</div>
-			<button className={styles.addCar}> <FaShoppingCart /><span>Adicionar ao carrinho</span></button>
+			<button onClick={() => addItem(id , amount)} className={styles.addCar}> <FaShoppingCart /><span>Adicionar ao carrinho</span></button>
 		</div>
 	)
 }

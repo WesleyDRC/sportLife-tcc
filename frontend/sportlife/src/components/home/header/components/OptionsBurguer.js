@@ -10,10 +10,6 @@ export default function OptionsBurguer(){
 
 	const { setOpenBurguer } = useBurguer()
 
-	function keepContinue(){
-		setOpenBurguer(false)
-	}
-
 	function closeBurguer(){
 		setOpenBurguer(false);
 		document.documentElement.style.overflow = 'auto';
@@ -25,7 +21,7 @@ export default function OptionsBurguer(){
 			<div className={styles.asideBurguer}>
 				<header className={styles.headerBurguer}>
 					<h2>Navegue pelo site</h2>
-					<CgClose onClick={keepContinue} />
+					<CgClose onClick={closeBurguer} />
 				</header>
 				<div className={styles.options}>
 					<Link to ='/'><p onClick={closeBurguer}>Home</p></Link>

@@ -1,0 +1,56 @@
+.item{
+	display: flex;
+	padding: 10px;
+	height: 100%;
+	max-height: 120px;
+	gap: 10px;
+	border-bottom: 1px solid #B5B6BB;
+}
+
+.imageItem{
+	width: 110px;
+}
+
+.imageItem img{
+	width: 100%;
+	height: 100%;
+}
+
+.infosItem{
+	position: relative;
+	width: 100%;
+}
+
+.nameItem{
+	width: 90%;
+	font-size: 1.4rem;
+}
+
+.infosItem svg{
+	position: absolute;
+	top: 0;
+	right: 0;
+	color: rgb(253, 40, 40);
+	cursor: pointer;
+}
+
+.sizeItem{
+	margin-top: 10px;
+	font-size: 1.3rem;
+}
+
+.priceItem{
+	font-size: 1.3rem;
+	color:#00a650 ;
+	margin-bottom: 10px;
+}
+
+@media (max-width:1180px){
+	.nameItem{
+		font-size: 1.2rem;
+	}
+
+	.sizeItem, .priceItem{
+		font-size: 1rem;
+	}
+}

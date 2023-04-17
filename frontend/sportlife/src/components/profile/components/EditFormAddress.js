@@ -13,6 +13,23 @@ export default function FormAddress({title}){
 	const [neighborhood,setNeighborhood] = useState()
 	const [number,setNumber] = useState()
 	const [complement,setComplement] = useState()
+
+	if(cep != undefined && cep.length === 8){
+		let url = `https://viacep.com.br/ws/${cep}/json`
+		fetch(url)
+		.then((res) => res.json())
+		.then((data) =>{
+			if(data.erro == true){
+
+			}else{
+				setRoad(data.logradouro)
+				setCity(data.localidade)
+				setNeighborhood(data.bairro)
+				setCountry("Brasil")
+			}
+		})
+	}
+
 	const {updateAddress} = useUser()
 	const navigate = useNavigate()
 

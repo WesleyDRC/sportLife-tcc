@@ -1,6 +1,103 @@
 .container{
-	width: 100vw;
-	height: 100vh;
-	z-index: 100;
-	background-color: red;
+	display: block;
+	margin: 0 auto;
+	margin-top: 20px;
+	width: 50%;
+	box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.418);
+	border-radius: 8px;
+	position: relative;
+	padding: 20px 0px;
+}
+
+.title{
+	margin: 0px;
+	text-align: center;
+}
+
+.stars{
+	display: flex;
+	justify-content: center;
+}
+
+.stars svg{
+	font-size: 4rem;
+	cursor: pointer;
+	margin: 15px;
+}
+
+.normalStar{
+	transition: .5s;
+	color: #252525;
+}
+
+.starsGold{
+	transition: .1s;
+	color: gold;
+}
+
+.comment{
+	display: block;
+	margin: 0 auto;
+	background-color: rgb(244, 245, 249);
+	width: 95%;
+	height: 120px;
+	resize: none;
+	border-radius: 8px;
+	padding:5px;
+}
+
+.buttons{
+	display: flex;
+	justify-content: center;
+	margin:20px 0px 0px 0px;
+}
+
+.cancelButton{
+	font-size: 2rem;
+}
+
+.sendButton{
+	font-size: 2rem;
+	background-color: #317B96;
+	border-radius: 8px;
+	color: white;
+}
+
+@media(max-width:1260px){
+	.comment{
+		height: 160px;
+	}
+}
+
+@media(max-width:1030px){
+	.comment{
+		height: 180px;
+	}
+}
+
+@media(max-width:845px){
+	.container{
+		padding: 20px;
+		width: 80%;
+	}
+
+	.comment{
+		height: 220px;
+	}
+
+	.stars svg{
+		font-size: 6rem;
+	}
+}
+
+@media(max-width:400px){
+	.container{
+		padding: 20px;
+		width: 95%;
+	}
+
+	.stars svg{
+		margin: 15px 5px;
+		font-size: 8rem;
+	}
 }

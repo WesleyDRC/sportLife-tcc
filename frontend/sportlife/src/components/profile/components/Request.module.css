@@ -5,3 +5,15 @@
 	border-radius: 10px;
 	padding: 10px;
 }
+
+@media (max-width:760px){
+	.title{
+		margin-left: 20px;
+	}
+
+	.subContainer{
+		display: block;
+		margin: 0 auto;
+		width: 95%;
+	}
+}

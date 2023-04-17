@@ -8,11 +8,17 @@ import {useParams} from 'react-router-dom'
 
 import AxiosRepository from '../../../repository/AxiosRepository'
 
+import useComment from '../../../hooks/useComment'
+
+import AddComment from './AddComment';
 
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 
 export default function Assessments(){
+
+  const { manupilationCommentOpen, openComment } = useComment()
+
   const carousel = useRef(null);
 
   const handleLeftClick = (e) => {
@@ -38,7 +44,7 @@ export default function Assessments(){
 		<div className={styles.container}>
 			<div className={styles.texts}>
         <h1 className={styles.title}>Avaliações dos Clientes({assessments.length})</h1>
-        <p className={styles.addComent}>Adicionar um comentário</p>
+        <p onClick={manupilationCommentOpen} className={styles.addComent}>Adicionar um comentário</p>
       </div>
       <div className={styles.carousel}>
         <div className={styles.promotions} ref={carousel}>
@@ -70,6 +76,7 @@ export default function Assessments(){
             onClick={handleRightClick}
           />
         </div>
+        {openComment && <AddComment />}
 		</div>
 	)
 }

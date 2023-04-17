@@ -5,4 +5,17 @@
 	display: grid;
 	grid-template-columns: auto auto auto;
 	row-gap: 50px;
+	justify-content: center;
+}
+
+@media (max-width:1050px){
+	.container{
+		grid-template-columns: auto auto;
+	}
+}
+
+@media (max-width:701px){
+	.container{
+		grid-template-columns: auto;
+	}
 }
