@@ -2,22 +2,24 @@ import styles from "./ProductCart.module.css";
 
 import {BsTrash3} from "react-icons/bs";
 
-export default function ProductCart() {
+import priceBRL from '../../../../utils/formatPrice'
+
+export default function ProductCart({urlImg, name, quantity, price, size}) {
   return (
     <div className={styles.item}>
       <div className={styles.imageItem}>
         <img
-          src="https://imgnike-a.akamaihd.net/768x768/024315ID.jpg"
-          alt="peita"
+          src={urlImg}
+          alt="Imagem do produto"
         />
       </div>
       <div className={styles.infosItem}>
         <p className={styles.nameItem}>
-          Camiseta Nike Corinthians Academy Pro Masculina
+         <span className={styles.quantity}>{quantity}x </span> {name}
         </p>
         <BsTrash3 className={styles.trashIcon} />
-        <p className={styles.sizeItem}>Tamanho: M</p>
-        <p className={styles.priceItem}>R$199,00</p>
+        <p className={styles.sizeItem}>Tamanho: {size}</p>
+        <p className={styles.priceItem}>{priceBRL(price)}</p>
       </div>
     </div>
   );

@@ -24,11 +24,10 @@ export default function ShoppingCart(){
 	useEffect(() => {
 		async function fetchData() {
       const result = await getCartUser();
-			console.log(result)
 			setCart(result.data.cart)
     }
     fetchData();
-	},[openCart == true])
+	},[openCart, cart])
 
 	return(
 			<div className={styles.container}>
@@ -42,17 +41,30 @@ export default function ShoppingCart(){
 					</header>
 
 					<div className={styles.itemsCart}>
+					{cart.length > 0 && cart[0].items.length > 0 && (
+            cart[0].items.map((item,i) => (
+              <ProductCart
+                key={item.id}
+                id = {item.id}
+								urlImg={item.imageMain}
+								name={item.name}
+								price={priceBRL(item.price)}
+								size={item.size}
+								quantity={item.quantity}
+              />
 
+            ))
+          )}
 					</div>
 
 					<div className={styles.finalizeOrder}>
 						<div className={styles.subTotal}>
-							<p>SUB-TOTAL ( {cart.totalItems} produtos )</p>
-							<p>{priceBRL(cart.totalAmount)}</p>
+							<p>SUB-TOTAL ( {cart.length > 0 && cart[0].totalItems} produtos )</p>
+							<p>{priceBRL(cart.length > 0 && cart[0].totalAmount)}</p>
 						</div>
 						<div className={styles.total}>
 							<p>TOTAL</p>
-							<p className={styles.totalPrice}>{priceBRL(cart.totalAmount)}</p>
+							<p className={styles.totalPrice}>{priceBRL(cart.length > 0 && cart[0].totalAmount)}</p>
 						</div>
 						<button className={styles.btn}>FINALIZAR COMPRA</button>
 						<p className={styles.keepContinue} onClick={keepContinue}>CONTINUE COMPRANDO</p>
