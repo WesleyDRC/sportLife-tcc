@@ -50,7 +50,7 @@
   "git.enableSmartCommit": true,
   "git.autofetch": true,
   "git.confirmSync": false,
-  "workbench.colorTheme": "Material Deep Ocean",
+  "workbench.colorTheme": "Dracula",
   "[vue]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -78,5 +78,5 @@
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "window.zoomLevel": 1
+  "window.zoomLevel": 0
 }

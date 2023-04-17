@@ -14,7 +14,8 @@ export default function Home(){
 	let { id } = useParams();
 
 	useEffect(() => {
-    AxiosRepository.updateViewProduct(id)
+    AxiosRepository.updateViewProduct(id);
+		window.scrollTo(0, 0);
   }, [id]);
 	if(modalZoom === false){
 		return(

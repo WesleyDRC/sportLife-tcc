@@ -8,6 +8,7 @@ export const CartProvider = ({children}) => {
 	const [openCart, setOpenCart] = useState(false)
 
 	const manupilationCartOpen = () => {
+        window.scrollTo(0, 0);
         setOpenCart(true)
         document.documentElement.style.overflow = "hidden" ;
         document.body.scroll = "no";
