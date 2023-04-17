@@ -67,6 +67,13 @@
 	}
 }
 
+@media (max-width:1000px){
+	.otherPhotos img{
+		width: 60px;
+		height: 60px;
+	}
+}
+
 @media (max-width:500px){
 	.otherPhotos img{
 		width:50px;
