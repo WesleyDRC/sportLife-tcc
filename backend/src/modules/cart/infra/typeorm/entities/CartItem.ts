@@ -30,6 +30,12 @@ export class CartItems {
   })
   price: number;
 
+  @Column({
+    type: "enum",
+    enum: ["PP", "P", "M", "G", "GG"]
+  })
+  size: "PP"| "P"| "M"| "G"| "GG";
+
   @CreateDateColumn()
   created_at: Date;
 

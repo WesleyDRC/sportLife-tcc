@@ -29,10 +29,48 @@ export class CartRepository implements ICartRepository {
     this.ormRepositoryUser = AppDataSource.getRepository(User);
   }
 
-  public async getCart(userId: string): Promise<Cart> {
-    const cart = await this.ormRepositoryCart.findOne({ where: { user_id: userId}, relations: ["items"]})
+  public async getCart(userId: string): Promise<any> {
+    // const cart = await this.ormRepositoryCart.findOne({ where: { user_id: userId}, relations: ["items"]})
+    // const productCart = await this.ormRepositoryCartItems
+    // return cart
 
-    return cart
+    const cart = await this.ormRepositoryCart
+      .createQueryBuilder("cart")
+      .leftJoinAndSelect("cart.items", "items")
+      .where({ user_id : userId})
+      .getMany()
+
+
+    const cartItems = await this.ormRepositoryCartItems
+      .createQueryBuilder("cart_items")
+      .leftJoinAndSelect("cart_items.product", "product")
+      .where({cart_id : cart[0].id})
+      .getMany()
+
+    const data = [];
+
+    cartItems.forEach((item) => {
+      data.push({
+        id: item.product.id,
+        imageMain: item.product.imageMain,
+        name: item.product.name,
+        size: item.size,
+        quantity: item.quantity,
+        price: item.price
+      })
+      return data
+    })
+
+    const cartUser = [
+      {
+        id: cart[0].id,
+        totalItems: cart[0].totalItems,
+        totalAmount: cart[0].totalAmount,
+        items: data
+      }
+    ]
+
+    return cartUser
   }
 
   public async addProductToCart(userId: string, cartItemDTO: ICartItemDTO) {
@@ -76,6 +114,7 @@ export class CartRepository implements ICartRepository {
       cartItem = new CartItems();
       cartItem.price = product.price;
       cartItem.quantity = cartItemDTO.quantity;
+      cartItem.size = cartItemDTO.size;
       cartItem.cart = cart;
       cartItem.product = product;
       cartItem.cart_id = cart.id;

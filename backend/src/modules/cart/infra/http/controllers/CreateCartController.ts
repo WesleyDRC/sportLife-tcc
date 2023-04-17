@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 
-import { ICartDTO } from "../../../dtos/ICartDTO";
 import { ICartItemDTO } from "../../../dtos/ICartItemDTO";
 
 import { container } from "tsyringe";
@@ -12,11 +11,12 @@ export default class CreateCartController {
 
 		const userId = request.user.id;
 
-		const { products } = request.body
+		const { products, size } = request.body
 
 		const cartItem: ICartItemDTO = {
 			productId: products[0].productId,
-			quantity: products[0].quantity
+			quantity: products[0].quantity,
+			size: products[0].size,
 		}
 
 		const data = {
