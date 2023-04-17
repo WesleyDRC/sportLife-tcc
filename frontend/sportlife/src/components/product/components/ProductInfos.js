@@ -10,9 +10,11 @@ import priceBRL from '../../../utils/formatPrice'
 
 import { useParams } from "react-router-dom";
 
+import useCart from '../../../hooks/useCart'
+
 export default function ProductInfos(){
-	let [amount, setAmout] = useState(1)
 	const [product, setProduct] = useState([]);
+	let [amount, setAmout] = useState(1)
 	let { id } = useParams();
 
 	const subtract = useRef()
@@ -29,6 +31,8 @@ export default function ProductInfos(){
 			setAmout(amount -1)
 		}
 	}
+
+	const { addItem } = useCart()
 
 	useEffect(() => {
     AxiosRepository.findOneProduct(id).then((resp) => {
@@ -51,7 +55,7 @@ export default function ProductInfos(){
 					<button ref={add} className={styles.add} onClick={addOne}>+</button>
 				</div>
 			</div>
-			<button className={styles.addCar}> <FaShoppingCart /><span>Adicionar ao carrinho</span></button>
+			<button onClick={() => addItem(id , amount)} className={styles.addCar}> <FaShoppingCart /><span>Adicionar ao carrinho</span></button>
 		</div>
 	)
 }

@@ -96,6 +96,22 @@ class AxiosRepository {
   async findAssessmentProduct(id) {
     return this.#axiosClient.get(`products/${id}/assessments`);
   }
+
+  async addItemCart(productId, quantity){
+    const data = {
+      "products": [
+        {
+          "productId": productId,
+          "quantity": quantity
+        }
+      ]
+    };
+    return this.#axiosClient.post(`/cart`, data)
+  }
+
+  async getCartUser() {
+    return this.#axiosClient.get(`/cart`);
+  }
 }
 
 export default new AxiosRepository();

@@ -1,5 +1,7 @@
 import { createContext, useState } from "react";
 
+import AxiosRepository from '../repository/AxiosRepository'
+
 export const CartContext = createContext({})
 
 export const CartProvider = ({children}) => {
@@ -17,10 +19,27 @@ export const CartProvider = ({children}) => {
         document.body.scroll = "yes";
 	}
 
+    const addItem = async (productId, quantity) => {
+        try{
+            manupilationCartOpen()
+            await AxiosRepository.addItemCart(productId, quantity)
+        }catch(error){
+            console.log(error)
+        }
+    }
+
+    const getCartUser = async () => {
+        try {
+            return await AxiosRepository.getCartUser();
+        } catch (error) {
+        console.log(error);
+        }
+    }
+
     return (
         <CartContext.Provider
             value={{
-			    manupilationCartOpen, manupilationCartClose , openCart, setOpenCart
+			    manupilationCartOpen, manupilationCartClose , openCart, setOpenCart, addItem, getCartUser
             }}
         >
             {children}
