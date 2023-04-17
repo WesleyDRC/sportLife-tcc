@@ -30,22 +30,32 @@ export class CartRepository implements ICartRepository {
   }
 
   public async getCart(userId: string): Promise<any> {
-    // const cart = await this.ormRepositoryCart.findOne({ where: { user_id: userId}, relations: ["items"]})
-    // const productCart = await this.ormRepositoryCartItems
-    // return cart
 
-    const cart = await this.ormRepositoryCart
+    let user = await this.ormRepositoryUser.findOne({
+      where: { id: userId },
+    });
+
+    if (!user) {
+      throw new AppError(`User with ID ${userId} not found`, 404);
+    }
+
+    let cart = await this.ormRepositoryCart
       .createQueryBuilder("cart")
       .leftJoinAndSelect("cart.items", "items")
-      .where({ user_id : userId})
-      .getMany()
+      .where({ user_id: userId })
+      .getMany();
 
+    if (cart.length === 0) {
+      cart[0] = new Cart();
+      cart[0].user_id = userId;
+      await this.ormRepositoryCart.save(cart);
+    }
 
     const cartItems = await this.ormRepositoryCartItems
       .createQueryBuilder("cart_items")
       .leftJoinAndSelect("cart_items.product", "product")
-      .where({cart_id : cart[0].id})
-      .getMany()
+      .where({ cart_id: cart[0].id })
+      .getMany();
 
     const data = [];
 
@@ -56,21 +66,21 @@ export class CartRepository implements ICartRepository {
         name: item.product.name,
         size: item.size,
         quantity: item.quantity,
-        price: item.price
-      })
-      return data
-    })
+        price: item.price,
+      });
+      return data;
+    });
 
     const cartUser = [
       {
         id: cart[0].id,
         totalItems: cart[0].totalItems,
         totalAmount: cart[0].totalAmount,
-        items: data
-      }
-    ]
+        items: data,
+      },
+    ];
 
-    return cartUser
+    return cartUser;
   }
 
   public async addProductToCart(userId: string, cartItemDTO: ICartItemDTO) {
@@ -110,7 +120,7 @@ export class CartRepository implements ICartRepository {
       },
     });
 
-    if (!cartItem || cartItem && cartItem.size !== cartItemDTO.size ) {
+    if (!cartItem || (cartItem && cartItem.size !== cartItemDTO.size)) {
       cartItem = new CartItems();
       cartItem.price = product.price;
       cartItem.quantity = cartItemDTO.quantity;
@@ -146,9 +156,8 @@ export class CartRepository implements ICartRepository {
   }
 
   public async deleteProductCart(userId: string, productId: string) {
-
     let user = await this.ormRepositoryUser.findOne({
-      where: { id: userId }
+      where: { id: userId },
     });
 
     if (!user) {
@@ -157,7 +166,7 @@ export class CartRepository implements ICartRepository {
 
     let cart = await this.ormRepositoryCart.findOne({
       where: { user_id: userId },
-      relations: ["items"]
+      relations: ["items"],
     });
 
     if (!cart) {
@@ -172,11 +181,14 @@ export class CartRepository implements ICartRepository {
     });
 
     const productInCart = cart.items.find((item) => {
-      return item.product_id === productId
-    })
+      return item.product_id === productId;
+    });
 
-    if(!productInCart) {
-      throw new AppError(`Product with ID ${productId} not found in this cart`, 404);
+    if (!productInCart) {
+      throw new AppError(
+        `Product with ID ${productId} not found in this cart`,
+        404
+      );
     }
 
     let cartItem = await this.ormRepositoryCartItems.findOne({
@@ -185,11 +197,10 @@ export class CartRepository implements ICartRepository {
       },
     });
 
-    if(cartItem) {
-      await this.ormRepositoryCartItems.remove(cartItem)
+    if (cartItem) {
+      await this.ormRepositoryCartItems.remove(cartItem);
     }
 
-    return cartItem
+    return cartItem;
   }
-
 }
