@@ -199,7 +199,23 @@ export class CartRepository implements ICartRepository {
 
     if (cartItem) {
       await this.ormRepositoryCartItems.remove(cartItem);
+      console.log(`Registro com ID ${productId} foi removido com sucesso.`);
+    } else {
+      console.log(`Não foi possível encontrar um registro com ID ${productId}.`);
     }
+
+    cart = await this.ormRepositoryCart.findOne({
+      where: { user_id: userId },
+      relations: ["items"],
+    });
+
+    cart.totalItems = cart.items.reduce((acc, item) => acc + item.quantity, 0);
+    cart.totalAmount = cart.items.reduce(
+      (acc, item) => acc + item.price * item.quantity,
+      0
+    );
+
+    await this.ormRepositoryCart.save(cart);
 
     return cartItem;
   }
