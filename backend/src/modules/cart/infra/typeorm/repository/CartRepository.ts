@@ -110,7 +110,7 @@ export class CartRepository implements ICartRepository {
       },
     });
 
-    if (!cartItem) {
+    if (!cartItem || cartItem && cartItem.size !== cartItemDTO.size ) {
       cartItem = new CartItems();
       cartItem.price = product.price;
       cartItem.quantity = cartItemDTO.quantity;
