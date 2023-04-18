@@ -1,0 +1,30 @@
+.container{
+	width: 1030px;
+	background-color: white;
+	padding: 10px;
+}
+
+.title{
+	margin: 10px 0px 20px 0px;
+}
+
+.labelCep{
+	color: rgb(161, 161, 161);
+}
+
+.inputCep{
+	padding: 0px;
+	margin-right: 20px;
+	padding: 5px 10px;
+}
+
+.inputCep:focus{
+	outline: 0;
+}
+
+.btnCalc{
+	border: 1px solid #317B96;
+	color: #317B96;
+	font-weight: 700;
+	padding: 5px 10px;
+}

@@ -1,16 +1,17 @@
 .container{
 	margin-top: 8rem;
+	width: 100%;
 }
 
 .tableProducts{
-	width: 40vw;
+	width: 1030px;
 	padding: 5px 10px;
 	background-color: white;
 }
 
 .titles{
 	display: grid;
-	grid-template-columns: 55% 20% 25%;
+	grid-template-columns: 50% 20% 25%;
 	border-bottom: 1px solid rgb(212, 212, 212);
 	text-transform: uppercase;
 	font-weight: 700;
@@ -18,7 +19,7 @@
 
 .productAndInfos{
 	display: grid;
-	grid-template-columns: 55% 20% 25%;
+	grid-template-columns: 50% 20% 25%;
 	margin-top: 10px;
 	align-items: center;
 }
