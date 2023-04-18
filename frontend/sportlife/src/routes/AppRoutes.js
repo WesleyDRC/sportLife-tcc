@@ -15,6 +15,7 @@ import FormPage from '../pages/FormPage'
 import CategoryPage from '../pages/Categorypage'
 import FormAddress from '../pages/FormAddress'
 import CreateAddress from '../pages/CreateAddress'
+import ConFirmBuyPage from '../pages/ConFirmBuyPage'
 
 export default function Routes() {
 
@@ -100,6 +101,12 @@ export default function Routes() {
 			{
 				path: '/category',
 				element: <CategoryPage />,
+				errorElement: <ErrorPage />
+			},
+
+			{
+				path: '/confirmbuy',
+				element: <ConFirmBuyPage />,
 				errorElement: <ErrorPage />
 			},
 	])
