@@ -1,11 +1,49 @@
 .container{
+	height: auto;
 	margin-top: 8rem;
 	margin-left: 20px;
 	text-transform: uppercase;
 	background-color: white;
-	padding: 5px;
+	padding: 10px;
 }
 
-h2{
-	
+.container h2{
+	font-size: 1.6rem;
+	font-weight: 700;
+	border-bottom: 1px solid rgb(212, 212, 212);
+}
+
+.subTotal, .delivery, .total{
+	display: flex;
+	font-size: 1.3rem;
+	justify-content: space-between;
+	margin-bottom: 10px;
+	border-bottom: 1px solid rgb(212, 212, 212);
+	font-weight: 700;
+}
+
+.subTotal{
+	border: none;
+	margin-bottom: 0px;
+}
+
+.total .priceTotal{
+	color: #317B96;
+}
+
+.firstBtn, .secondBtn{
+	text-transform: uppercase;
+	color: white;
+	font-weight: 500;
+	width: 100%;
+}
+
+.firstBtn{
+	margin-top: 20px;
+	background-color: #317B96;
+}
+
+.secondBtn{
+	margin-top: 10px;
+	background-color: black;
 }
