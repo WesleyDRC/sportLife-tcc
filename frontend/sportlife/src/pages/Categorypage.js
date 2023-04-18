@@ -1,4 +1,4 @@
-import styles from './Category.module.css'
+import styles from './Categorypage.module.css'
 
 import Header from '../components/home/header/Header'
 import Category from '../components/category/Category'
