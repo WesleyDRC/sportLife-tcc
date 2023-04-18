@@ -34,3 +34,9 @@ Projeto construído durante o 2/3° módulo do curso de DS.
 ![preview](./.github/productPageReviews.png)
 ## Tela da PÁGINA DO USUÁRIO
 ![preview](./.github/userPage.png)
+## Carrinho do usuário
+![preview](./.github/carrinho.png)
+## Checkout com CEP
+![preview](./.github/checkoutCEP.png)
+## Checkout 
+![preview](./.github/checkout.png)
