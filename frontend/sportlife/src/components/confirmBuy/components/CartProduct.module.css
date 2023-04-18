@@ -1,11 +1,9 @@
 .container{
 	margin-top: 8rem;
-	position: absolute;
 }
 
 .tableProducts{
 	width: 40vw;
-	height: 100%;
 	padding: 5px 10px;
 	background-color: white;
 }
