@@ -13,7 +13,7 @@ export default function CartProduct(){
 					<div className={styles.product}>
 						<img src='https://imgnike-a.akamaihd.net/768x768/0219735A.jpg'/>
 						<div className={styles.productInfos}>
-							<p className={styles.titleProduct}>Camisa Nike das braba</p>
+							<p className={styles.titleProduct}>Jaqueta Nike Sportswear Essential Windrunner Feminina</p>
 							<p className={styles.titleSize}>Tamanho: M</p>
 						</div>
 					</div>

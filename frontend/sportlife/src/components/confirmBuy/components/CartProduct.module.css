@@ -10,7 +10,7 @@
 
 .titles{
 	display: grid;
-	grid-template-columns: 60% 15% 25%;
+	grid-template-columns: 55% 20% 25%;
 	border-bottom: 1px solid rgb(212, 212, 212);
 	text-transform: uppercase;
 	font-weight: 700;
@@ -18,7 +18,7 @@
 
 .productAndInfos{
 	display: grid;
-	grid-template-columns: 60% 15% 25%;
+	grid-template-columns: 55% 20% 25%;
 	margin-top: 10px;
 	align-items: center;
 }
@@ -38,8 +38,12 @@
 }
 
 .product .titleProduct{
-	font-size: 1.8rem;
+	font-size: 1.4rem;
 	font-weight: 700;
+}
+
+.titleSize{
+	font-size: 1.2rem;
 }
 
 .buttons button{
