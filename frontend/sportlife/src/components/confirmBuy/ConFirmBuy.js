@@ -10,8 +10,8 @@ export default function ConFirmBuy(){
 			<div className={styles.subContainer}>
 				<CartProduct />
 				<Summary />
+				<CalcDelivery />
 			</div>
-			<CalcDelivery />
 		</div>
 	)
 }

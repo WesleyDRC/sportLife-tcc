@@ -4,7 +4,7 @@
 }
 
 .tableProducts{
-	width: 1030px;
+	width: 95%;
 	padding: 5px 10px;
 	background-color: white;
 }
@@ -41,6 +41,7 @@
 .product .titleProduct{
 	font-size: 1.4rem;
 	font-weight: 700;
+	width: 90%;
 }
 
 .titleSize{

@@ -1,5 +1,4 @@
 .container{
-	width: 250px;
 	margin-top: 8rem;
 	text-transform: uppercase;
 	background-color: white;
@@ -45,4 +44,14 @@
 .secondBtn{
 	margin-top: 10px;
 	background-color: black;
+}
+
+@media (max-width:950px){
+	.container h2{
+		font-size: 1.2rem;
+	}
+
+	.subTotal, .delivery, .total{
+		font-size: 1rem;
+	}
 }
