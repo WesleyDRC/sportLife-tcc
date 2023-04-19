@@ -1,4 +1,4 @@
-import styles from './CartProduct.module.css'
+import styles from './CardProduct.module.css'
 
 export default function CartProduct(){
 	return(

@@ -1,5 +1,5 @@
 .container{
-	margin-top: 8rem;
+	margin-top: 20px;
 	text-transform: uppercase;
 	background-color: white;
 	padding: 10px;
@@ -58,9 +58,10 @@
 
 @media (max-width:735px){
 	.container{
-		position: absolute;
-		bottom: 180px;
-		left: 50%;
-		transform: translate(-50%);
+
 	}
+}
+
+@media (max-width:535px){
+
 }
