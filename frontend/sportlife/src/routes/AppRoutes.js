@@ -105,7 +105,7 @@ export default function Routes() {
 			},
 
 			{
-				path: '/confirmbuy',
+				path: '/checkout',
 				element: <ConFirmBuyPage />,
 				errorElement: <ErrorPage />
 			},

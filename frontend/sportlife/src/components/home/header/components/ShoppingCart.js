@@ -9,6 +9,8 @@ import priceBRL from '../../../../utils/formatPrice';
 
 import ProductCart from './ProductCart';
 
+import { Link } from 'react-router-dom';
+
 import { useEffect, useState } from 'react';
 
 export default function ShoppingCart(){
@@ -52,7 +54,6 @@ export default function ShoppingCart(){
 								size={item.size}
 								quantity={item.quantity}
               />
-
             ))
           )}
 					</div>
@@ -66,7 +67,9 @@ export default function ShoppingCart(){
 							<p>TOTAL</p>
 							<p className={styles.totalPrice}>{priceBRL(cart.length > 0 && cart[0].totalAmount)}</p>
 						</div>
-						<button className={styles.btn}>FINALIZAR COMPRA</button>
+						<Link to ='/checkout'>
+							<button className={styles.btn}>FINALIZAR COMPRA</button>
+						</Link>
 						<p className={styles.keepContinue} onClick={keepContinue}>CONTINUE COMPRANDO</p>
 					</div>
 				</aside>
