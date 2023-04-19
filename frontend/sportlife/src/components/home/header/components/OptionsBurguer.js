@@ -6,14 +6,22 @@ import {Link} from 'react-router-dom'
 
 import {CgClose} from "react-icons/cg";
 
+import useCart from '../../../../hooks/useCart';
+
 export default function OptionsBurguer(){
 
+	const { manupilationCartOpen } = useCart()
 	const { setOpenBurguer } = useBurguer()
 
 	function closeBurguer(){
 		setOpenBurguer(false);
 		document.documentElement.style.overflow = 'auto';
 		document.body.scroll = "yes";
+	}
+
+	function OpenMobileCart(){
+		closeBurguer()
+		manupilationCartOpen()
 	}
 
 	return(
@@ -30,7 +38,7 @@ export default function OptionsBurguer(){
 					<p onClick={closeBurguer}>Esportes</p>
 					<p onClick={closeBurguer}>Novidades</p>
 					<p onClick={closeBurguer}>Produtos Salvos</p>
-					<p onClick={closeBurguer}>Meu Carrinho</p>
+					<p onClick={OpenMobileCart}>Meu Carrinho</p>
 				</div>
 			</div>
 		</div>

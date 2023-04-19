@@ -60,7 +60,7 @@ export default function ShoppingCart(){
 
 					<div className={styles.finalizeOrder}>
 						<div className={styles.subTotal}>
-							<p>SUB-TOTAL ( {cart.length > 0 && cart[0].totalItems} produtos )</p>
+							<p>SUB-TOTAL ( {cart.length> 0 && cart[0].totalItems} produtos )</p>
 							<p>{priceBRL(cart.length > 0 && cart[0].totalAmount)}</p>
 						</div>
 						<div className={styles.total}>
