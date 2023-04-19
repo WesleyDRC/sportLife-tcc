@@ -43,7 +43,7 @@
 
 .secondBtn{
 	margin-top: 10px;
-	background-color: black;
+	background-color: #000;
 }
 
 @media (max-width:950px){
@@ -53,5 +53,14 @@
 
 	.subTotal, .delivery, .total{
 		font-size: 1rem;
+	}
+}
+
+@media (max-width:735px){
+	.container{
+		position: absolute;
+		bottom: 180px;
+		left: 50%;
+		transform: translate(-50%);
 	}
 }

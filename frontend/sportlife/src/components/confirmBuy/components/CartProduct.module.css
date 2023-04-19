@@ -17,6 +17,10 @@
 	font-weight: 700;
 }
 
+.titleProductInfos{
+	display: none;
+}
+
 .productAndInfos{
 	display: grid;
 	grid-template-columns: 50% 20% 25%;
@@ -38,7 +42,7 @@
 	height: 150px;
 }
 
-.product .titleProduct{
+.product .nameProduct{
 	font-size: 1.4rem;
 	font-weight: 700;
 	width: 90%;
@@ -62,4 +66,50 @@
 .delete{
 	color: white;
 	background-color: rgb(206, 0, 0);
+}
+
+@media (max-width:735px){
+	.tableProducts{
+		width: 100%;
+	}
+}
+
+@media (max-width:535px){
+	.titles{
+		display: flex;
+	}
+
+	.titleProduct, .titlePrice, .titleAction{
+		display: none;
+	}
+
+	.titleProductInfos{
+		display: block;
+	}
+
+	.product img{
+		width: 180px;
+		height: 100%;
+	}
+
+	.productAndInfos{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.product, .price{
+		margin-bottom: 10px;
+	}
+
+	.product{
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+	}
+
+
+	.product .nameProduct{
+		width: 100%;
+	}
 }

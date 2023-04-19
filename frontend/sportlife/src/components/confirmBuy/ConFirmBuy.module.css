@@ -8,3 +8,11 @@
 	display: grid;
 	grid-template-columns: 80% 20%;
 }
+
+@media (max-width:735px){
+	.subContainer{
+		display: flex;
+		flex-direction: column;
+		
+	}
+}
