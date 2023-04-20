@@ -6,8 +6,6 @@ import ProductCheckout from './ProductCheckout'
 
 import useCart from '../../../hooks/useCart';
 
-import priceBRL from '../../../utils/formatPrice'
-
 export default function CardProduct(){
 	const { getCartUser } = useCart();
 	const [cart, setCart] = useState([]);
@@ -36,7 +34,7 @@ export default function CardProduct(){
                 id = {item.id}
 								url={item.imageMain}
 								name={item.name}
-								price={priceBRL(item.price)}
+								price={item.price}
 								size={item.size}
 								quantity={item.quantity}
 								product={item}

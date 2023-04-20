@@ -41,7 +41,6 @@ export const CartProvider = ({children}) => {
     const deleteProduct = (e) => {
         const tr = e.target.parentNode.parentNode.parentNode;
         const dataProduct = JSON.parse(tr.getAttribute("data_product"));
-        console.log(dataProduct)
         if (window.confirm(`Deseja mesmo excluir o produto ${dataProduct.name}?`)) {
           AxiosRepository.deleteProductCart(dataProduct.id).then(async() => {
             await getCartUser();
@@ -52,7 +51,6 @@ export const CartProvider = ({children}) => {
     const deleteProductCheckout = (e) => {
         const tr = e.target.parentNode.parentNode;
         const dataProduct = JSON.parse(tr.getAttribute("data_product"));
-        console.log(dataProduct)
         if (window.confirm(`Deseja mesmo excluir o produto ${dataProduct.name}?`)) {
           AxiosRepository.deleteProductCart(dataProduct.id).then(async() => {
             await getCartUser();

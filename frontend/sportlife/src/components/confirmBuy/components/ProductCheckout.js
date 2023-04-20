@@ -2,6 +2,8 @@ import styles from './ProductCheckout.module.css'
 
 import useCart from '../../../hooks/useCart'
 
+import priceBRL from '../../../utils/formatPrice';
+
 export default function ProductCheckout({url, name, size, price, quantity, product}){
 	const { deleteProductCheckout } = useCart();
 	return(
@@ -15,7 +17,7 @@ export default function ProductCheckout({url, name, size, price, quantity, produ
 						</div>
 					</div>
 					<div className={styles.price}>
-						<p>{price}</p>
+						<p>{priceBRL(price * quantity)}</p>
 					</div>
 					<div className={styles.buttons}>
 							<button className={styles.alter}>Alterar</button>
