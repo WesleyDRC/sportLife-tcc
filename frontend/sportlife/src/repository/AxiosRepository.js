@@ -108,7 +108,6 @@ class AxiosRepository {
       ]
     };
     const response = await this.#axiosClient.post(`/cart`, data)
-    console.log(response)
     return response
   }
 

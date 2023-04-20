@@ -24,7 +24,6 @@ export const CartProvider = ({children}) => {
         try{
             manupilationCartOpen()
             const response = await AxiosRepository.addItemCart(productId, quantity, size)
-            console.log(response)
             return response
         }catch(error){
             console.log(error)
