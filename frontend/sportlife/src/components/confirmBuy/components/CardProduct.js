@@ -39,6 +39,7 @@ export default function CardProduct(){
 								price={priceBRL(item.price)}
 								size={item.size}
 								quantity={item.quantity}
+								product={item}
               />
             ))
           )}

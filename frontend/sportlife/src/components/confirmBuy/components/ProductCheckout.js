@@ -1,9 +1,12 @@
 import styles from './ProductCheckout.module.css'
 
-export default function ProductCheckout({url, name, size, price, quantity}){
+import useCart from '../../../hooks/useCart'
+
+export default function ProductCheckout({url, name, size, price, quantity, product}){
+	const { deleteProductCheckout } = useCart();
 	return(
 		<div className={styles.container}>
-				<div className={styles.productAndInfos}>
+				<div className={styles.productAndInfos} data_product={JSON.stringify(product)}>
 					<div className={styles.product}>
 						<img src={url}/>
 						<div className={styles.productInfos}>
@@ -16,7 +19,7 @@ export default function ProductCheckout({url, name, size, price, quantity}){
 					</div>
 					<div className={styles.buttons}>
 							<button className={styles.alter}>Alterar</button>
-							<button className={styles.delete}>Excluir</button>
+							<button onClick={deleteProductCheckout} className={styles.delete}>Excluir</button>
 					</div>
 				</div>
 		</div>
