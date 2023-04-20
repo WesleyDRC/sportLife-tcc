@@ -1,0 +1,46 @@
+.productAndInfos{
+	display: grid;
+	grid-template-columns: 50% 20% 25%;
+	margin-top: 10px;
+	align-items: center;
+}
+
+.product{
+	display: flex;
+	align-items: center;
+}
+
+.productInfos{
+	margin-left: 10px;
+}
+
+.product img{
+	width: 120px;
+	height: 150px;
+}
+
+.product .nameProduct{
+	font-size: 1.4rem;
+	font-weight: 700;
+	width: 90%;
+}
+
+.titleSize{
+	font-size: 1.2rem;
+}
+
+.buttons button{
+	padding: 5px 10px;
+}
+
+.alter{
+	color: white;
+	background-color: #317B96;
+	margin-bottom: 10px;
+	margin-right: 10px;
+}
+
+.delete{
+	color: white;
+	background-color: rgb(206, 0, 0);
+}

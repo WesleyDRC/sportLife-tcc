@@ -1,6 +1,24 @@
 import styles from './CardProduct.module.css'
 
-export default function CartProduct(){
+import { useEffect, useState } from 'react';
+
+import ProductCheckout from './ProductCheckout'
+
+import useCart from '../../../hooks/useCart';
+
+import priceBRL from '../../../utils/formatPrice'
+
+export default function CardProduct(){
+	const { getCartUser } = useCart();
+	const [cart, setCart] = useState([]);
+
+		useEffect(() => {
+		async function fetchData() {
+      const result = await getCartUser();
+			setCart(result.data.cart)
+    }
+    fetchData();
+	},[cart])
 	return(
 		<div className={styles.container}>
 			<div className={styles.tableProducts}>
@@ -10,22 +28,21 @@ export default function CartProduct(){
 					<p className={styles.titleAction}>ações</p>
 					<p className={styles.titleProductInfos}>produtos e informações</p>
 				</div>
-				<div className={styles.productAndInfos}>
-					<div className={styles.product}>
-						<img src='https://imgnike-a.akamaihd.net/768x768/0219735A.jpg'/>
-						<div className={styles.productInfos}>
-							<p className={styles.nameProduct}>Jaqueta Nike Sportswear Essential Windrunner Feminina</p>
-							<p className={styles.titleSize}>Tamanho: M</p>
-						</div>
+					<div className={styles.listProducts}>
+					{cart.length > 0 && cart[0].items.length > 0 && (
+            cart[0].items.map((item) => (
+              <ProductCheckout
+                key={item.id}
+                id = {item.id}
+								url={item.imageMain}
+								name={item.name}
+								price={priceBRL(item.price)}
+								size={item.size}
+								quantity={item.quantity}
+              />
+            ))
+          )}
 					</div>
-					<div className={styles.price}>
-						<p>R$279,99</p>
-					</div>
-					<div className={styles.buttons}>
-							<button className={styles.alter}>Alterar</button>
-							<button className={styles.delete}>Excluir</button>
-					</div>
-				</div>
 			</div>
 		</div>
 	)

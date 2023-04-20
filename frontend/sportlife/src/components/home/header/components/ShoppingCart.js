@@ -44,7 +44,7 @@ export default function ShoppingCart(){
 
 					<div className={styles.itemsCart}>
 					{cart.length > 0 && cart[0].items.length > 0 && (
-            cart[0].items.map((item) => (
+            cart[0].items.map((item, i) => (
               <ProductCart
                 key={item.id}
                 id = {item.id}
@@ -58,7 +58,6 @@ export default function ShoppingCart(){
             ))
           )}
 					</div>
-
 					<div className={styles.finalizeOrder}>
 						<div className={styles.subTotal}>
 							<p>SUB-TOTAL ( {cart.length> 0 && cart[0].totalItems} produtos )</p>

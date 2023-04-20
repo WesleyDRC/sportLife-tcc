@@ -7,7 +7,6 @@ import priceBRL from '../../../../utils/formatPrice'
 import useCart from '../../../../hooks/useCart';
 
 export default function ProductCart({urlImg, name, quantity, price, size, product}) {
-
   const { deleteProduct } = useCart();
   return (
     <div className={styles.item} data_product={JSON.stringify(product)}>

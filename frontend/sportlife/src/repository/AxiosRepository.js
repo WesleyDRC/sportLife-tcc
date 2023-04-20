@@ -107,7 +107,9 @@ class AxiosRepository {
         }
       ]
     };
-    return this.#axiosClient.post(`/cart`, data)
+    const response = await this.#axiosClient.post(`/cart`, data)
+    console.log(response)
+    return response
   }
 
   async getCartUser() {

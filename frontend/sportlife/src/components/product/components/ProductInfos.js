@@ -44,7 +44,7 @@ export default function ProductInfos(){
 	return(
 		<div className={styles.container}>
 			<p className={styles.name}>{product.name}</p>
-			<p className={styles.price}>{priceBRL(product ? product.price : '0')}</p>
+			<p className={styles.price}>{priceBRL(product ? product.price : 'R$0,00')}</p>
 			<p className={styles.color}>Cores</p>
 			<div className={styles.teste} style={{backgroundColor:product.colors}} ></div>
 			<p className={styles.size}>Tamanhos</p>
