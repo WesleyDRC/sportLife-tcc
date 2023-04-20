@@ -44,7 +44,7 @@ export default function ShoppingCart(){
 
 					<div className={styles.itemsCart}>
 					{cart.length > 0 && cart[0].items.length > 0 && (
-            cart[0].items.map((item,i) => (
+            cart[0].items.map((item) => (
               <ProductCart
                 key={item.id}
                 id = {item.id}
@@ -53,6 +53,7 @@ export default function ShoppingCart(){
 								price={priceBRL(item.price)}
 								size={item.size}
 								quantity={item.quantity}
+								product={item}
               />
             ))
           )}

@@ -37,10 +37,21 @@ export const CartProvider = ({children}) => {
         }
     }
 
+    const deleteProduct = (e) => {
+        const tr = e.target.parentNode.parentNode.parentNode;
+        const dataProduct = JSON.parse(tr.getAttribute("data_product"));
+        console.log(dataProduct)
+        if (window.confirm(`Deseja mesmo excluir o produto ${dataProduct.name}?`)) {
+          AxiosRepository.deleteProductCart(dataProduct.id).then(async() => {
+            await getCartUser();
+          });
+        }
+    };
+
     return (
         <CartContext.Provider
             value={{
-			    manupilationCartOpen, manupilationCartClose , openCart, setOpenCart, addItem, getCartUser
+			    manupilationCartOpen, manupilationCartClose , openCart, setOpenCart, addItem, getCartUser, deleteProduct
             }}
         >
             {children}

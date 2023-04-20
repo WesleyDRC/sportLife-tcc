@@ -4,9 +4,13 @@ import {BsTrash3} from "react-icons/bs";
 
 import priceBRL from '../../../../utils/formatPrice'
 
-export default function ProductCart({urlImg, name, quantity, price, size}) {
+import useCart from '../../../../hooks/useCart';
+
+export default function ProductCart({urlImg, name, quantity, price, size, product}) {
+
+  const { deleteProduct } = useCart();
   return (
-    <div className={styles.item}>
+    <div className={styles.item} data_product={JSON.stringify(product)}>
       <div className={styles.imageItem}>
         <img
           src={urlImg}
@@ -17,7 +21,9 @@ export default function ProductCart({urlImg, name, quantity, price, size}) {
         <p className={styles.nameItem}>
          <span className={styles.quantity}>{quantity}x </span> {name}
         </p>
-        <BsTrash3 className={styles.trashIcon} />
+        <div>
+          <BsTrash3 onClick={deleteProduct} className={styles.trashIcon} />
+        </div>
         <p className={styles.sizeItem}>Tamanho: {size}</p>
         <p className={styles.priceItem}>{priceBRL(price)}</p>
       </div>

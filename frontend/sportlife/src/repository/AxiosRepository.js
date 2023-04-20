@@ -113,6 +113,10 @@ class AxiosRepository {
   async getCartUser() {
     return this.#axiosClient.get(`/cart`);
   }
+
+  async deleteProductCart(id) {
+    return this.#axiosClient.delete(`/cart/${id}`);
+  }
 }
 
 export default new AxiosRepository();
