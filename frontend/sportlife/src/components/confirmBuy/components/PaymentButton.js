@@ -21,8 +21,7 @@ function PaymentButton () {
 
 
   const paypalOptions = {
-    'client-id':
-      'ATl183MGhPezfeBR8JQF38yzfT1-TyjZoWxbNIlUmOcdUnJ4uZX_NTARquf6PUfp3F-NuIGeDcNMGO4l',
+    'client-id': process.env.REACT_APP_CLIENT_ID,
     currency: 'BRL',
     intent: 'capture',
     activeFunding: ''
