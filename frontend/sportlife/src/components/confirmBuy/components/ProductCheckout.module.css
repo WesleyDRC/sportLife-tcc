@@ -47,7 +47,7 @@
 
 @media (max-width:810px){
 	.productAndInfos{
-		grid-template-columns: 60% 25% 75px;
+		grid-template-columns: 60% 20% 75px;
 	}
 }
 
@@ -73,5 +73,29 @@
 
 	.product .nameProduct{
 		width: 100%;
+	}
+}
+
+
+@media (max-width:490px){
+	.productAndInfos{
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	.product{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.productInfos p{
+		text-align: center;
+	}
+
+	.buttons{
+		border-bottom:  1px solid rgb(182, 181, 181);
+		padding: 0px 95px;
 	}
 }
