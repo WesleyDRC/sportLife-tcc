@@ -3,8 +3,7 @@ import { useRouteError } from 'react-router-dom'
 
 export default function ErrorPage() {
     const error = useRouteError();
-    console.log(error)
-
+    
     return (
         <div className={styles.errorPage}>
             <h1> Oops! </h1>

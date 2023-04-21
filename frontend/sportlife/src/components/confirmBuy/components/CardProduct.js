@@ -16,7 +16,8 @@ export default function CardProduct(){
 			setCart(result.data.cart)
     }
     fetchData();
-	},[cart])
+	},[])
+
 	return(
 		<div className={styles.container}>
 			<div className={styles.tableProducts}>

@@ -26,7 +26,6 @@ export default function FormRegister() {
 		}
 
     const response = await SignUp(email, password, confirmPass);
-		console.log(response)
 
     if (response) {
       setError(response);

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import styles from "./FormLogin.module.css";
@@ -20,7 +20,6 @@ export default function FormLogin() {
     }
 
     const response = await SignIn(email, password);
-    console.log(response);
 
     if (response) {
       setError(response);

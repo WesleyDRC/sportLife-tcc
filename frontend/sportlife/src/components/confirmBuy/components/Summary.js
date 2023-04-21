@@ -1,6 +1,6 @@
 import styles from './Summary.module.css';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 import useCart from '../../../hooks/useCart';
 
@@ -11,15 +11,16 @@ import PaymentButton from './PaymentButton';
 
 export default function Summary(){
 
-	const { getCartUser, setCart, cart } = useCart();
+	const { getCartUser, setCart, cart, total, setTotal } = useCart();
 
 	useEffect(() => {
 		async function fetchData() {
       const result = await getCartUser();
 			setCart(result.data.cart)
+			setTotal(result.data.cart[0].totalAmount)
     }
     fetchData();
-	},[cart])
+	},[])
 
 	return(
 		<div className={styles.container}>
@@ -36,7 +37,9 @@ export default function Summary(){
 				<p>total</p>
 				<p className={styles.priceTotal}>{priceBRL(cart.length > 0 && cart[0].totalAmount)}</p>
 			</div>
-			<PaymentButton />
+
+			{total !== '1.00' ? <PaymentButton /> : ""}
+
 
 		</div>
 	)
