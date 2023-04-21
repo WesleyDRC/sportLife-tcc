@@ -6,10 +6,12 @@ import useCart from '../../../hooks/useCart';
 
 import priceBRL from '../../../utils/formatPrice';
 
+import PaymentButton from './PaymentButton';
+
+
 export default function Summary(){
 
-	const { getCartUser } = useCart();
-	const [cart, setCart] = useState([]);
+	const { getCartUser, setCart, cart } = useCart();
 
 	useEffect(() => {
 		async function fetchData() {
@@ -34,8 +36,8 @@ export default function Summary(){
 				<p>total</p>
 				<p className={styles.priceTotal}>{priceBRL(cart.length > 0 && cart[0].totalAmount)}</p>
 			</div>
-			<button className={styles.firstBtn}>paypal</button>
-			<button className={styles.secondBtn}>paypal</button>
+			<PaymentButton />
+
 		</div>
 	)
 }

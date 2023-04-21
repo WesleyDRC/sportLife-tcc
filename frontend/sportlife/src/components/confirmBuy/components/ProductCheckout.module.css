@@ -44,3 +44,34 @@
 	color: white;
 	background-color: rgb(206, 0, 0);
 }
+
+@media (max-width:810px){
+	.productAndInfos{
+		grid-template-columns: 60% 25% 75px;
+	}
+}
+
+@media (max-width:735px){
+	.productAndInfos{
+		width: 100%;
+	}
+}
+
+
+@media (max-width:535px){
+	.titleProduct, .titlePrice, .titleAction{
+		display: none;
+	}
+
+	.titleProductInfos{
+		display: block;
+	}
+
+	.product, .price{
+		margin-bottom: 10px;
+	}
+
+	.product .nameProduct{
+		width: 100%;
+	}
+}

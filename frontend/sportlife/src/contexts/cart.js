@@ -6,6 +6,7 @@ export const CartContext = createContext({})
 
 export const CartProvider = ({children}) => {
 	const [openCart, setOpenCart] = useState(false)
+	const [cart, setCart] = useState([]);
 
 	const manupilationCartOpen = () => {
         window.scrollTo(0, 0);
@@ -61,7 +62,7 @@ export const CartProvider = ({children}) => {
     return (
         <CartContext.Provider
             value={{
-			    manupilationCartOpen, manupilationCartClose , openCart, setOpenCart, addItem, getCartUser, deleteProduct, deleteProductCheckout
+			    manupilationCartOpen, manupilationCartClose , openCart, setOpenCart, addItem, getCartUser, deleteProduct, deleteProductCheckout, cart, setCart
             }}
         >
             {children}
