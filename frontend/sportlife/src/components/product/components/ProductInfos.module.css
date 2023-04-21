@@ -41,18 +41,18 @@ p{
 .counter button{
 	background-color: #317B96;
 	color: white;
-	padding: 0px 5px;
+	padding: 0px 2px;
 }
 
 .counter .sub{
 	border: none;
 	border-right: 1px solid black;
 	text-align: center;
-	width: 35px;
+	width: 30px;
 }
 
 .amount{
-	margin: 0px 15px;
+	margin: 0px 0px;
 	text-align: center;
 	width: 50px;
 }
@@ -61,7 +61,7 @@ p{
 	border: none;
 	border-left: 1px solid black;
 	text-align: center;
-	width: 35px;
+	width: 30px;
 }
 
 .addCar{
