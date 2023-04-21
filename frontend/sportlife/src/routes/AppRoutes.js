@@ -16,6 +16,7 @@ import CategoryPage from '../pages/Categorypage'
 import FormAddress from '../pages/FormAddress'
 import CreateAddress from '../pages/CreateAddress'
 import ConFirmBuyPage from '../pages/ConFirmBuyPage'
+import OrderSuccessPage from '../pages/OrderSuccessPage'
 
 export default function Routes() {
 
@@ -107,6 +108,12 @@ export default function Routes() {
 			{
 				path: '/checkout',
 				element: <ConFirmBuyPage />,
+				errorElement: <ErrorPage />
+			},
+
+			{
+				path: '/successOrder',
+				element: <OrderSuccessPage />,
 				errorElement: <ErrorPage />
 			},
 	])
