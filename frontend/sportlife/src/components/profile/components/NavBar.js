@@ -6,7 +6,7 @@ import useUser from '../../../hooks/useUser'
 
 export default function NavBar(props){
 
-	const { user } = useUser()
+	const { user } = useUser();
 
 	let manipulation = [props.personalData, props.address,props.request ]
 

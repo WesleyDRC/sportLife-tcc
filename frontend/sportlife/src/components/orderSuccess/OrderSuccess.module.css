@@ -15,3 +15,37 @@
 	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.349);
 	border-radius: 10px;
 }
+
+.infos{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.infos h1{
+	text-transform: uppercase;
+	margin-top: 70px;
+	font-size: 3rem;
+	font: 500;
+}
+
+.infos img{
+	width: 360px;
+	height: 228px;
+	margin: 50px 0px;
+}
+
+.infos p{
+	font-size: 1.8rem;
+	font-weight: 500;
+}
+
+.infos button{
+	background-color: #317B96;
+	color: white;
+	margin-top: 50px;
+	text-transform: uppercase;
+	font-size: 2rem;
+	width: 495px;
+	height: 55px;
+}
