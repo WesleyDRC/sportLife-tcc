@@ -66,10 +66,11 @@ export class ProductRepository implements IProductRepository {
   }
 
   async getAssessments(id: string): Promise<any> {
-    const assessmentsQuery = this.ormRepositoryAssessment
+    const assessmentsQuery = await this.ormRepositoryAssessment
       .createQueryBuilder("assessments")
       .leftJoinAndSelect("assessments.user", "user")
       .where("assessments.product_id = :id", { id })
+      .select(["assessments", "user.firstName", "user.lastName"])
       .getMany();
 
     return assessmentsQuery;
