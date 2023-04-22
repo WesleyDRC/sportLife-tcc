@@ -27,7 +27,7 @@ export class CartRepository implements ICartRepository {
 
   constructor(
     @inject("ProductRepository")
-    private productRepository: IProductRepository,
+    private productRepository: IProductRepository
   ) {
     this.ormRepositoryCart = AppDataSource.getRepository(Cart);
 
@@ -39,7 +39,6 @@ export class CartRepository implements ICartRepository {
   }
 
   public async getCart(userId: string): Promise<any> {
-
     let user = await this.ormRepositoryUser.findOne({
       where: { id: userId },
     });
@@ -129,7 +128,7 @@ export class CartRepository implements ICartRepository {
       },
     });
 
-    const productData = await this.productRepository.findById(product.id)
+    const productData = await this.productRepository.findById(product.id);
 
     if (productData.inventory.quantity < cartItemDTO.quantity) {
       throw new AppError(cartConstants.ERROR_PRODUCT_QUANTITY, 404);
@@ -145,11 +144,16 @@ export class CartRepository implements ICartRepository {
       cartItem.cart_id = cart.id;
       await this.ormRepositoryCartItems.save(cartItem);
     } else {
-      if((cartItem.quantity += cartItemDTO.quantity) > productData.inventory.quantity) {
+      let quantityProductInCart = cartItem.quantity;
+      if (
+        (quantityProductInCart += cartItemDTO.quantity) >
+        productData.inventory.quantity
+      ) {
         throw new AppError(cartConstants.ERROR_PRODUCT_QUANTITY, 404);
+      } else {
+        cartItem.quantity += cartItemDTO.quantity;
+        await this.ormRepositoryCartItems.save(cartItem);
       }
-      cartItem.quantity += cartItemDTO.quantity
-      await this.ormRepositoryCartItems.save(cartItem);
     }
 
     cart = await this.ormRepositoryCart.findOne({
@@ -219,7 +223,9 @@ export class CartRepository implements ICartRepository {
       await this.ormRepositoryCartItems.remove(cartItem);
       console.log(`Registro com ID ${productId} foi removido com sucesso.`);
     } else {
-      console.log(`Não foi possível encontrar um registro com ID ${productId}.`);
+      console.log(
+        `Não foi possível encontrar um registro com ID ${productId}.`
+      );
     }
 
     cart = await this.ormRepositoryCart.findOne({
@@ -237,5 +243,4 @@ export class CartRepository implements ICartRepository {
 
     return cartItem;
   }
-
 }
