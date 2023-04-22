@@ -2,15 +2,19 @@ import styles from './ProductCheckout.module.css'
 
 import useCart from '../../../hooks/useCart'
 
+import {Link} from 'react-router-dom'
+
 import priceBRL from '../../../utils/formatPrice';
 
-export default function ProductCheckout({url, name, size, price, quantity, product}){
+export default function ProductCheckout({url, name, size, price, quantity, product, id}){
 	const { deleteProductCheckout } = useCart();
 	return(
 		<div className={styles.container}>
 				<div className={styles.productAndInfos} data_product={JSON.stringify(product)}>
 					<div className={styles.product}>
-						<img src={url}/>
+						<Link to={`/product/${id}`}>
+							<img src={url}/>
+						</Link>
 						<div className={styles.productInfos}>
 							<p className={styles.nameProduct}>{quantity}x {name}</p>
 							<p className={styles.titleSize}>Tamanho: {size}</p>
