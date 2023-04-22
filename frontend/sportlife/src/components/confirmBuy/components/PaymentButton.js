@@ -73,7 +73,7 @@ function PaymentButton () {
     return actions.order.capture().then(function (details) {
       console.log(details)
     }).then(() => {
-      navigate("/");
+      navigate("/successOrder");
 
     })
   }
