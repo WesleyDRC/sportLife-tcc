@@ -5,6 +5,7 @@ Projeto construído durante o 2/3° módulo do curso de DS.
 > DESIGN
 
 * Figma
+* Canva
 
 > BACKEND
 
