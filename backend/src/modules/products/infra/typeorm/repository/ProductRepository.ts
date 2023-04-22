@@ -66,10 +66,11 @@ export class ProductRepository implements IProductRepository {
   }
 
   async getAssessments(id: string): Promise<any> {
-    const assessmentsQuery = this.ormRepositoryAssessment
+    const assessmentsQuery = await this.ormRepositoryAssessment
       .createQueryBuilder("assessments")
       .leftJoinAndSelect("assessments.user", "user")
       .where("assessments.product_id = :id", { id })
+      .select(["assessments", "user.firstName", "user.lastName"])
       .getMany();
 
     return assessmentsQuery;
@@ -135,7 +136,6 @@ export class ProductRepository implements IProductRepository {
       .leftJoinAndSelect("products.categories", "categories")
       .leftJoinAndSelect("products.discount", "discount")
       .leftJoinAndSelect("products.inventory", "inventory")
-      .leftJoinAndSelect("products.sizes", "sizes")
       .where("products.id IN (:id)", { id: idList })
       .getMany();
 
@@ -161,7 +161,7 @@ export class ProductRepository implements IProductRepository {
       }
 
       if (productData.inventory.quantity < productFind.quantity) {
-        throw new AppError("Insufficient product quantity");
+        throw new AppError("The requested product is not available at the moment.", 409);
       }
 
       const newProduct = productData;
@@ -188,8 +188,3 @@ export class ProductRepository implements IProductRepository {
     return inventory;
   }
 }
-
-
-// newProduct.inventory.quantity -= productFind.quantity;
-
-// return newProduct;

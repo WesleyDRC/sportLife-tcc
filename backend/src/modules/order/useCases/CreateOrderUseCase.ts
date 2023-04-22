@@ -3,9 +3,9 @@ import { injectable, inject } from "tsyringe";
 import { IOrderRepository } from "../repositories/IOrderRepository";
 import { IProductRepository } from "../../products/repositories/IProductRepository";
 import { IUsersRepository } from "../../users/repositories/IUsersRepository";
+import { ICartRepository } from "../../cart/repositories/ICartRepository";
 
 import IUseCase from "./ports/IUseCase";
-import Order from "../entities/Order";
 import { OrderDetails } from "../infra/typeorm/entities/OrderDetails";
 import AppError from "../../../shared/errors/AppError";
 
@@ -30,7 +30,10 @@ export default class CreateOrderUseCase implements IUseCase {
     private productRepository: IProductRepository,
 
     @inject("UsersRepository")
-    private usersRepository: IUsersRepository
+    private usersRepository: IUsersRepository,
+
+    @inject("CartRepository")
+    private cartRepository: ICartRepository
   ) {}
 
   async execute({ userId, products }: IRequest): Promise<OrderDetails> {
@@ -58,15 +61,19 @@ export default class CreateOrderUseCase implements IUseCase {
       };
     });
 
+    await this.productRepository.updateQuantity(products);
+
+    productsFinal.forEach(async(product) => {
+      await this.cartRepository.deleteProductCart(userId, product.product_id)
+    })
+
     const order = await this.orderRepository.createOrder({
       user,
       products: productsFinal,
     });
 
-    await this.productRepository.updateQuantity(products);
-
     order.user = undefined;
-    
+
     return order;
   }
 }

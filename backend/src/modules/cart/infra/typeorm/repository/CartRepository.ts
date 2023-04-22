@@ -10,6 +10,12 @@ import { User } from "../../../../auth/infra/typeorm/entities/User";
 import { ICartItemDTO } from "../../../dtos/ICartItemDTO";
 import AppError from "../../../../../shared/errors/AppError";
 
+import { injectable, inject } from "tsyringe";
+import { IProductRepository } from "../../../../products/repositories/IProductRepository";
+
+import cartConstants from "../../../contants/cartConstants";
+
+@injectable()
 export class CartRepository implements ICartRepository {
   private ormRepositoryCart: Repository<Cart>;
 
@@ -19,7 +25,10 @@ export class CartRepository implements ICartRepository {
 
   private ormRepositoryUser: Repository<User>;
 
-  constructor() {
+  constructor(
+    @inject("ProductRepository")
+    private productRepository: IProductRepository,
+  ) {
     this.ormRepositoryCart = AppDataSource.getRepository(Cart);
 
     this.ormRepositoryCartItems = AppDataSource.getRepository(CartItems);
@@ -120,6 +129,12 @@ export class CartRepository implements ICartRepository {
       },
     });
 
+    const productData = await this.productRepository.findById(product.id)
+
+    if (productData.inventory.quantity < cartItemDTO.quantity) {
+      throw new AppError(cartConstants.ERROR_PRODUCT_QUANTITY, 404);
+    }
+
     if (!cartItem || (cartItem && cartItem.size !== cartItemDTO.size)) {
       cartItem = new CartItems();
       cartItem.price = product.price;
@@ -130,7 +145,10 @@ export class CartRepository implements ICartRepository {
       cartItem.cart_id = cart.id;
       await this.ormRepositoryCartItems.save(cartItem);
     } else {
-      cartItem.quantity += cartItemDTO.quantity;
+      if((cartItem.quantity += cartItemDTO.quantity) > productData.inventory.quantity) {
+        throw new AppError(cartConstants.ERROR_PRODUCT_QUANTITY, 404);
+      }
+      cartItem.quantity += cartItemDTO.quantity
       await this.ormRepositoryCartItems.save(cartItem);
     }
 
@@ -219,4 +237,5 @@ export class CartRepository implements ICartRepository {
 
     return cartItem;
   }
+
 }
