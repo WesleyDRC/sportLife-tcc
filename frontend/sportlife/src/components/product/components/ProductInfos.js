@@ -15,11 +15,12 @@ import useCart from '../../../hooks/useCart'
 export default function ProductInfos(){
 	const [product, setProduct] = useState([]);
 	let [amount, setAmout] = useState(1)
-	let [size, setSize] = useState("M")
+	let [size, setSize] = useState()
 	let { id } = useParams();
 
 	const subtract = useRef()
 	const add = useRef()
+	const {pp, p, m, g, gg } = useRef()
 
 	const addOne = () => {
 		setAmout(amount + 1)
@@ -31,6 +32,26 @@ export default function ProductInfos(){
 		}else{
 			setAmout(amount -1)
 		}
+	}
+
+	function selectPP(){
+		setSize('PP')
+	}
+
+	function selectP(){
+		setSize('P')
+	}
+
+	function selectM(){
+		setSize('M')
+	}
+
+	function selectG(){
+		setSize('G')
+	}
+
+	function selectGG(){
+		setSize('GG')
 	}
 
 	const { addItem } = useCart()
@@ -46,9 +67,15 @@ export default function ProductInfos(){
 			<p className={styles.name}>{product.name}</p>
 			<p className={styles.price}>{priceBRL(product ? product.price : 'R$0,00')}</p>
 			<p className={styles.color}>Cores</p>
-			<div className={styles.teste} style={{backgroundColor:product.colors}} ></div>
+			<div className={styles.ballCor} style={{backgroundColor:product.colors}} ></div>
 			<p className={styles.size}>Tamanhos</p>
-			<p className={styles.availableSizes}>{}</p>
+			<div className={styles.sizesOptions}>
+				<button onClick={selectPP} ref={pp}>PP</button>
+				<button onClick={selectP} ref={p}>P</button>
+				<button onClick={selectM} ref={m}>M</button>
+				<button onClick={selectG} ref={g}>G</button>
+				<button onClick={selectGG} ref={gg}>GG</button>
+			</div>
 			<div className={styles.counterAndBuy} >
 				<div className={styles.counter}>
 					<button ref={subtract} className={styles.sub} onClick={subOne}>-</button>
