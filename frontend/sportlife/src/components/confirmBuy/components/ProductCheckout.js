@@ -6,8 +6,16 @@ import {Link} from 'react-router-dom'
 
 import priceBRL from '../../../utils/formatPrice';
 
+import useEditProduct from '../../../hooks/useEditProduct'
+
+import ModalEdit from './ModalEdit';
+
 export default function ProductCheckout({url, name, size, price, quantity, product, id}){
+
+	const { manupilationEditProductOpen, openModal } = useEditProduct()
+
 	const { deleteProductCheckout } = useCart();
+
 	return(
 		<div className={styles.container}>
 				<div className={styles.productAndInfos} data_product={JSON.stringify(product)}>
@@ -24,10 +32,11 @@ export default function ProductCheckout({url, name, size, price, quantity, produ
 						<p>{priceBRL(price * quantity)}</p>
 					</div>
 					<div className={styles.buttons}>
-							<button className={styles.alter}>Alterar</button>
+							<button onClick={manupilationEditProductOpen} className={styles.alter}>Alterar</button>
 							<button onClick={deleteProductCheckout} className={styles.delete}>Excluir</button>
 					</div>
 				</div>
+				{openModal && <ModalEdit name={name} url={url}/>}
 		</div>
 	)
 }

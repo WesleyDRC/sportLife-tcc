@@ -4,6 +4,7 @@ import { UserProvider } from "./contexts/user";
 import { CartProvider } from "./contexts/cart";
 import { BurguerProvider } from "./contexts/burguer";
 import { CommentProvider } from "./contexts/comment";
+import { EditProductProvider } from "./contexts/editProduct";
 
 function App() {
   return (
@@ -12,7 +13,9 @@ function App() {
         <CartProvider>
           <BurguerProvider>
             <CommentProvider>
-              <AppRoutes />
+              <EditProductProvider>
+                <AppRoutes />
+              </EditProductProvider>
             </CommentProvider>
           </BurguerProvider>
         </CartProvider>

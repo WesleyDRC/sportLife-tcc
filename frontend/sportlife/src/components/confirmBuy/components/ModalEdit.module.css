@@ -1,0 +1,158 @@
+.container{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.726);
+	z-index: 101;
+}
+
+.subContainer{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: white;
+	border-radius: 10px;
+}
+
+.subContainer h1{
+	padding: 10px;
+	margin: 0px 20px;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.subContainer img{
+	display: block;
+	margin: 0 auto;
+	width: 200px;
+	height: 250px;
+}
+
+.subContainer .name{
+	text-align: center;
+	margin: 10px;
+	font-size: 2rem;
+	font-weight: 700;
+}
+
+.editForm{
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.sizeContainer p, .amountTitle{
+	color: black;
+	text-align: center;
+	font-size: 1.6rem;
+	font-weight: 400;
+}
+
+.sizes{
+	display: flex;
+}
+
+.sizes p{
+	margin: 0px 10px;
+}
+
+.counterContainer{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.counter{
+	margin-top: 5px;
+	display: flex;
+	border: 1px solid black;
+	width: 100px;
+}
+
+.counter button{
+	background-color: #317B96;
+	color: white;
+	padding: 0px 2px;
+}
+
+.counter .sub{
+	border: none;
+	border-right: 1px solid black;
+	text-align: center;
+	width: 30px;
+}
+
+.amount{
+	margin: 0px;
+	text-align: center;
+	width: 50px;
+	padding: 5px 10px;
+}
+
+.add{
+	border: none;
+	border-left: 1px solid black;
+	text-align: center;
+	width: 30px;
+}
+
+.sizes p{
+	margin: 5px;
+	padding: 5px 15px;
+	border: 1px solid rgb(214, 214, 214);
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.sizes p:hover{
+	border: 1px solid black;
+}
+
+.buttons{
+	margin: 30px;
+	display: flex;
+	justify-content: center;
+}
+
+.saveEdits{
+	background-color: #317B96;
+	color: white;
+	border-radius: 5px;
+	margin-left: 20px;
+}
+
+@media (max-width: 1050px){
+	.subContainer{
+		width: 70vw;
+	}
+}
+
+@media (max-width: 625px){
+	.subContainer{
+		width:90vw;
+	}
+}
+
+@media (max-width: 460px){
+	.subContainer{
+		width:90vw;
+	}
+
+	.editForm{
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.counterContainer{
+		margin-bottom: 30px;
+	}
+}
+
+@media (max-width:350px){
+	.sizes p{
+		padding: 5px 10px;
+	}
+}

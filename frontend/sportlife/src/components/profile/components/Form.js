@@ -88,9 +88,9 @@ export default function Form() {
               />
             </div>
           </div>
-				<div className={styles.positionButton}>
-        	<button type="submit" className={styles.button}>Salvar</button>
-        </div>
+          <div className={styles.positionButton}>
+            <button type="submit" className={styles.button}>Salvar</button>
+          </div>
         </form>
       </div>
     </div>
