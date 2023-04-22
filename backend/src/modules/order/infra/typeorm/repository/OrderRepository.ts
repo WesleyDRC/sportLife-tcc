@@ -19,19 +19,6 @@ export class OrderRepository implements IOrderRepository {
     this.ormRepositoryOrderProducts = AppDataSource.getRepository(OrderProducts)
   }
 
-  public async updateQuantityProductCart({productId,userId, quantity}): Promise<any> {
-    const product = await this.ormRepositoryCart
-      .createQueryBuilder("cart_items")
-      .update(CartItems)
-      .set({
-        quantity
-      })
-      .where("product_id = :productId", { productId })
-      .andWhere("user_id = :userId", { userId })
-      .execute();
-    return Promise.resolve(product);
-  }
-
   public async getCartUser(userId: string): Promise<any> {
     const cart = await this.ormRepositoryCart
       .createQueryBuilder("cart_items")
@@ -42,7 +29,7 @@ export class OrderRepository implements IOrderRepository {
     return Promise.resolve(cart);
   }
 
-  public async createOrder({ user, products}: ICreateOrderDTO): Promise<OrderDetails> {
+  public async createOrder({ user, products }: ICreateOrderDTO): Promise<OrderDetails> {
 
 
     const order = this.ormRepositoryOrderDetails.create({

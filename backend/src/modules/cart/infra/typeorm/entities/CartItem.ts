@@ -36,6 +36,12 @@ export class CartItems {
   })
   size: "PP"| "P"| "M"| "G"| "GG";
 
+  @Column({
+    type: "enum",
+    enum: ["available", "unavailable"]
+  })
+  status: "available" | "unavailable";
+
   @CreateDateColumn()
   created_at: Date;
 
