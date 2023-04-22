@@ -135,7 +135,6 @@ export class ProductRepository implements IProductRepository {
       .leftJoinAndSelect("products.categories", "categories")
       .leftJoinAndSelect("products.discount", "discount")
       .leftJoinAndSelect("products.inventory", "inventory")
-      .leftJoinAndSelect("products.sizes", "sizes")
       .where("products.id IN (:id)", { id: idList })
       .getMany();
 
@@ -161,7 +160,7 @@ export class ProductRepository implements IProductRepository {
       }
 
       if (productData.inventory.quantity < productFind.quantity) {
-        throw new AppError("Insufficient product quantity");
+        throw new AppError("The requested product is not available at the moment.", 409);
       }
 
       const newProduct = productData;
@@ -188,8 +187,3 @@ export class ProductRepository implements IProductRepository {
     return inventory;
   }
 }
-
-
-// newProduct.inventory.quantity -= productFind.quantity;
-
-// return newProduct;
