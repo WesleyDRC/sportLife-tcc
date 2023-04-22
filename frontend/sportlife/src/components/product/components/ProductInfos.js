@@ -14,13 +14,12 @@ import useCart from '../../../hooks/useCart'
 
 export default function ProductInfos(){
 	const [product, setProduct] = useState([]);
-	let [amount, setAmout] = useState(1)
-	let [size, setSize] = useState()
+	let [amount, setAmout] = useState(1);
+	let [size, setSize] = useState();
 	let { id } = useParams();
 
 	const subtract = useRef()
 	const add = useRef()
-	const {pp, p, m, g, gg } = useRef()
 
 	const addOne = () => {
 		setAmout(amount + 1)
@@ -70,11 +69,11 @@ export default function ProductInfos(){
 			<div className={styles.ballCor} style={{backgroundColor:product.colors}} ></div>
 			<p className={styles.size}>Tamanhos</p>
 			<div className={styles.sizesOptions}>
-				<button onClick={selectPP} ref={pp}>PP</button>
-				<button onClick={selectP} ref={p}>P</button>
-				<button onClick={selectM} ref={m}>M</button>
-				<button onClick={selectG} ref={g}>G</button>
-				<button onClick={selectGG} ref={gg}>GG</button>
+				<button onClick={selectPP}><p className={size == 'PP' ? styles.select : styles.noSelect}>PP</p></button>
+				<button onClick={selectP}><p className={size == 'P' ? styles.select : styles.noSelect}>P</p></button>
+				<button onClick={selectM}><p className={size == 'M' ? styles.select : styles.noSelect}>M</p></button>
+				<button onClick={selectG}><p className={size == 'G' ? styles.select : styles.noSelect}>G</p></button>
+				<button onClick={selectGG}><p className={size == 'GG' ? styles.select : styles.noSelect}>GG</p></button>
 			</div>
 			<div className={styles.counterAndBuy} >
 				<div className={styles.counter}>
