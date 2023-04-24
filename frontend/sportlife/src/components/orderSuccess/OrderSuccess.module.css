@@ -4,10 +4,6 @@
 	background-color: #317B96;
 }
 
-.teste{
-	overflow: hidden;
-}
-
 .subContainer{
 	background-color: #EFEFEF;
 	max-width: 50vw;
@@ -28,14 +24,14 @@
   top: 0%;
   left: 50%;
 	transform: translate(-50%, -50%);
-  width: 70px;
-  height: 70px;
+  width: 55px;
+  height: 55px;
   background-color: white;
   border-radius: 50%;
 }
 
 .checkCircle svg{
-	font-size: 5.5rem;
+	font-size: 4rem;
 	color: #317B96;
 	font-weight: 700;
 }
@@ -55,9 +51,9 @@
 }
 
 .infos img{
-	width: 360px;
-	height: 228px;
-	margin: 50px 0px;
+	width: 300px;
+	height: 200px;
+	margin: 20px 0px;
 }
 
 .infos p{
@@ -78,8 +74,24 @@
 }
 
 @media (max-width:1200px){
+	.subContainer .checkCircle{
+		width: 40px;
+		height: 40px;
+	}
+
+	.checkCircle svg{
+		font-size: 3rem;
+	}
+
 	.infos h1{
 		font-size: 2.5rem;
+
+	}
+
+	.infos img{
+		width:300px ;
+		height: 200px;
+		margin: 20px 0px;
 	}
 
 	.infos p{
@@ -144,6 +156,12 @@
 	.infos h1{
 		margin-top: 25px;
 		font-size: 1.8rem;
+	}
+
+	.infos img{
+		width: 230px;
+		height: 160px;
+		margin: 20px 0px;
 	}
 
 	.infos p{
