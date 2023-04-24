@@ -36,7 +36,7 @@ export default function ProductCheckout({url, name, size, price, quantity, produ
 							<button onClick={deleteProductCheckout} className={styles.delete}>Excluir</button>
 					</div>
 				</div>
-				{openModal && <ModalEdit name={name} url={url}/>}
+				{openModal && <ModalEdit id={id} name={name} url={url} size={size} quantity={quantity}/>}
 		</div>
 	)
 }

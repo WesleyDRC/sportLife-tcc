@@ -4,9 +4,18 @@ import { useState, useRef } from "react";
 
 import useEditProduct from '../../../hooks/useEditProduct'
 
+import { useParams } from "react-router-dom";
+
+import useCart from "../../../hooks/useCart";
+
 export default function ModalEdit(props) {
 	const { manupilationEditProductClose } = useEditProduct()
-  let [amount, setAmout] = useState(1);
+  const { addItem } = useCart()
+  let { id } = useParams();
+
+  let [amount, setAmout] = useState(props.quantity);
+  let [size, setSize] = useState(props.size)
+
   const subtract = useRef();
   const add = useRef();
 
@@ -21,13 +30,33 @@ export default function ModalEdit(props) {
       setAmout(amount - 1);
     }
   };
+
+  const selectPP = () => {
+    setSize('PP')
+  }
+
+  const selectP = () => {
+    setSize('P')
+  }
+
+  const selectM = () => {
+    setSize('M')
+  }
+
+  const selectG = () => {
+    setSize('G')
+  }
+
+  const selectGG = () => {
+    setSize('GG')
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.subContainer}>
         <h1>Edite a quantidade ou tamanho do seu produto</h1>
         <img src={props.url} />
         <p className={styles.name}>{props.name}</p>
-        <form>
           <div className={styles.editForm}>
             <div className={styles.counterContainer}>
               <label className={styles.amountTitle}>Quantidade</label>
@@ -54,21 +83,20 @@ export default function ModalEdit(props) {
               </div>
             </div>
             <div className={styles.sizeContainer}>
-              <p>Tamanho</p>
+              <p className={styles.sizeTitle}>Tamanho</p>
               <div className={styles.sizes}>
-                <p>PP</p>
-                <p>P</p>
-                <p>M</p>
-                <p>G</p>
-                <p>GG</p>
+                <p onClick={selectPP} className={size == 'PP' ? styles.select : styles.notSelect}>PP</p>
+                <p onClick={selectP} className={size == 'p' ? styles.select : styles.notSelect}>P</p>
+                <p onClick={selectM} className={size == 'M' ? styles.select : styles.notSelect}>M</p>
+                <p onClick={selectG} className={size == 'G' ? styles.select : styles.notSelect}>G</p>
+                <p onClick={selectGG} className={size == 'GG' ? styles.select : styles.notSelect}>GG</p>
               </div>
             </div>
           </div>
           <div className={styles.buttons}>
 						<button onClick={ manupilationEditProductClose } type='button' >Cancelar</button>
-						<button type="submit" className={styles.saveEdits}>Salvar</button>
+						<button onClick={() => addItem( props.id, amount, size)} className={styles.saveEdits}>Salvar</button>
 					</div>
-        </form>
       </div>
     </div>
   );

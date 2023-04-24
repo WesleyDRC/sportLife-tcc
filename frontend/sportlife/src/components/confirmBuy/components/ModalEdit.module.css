@@ -44,7 +44,7 @@
 	justify-content: space-evenly;
 }
 
-.sizeContainer p, .amountTitle{
+.sizeContainer .sizeTitle, .amountTitle{
 	color: black;
 	text-align: center;
 	font-size: 1.6rem;
@@ -76,10 +76,12 @@
 	background-color: #317B96;
 	color: white;
 	padding: 0px 2px;
+	border-right: 1px solid black;
 }
 
 .counter .sub{
 	border: none;
+	border-left: 1px solid black;
 	border-right: 1px solid black;
 	text-align: center;
 	width: 30px;
@@ -99,10 +101,20 @@
 	width: 30px;
 }
 
-.sizes p{
+.notSelect{
 	margin: 5px;
+	color: rgb(214, 214, 214);
 	padding: 5px 15px;
 	border: 1px solid rgb(214, 214, 214);
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.select{
+	margin: 5px;
+	padding: 5px 15px;
+	color: black;
+	border: 1px solid black;
 	border-radius: 5px;
 	cursor: pointer;
 }
