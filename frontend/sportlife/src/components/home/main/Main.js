@@ -28,7 +28,7 @@ export default function Main () {
       <Carousel />
       <div className={styles.subContainer}>
         <InfoBox />
-        <CircleNavigate />
+        <NavigationBrand />
         <CarouselProduct
           loading={loading}
           products={products}
@@ -40,7 +40,7 @@ export default function Main () {
           products={products}
           titleCarousel='LANÇAMENTOS'
         />
-        <NavigationBrand />
+        <CircleNavigate />
         <CarouselProduct
           loading={loading}
           products={products}
