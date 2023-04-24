@@ -26,13 +26,17 @@ export class ProductRepository implements IProductRepository {
     this.ormRepositoryInventory = AppDataSource.getRepository(Inventory);
   }
 
-  async listAll({ category, order, filter }: IListProductsDTO): Promise<Product[]> {
+  async listAll({
+    category,
+    order,
+    filter,
+  }: IListProductsDTO): Promise<Product[]> {
     const productQuery = this.ormRepository
       .createQueryBuilder("products")
       .leftJoinAndSelect("products.categories", "categories")
       .leftJoinAndSelect("products.discount", "discount")
       .leftJoinAndSelect("products.inventory", "inventory")
-      .leftJoinAndSelect("products.assessments", "assessments")
+      .leftJoinAndSelect("products.assessments", "assessments");
 
     if (category) {
       productQuery.where({ categories_id: category });
@@ -42,11 +46,11 @@ export class ProductRepository implements IProductRepository {
       productQuery.orderBy(`products.${order}`, "DESC");
     }
 
-    const key = Object.keys(filter)
-    const values = Object.values(filter)
+    const key = Object.keys(filter);
+    const values = Object.values(filter);
 
-    if(filter) {
-      productQuery.where(`products.${key} = :values`, { values })
+    if (filter) {
+      productQuery.where(`products.${key} = :values`, { values });
     }
 
     const products = await productQuery.getMany();
@@ -139,9 +143,13 @@ export class ProductRepository implements IProductRepository {
       .where("products.id IN (:id)", { id: idList })
       .getMany();
 
-    if (idList.length !== orderList.length) {
-      throw new AppError("Missing Product", 404);
-    }
+    idList.forEach((item) => {
+      orderList.find((product) => {
+        if (!(product.id === item)) {
+          throw new AppError("Missing Product", 404);
+        }
+      });
+    });
 
     return orderList;
   }
@@ -161,26 +169,35 @@ export class ProductRepository implements IProductRepository {
       }
 
       if (productData.inventory.quantity < productFind.quantity) {
-        throw new AppError("The requested product is not available at the moment.", 409);
+        throw new AppError(
+          "The requested product is not available at the moment.",
+          409
+        );
       }
 
       const newProduct = productData;
 
       newProduct.inventory.quantity -= productFind.quantity;
-      await this.updateQuantityInventory(newProduct.inventory_id, newProduct.inventory.quantity)
+      await this.updateQuantityInventory(
+        newProduct.inventory_id,
+        newProduct.inventory.quantity
+      );
 
-      return newProduct
+      return newProduct;
     });
 
-    const updateProducts = await Promise.all(newProducts)
+    const updateProducts = await Promise.all(newProducts);
 
     return updateProducts;
   }
 
   async updateQuantityInventory(id: string, newQuantity) {
-    const inventory = await this.ormRepositoryInventory.manager.findOneBy(Inventory, {
-      id,
-    });
+    const inventory = await this.ormRepositoryInventory.manager.findOneBy(
+      Inventory,
+      {
+        id,
+      }
+    );
     inventory.quantity = newQuantity;
 
     await this.ormRepository.manager.save(inventory);

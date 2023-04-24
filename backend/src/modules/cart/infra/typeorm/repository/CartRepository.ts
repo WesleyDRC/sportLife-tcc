@@ -178,69 +178,68 @@ export class CartRepository implements ICartRepository {
   }
 
   public async deleteProductCart(userId: string, productId: string) {
-    let user = await this.ormRepositoryUser.findOne({
-      where: { id: userId },
-    });
+      let user = await this.ormRepositoryUser.findOne({
+        where: { id: userId },
+      });
 
-    if (!user) {
-      throw new AppError(`User with ID ${userId} not found`, 404);
-    }
+      if (!user) {
+        throw new AppError(`User with ID ${userId} not found`, 404);
+      }
 
-    let cart = await this.ormRepositoryCart.findOne({
-      where: { user_id: userId },
-      relations: ["items"],
-    });
+      let cart = await this.ormRepositoryCart.findOne({
+        where: { user_id: userId },
+        relations: ["items"],
+      });
 
-    if (!cart) {
-      cart = new Cart();
-      cart.user_id = userId;
+      if (!cart) {
+        cart = new Cart();
+        cart.user_id = userId;
+        await this.ormRepositoryCart.save(cart);
+      }
+
+      cart = await this.ormRepositoryCart.findOne({
+        where: { id: cart.id },
+        relations: ["items"],
+      });
+
+      const productInCart = cart.items.find((item) => {
+        return item.product_id === productId;
+      });
+
+      if (!productInCart) {
+        throw new AppError(
+          `Product with ID ${productId} not found in this cart`,
+          404
+        );
+      }
+
+      let cartItem = await this.ormRepositoryCartItems.findOne({
+        where: {
+          product_id: productId,
+        },
+      });
+
+      if (cartItem) {
+        await this.ormRepositoryCartItems.remove(cartItem);
+      } else {
+        console.log(
+          `Não foi possível encontrar um registro com ID ${productId}.`
+        );
+      }
+
+      cart = await this.ormRepositoryCart.findOne({
+        where: { user_id: userId },
+        relations: ["items"],
+      });
+
+      cart.totalItems = cart.items.reduce((acc, item) => acc + item.quantity, 0);
+      cart.totalAmount = cart.items.reduce(
+        (acc, item) => acc + item.price * item.quantity,
+        0
+      );
+
       await this.ormRepositoryCart.save(cart);
+
+      return cartItem;
     }
-
-    cart = await this.ormRepositoryCart.findOne({
-      where: { id: cart.id },
-      relations: ["items"],
-    });
-
-    const productInCart = cart.items.find((item) => {
-      return item.product_id === productId;
-    });
-
-    if (!productInCart) {
-      throw new AppError(
-        `Product with ID ${productId} not found in this cart`,
-        404
-      );
-    }
-
-    let cartItem = await this.ormRepositoryCartItems.findOne({
-      where: {
-        product_id: productId,
-      },
-    });
-
-    if (cartItem) {
-      await this.ormRepositoryCartItems.remove(cartItem);
-      console.log(`Registro com ID ${productId} foi removido com sucesso.`);
-    } else {
-      console.log(
-        `Não foi possível encontrar um registro com ID ${productId}.`
-      );
-    }
-
-    cart = await this.ormRepositoryCart.findOne({
-      where: { user_id: userId },
-      relations: ["items"],
-    });
-
-    cart.totalItems = cart.items.reduce((acc, item) => acc + item.quantity, 0);
-    cart.totalAmount = cart.items.reduce(
-      (acc, item) => acc + item.price * item.quantity,
-      0
-    );
-
-    await this.ormRepositoryCart.save(cart);
-
-    return cartItem;
-  }
 }

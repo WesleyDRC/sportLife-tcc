@@ -9,7 +9,6 @@ import IUseCase from "./ports/IUseCase";
 import { OrderDetails } from "../infra/typeorm/entities/OrderDetails";
 import AppError from "../../../shared/errors/AppError";
 
-
 interface IProduct {
   id: string;
   quantity: number;
@@ -37,43 +36,53 @@ export default class CreateOrderUseCase implements IUseCase {
   ) {}
 
   async execute({ userId, products }: IRequest): Promise<OrderDetails> {
-    const user = await this.usersRepository.getUserById(userId)
+    try {
+      const user = await this.usersRepository.getUserById(userId);
 
-    if(!user) {
-      throw new AppError("Esse usuário não existe!", 400)
-    }
+      if (!user) {
+        throw new AppError("Esse usuário não existe!", 400);
+      }
 
-    const productsIds = products.map(product => {
-      return { id: product.id };
-    });
+      const productsIds = products.map((product) => {
+        return { id: product.id };
+      });
 
-    const productsData = await this.productRepository.findAllById(productsIds);
-
-    const productsFinal = productsData.map(productData => {
-      const productFinal = products.find(
-        productFind => productFind.id === productData.id,
+      const productsData = await this.productRepository.findAllById(
+        productsIds
       );
 
-      return {
-        product_id: productData.id,
-        price: productData.price,
-        quantity: productFinal?.quantity || 0,
-      };
-    });
+      const productsFinal = productsData.map((productData) => {
+        const productFinal = products.find(
+          (productFind) => productFind.id === productData.id
+        );
 
-    await this.productRepository.updateQuantity(products);
+        return {
+          product_id: productData.id,
+          price: productData.price,
+          quantity: productFinal?.quantity || 0,
+        };
+      });
 
-    productsFinal.forEach(async(product) => {
-      await this.cartRepository.deleteProductCart(userId, product.product_id)
-    })
+      await this.productRepository.updateQuantity(products);
 
-    const order = await this.orderRepository.createOrder({
-      user,
-      products: productsFinal,
-    });
+      for (const product of productsFinal) {
+        try {
+          await this.cartRepository.deleteProductCart(userId, product.product_id);
+        } catch (error) {
+          return error
+        }
+      }
 
-    order.user = undefined;
+      const order = await this.orderRepository.createOrder({
+        user,
+        products: productsFinal,
+      });
 
-    return order;
+      order.user = undefined;
+
+      return order;
+    } catch (error) {
+      console.log(error);
+    }
   }
 }
