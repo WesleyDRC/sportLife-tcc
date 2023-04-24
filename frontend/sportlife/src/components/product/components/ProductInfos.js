@@ -12,10 +12,14 @@ import { useParams } from "react-router-dom";
 
 import useCart from '../../../hooks/useCart'
 
+import { ToastContainer } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function ProductInfos(){
+	const { addItem, size, setSize } = useCart()
 	const [product, setProduct] = useState([]);
 	let [amount, setAmout] = useState(1);
-	let [size, setSize] = useState();
 	let { id } = useParams();
 
 	const subtract = useRef()
@@ -53,8 +57,6 @@ export default function ProductInfos(){
 		setSize('GG')
 	}
 
-	const { addItem } = useCart()
-
 	useEffect(() => {
     AxiosRepository.findOneProduct(id).then((resp) => {
       setProduct(resp.data);
@@ -83,6 +85,7 @@ export default function ProductInfos(){
 				</div>
 			</div>
 			<button onClick={() => addItem(id , amount, size)} className={styles.addCar}> <FaShoppingCart /><span>Adicionar ao carrinho</span></button>
+			<ToastContainer />
 		</div>
 	)
 }

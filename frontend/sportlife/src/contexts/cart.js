@@ -1,12 +1,19 @@
+import styles from '../components/product/components/ProductInfos.module.css'
+
 import { createContext, useState } from 'react'
 
 import AxiosRepository from '../repository/AxiosRepository'
+
+import { toast } from 'react-toastify';
+
+
 
 export const CartContext = createContext({})
 
 export const CartProvider = ({ children }) => {
   const [openCart, setOpenCart] = useState(false)
   const [cart, setCart] = useState([])
+  const [size, setSize] = useState('')
   let [total, setTotal] = useState('1.00')
 
   const manupilationCartOpen = () => {
@@ -24,6 +31,22 @@ export const CartProvider = ({ children }) => {
 
   const addItem = async (productId, quantity, size) => {
     try {
+      if(size === ''){
+        const notify = () => toast('Adicione o tamanho do produto!', {
+          position: "top-right",
+          style: { fontSize:'1.4rem' },
+          progressClassName: styles.myprogress,
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: false,
+          progress: undefined,
+          theme: "dark",
+          });
+        notify()
+        return
+      }
       manupilationCartOpen()
       const response = await AxiosRepository.addItemCart(
         productId,
@@ -78,7 +101,9 @@ export const CartProvider = ({ children }) => {
         cart,
         setCart,
         setTotal,
-        total
+        total,
+        size,
+        setSize
       }}
     >
       {children}

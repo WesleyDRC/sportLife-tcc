@@ -117,6 +117,10 @@ p{
 	font-weight: 200;
 }
 
+.myprogress {
+  background-color: #317B96;
+}
+
 @media (max-width:1280px){
 	.container{
 		width: 50%;
