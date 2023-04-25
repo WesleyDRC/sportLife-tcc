@@ -46,7 +46,6 @@ export default class CreateOrderUseCase implements IUseCase {
       const productsIds = products.map((product) => {
         return { id: product.id };
       });
-
       const productsData = await this.productRepository.findAllById(
         productsIds
       );

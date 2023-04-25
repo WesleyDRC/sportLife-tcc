@@ -135,6 +135,12 @@ export class ProductRepository implements IProductRepository {
   public async findAllById(products: IFindProducts[]): Promise<Product[]> {
     const idList = products.map((product) => product.id);
 
+    console.log(idList)
+
+    if (idList.length === 0) {
+      return [];
+    }
+    
     const orderList = await this.ormRepository
       .createQueryBuilder("products")
       .leftJoinAndSelect("products.categories", "categories")
