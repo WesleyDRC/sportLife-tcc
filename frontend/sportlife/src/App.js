@@ -10,15 +10,15 @@ function App() {
   return (
     <AuthProvider>
       <UserProvider>
-        <CartProvider>
-          <BurguerProvider>
-            <CommentProvider>
-              <EditProductProvider>
-                <AppRoutes />
-              </EditProductProvider>
-            </CommentProvider>
-          </BurguerProvider>
-        </CartProvider>
+        <EditProductProvider>
+          <CartProvider>
+            <BurguerProvider>
+              <CommentProvider>
+                  <AppRoutes />
+              </CommentProvider>
+            </BurguerProvider>
+          </CartProvider>
+        </EditProductProvider>
       </UserProvider>
     </AuthProvider>
   )

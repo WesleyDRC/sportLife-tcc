@@ -118,6 +118,12 @@ class AxiosRepository {
   async deleteProductCart(id) {
     return this.#axiosClient.delete(`/cart/${id}`);
   }
+
+  async updateProductById(productId, quantity, size){
+    const data = { productId,quantity, size };
+    const response = await this.#axiosClient.patch(`/cart`, data)
+    return response
+  }
 }
 
 export default new AxiosRepository();

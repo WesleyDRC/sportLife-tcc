@@ -6,7 +6,7 @@ import AxiosRepository from '../repository/AxiosRepository'
 
 import { toast } from 'react-toastify';
 
-
+import useEditProduct from '../hooks/useEditProduct';
 
 export const CartContext = createContext({})
 
@@ -14,6 +14,7 @@ export const CartProvider = ({ children }) => {
   const [openCart, setOpenCart] = useState(false)
   const [cart, setCart] = useState([])
   const [size, setSize] = useState('')
+  const {manupilationEditProductClose} = useEditProduct()
   let [total, setTotal] = useState('1.00')
 
   const manupilationCartOpen = () => {
@@ -29,22 +30,12 @@ export const CartProvider = ({ children }) => {
     document.body.scroll = 'yes'
   }
 
+  const notify = (message) => { toast(message)}
+
   const addItem = async (productId, quantity, size) => {
     try {
       if(size === ''){
-        const notify = () => toast('Adicione o tamanho do produto!', {
-          position: "top-right",
-          style: { fontSize:'1.4rem' },
-          progressClassName: styles.myprogress,
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: false,
-          draggable: false,
-          progress: undefined,
-          theme: "dark",
-          });
-        notify()
+        notify('Escolha o tamanho do seu produto')
         return
       }
       manupilationCartOpen()
@@ -87,6 +78,22 @@ export const CartProvider = ({ children }) => {
     }
   }
 
+  const updateProductById = async (productId, quantity, size) =>{
+    try{
+      const response = await AxiosRepository.updateProductById(
+        productId,
+        quantity,
+        size
+      )
+      manupilationEditProductClose()
+      notify('Produto atualizado com sucesso !')
+      await getCartUser()
+      return response
+    }catch(error){
+      console.log(error)
+    }
+  }
+
   return (
     <CartContext.Provider
       value={{
@@ -103,7 +110,8 @@ export const CartProvider = ({ children }) => {
         setTotal,
         total,
         size,
-        setSize
+        setSize,
+        updateProductById
       }}
     >
       {children}

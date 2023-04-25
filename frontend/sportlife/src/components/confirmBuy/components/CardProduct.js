@@ -16,7 +16,7 @@ export default function CardProduct(){
 			setCart(result.data.cart)
     }
     fetchData();
-	},[])
+	},[getCartUser])
 
 	return(
 		<div className={styles.container}>
