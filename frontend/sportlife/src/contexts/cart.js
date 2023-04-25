@@ -14,6 +14,7 @@ export const CartProvider = ({ children }) => {
   const [openCart, setOpenCart] = useState(false)
   const [cart, setCart] = useState([])
   const [size, setSize] = useState('')
+  const [infosCart, setInfosCart] = useState([])
   const {manupilationEditProductClose} = useEditProduct()
   let [total, setTotal] = useState('1.00')
 
@@ -50,9 +51,15 @@ export const CartProvider = ({ children }) => {
     }
   }
 
-  const getCartUser = async () => {
+  const getCartUser = async (productId, quantity, size) => {
     try {
-      return await AxiosRepository.getCartUser()
+      const response = await AxiosRepository.getCartUser(
+        productId,
+        quantity,
+        size
+      )
+      setInfosCart(response.data)
+      return response
     } catch (error) {
       console.log(error)
     }
@@ -111,7 +118,9 @@ export const CartProvider = ({ children }) => {
         total,
         size,
         setSize,
-        updateProductById
+        updateProductById,
+        infosCart,
+       setInfosCart
       }}
     >
       {children}

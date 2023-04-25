@@ -11,26 +11,17 @@ import ProductCart from './ProductCart';
 
 import { Link } from 'react-router-dom';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 export default function ShoppingCart(){
 
-	const { manupilationCartClose, setOpenCart, getCartUser, openCart } = useCart();
-	const [cart, setCart] = useState([]);
+	const { manupilationCartClose, setOpenCart, getCartUser, openCart, infosCart , setInfosCart } = useCart();
 
 	function keepContinue(){
 		window.location.href="https://sport-life-tcc.vercel.app/";
 		setOpenCart(false)
 	}
-
-	useEffect(() => {
-		async function fetchData() {
-      const result = await getCartUser();
-			setCart(result.data.cart)
-    }
-    fetchData();
-	},[openCart, cart])
-
+	
 	return(
 			<div className={styles.container}>
 				<aside>
@@ -43,8 +34,8 @@ export default function ShoppingCart(){
 					</header>
 
 					<div className={styles.itemsCart}>
-					{cart.length > 0 && cart[0].items.length > 0 && (
-            cart[0].items.map((item) => (
+					{(
+            infosCart.cart[0].items.map((item) => (
               <ProductCart
                 key={item.id}
                 id = {item.id}
@@ -60,12 +51,12 @@ export default function ShoppingCart(){
 					</div>
 					<div className={styles.finalizeOrder}>
 						<div className={styles.subTotal}>
-							<p>SUB-TOTAL ( {cart.length> 0 && cart[0].totalItems} produtos )</p>
-							<p>{priceBRL(cart.length > 0 && cart[0].totalAmount)}</p>
+							<p>SUB-TOTAL ( {infosCart.cart[0].totalItems} produtos )</p>
+							<p>{priceBRL(infosCart.cart[0].totalAmount)}</p>
 						</div>
 						<div className={styles.total}>
 							<p>TOTAL</p>
-							<p className={styles.totalPrice}>{priceBRL(cart.length > 0 && cart[0].totalAmount)}</p>
+							<p className={styles.totalPrice}>{priceBRL(infosCart.cart[0].totalAmount)}</p>
 						</div>
 						<Link to ='/checkout'>
 							<button className={styles.btn}>FINALIZAR COMPRA</button>
