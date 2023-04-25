@@ -282,6 +282,19 @@ export class CartRepository implements ICartRepository {
 
     await this.ormRepositoryCartItems.manager.save(productCart);
 
+    cart = await this.ormRepositoryCart.findOne({
+      where: { user_id: userId },
+      relations: ["items"],
+    });
+
+    cart.totalItems = cart.items.reduce((acc, item) => acc + item.quantity, 0);
+    cart.totalAmount = cart.items.reduce(
+      (acc, item) => acc + item.price * item.quantity,
+      0
+    );
+
+    await this.ormRepositoryCart.save(cart);
+
     return productCart;
   }
 }
