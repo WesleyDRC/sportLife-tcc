@@ -26,7 +26,7 @@ export default function OrderSuccess() {
 				</div>
 				<div className={styles.infos}>
 					<h1>pagamento aprovado !</h1>
-					<img src='https://i.imgur.com/7WIlAHG.png' />
+					<img src='https://i.imgur.com/guqThjM.png' />
 					<p>{user.firstName} {user.lastName},</p>
 					<p>Obrigado por seu pedido na SportLife!</p>
 					<p>Assim que seu pacote for enviado, enviaremos um número de rastreamento.</p>
@@ -35,7 +35,6 @@ export default function OrderSuccess() {
 					</Link>
 					</div>
 			</div>
-
     </div>
   );
 }
