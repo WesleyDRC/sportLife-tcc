@@ -8,8 +8,10 @@ import useCart from '../../../hooks/useCart'
 
 import { api } from '../../../services/api'
 
+import axios from 'axios'
+
 function PaymentButton () {
-  const { getCartUser, total } = useCart()
+  const { getCartUser, total, productsCart } = useCart()
   const [products, setProducts] = useState([])
   const navigate = useNavigate()
 
@@ -40,10 +42,6 @@ function PaymentButton () {
     }
   })
 
-  let cartProducts = products.map(product => {
-    return { id: product.id, quantity: product.quantity }
-  })
-
   let amount = {
     currency_code: 'BRL',
     value: total,
@@ -54,6 +52,15 @@ function PaymentButton () {
       }
     }
   }
+
+  const cartProducts = productsCart.map(product => {
+    return {
+      id: product.id,
+      quantity: product.quantity
+    }
+  })
+
+  const dataProducts = { products: cartProducts }
 
   async function createOrder (data, actions) {
     return actions.order.create({
@@ -77,10 +84,21 @@ function PaymentButton () {
   async function onApprove (data, actions) {
     await actions.order.capture()
 
-    await api.post('/order', {
-      products: cartProducts
-    })
-    
+    var userToken = localStorage.getItem('user_token')
+
+    const AuthStr = `Bearer ${JSON.parse(userToken)}`
+
+    await axios
+      .post(`${process.env.REACT_APP_BASE_URL}/order`, dataProducts, {
+        headers: {
+          Authorization: AuthStr
+        }
+      })
+      .then(response => {})
+      .catch(error => {
+        console.error(error)
+      })
+
     navigate('/successOrder')
   }
 

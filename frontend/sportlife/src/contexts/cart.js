@@ -15,6 +15,7 @@ export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([])
   const [size, setSize] = useState('')
   const [infosCart, setInfosCart] = useState([])
+  const [productsCart, setProductsCart] = useState([])
   const {manupilationEditProductClose} = useEditProduct()
   let [total, setTotal] = useState('1.00')
 
@@ -120,7 +121,9 @@ export const CartProvider = ({ children }) => {
         setSize,
         updateProductById,
         infosCart,
-       setInfosCart
+       setInfosCart,
+       setProductsCart,
+       productsCart
       }}
     >
       {children}
