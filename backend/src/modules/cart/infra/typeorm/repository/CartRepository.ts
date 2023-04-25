@@ -178,68 +178,110 @@ export class CartRepository implements ICartRepository {
   }
 
   public async deleteProductCart(userId: string, productId: string) {
-      let user = await this.ormRepositoryUser.findOne({
-        where: { id: userId },
-      });
+    let user = await this.ormRepositoryUser.findOne({
+      where: { id: userId },
+    });
 
-      if (!user) {
-        throw new AppError(`User with ID ${userId} not found`, 404);
-      }
-
-      let cart = await this.ormRepositoryCart.findOne({
-        where: { user_id: userId },
-        relations: ["items"],
-      });
-
-      if (!cart) {
-        cart = new Cart();
-        cart.user_id = userId;
-        await this.ormRepositoryCart.save(cart);
-      }
-
-      cart = await this.ormRepositoryCart.findOne({
-        where: { id: cart.id },
-        relations: ["items"],
-      });
-
-      const productInCart = cart.items.find((item) => {
-        return item.product_id === productId;
-      });
-
-      if (!productInCart) {
-        throw new AppError(
-          `Product with ID ${productId} not found in this cart`,
-          404
-        );
-      }
-
-      let cartItem = await this.ormRepositoryCartItems.findOne({
-        where: {
-          product_id: productId,
-        },
-      });
-
-      if (cartItem) {
-        await this.ormRepositoryCartItems.remove(cartItem);
-      } else {
-        console.log(
-          `Não foi possível encontrar um registro com ID ${productId}.`
-        );
-      }
-
-      cart = await this.ormRepositoryCart.findOne({
-        where: { user_id: userId },
-        relations: ["items"],
-      });
-
-      cart.totalItems = cart.items.reduce((acc, item) => acc + item.quantity, 0);
-      cart.totalAmount = cart.items.reduce(
-        (acc, item) => acc + item.price * item.quantity,
-        0
-      );
-
-      await this.ormRepositoryCart.save(cart);
-
-      return cartItem;
+    if (!user) {
+      throw new AppError(`User with ID ${userId} not found`, 404);
     }
+
+    let cart = await this.ormRepositoryCart.findOne({
+      where: { user_id: userId },
+      relations: ["items"],
+    });
+
+    if (!cart) {
+      cart = new Cart();
+      cart.user_id = userId;
+      await this.ormRepositoryCart.save(cart);
+    }
+
+    cart = await this.ormRepositoryCart.findOne({
+      where: { id: cart.id },
+      relations: ["items"],
+    });
+
+    const productInCart = cart.items.find((item) => {
+      return item.product_id === productId;
+    });
+
+    if (!productInCart) {
+      throw new AppError(
+        `Product with ID ${productId} not found in this cart`,
+        404
+      );
+    }
+
+    let cartItem = await this.ormRepositoryCartItems.findOne({
+      where: {
+        product_id: productId,
+      },
+    });
+
+    if (cartItem) {
+      await this.ormRepositoryCartItems.remove(cartItem);
+    } else {
+      console.log(
+        `Não foi possível encontrar um registro com ID ${productId}.`
+      );
+    }
+
+    cart = await this.ormRepositoryCart.findOne({
+      where: { user_id: userId },
+      relations: ["items"],
+    });
+
+    cart.totalItems = cart.items.reduce((acc, item) => acc + item.quantity, 0);
+    cart.totalAmount = cart.items.reduce(
+      (acc, item) => acc + item.price * item.quantity,
+      0
+    );
+
+    await this.ormRepositoryCart.save(cart);
+
+    return cartItem;
+  }
+
+  public async updateProductById(
+    userId: string,
+    productId: string,
+    quantity: number,
+    size: "PP" | "P" | "M" | "G" | "GG"
+  ) {
+    let cart = await this.ormRepositoryCart
+    .createQueryBuilder("cart")
+    .where({ user_id: userId })
+    .getOne();
+
+    const cartItems = await this.ormRepositoryCartItems
+    .createQueryBuilder("cart_items")
+    .where({ cart_id: cart.id })
+    .getMany();
+
+    const findProduct = cartItems.find((cart) => {
+      return cart.product_id === productId
+    })
+
+    if(!findProduct) {
+      throw new AppError(`Product with ID ${productId} not found`, 404)
+    }
+
+    const productCart = await this.ormRepositoryCartItems.manager.findOneBy(CartItems, {
+      product_id: productId,
+    });
+
+    const productData = await this.productRepository.findById(productId);
+
+    if (productData.inventory.quantity < quantity) {
+      throw new AppError(cartConstants.ERROR_PRODUCT_QUANTITY, 404);
+    }
+
+    productCart.quantity = quantity;
+    productCart.size = size
+
+    await this.ormRepositoryCartItems.manager.save(productCart);
+
+    return productCart;
+  }
 }
