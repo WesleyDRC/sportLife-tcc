@@ -1,98 +1,98 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react'
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom'
 
-import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
+import { PayPalButtons, PayPalScriptProvider } from '@paypal/react-paypal-js'
 
-import useCart from "../../../hooks/useCart";
+import useCart from '../../../hooks/useCart'
 
-import { api } from "../../../services/api";
+import { api } from '../../../services/api'
 
-function PaymentButton() {
-  const { getCartUser, total } = useCart();
-  const [products, setProducts] = useState([]);
-  const navigate = useNavigate();
+function PaymentButton () {
+  const { getCartUser, total } = useCart()
+  const [products, setProducts] = useState([])
+  const navigate = useNavigate()
 
   useEffect(() => {
-    async function fetchData() {
-      const result = await getCartUser();
-      setProducts(result.data.cart[0].items);
+    async function fetchData () {
+      const result = await getCartUser()
+      setProducts(result.data.cart[0].items)
     }
-    fetchData();
-  }, []);
+    fetchData()
+  }, [])
 
   const paypalOptions = {
-    "client-id": process.env.REACT_APP_CLIENT_ID,
-    currency: "BRL",
-    intent: "capture",
-    activeFunding: "",
-  };
+    'client-id': process.env.REACT_APP_CLIENT_ID,
+    currency: 'BRL',
+    intent: 'capture',
+    activeFunding: ''
+  }
 
-  const productsPayPal = products.map((product) => {
+  const productsPayPal = products.map(product => {
     return {
       name: product.name,
-      description: "Wesley",
+      description: 'Wesley',
       quantity: product.quantity,
       unit_amount: {
-        currency_code: "BRL",
-        value: product.price,
-      },
-    };
-  });
+        currency_code: 'BRL',
+        value: product.price
+      }
+    }
+  })
 
-  let cartProducts = products.map((product) => {
-    return { id: product.id, quantity: product.quantity };
-  });
-  console.log(cartProducts)
+  let cartProducts = products.map(product => {
+    return { id: product.id, quantity: product.quantity }
+  })
 
   let amount = {
-    currency_code: "BRL",
+    currency_code: 'BRL',
     value: total,
     breakdown: {
       item_total: {
-        currency_code: "BRL",
-        value: total,
-      },
-    },
-  };
+        currency_code: 'BRL',
+        value: total
+      }
+    }
+  }
 
-  async function createOrder(data, actions) {
+  async function createOrder (data, actions) {
     return actions.order.create({
-      intent: "CAPTURE",
+      intent: 'CAPTURE',
       purchase_units: [
         {
           amount: amount,
-          items: productsPayPal,
-        },
+          items: productsPayPal
+        }
       ],
       application_context: {
-        brand_name: "My Store",
-        landing_page: "BILLING",
-        user_action: "PAY_NOW",
-        return_url: "https://example.com/return",
-        cancel_url: "https://example.com/cancel",
-      },
-    });
-  }
-
-  function onApprove ( actions) {
-    return actions.order.capture().then(function (details) {
-      console.log(details)
-    }).then(async() => {
-      navigate("/successOrder");
+        brand_name: 'My Store',
+        landing_page: 'BILLING',
+        user_action: 'PAY_NOW',
+        return_url: 'https://example.com/return',
+        cancel_url: 'https://example.com/cancel'
+      }
     })
   }
 
+  async function onApprove (data, actions) {
+    await actions.order.capture()
+
+    await api.post('/order', {
+      products: cartProducts
+    })
+    
+    navigate('/successOrder')
+  }
 
   return (
     <PayPalScriptProvider options={paypalOptions}>
       <PayPalButtons
-        style={{ layout: "horizontal", color: "blue" }}
+        style={{ layout: 'horizontal', color: 'blue' }}
         createOrder={createOrder}
         onApprove={onApprove}
       />
     </PayPalScriptProvider>
-  );
+  )
 }
 
-export default PaymentButton;
+export default PaymentButton
