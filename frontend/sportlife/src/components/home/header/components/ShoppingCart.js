@@ -21,7 +21,7 @@ export default function ShoppingCart () {
     setOpenCart(false)
   }
 
-  console.log(infosCart)
+  console.log(infosCart.data.cart[0].totalAmount)
 
   return (
     <div className={styles.container}>
@@ -83,7 +83,7 @@ export default function ShoppingCart () {
           </div>
           <Link to='/checkout'>
             <button
-              disabled={authenticated && infosCart.data.cart[0].totalAmount > 0 ? true : false}
+              disabled={authenticated && infosCart.data.cart[0].totalAmount > 0 ? false : true}
               className={styles.btn}
             >
               FINALIZAR COMPRA
