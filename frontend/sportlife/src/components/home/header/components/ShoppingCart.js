@@ -63,7 +63,7 @@ export default function ShoppingCart () {
             <p>
               SUB-TOTAL (
               {authenticated && infosCart.data.cart[0].totalItems > 0
-                ? infosCart.data.cart[0].totalItems
+                ? ` ${infosCart.data.cart[0].totalItems} `
                 : ' 0 '}
               produtos )
             </p>
