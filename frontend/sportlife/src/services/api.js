@@ -6,7 +6,10 @@ const api = axios.create({
 	baseURL,
 	headers:{
 		"Context-Type" : "application/json",
-	}
+	},
+  validateStatus: (status) => {
+    return status >= 200 && status < 300;
+  },
 });
 
 api.interceptors.request.use(async (config) => {
@@ -18,9 +21,19 @@ api.interceptors.request.use(async (config) => {
     }
     return config
   } catch (error) {
-    console.log(error)
+    return Promise.reject(error);
   }
-
 })
+
+api.interceptors.response.use(
+  response => response,
+  error => {
+    if (error.response && error.response.status === 401 || error.response.status === 403) {
+      localStorage.removeItem('user_token');
+    }
+    return Promise.reject(error);
+  }
+);
+
 
 export {api}

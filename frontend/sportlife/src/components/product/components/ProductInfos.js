@@ -107,7 +107,6 @@ export default function ProductInfos() {
         onClick={() => addItem(id, amount, size)}
         className={styles.addCar}
       >
-        {" "}
         <FaShoppingCart />
         <span>Adicionar ao carrinho</span>
       </button>

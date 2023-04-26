@@ -11,7 +11,9 @@ export const UserProvider = ({ children }) => {
   const { authenticated } = useAuth();
 
   useEffect(() => {
-    getInfoUser();
+    if(authenticated === true) {
+      getInfoUser();
+    }
   }, [authenticated]);
 
   const getInfoUser = async () => {
@@ -101,6 +103,7 @@ export const UserProvider = ({ children }) => {
       console.log(error);
     }
   };
+
 
   return (
     <UserContext.Provider

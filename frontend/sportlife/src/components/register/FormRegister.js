@@ -55,6 +55,7 @@ export default function FormRegister() {
           <Input
             type="password"
             placeholder="Senha"
+            autoComplete="new-password"
             eye={true}
             value={password}
             onChange={(e) => [setPassword(e.target.value)]}
@@ -62,6 +63,7 @@ export default function FormRegister() {
           <Input
             type="password"
             placeholder="Confirme sua senha"
+            autoComplete="new-password"
             eye={true}
             value={confirmPass}
             onChange={(e) => [setConfirmPass(e.target.value)]}

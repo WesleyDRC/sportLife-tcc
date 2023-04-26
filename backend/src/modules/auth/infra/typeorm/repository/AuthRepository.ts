@@ -36,5 +36,4 @@ export class AuthRepository implements IAuthRepository {
     return Promise.resolve(foundUser);
   }
 
-
 }

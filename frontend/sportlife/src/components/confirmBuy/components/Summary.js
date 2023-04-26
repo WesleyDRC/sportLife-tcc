@@ -14,6 +14,7 @@ export default function Summary(){
 	const { getCartUser, setCart, cart, total, setTotal, setProductsCart } = useCart();
 
 	useEffect(() => {
+
 		async function fetchData() {
       const result = await getCartUser();
 			setCart(result.data.cart)

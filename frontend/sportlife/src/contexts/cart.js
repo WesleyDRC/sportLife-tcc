@@ -1,12 +1,12 @@
-import styles from '../components/product/components/ProductInfos.module.css'
-
 import { createContext, useState } from 'react'
 
 import AxiosRepository from '../repository/AxiosRepository'
 
-import { toast } from 'react-toastify';
+import { toast } from 'react-toastify'
 
-import useEditProduct from '../hooks/useEditProduct';
+import useEditProduct from '../hooks/useEditProduct'
+
+import useAuth from '../hooks/useAuth'
 
 export const CartContext = createContext({})
 
@@ -16,7 +16,8 @@ export const CartProvider = ({ children }) => {
   const [size, setSize] = useState('')
   const [infosCart, setInfosCart] = useState([])
   const [productsCart, setProductsCart] = useState([])
-  const {manupilationEditProductClose} = useEditProduct()
+  const { manupilationEditProductClose } = useEditProduct()
+  const { authenticated } = useAuth()
   let [total, setTotal] = useState('1.00')
 
   const manupilationCartOpen = () => {
@@ -32,12 +33,18 @@ export const CartProvider = ({ children }) => {
     document.body.scroll = 'yes'
   }
 
-  const notify = (message) => { toast(message)}
+  const notify = message => {
+    toast(message)
+  }
 
   const addItem = async (productId, quantity, size) => {
     try {
-      if(size === ''){
+      if (size === '') {
         notify('Escolha o tamanho do seu produto')
+        return
+      }
+      if(!authenticated) {
+        notify('É necessário criar uma conta para adicionar produtos ao carrinho!')
         return
       }
       manupilationCartOpen()
@@ -46,6 +53,7 @@ export const CartProvider = ({ children }) => {
         quantity,
         size
       )
+      await getCartUser()
       return response
     } catch (error) {
       console.log(error)
@@ -59,7 +67,8 @@ export const CartProvider = ({ children }) => {
         quantity,
         size
       )
-      setInfosCart(response.data)
+      setInfosCart(response)
+
       return response
     } catch (error) {
       console.log(error)
@@ -86,8 +95,8 @@ export const CartProvider = ({ children }) => {
     }
   }
 
-  const updateProductById = async (productId, quantity, size) =>{
-    try{
+  const updateProductById = async (productId, quantity, size) => {
+    try {
       const response = await AxiosRepository.updateProductById(
         productId,
         quantity,
@@ -97,7 +106,7 @@ export const CartProvider = ({ children }) => {
       notify('Produto atualizado com sucesso !')
       await getCartUser()
       return response
-    }catch(error){
+    } catch (error) {
       console.log(error)
     }
   }
@@ -121,9 +130,9 @@ export const CartProvider = ({ children }) => {
         setSize,
         updateProductById,
         infosCart,
-       setInfosCart,
-       setProductsCart,
-       productsCart
+        setInfosCart,
+        setProductsCart,
+        productsCart
       }}
     >
       {children}

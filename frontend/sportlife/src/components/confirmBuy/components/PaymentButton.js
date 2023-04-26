@@ -16,6 +16,7 @@ function PaymentButton () {
   const navigate = useNavigate()
 
   useEffect(() => {
+
     async function fetchData () {
       const result = await getCartUser()
       setProducts(result.data.cart[0].items)
