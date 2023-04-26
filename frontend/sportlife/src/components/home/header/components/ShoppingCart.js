@@ -1,6 +1,7 @@
 import styles from './ShoppingCart.module.css'
 
 import useCart from '../../../../hooks/useCart'
+import useAuth from '../../../../hooks/useAuth'
 
 import { CgClose } from 'react-icons/cg'
 import { BsBag } from 'react-icons/bs'
@@ -13,11 +14,14 @@ import { Link } from 'react-router-dom'
 
 export default function ShoppingCart () {
   const { manupilationCartClose, setOpenCart, infosCart } = useCart()
+  const { authenticated } = useAuth()
 
   function keepContinue () {
     window.location.href = 'https://sport-life-tcc.vercel.app/'
     setOpenCart(false)
   }
+
+  console.log(infosCart)
 
   return (
     <div className={styles.container}>
@@ -34,7 +38,7 @@ export default function ShoppingCart () {
         </header>
 
         <div className={styles.itemsCart}>
-          {infosCart.data.cart[0].items.length > 0 ? (
+          {authenticated && infosCart.data.cart[0].items.length > 0 ? (
             infosCart.data.cart[0].items.map(item => (
               <ProductCart
                 key={item.id}
@@ -58,13 +62,13 @@ export default function ShoppingCart () {
           <div className={styles.subTotal}>
             <p>
               SUB-TOTAL (
-              {infosCart.data.cart[0].totalItems > 0
+              {authenticated && infosCart.data.cart[0].totalItems > 0
                 ? infosCart.data.cart[0].totalItems
                 : ' 0 '}
               produtos )
             </p>
             <p>
-              {infosCart.data.cart[0].totalAmount > 0
+              {authenticated && infosCart.data.cart[0].totalAmount > 0
                 ? priceBRL(infosCart.data.cart[0].totalAmount)
                 : 0}
             </p>
@@ -72,14 +76,14 @@ export default function ShoppingCart () {
           <div className={styles.total}>
             <p>TOTAL</p>
             <p className={styles.totalPrice}>
-              {infosCart.data.cart[0].totalAmount > 0
+              {authenticated && infosCart.data.cart[0].totalAmount > 0
                 ? priceBRL(infosCart.data.cart[0].totalAmount)
                 : 0}
             </p>
           </div>
           <Link to='/checkout'>
             <button
-              disabled={infosCart.data.cart[0].totalAmount <= 0 ? false : true}
+              disabled={authenticated && infosCart.data.cart[0].totalAmount > 0 ? true : false}
               className={styles.btn}
             >
               FINALIZAR COMPRA
