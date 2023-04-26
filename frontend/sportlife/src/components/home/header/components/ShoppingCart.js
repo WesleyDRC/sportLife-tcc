@@ -21,8 +21,6 @@ export default function ShoppingCart () {
     setOpenCart(false)
   }
 
-  console.log(infosCart.data.cart[0].totalAmount)
-
   return (
     <div className={styles.container}>
       <aside>
