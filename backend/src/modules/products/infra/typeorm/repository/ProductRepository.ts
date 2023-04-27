@@ -10,6 +10,7 @@ import { Assessments } from "../entities/Assessments";
 import { Product } from "../entities/Product";
 import { Inventory } from "../entities/Inventory";
 import AppError from "../../../../../shared/errors/AppError";
+import { consumers } from "stream";
 
 interface IFindProducts {
   id: string;
@@ -134,12 +135,6 @@ export class ProductRepository implements IProductRepository {
 
   public async findAllById(products: IFindProducts[]): Promise<Product[]> {
     const idList = products.map((product) => product.id);
-
-    console.log(idList)
-
-    if (idList.length === 0) {
-      return [];
-    }
     
     const orderList = await this.ormRepository
       .createQueryBuilder("products")
@@ -150,11 +145,13 @@ export class ProductRepository implements IProductRepository {
       .getMany();
 
     idList.forEach((item) => {
-      orderList.find((product) => {
-        if (!(product.id === item)) {
-          throw new AppError("Missing Product", 404);
-        }
-      });
+      let findProduct = orderList.find((product) => {
+        return product.id == item
+      })
+
+      if(!findProduct) {
+        throw new AppError("Missing Product", 404);
+      }
     });
 
     return orderList;

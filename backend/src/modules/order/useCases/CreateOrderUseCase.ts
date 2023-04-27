@@ -46,35 +46,40 @@ export default class CreateOrderUseCase implements IUseCase {
       const productsIds = products.map((product) => {
         return { id: product.id };
       });
+
       const productsData = await this.productRepository.findAllById(
         productsIds
       );
 
-      const productsFinal = productsData.map((productData) => {
-        const productFinal = products.find(
-          (productFind) => productFind.id === productData.id
-        );
+      const productBase = [];
 
-        return {
-          product_id: productData.id,
-          price: productData.price,
-          quantity: productFinal?.quantity || 0,
-        };
+      products.map((product) => {
+        productsData.forEach((productData) => {
+          productBase.push({
+            product_id: productData.id,
+            price: productData.price,
+            quantity: product?.quantity || 0,
+          });
+          return productBase;
+        });
       });
 
       await this.productRepository.updateQuantity(products);
 
-      for (const product of productsFinal) {
+      for (const product of productBase) {
         try {
-          await this.cartRepository.deleteProductCart(userId, product.product_id);
+          await this.cartRepository.deleteProductCart(
+            userId,
+            product.product_id
+          );
         } catch (error) {
-          return error
+          return error;
         }
       }
 
       const order = await this.orderRepository.createOrder({
         user,
-        products: productsFinal,
+        products: productBase,
       });
 
       order.user = undefined;
