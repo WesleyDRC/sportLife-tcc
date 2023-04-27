@@ -60,7 +60,7 @@ export const UserProvider = ({ children }) => {
     road,
     neighborhood,
     number,
-    complement
+    complement,
   ) => {
     try {
       return await AxiosRepository.createAddress(
@@ -70,7 +70,7 @@ export const UserProvider = ({ children }) => {
         road,
         neighborhood,
         number,
-        complement
+        complement,
       );
     } catch (error) {
       console.log(error);
@@ -103,7 +103,8 @@ export const UserProvider = ({ children }) => {
         road,
         neighborhood,
         number,
-        complement
+        complement,
+        notify('Endereço atualizado')
       );
     } catch (error) {
       console.log(error);

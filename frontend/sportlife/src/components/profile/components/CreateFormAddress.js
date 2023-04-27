@@ -34,7 +34,6 @@ export default function CreateFormAddress({title}){
 	const submit = async (e) =>{
 		e.preventDefault();
 		const response = await createAddress(city,cep,country,road,neighborhood,number,complement)
-		alert(response.data.message)
 		navigate('/user/address')
 	}
 	return(
