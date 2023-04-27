@@ -4,6 +4,7 @@
 	transition: .1s;
 	cursor: pointer;
 	margin: 0px 20px;
+	border: 1px solid transparent;
 }
 
 .card:hover{
@@ -17,9 +18,18 @@
 
 .card .name{
 	margin: 8px;
+	margin-bottom: 0px;
 	font-weight: 700;
 	font-family: 'Montserrat', sans-serif;
 	font-size: 1.7rem;
+}
+
+.card .category{
+	color: #a9a9a9;
+	font-family: Montserrat,sans-serif;
+	font-size: 1.4rem;
+	margin: 0px 8px;
+	margin-bottom: 10px;
 }
 
 .card .price{
@@ -28,30 +38,6 @@
 	font-family: 'Montserrat', sans-serif;
 	font-size: 2rem;
 	font-weight: 600;
-}
-
-.buy{
-	transition:1s;
-	background-color:#317B96 ;
-	margin: 8px;
-	color: white;
-	border-radius: 5px;
-	width: 100%;
-	display: block;
-}
-
-.buyNone{
-	background-color:#317B96 ;
-	margin: 8px;
-	color: white;
-	border-radius: 5px;
-	width: 100%;
-	display: none;
-}
-
-.positionButton{
-	display: flex;
-	justify-content: center;
 }
 
 @media (max-width:1345px){
