@@ -11,15 +11,11 @@ import PaymentButton from './PaymentButton';
 
 export default function Summary(){
 
-	const { getCartUser, setCart, cart, total, setTotal, setProductsCart } = useCart();
+	const { getCartUser, setCart, cart, total, setTotal, setProductsCart, infosCart } = useCart();
 
 	useEffect(() => {
-
 		async function fetchData() {
-      const result = await getCartUser();
-			setCart(result.data.cart)
-			setTotal(result.data.cart[0].totalAmount)
-			setProductsCart(result.data.cart[0].items)
+      await getCartUser();
     }
     fetchData();
 	},[])

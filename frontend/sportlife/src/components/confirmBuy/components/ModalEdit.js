@@ -51,7 +51,7 @@ export default function ModalEdit (props) {
   }
 
   let teste = props.id
-  console.log(teste)
+  
   return (
     <div className={styles.container}>
       <div className={styles.subContainer}>

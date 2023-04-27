@@ -68,6 +68,9 @@ export const CartProvider = ({ children }) => {
         size
       )
       setInfosCart(response)
+      setCart(response.data.cart)
+			setTotal(response.data.cart[0].totalAmount)
+			setProductsCart(response.data.cart[0].items)
 
       return response
     } catch (error) {
