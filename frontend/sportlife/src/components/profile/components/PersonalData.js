@@ -6,6 +6,10 @@ import styles from './PersonalData.module.css'
 import useUser from '../../../hooks/useUser'
 import useAuth from '../../../hooks/useAuth'
 
+import { ToastContainer } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
+
 export default function PersonalData(){
 
 	const {user, getInfoUser} = useUser()
@@ -58,6 +62,19 @@ export default function PersonalData(){
 						<p className={styles.edit}>EDITAR</p>
 					</Link>
 					</div>
+					<ToastContainer
+        position="top-right"
+				style={{fontSize:'1.4rem'}}
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable={false}
+        pauseOnHover={false}
+        theme="dark"
+      />
 				</div>
 		)
 }
