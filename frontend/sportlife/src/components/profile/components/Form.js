@@ -12,12 +12,12 @@ export default function Form() {
 	const [gender, setGender] = useState(user.gender)
 	const [dateBirth, setDateBirth] = useState(user.dateBirth)
 	const [telephone, setTelephone] = useState(user.telephone)
+
 	const navigate = useNavigate()
 
 	const submit = async (e) =>{
 		e.preventDefault();
 		const response = await updateUser(firstName, lastName,cpf, gender, dateBirth, telephone)
-		alert(response.data.message)
 		navigate('/user/personaldata')
 	}
 
@@ -93,6 +93,7 @@ export default function Form() {
           </div>
         </form>
       </div>
+
     </div>
   );
 }

@@ -2,6 +2,7 @@ import { createContext, useState, useEffect } from "react";
 import { api } from "../services/api";
 import AxiosRepository from "../repository/AxiosRepository";
 import useAuth from "../hooks/useAuth";
+import { toast } from 'react-toastify'
 
 export const UserContext = createContext({});
 
@@ -9,6 +10,10 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState([]);
   const [address, setAddress] = useState([]);
   const { authenticated } = useAuth();
+
+  const notify = message => {
+    toast(message)
+  }
 
   useEffect(() => {
     if(authenticated === true) {
@@ -40,7 +45,8 @@ export const UserProvider = ({ children }) => {
         CPF,
         gender,
         dateBirth,
-        telephone
+        telephone,
+        notify('Informações atualizadas')
       );
     } catch (error) {
       console.log(error);

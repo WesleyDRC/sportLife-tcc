@@ -132,7 +132,8 @@ export const CartProvider = ({ children }) => {
         infosCart,
         setInfosCart,
         setProductsCart,
-        productsCart
+        productsCart,
+        notify
       }}
     >
       {children}
