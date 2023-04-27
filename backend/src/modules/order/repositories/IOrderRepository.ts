@@ -4,5 +4,5 @@ import ICreateOrderDTO from "../dtos/ICreateOrderDTO"
 
 export interface IOrderRepository {
   createOrder(data: ICreateOrderDTO): Promise<OrderDetails>
-  // getOrder(): Promise<>
+  getOrder(userId: string): Promise<[]>
 }

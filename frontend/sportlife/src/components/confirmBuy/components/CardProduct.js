@@ -5,18 +5,19 @@ import { useEffect, useState } from 'react'
 import ProductCheckout from './ProductCheckout'
 
 import useCart from '../../../hooks/useCart'
+import useAuth from '../../../hooks/useAuth'
 
 export default function CardProduct () {
-  const { getCartUser, openCart } = useCart()
-  const [cart, setCart] = useState([])
+  const { getCartUser, infosCart } = useCart()
+  const { authenticated } = useAuth()
 
   useEffect(() => {
     async function fetchData () {
       const result = await getCartUser()
-      setCart(result.data.cart)
     }
     fetchData()
-  }, [openCart])
+  }, [])
+
 
   return (
     <div className={styles.container}>
@@ -28,9 +29,8 @@ export default function CardProduct () {
           <p className={styles.titleProductInfos}>produtos e informações</p>
         </div>
         <div className={styles.listProducts}>
-          {cart.length > 0 &&
-            cart[0].items.length > 0 &&
-            cart[0].items.map(item => (
+          {authenticated && infosCart.data && infosCart.data.cart[0].items.length > 0 &&
+            infosCart.data.cart[0].items.map(item => (
               <ProductCheckout
                 key={item.id}
                 id={item.id}

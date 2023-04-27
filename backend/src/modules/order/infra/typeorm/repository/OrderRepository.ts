@@ -34,8 +34,39 @@ export class OrderRepository implements IOrderRepository {
 
       return Promise.resolve(order);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   }
 
+  public async getOrder(userId: string): Promise<any> {
+    const detailsOrderUser = await this.ormRepositoryOrderDetails.find({
+      where: {
+        user_id: userId,
+      },
+    });
+
+    const orderProducts = []
+
+    detailsOrderUser.map((order) => {
+      order.order_products.forEach((productOrder) => {
+        orderProducts.push({
+          idOrder: productOrder.order_id,
+          quantity: productOrder.quantity,
+          price: productOrder.price,
+          status: productOrder.shippingStatus,
+          name: productOrder.product.name,
+          imageUrl: productOrder.product.imageMain,
+          created_at: order.created_at,
+          updated_at: order.updated_at
+        })
+        return orderProducts
+      })
+    })
+
+    // [0].order_products.map((order, i) => {
+
+    // });
+
+    return orderProducts;
+  }
 }
