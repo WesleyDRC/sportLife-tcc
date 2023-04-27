@@ -51,7 +51,7 @@ export class ProductRepository implements IProductRepository {
     const values = Object.values(filter);
 
     if (filter) {
-      productQuery.where(`products.${key} = :values`, { values });
+      productQuery.where(`products.${key[0]} LIKE :find`, { find: `${values[0]}%`});
     }
 
     const products = await productQuery.getMany();
@@ -135,7 +135,7 @@ export class ProductRepository implements IProductRepository {
 
   public async findAllById(products: IFindProducts[]): Promise<Product[]> {
     const idList = products.map((product) => product.id);
-    
+
     const orderList = await this.ormRepository
       .createQueryBuilder("products")
       .leftJoinAndSelect("products.categories", "categories")
