@@ -86,31 +86,31 @@ export default function ModalEdit (props) {
             <div className={styles.sizes}>
               <p
                 onClick={selectPP}
-                className={size == 'PP' ? styles.select : styles.notSelect}
+                className={size === 'PP' ? styles.select : styles.notSelect}
               >
                 PP
               </p>
               <p
                 onClick={selectP}
-                className={size == 'P' ? styles.select : styles.notSelect}
+                className={size === 'P' ? styles.select : styles.notSelect}
               >
                 P
               </p>
               <p
                 onClick={selectM}
-                className={size == 'M' ? styles.select : styles.notSelect}
+                className={size === 'M' ? styles.select : styles.notSelect}
               >
                 M
               </p>
               <p
                 onClick={selectG}
-                className={size == 'G' ? styles.select : styles.notSelect}
+                className={size === 'G' ? styles.select : styles.notSelect}
               >
                 G
               </p>
               <p
                 onClick={selectGG}
-                className={size == 'GG' ? styles.select : styles.notSelect}
+                className={size === 'GG' ? styles.select : styles.notSelect}
               >
                 GG
               </p>
