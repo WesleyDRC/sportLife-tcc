@@ -4,8 +4,6 @@ import { useState, useRef } from 'react'
 
 import useEditProduct from '../../../hooks/useEditProduct'
 
-import { useParams } from 'react-router-dom'
-
 import useCart from '../../../hooks/useCart'
 
 export default function ModalEdit (props) {
@@ -50,13 +48,13 @@ export default function ModalEdit (props) {
     setSize('GG')
   }
 
-  let teste = props.id
-  console.log(teste)
+  let productId = props.id
+
   return (
     <div className={styles.container}>
       <div className={styles.subContainer}>
         <h1>Edite a quantidade ou tamanho do seu produto</h1>
-        <img src={props.url} />
+        <img src={props.url} alt="Imagem do produto"/>
         <p className={styles.name}>{props.name}</p>
         <div className={styles.editForm}>
           <div className={styles.counterContainer}>
@@ -122,7 +120,7 @@ export default function ModalEdit (props) {
             Cancelar
           </button>
           <button
-            onClick={() => updateProductById(teste, amount, size)}
+            onClick={() => updateProductById(productId, amount, size)}
             className={styles.saveEdits}
           >
             Salvar

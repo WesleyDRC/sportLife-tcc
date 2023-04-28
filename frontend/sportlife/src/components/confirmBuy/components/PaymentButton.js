@@ -1,46 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useLayoutEffect } from 'react'
 
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, use } from 'react-router-dom'
 
 import { PayPalButtons, PayPalScriptProvider } from '@paypal/react-paypal-js'
 
 import useCart from '../../../hooks/useCart'
 
-import { api } from '../../../services/api'
-
 import axios from 'axios'
 
 function PaymentButton () {
-  const { getCartUser, total, productsCart } = useCart()
-  const [products, setProducts] = useState([])
+  const { total, productsCart } = useCart()
   const navigate = useNavigate()
-
-  useEffect(() => {
-    async function fetchData () {
-      const result = await getCartUser()
-      setProducts(result.data.cart[0].items)
-    }
-    fetchData()
-  }, [])
-
-  const paypalOptions = {
-    'client-id': process.env.REACT_APP_CLIENT_ID,
-    currency: 'BRL',
-    intent: 'capture',
-    activeFunding: ''
-  }
-
-  const productsPayPal = products.map(product => {
-    return {
-      name: product.name,
-      description: 'Wesley',
-      quantity: product.quantity,
-      unit_amount: {
-        currency_code: 'BRL',
-        value: product.price
-      }
-    }
-  })
 
   let amount = {
     currency_code: 'BRL',
@@ -52,6 +22,25 @@ function PaymentButton () {
       }
     }
   }
+
+  const paypalOptions = {
+    'client-id': process.env.REACT_APP_CLIENT_ID,
+    currency: 'BRL',
+    intent: 'capture',
+    activeFunding: ''
+  }
+
+  const productsPayPal = productsCart.map(product => {
+    return {
+      name: product.name,
+      description: 'Wesley',
+      quantity: product.quantity,
+      unit_amount: {
+        currency_code: 'BRL',
+        value: product.price
+      }
+    }
+  })
 
   const cartProducts = productsCart.map(product => {
     return {
