@@ -11,7 +11,11 @@ import useBurguer from '../../../../hooks/useBurguer';
 import ShoppingCart from './ShoppingCart';
 import OptionsBurguer from './OptionsBurguer'
 
+import {useState} from 'react'
+
 export default function NavBar(){
+
+	const [text, setText] = useState('');
 
 	const { manupilationCartOpen, openCart } = useCart()
 	const { manupilationBurguerOpen, openBurguer } = useBurguer()

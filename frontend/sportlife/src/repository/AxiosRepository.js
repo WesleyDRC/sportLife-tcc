@@ -70,17 +70,34 @@ class AxiosRepository {
     });
   }
 
-  async findAll({category, order}) {
-    if(!category) {
-      category = ""
+  async findAll({ category, order, filter }) {
+    if (!category) {
+      category = "";
     }
-    if(!order) {
-      order = ""
+    if (!order) {
+      order = "";
+    }
+    if (!filter) {
+      filter = "";
+    }
+    if (filter) {
+      const filterData = {
+        filter: {
+          name: "ca",
+        },
+      };
     }
     return this.#axiosClient.get("/products", {
       headers: {
         category: category,
-        order: (order ? order : "")
+        order: order ? order : "",
+        filter: filter
+          ? {
+              filter: {
+                name: "jaqueta",
+              },
+            }
+          : "",
       },
     });
   }
@@ -97,18 +114,18 @@ class AxiosRepository {
     return this.#axiosClient.get(`products/${id}/assessments`);
   }
 
-  async addItemCart(productId, quantity, size){
+  async addItemCart(productId, quantity, size) {
     const data = {
-      "products": [
+      products: [
         {
-          "productId": productId,
-          "quantity": quantity,
-          "size":size
-        }
-      ]
+          productId: productId,
+          quantity: quantity,
+          size: size,
+        },
+      ],
     };
-    const response = await this.#axiosClient.post(`/cart`, data)
-    return response
+    const response = await this.#axiosClient.post(`/cart`, data);
+    return response;
   }
 
   async getCartUser() {
@@ -119,10 +136,10 @@ class AxiosRepository {
     return this.#axiosClient.delete(`/cart/${id}`);
   }
 
-  async updateProductById(productId, quantity, size){
-    const data = { productId,quantity, size };
-    const response = await this.#axiosClient.patch(`/cart`, data)
-    return response
+  async updateProductById(productId, quantity, size) {
+    const data = { productId, quantity, size };
+    const response = await this.#axiosClient.patch(`/cart`, data);
+    return response;
   }
 }
 

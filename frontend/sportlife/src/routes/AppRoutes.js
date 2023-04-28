@@ -106,6 +106,12 @@ export default function Routes() {
 			},
 
 			{
+				path: '/filter/:filter',
+				element: <CategoryPage />,
+				errorElement: <ErrorPage />
+			},
+
+			{
 				path: '/checkout',
 				element: <ConFirmBuyPage />,
 				errorElement: <ErrorPage />
