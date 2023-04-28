@@ -1,23 +1,14 @@
 import styles from './CardProduct.module.css'
 
-import { useEffect, useState } from 'react'
-
 import ProductCheckout from './ProductCheckout'
 
 import useCart from '../../../hooks/useCart'
 import useAuth from '../../../hooks/useAuth'
 
 export default function CardProduct () {
-  const { getCartUser, infosCart } = useCart()
+  
+  const { infosCart } = useCart()
   const { authenticated } = useAuth()
-
-  useEffect(() => {
-    async function fetchData () {
-      const result = await getCartUser()
-    }
-    fetchData()
-  }, [])
-
 
   return (
     <div className={styles.container}>

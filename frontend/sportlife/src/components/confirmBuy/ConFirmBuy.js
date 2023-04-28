@@ -8,7 +8,21 @@ import CalcDelivery from './components/CalcDelivery';
 
 import { ToastContainer } from "react-toastify";
 
+import { useEffect } from 'react';
+
+import useCart from '../../hooks/useCart';
+
 export default function ConFirmBuy(){
+
+	const { getCartUser, updateProductById } = useCart();
+
+	useEffect(() => {
+		async function fetchData() {
+      await getCartUser();
+    }
+    fetchData();
+	},[])
+
 	return(
 		<div className={styles.container}>
 			<div className={styles.subContainer}>

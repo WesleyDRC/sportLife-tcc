@@ -33,6 +33,8 @@ export const CartProvider = ({ children }) => {
     document.body.scroll = 'yes'
   }
 
+
+
   const notify = message => {
     toast(message)
   }
@@ -43,8 +45,10 @@ export const CartProvider = ({ children }) => {
         notify('Escolha o tamanho do seu produto')
         return
       }
-      if(!authenticated) {
-        notify('É necessário criar uma conta para adicionar produtos ao carrinho!')
+      if (!authenticated) {
+        notify(
+          'É necessário criar uma conta para adicionar produtos ao carrinho!'
+        )
         return
       }
       manupilationCartOpen()
@@ -69,10 +73,9 @@ export const CartProvider = ({ children }) => {
       )
       setInfosCart(response)
       setCart(response.data.cart)
-			setTotal(response.data.cart[0].totalAmount)
-			setProductsCart(response.data.cart[0].items)
-
-      return response
+      setTotal(response.data.cart[0].totalAmount)
+      setProductsCart(response.data.cart[0].items)
+      return
     } catch (error) {
       console.log(error)
     }
@@ -105,9 +108,21 @@ export const CartProvider = ({ children }) => {
         quantity,
         size
       )
+
       manupilationEditProductClose()
-      notify('Produto atualizado com sucesso !')
+
+      document.documentElement.style.overflow = 'hidden'
+      document.body.scroll = 'no'
+      document.body.style.pointerEvents = "none";
+      
       await getCartUser()
+
+      notify('Produto atualizado com sucesso !')
+
+      setTimeout(() => {
+        window.location.reload()
+      }, 1000);
+
       return response
     } catch (error) {
       console.log(error)
@@ -136,7 +151,8 @@ export const CartProvider = ({ children }) => {
         setInfosCart,
         setProductsCart,
         productsCart,
-        notify
+        notify,
+
       }}
     >
       {children}
