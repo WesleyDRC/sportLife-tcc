@@ -106,7 +106,7 @@ export default function Routes() {
 			},
 
 			{
-				path: '/filter/:filter',
+				path: '/filter/:name',
 				element: <CategoryPage />,
 				errorElement: <ErrorPage />
 			},

@@ -6,29 +6,33 @@ import Footer from '../components/home/footer/Footer'
 
 import AxiosRepository from '../repository/AxiosRepository'
 
+import Loading from '../components/home/main/components/Loading'
+
 import { useParams } from "react-router-dom";
 
 import { useEffect, useState } from 'react';
 
 export default function CategoryPage(){
 
+	const [loading, setLoading] = useState(true)
 	const [product, setProducts] = useState()
-	let { filter } = useParams();
+	let { name } = useParams();
 
 	useEffect(() => {
-    AxiosRepository.findAll({ name: filter })
+		setLoading(true)
+    AxiosRepository.findAll({ filter: name })
       .then(resp => {
         setProducts(resp.data)
+				setLoading(false)
       })
       .catch(error => {
         console.log(error)
       })
-  }, [])
-	console.log(product)
+  }, [name])
 	return(
 		<div className={styles.container}>
 			<Header />
-			<Category />
+			{!loading ?  <Category products={product} loading={loading} /> : <Loading />}
 			<Footer />
 		</div>
 	)

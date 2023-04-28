@@ -80,24 +80,13 @@ class AxiosRepository {
     if (!filter) {
       filter = "";
     }
-    if (filter) {
-      const filterData = {
-        filter: {
-          name: "ca",
-        },
-      };
-    }
     return this.#axiosClient.get("/products", {
       headers: {
         category: category,
         order: order ? order : "",
-        filter: filter
-          ? {
-              filter: {
-                name: "jaqueta",
-              },
-            }
-          : "",
+      },
+      params: {
+        name: filter,
       },
     });
   }
