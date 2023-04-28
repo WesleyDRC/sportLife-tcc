@@ -13,6 +13,8 @@ import OptionsBurguer from "./OptionsBurguer";
 
 import { useState, useEffect } from "react";
 
+import { useNavigate } from 'react-router-dom';
+
 export default function NavBar() {
   const [text, setText] = useState("");
 
@@ -22,6 +24,19 @@ export default function NavBar() {
   let handleChange = (e) => {
     setText(e.target.value);
   };
+
+	const navigate = useNavigate();
+
+  function handleKeyDown(event) {
+    if (event.key === 'Enter') {
+      const text = event.target.value;
+      navigate(`/filter/${text}`);
+    }
+  }
+
+	function handleSearch(text){
+		if(text === '') {console.log('oi')}
+	}
 
   return (
     <div className={styles.container}>
@@ -43,11 +58,10 @@ export default function NavBar() {
             type="text"
             placeholder="Procurar . . ."
             onChange={handleChange}
+						onKeyDown={handleKeyDown}
           />
-          <button>
-            <Link to={`/filter/${text}`}>
+          <button onClick={handleSearch(text)}>
               <FaSearch className={styles.searchIconMobile} />{" "}
-            </Link>
           </button>
           <FaHeart className={styles.icons} />
           <FaShoppingCart
@@ -63,17 +77,19 @@ export default function NavBar() {
           </Link>
         </div>
 
-        <input
-          className={styles.searchBarMobile}
-          type="text"
-          placeholder="Procurar . . ."
-          onChange={handleChange}
-        />
-        <button className={styles.searchButtonMobile}>
-          <Link to={`/filter/${text}`}>
-            <FaSearch className={styles.searchIconMobile} />{" "}
-          </Link>
-        </button>
+        <div>
+          <input
+            className={styles.searchBarMobile}
+            type="text"
+            placeholder="Procurar . . ."
+            onChange={handleChange}
+          />
+          <button className={styles.searchButtonMobile}>
+            <Link to={`/filter/${text}`}>
+              <FaSearch className={styles.searchIconMobile} />{" "}
+            </Link>
+          </button>
+        </div>
         <AiOutlineMenu
           onClick={manupilationBurguerOpen}
           className={styles.burguerIcon}

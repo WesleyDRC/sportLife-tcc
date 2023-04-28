@@ -63,6 +63,7 @@
 	background-color: rgb(244, 245, 249);
 	padding: .5rem;
 	border-radius:5px 0px 0px 5px;
+	margin: 0px;
 }
 
 .searchBar input:focus{
@@ -74,7 +75,6 @@
 	padding: .5rem .8rem;
 	background-color: #317B96;
 	border-radius: 0px 5px 5px 0px;
-	margin-top: 10px;
 }
 
 .searchBar .searchIcon, .searchIconMobile{
