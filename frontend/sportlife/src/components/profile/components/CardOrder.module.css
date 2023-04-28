@@ -1,0 +1,23 @@
+.container .subContainer img{
+	width: 100px;
+}
+
+.subContainer{
+	display: flex;
+	width: 100%;
+	border: 1px solid #9F9F9F;
+}
+
+.infos{
+	color: #9F9F9F;
+}
+
+.infos .name{
+	color: black;
+}
+
+.status{
+	align-items: center;
+	display: flex;
+	position: relative;
+}
