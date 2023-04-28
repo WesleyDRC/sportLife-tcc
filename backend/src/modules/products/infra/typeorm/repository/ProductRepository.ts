@@ -51,7 +51,7 @@ export class ProductRepository implements IProductRepository {
     const values = Object.values(filter);
 
     if (filter) {
-      productQuery.where(`products.${key[0]} LIKE :find`, { find: `${values[0]}%`});
+      productQuery.where(`products.${key[0]} LIKE :find`, { find: `%${values[0]}%`});
     }
 
     const products = await productQuery.getMany();

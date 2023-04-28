@@ -3,21 +3,28 @@ import { container } from "tsyringe";
 import ListProductsUseCase from "../../../useCases/ListProductsUseCase";
 
 export default class ListProductsController {
+  public async handle(request: Request, response: Response): Promise<Response> {
+    const listProductsUseCase = container.resolve(ListProductsUseCase);
 
-	public async handle(request: Request, response: Response): Promise<Response> {
-		const listProductsUseCase = container.resolve(ListProductsUseCase)
+    const { category, order } = request.headers;
 
-		const { category, order} = request.headers
+    const queryParams = request.query;
 
-		const { filter } = request.body
+    const filter: { [key: string]: string } = {};
 
-		const products = await listProductsUseCase.execute(
-			category ? String(category) : "",
-			order ? String(order) : "",
-			filter ? filter : ""
-		)
+		Object.entries(queryParams).forEach(([chave, valor]) => {
+			if (typeof valor === 'string') {
+				valor = decodeURIComponent(valor.replace(/\+/g, " "))
+				filter[chave] = valor;
+			}
+		});
 
-		return response.json(products)
-	}
+    const products = await listProductsUseCase.execute(
+      category ? String(category) : "",
+      order ? String(order) : "",
+      filter
+    );
 
+    return response.json(products);
+  }
 }
