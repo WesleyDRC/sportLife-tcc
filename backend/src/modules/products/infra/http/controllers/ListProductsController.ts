@@ -22,7 +22,7 @@ export default class ListProductsController {
     const products = await listProductsUseCase.execute(
       category ? String(category) : "",
       order ? String(order) : "",
-      filter
+      filter ? filter : {"": ""}
     );
 
     return response.json(products);

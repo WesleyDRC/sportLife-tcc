@@ -47,11 +47,12 @@ export class ProductRepository implements IProductRepository {
       productQuery.orderBy(`products.${order}`, "DESC");
     }
 
-    const key = Object.keys(filter);
-    const values = Object.values(filter);
-
-    if (filter) {
-      productQuery.where(`products.${key[0]} LIKE :find`, { find: `%${values[0]}%`});
+    if (Object.keys(filter).length > 0) {
+      const key = Object.keys(filter);
+      const values = Object.values(filter);
+      productQuery.where(`products.${key[0]} LIKE :find`, {
+        find: `%${values[0]}%`,
+      });
     }
 
     const products = await productQuery.getMany();
@@ -146,10 +147,10 @@ export class ProductRepository implements IProductRepository {
 
     idList.forEach((item) => {
       let findProduct = orderList.find((product) => {
-        return product.id == item
-      })
+        return product.id == item;
+      });
 
-      if(!findProduct) {
+      if (!findProduct) {
         throw new AppError("Missing Product", 404);
       }
     });
