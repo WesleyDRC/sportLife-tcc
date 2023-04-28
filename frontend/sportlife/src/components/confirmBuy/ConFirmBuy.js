@@ -14,7 +14,7 @@ import useCart from '../../hooks/useCart';
 
 export default function ConFirmBuy(){
 
-	const { getCartUser, updateProductById } = useCart();
+	const { getCartUser } = useCart();
 
 	useEffect(() => {
 		async function fetchData() {

@@ -1,7 +1,5 @@
 import styles from './Summary.module.css'
 
-import { useEffect } from 'react'
-
 import useCart from '../../../hooks/useCart'
 
 import priceBRL from '../../../utils/formatPrice'
