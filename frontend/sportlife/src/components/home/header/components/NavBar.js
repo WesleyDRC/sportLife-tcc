@@ -34,8 +34,8 @@ export default function NavBar() {
     }
   }
 
-	function handleSearch(text){
-		if(text === '') {console.log('oi')}
+	function handleSearch(){
+    navigate(`/filter/${text}`)
 	}
 
   return (
@@ -60,8 +60,8 @@ export default function NavBar() {
             onChange={handleChange}
 						onKeyDown={handleKeyDown}
           />
-          <button onClick={handleSearch(text)}>
-              <FaSearch className={styles.searchIconMobile} />{" "}
+          <button onClick={handleSearch}>
+              <FaSearch onClick={handleSearch} className={styles.searchIconMobile} />{" "}
           </button>
           <FaHeart className={styles.icons} />
           <FaShoppingCart
@@ -85,9 +85,9 @@ export default function NavBar() {
             onChange={handleChange}
           />
           <button className={styles.searchButtonMobile}>
-            <Link to={`/filter/${text}`}>
+            <div onClick={handleSearch}>
               <FaSearch className={styles.searchIconMobile} />{" "}
-            </Link>
+            </div>
           </button>
         </div>
         <AiOutlineMenu
