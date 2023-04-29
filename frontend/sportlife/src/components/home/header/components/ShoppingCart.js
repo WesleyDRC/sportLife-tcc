@@ -13,14 +13,13 @@ import ProductCart from './ProductCart'
 import { Link } from 'react-router-dom'
 
 export default function ShoppingCart () {
-  const { manupilationCartClose, setOpenCart, infosCart } = useCart()
+  const { manupilationCartClose, setOpenCart, infosCart} = useCart()
   const { authenticated } = useAuth()
 
   function keepContinue () {
     window.location.href = 'https://sport-life-tcc.vercel.app/'
     setOpenCart(false)
   }
-
   return (
     <div className={styles.container}>
       <aside>

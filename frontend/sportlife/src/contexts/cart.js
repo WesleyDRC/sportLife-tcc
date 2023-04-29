@@ -33,8 +33,6 @@ export const CartProvider = ({ children }) => {
     document.body.scroll = 'yes'
   }
 
-
-
   const notify = message => {
     toast(message)
   }
@@ -114,7 +112,7 @@ export const CartProvider = ({ children }) => {
       document.documentElement.style.overflow = 'hidden'
       document.body.scroll = 'no'
       document.body.style.pointerEvents = "none";
-      
+
       await getCartUser()
 
       notify('Produto atualizado com sucesso !')
@@ -152,7 +150,6 @@ export const CartProvider = ({ children }) => {
         setProductsCart,
         productsCart,
         notify,
-
       }}
     >
       {children}
