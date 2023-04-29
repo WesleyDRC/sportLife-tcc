@@ -11,7 +11,7 @@ import useBurguer from "../../../../hooks/useBurguer";
 import ShoppingCart from "./ShoppingCart";
 import OptionsBurguer from "./OptionsBurguer";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import { useNavigate } from 'react-router-dom';
 
