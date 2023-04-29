@@ -10,6 +10,9 @@ export default function Request(){
 				<CardOrder />
 				<CardOrder />
 				<CardOrder />
+				<CardOrder />
+				<CardOrder />
+				<CardOrder />
 			</div>
 		</div>
 	)
