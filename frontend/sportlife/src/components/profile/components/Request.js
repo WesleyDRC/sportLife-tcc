@@ -8,6 +8,8 @@ export default function Request(){
 			<h1 className={styles.title}>Pedidos</h1>
 			<div className={styles.subContainer}>
 				<CardOrder />
+				<CardOrder />
+				<CardOrder />
 			</div>
 		</div>
 	)

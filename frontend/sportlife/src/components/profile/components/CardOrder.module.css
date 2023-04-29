@@ -1,15 +1,28 @@
+.container{
+	margin-bottom: 10px;
+}
+
 .container .subContainer img{
 	width: 100px;
 }
 
 .subContainer{
 	display: flex;
+	align-items: center;
 	width: 100%;
 	border: 1px solid #9F9F9F;
 }
 
+.infosContainer{
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+
 .infos{
 	color: #9F9F9F;
+	justify-content: center;
+	margin-left: 10px;
 }
 
 .infos .name{
@@ -17,7 +30,18 @@
 }
 
 .status{
-	align-items: center;
 	display: flex;
-	position: relative;
+	flex-direction: column;
+}
+
+.status div{
+	display: flex;
+	align-items: center;
+	margin-right: 10px;
+	color: #317B96;
+	font-weight: 500;
+}
+
+.status div svg{
+	margin-right: 5px;
 }

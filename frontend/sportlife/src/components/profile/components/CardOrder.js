@@ -7,14 +7,18 @@ export default function CardOrder(){
 		<div className={styles.container}>
 			<div className={styles.subContainer}>
 				<img src='https://imgnike-a.akamaihd.net/768x768/024315ID.jpg' alt='imagem produto' />
-				<div className={styles.infos}>
-					<p className={styles.name}>2x Camisa das braba</p>
-					<p>Size:M</p>
-					<p>49,99</p>
-				</div>
-				<div className={styles.status}>
-					<ImTruck />
-					<p>ENTREGUE</p>
+				<div className={styles.infosContainer}>
+					<div className={styles.infos}>
+						<p className={styles.name}>2x Camisa das braba</p>
+						<p>Size:M</p>
+						<p>49,99</p>
+					</div>
+					<div className={styles.status}>
+						<div>
+							<ImTruck />
+							<p>ENTREGUE</p>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
