@@ -36,11 +36,11 @@ export default function Footer(){
 				<div className={styles.fifthInfos}>
 					<p className={styles.title}>Layout e Desenvolvimento</p>
 					<div className={styles.devs}>
-						<img src='https://i.imgur.com/MC3pcrf.png' alt='developers and layout'/>
-						<img src='https://i.imgur.com/MC3pcrf.png' alt='developers and layout'/>
-						<img src='https://i.imgur.com/MC3pcrf.png' alt='developers and layout'/>
-						<img src='https://i.imgur.com/MC3pcrf.png' alt='developers and layout'/>
-						<img src='https://i.imgur.com/MC3pcrf.png' alt='developers and layout'/>
+						<img src='https://i.imgur.com/ZEjEQui.jpg' alt='developers and layout'/>
+						<img src='https://i.imgur.com/hJrVCXu.jpg' alt='developers and layout'/>
+						<img src='https://i.imgur.com/IkEF8pA.jpg' alt='developers and layout'/>
+						<img src='https://i.imgur.com/LLl8NHw.jpg' alt='developers and layout'/>
+						<img src='https://i.imgur.com/ebJFnpX.png' alt='developers and layout'/>
 					</div>
 				</div>
 		</footer>
