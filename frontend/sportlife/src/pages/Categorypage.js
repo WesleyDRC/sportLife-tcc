@@ -16,12 +16,22 @@ export default function CategoryPage(){
 
 	const [loading, setLoading] = useState(true)
 	const [product, setProducts] = useState()
-	let { name } = useParams();
+	let { name, esporte } = useParams();
 
 	useEffect(() => {
 		setLoading(true)
-    AxiosRepository.findAll({ filter: name })
+    AxiosRepository.findAll({ filter: name})
       .then(resp => {
+        setProducts(resp.data)
+				setLoading(false)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+
+			AxiosRepository.findAllTeste({category : esporte })
+      .then(resp => {
+				console.log(resp)
         setProducts(resp.data)
 				setLoading(false)
       })

@@ -91,6 +91,14 @@ class AxiosRepository {
     });
   }
 
+  async findAllTeste({ category }) {
+    return this.#axiosClient.get("/products", {
+      params: {
+        category: category
+      }
+    });
+  }
+
   async updateViewProduct(id) {
     return this.#axiosClient.patch(`products/${id}/views`);
   }

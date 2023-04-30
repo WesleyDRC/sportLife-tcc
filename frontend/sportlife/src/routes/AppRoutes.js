@@ -112,6 +112,12 @@ export default function Routes() {
 			},
 
 			{
+				path: '/esporte/:esporte',
+				element: <CategoryPage />,
+				errorElement: <ErrorPage />
+			},
+
+			{
 				path: '/checkout',
 				element: <ConFirmBuyPage />,
 				errorElement: <ErrorPage />

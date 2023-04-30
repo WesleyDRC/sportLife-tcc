@@ -21,11 +21,11 @@ export default function NavBar() {
   const { manupilationCartOpen, openCart } = useCart();
   const { manupilationBurguerOpen, openBurguer } = useBurguer();
 
+  const navigate = useNavigate();
+
   let handleChange = (e) => {
     setText(e.target.value);
   };
-
-	const navigate = useNavigate();
 
   function handleKeyDown(event) {
     if (event.key === 'Enter') {
