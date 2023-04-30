@@ -25,6 +25,7 @@ export default class CreateProductUseCase {
 		width,
 		views,
 		sizes,
+		brand,
 		categories_id,
 		inventory_id,
 		discount_id,
@@ -63,6 +64,9 @@ export default class CreateProductUseCase {
 		if(!width) {
       throw new AppError(productConstants.WIDTH_REQUIRED, 400);
 		}
+		if(!brand) {
+      throw new AppError(productConstants.WIDTH_REQUIRED, 400);
+		}
 		if(!categories_id) {
       throw new AppError(productConstants.CATEGORY_REQUIRED, 400);
 		}
@@ -87,6 +91,7 @@ export default class CreateProductUseCase {
 			width,
 			views,
 			sizes,
+			brand,
 			categories_id,
 			inventory_id,
 			discount_id
