@@ -1,49 +1,100 @@
-import styles from './Categorypage.module.css'
+import styles from "./Categorypage.module.css";
 
-import Header from '../components/home/header/Header'
-import Category from '../components/category/Category'
-import Footer from '../components/home/footer/Footer'
+import Header from "../components/home/header/Header";
+import Category from "../components/category/Category";
+import Footer from "../components/home/footer/Footer";
 
-import AxiosRepository from '../repository/AxiosRepository'
+import AxiosRepository from "../repository/AxiosRepository";
 
-import Loading from '../components/home/main/components/Loading'
+import Loading from "../components/home/main/components/Loading";
 
 import { useParams } from "react-router-dom";
 
-import { useEffect, useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
-export default function CategoryPage(){
+import { useEffect, useState } from "react";
 
-	const [loading, setLoading] = useState(true)
-	const [product, setProducts] = useState()
-	let { name, esporte } = useParams();
+export default function CategoryPage() {
+  const [loading, setLoading] = useState(true);
+  const [product, setProducts] = useState();
+  let { name, esporte, brand } = useParams();
+  const navigate = useNavigate();
 
-	useEffect(() => {
-		setLoading(true)
-    AxiosRepository.findAll({ filter: name})
-      .then(resp => {
-        setProducts(resp.data)
-				setLoading(false)
-      })
-      .catch(error => {
-        console.log(error)
-      })
+  useEffect(() => {
+    if (name != undefined) {
+      setLoading(true);
+      AxiosRepository.findAll({ filter: name })
+        .then((resp) => {
+          setProducts(resp.data);
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else if (esporte != undefined) {
+      let sportSearch = "";
+      switch (esporte.toLowerCase()) {
+        case "casual":
+          sportSearch = 1;
+          break;
+        case "basquete":
+          sportSearch = 2;
+          break;
+        case "corrida":
+          sportSearch = 3;
+          break;
+        case "futebol":
+          sportSearch = 4;
+          break;
+        case "volei":
+          sportSearch = 5;
+          break;
+        case "tenis":
+          sportSearch = 6;
+          break;
+        case "futsal":
+          sportSearch = 7;
+          break;
+        case "lutas":
+          sportSearch = 8;
+          break;
+        case "natacao":
+          sportSearch = 9;
+          break;
+        default:
+          navigate("/404");
+          break;
+      }
 
-			AxiosRepository.findAllTeste({category : esporte })
-      .then(resp => {
-				console.log(resp)
-        setProducts(resp.data)
-				setLoading(false)
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }, [name])
-	return(
-		<div className={styles.container}>
-			<Header />
-			{!loading ?  <Category products={product} loading={loading} /> : <Loading />}
-			<Footer />
-		</div>
-	)
+      setLoading(true);
+      AxiosRepository.findBySport({ categoryId: sportSearch })
+        .then((resp) => {
+          setProducts(resp.data);
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else if(brand != undefined){
+      AxiosRepository.findByBrand({ brand : brand })
+        .then((resp) => {
+          setProducts(resp.data);
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  } , [name]);
+  return (
+    <div className={styles.container}>
+      <Header />
+      {!loading ? (
+        <Category products={product} loading={loading} />
+      ) : (
+        <Loading />
+      )}
+      <Footer />
+    </div>
+  );
 }
