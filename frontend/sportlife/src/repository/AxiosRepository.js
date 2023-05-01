@@ -82,19 +82,19 @@ class AxiosRepository {
     }
     return this.#axiosClient.get("/products", {
       headers: {
-        category: category,
+        category: 2,
         order: order ? order : "",
       },
       params: {
-        name: filter,
+        name: filter ? filter : '',
       },
     });
   }
 
-  async findAllTeste({ category }) {
+  async findBySport({ categoryId }) {
     return this.#axiosClient.get("/products", {
-      params: {
-        category: category
+      headers: {
+        category: categoryId ? categoryId : ""
       }
     });
   }
