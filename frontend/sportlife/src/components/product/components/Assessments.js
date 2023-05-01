@@ -53,13 +53,14 @@ export default function Assessments() {
         <div className={styles.promotions} ref={carousel}>
           {assessments && assessments.length > 0 ? (
             assessments.map((item, i) => (
-              <div className={styles.containerWidth}>
+              <div className={styles.containerWidth} key={item.id}>
                 <CardAssessment
-                  id={assessments[i].id}
-                  star={assessments[i].stars}
-                  user={assessments[i].user.firstName}
-                  lastName={assessments[i].user.lastName}
-                  comment={assessments[i].assessments}
+                  key={item.id}
+                  id={item.id}
+                  star={item.stars}
+                  user={item.user.firstName}
+                  lastName={item.user.lastName}
+                  comment={item.assessments}
                 />
               </div>
             ))

@@ -6,7 +6,7 @@ export default function CardAssessment({star, comment, user, lastName}){
 	let starsRender = []
 	function stars(){
 		for(let i = 0; i < star; i++){
-			starsRender.push(<AiFillStar className={styles.star}/>);
+			starsRender.push(<AiFillStar className={styles.star} />);
 		}
 	}
 	stars()

@@ -26,6 +26,7 @@ export default function Request(){
 			{orders.order && orders.order.length > 0 &&
         orders.order.map((order) => (
           <CardOrder
+						id={order.productId}
 						key={order.idOrder}
             imageUrl={order.imageUrl}
             name={order.name}
