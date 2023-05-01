@@ -29,7 +29,7 @@ export default function Category(props) {
           ))
         ) : (
           <div className={styles.noResult}>
-            <p>Não foi encontrado nenhum resultado para "{`${name || esporte}`}".</p>
+            <p>Não foi encontrado nenhum resultado para "{`${name || esporte || brand}`}".</p>
             <p className={styles.otherProducts}>Tente buscar por outros produtos!</p>
           </div>
         )}
