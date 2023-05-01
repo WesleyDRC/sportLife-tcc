@@ -55,6 +55,7 @@ export class OrderRepository implements IOrderRepository {
           price: productOrder.price,
           status: productOrder.shippingStatus,
           name: productOrder.product.name,
+          size: productOrder.size,
           imageUrl: productOrder.product.imageMain,
           created_at: order.created_at,
           updated_at: order.updated_at
