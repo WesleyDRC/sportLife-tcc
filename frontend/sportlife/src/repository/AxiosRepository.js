@@ -132,6 +132,14 @@ class AxiosRepository {
     return response;
   }
 
+  async addComment({stars, assessment, productId}) {
+    const data = {
+      stars, assessment, productId
+    };
+    const response = await this.#axiosClient.post(`/users/assessment`, data);
+    return response;
+  }
+
   async getCartUser() {
     return this.#axiosClient.get(`/cart`);
   }
