@@ -6,29 +6,40 @@ import { useState } from 'react'
 
 import useComment from '../../../hooks/useComment'
 
-export default function AddComment(){
+import AxiosRepository from '../../../repository/AxiosRepository'
+
+export default function AddComment(props){
 
 	const {manupilationCommentClose} = useComment()
-	const [amountStars,setamountStars] = useState(0)
+	const [amountStars,setAmountStars] = useState(0)
+	const [text, setText] = useState('');
 
 	function oneStar(){
-		setamountStars(1)
+		setAmountStars(1)
 	}
 
 	function twoStar(){
-		setamountStars(2)
+		setAmountStars(2)
 	}
 
 	function threeStar(){
-		setamountStars(3)
+		setAmountStars(3)
 	}
 
 	function fourStar(){
-		setamountStars(4)
+		setAmountStars(4)
 	}
 
 	function fiveStar(){
-		setamountStars(5)
+		setAmountStars(5)
+	}
+
+	function handleChange(event) {
+    setText(event.target.value);
+  }
+
+	function sendComment(){
+		AxiosRepository.addComment({productId: props.id, stars: amountStars, assessment: text }).then(() => window.location.reload())
 	}
 
 	return(
@@ -41,10 +52,10 @@ export default function AddComment(){
 				<AiFillStar className={amountStars >= 4? styles.starsGold : styles.normalStar} onClick={fourStar}/>
 				<AiFillStar className={amountStars == 5? styles.starsGold : styles.normalStar} onClick={fiveStar}/>
 			</div>
-			<textarea className={styles.comment} maxLength='255'/>
+			<textarea value={text} onChange={handleChange} className={styles.comment} maxLength='255'/>
 			<div className={styles.buttons}>
 				<button onClick={manupilationCommentClose} className={styles.cancelButton}>Cancelar</button>
-				<button className={styles.sendButton}>Enviar</button>
+				<button onClick={sendComment} className={styles.sendButton}>Enviar</button>
 			</div>
 		</div>
 	)

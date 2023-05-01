@@ -12,10 +12,13 @@
 	font-size: 2.6rem;
 }
 
-.container .comment{
+.comment{
+	word-wrap: break-word;
+	max-width: 280px;
 	font-size: 1.4rem;
 	margin-top: 15px;
 	margin-bottom: 15px;
+	padding-right: 5px;
 }
 
 .username{
