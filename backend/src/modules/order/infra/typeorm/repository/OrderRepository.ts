@@ -51,6 +51,7 @@ export class OrderRepository implements IOrderRepository {
       order.order_products.forEach((productOrder) => {
         orderProducts.push({
           idOrder: productOrder.order_id,
+          productId: productOrder.product_id,
           quantity: productOrder.quantity,
           price: productOrder.price,
           status: productOrder.shippingStatus,
