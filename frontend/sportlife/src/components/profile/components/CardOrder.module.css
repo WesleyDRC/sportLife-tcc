@@ -45,3 +45,7 @@
 .status div svg{
 	margin-right: 5px;
 }
+
+.statusText{
+	text-transform: uppercase;
+}

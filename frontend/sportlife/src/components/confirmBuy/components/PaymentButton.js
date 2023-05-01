@@ -45,7 +45,8 @@ function PaymentButton () {
   const cartProducts = productsCart.map(product => {
     return {
       id: product.id,
-      quantity: product.quantity
+      quantity: product.quantity,
+      size: product.size
     }
   })
 
