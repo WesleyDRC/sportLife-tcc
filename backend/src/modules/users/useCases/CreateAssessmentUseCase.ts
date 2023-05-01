@@ -43,11 +43,11 @@ export default class CreateAssessmentUseCase implements IUseCase {
     }
 
     const user = await this.usersRepository.getUserById(userId)
-
-    if(!user.firstName){
+    console.log(user[0].firstName)
+    if(!user[0].firstName){
       throw new AppError(userConstants.MUST_HAVE_NAME, 401)
     }
-    
+
     return await this.usersRepository.createAssessments(stars, assessment, userId, productId);
   }
 }
