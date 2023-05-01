@@ -35,7 +35,7 @@ export default function CategoryPage() {
     } else if (esporte != undefined) {
       let sportSearch = "";
       switch (esporte.toLowerCase()) {
-        case "futebol":
+        case "casual":
           sportSearch = 1;
           break;
         case "basquete":
@@ -44,7 +44,7 @@ export default function CategoryPage() {
         case "corrida":
           sportSearch = 3;
           break;
-        case "natacao":
+        case "futebol":
           sportSearch = 4;
           break;
         case "volei":
@@ -58,6 +58,9 @@ export default function CategoryPage() {
           break;
         case "lutas":
           sportSearch = 8;
+          break;
+        case "natacao":
+          sportSearch = 9;
           break;
         default:
           navigate("/404");
