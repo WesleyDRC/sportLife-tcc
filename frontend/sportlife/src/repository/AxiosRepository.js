@@ -145,6 +145,11 @@ class AxiosRepository {
     const response = await this.#axiosClient.patch(`/cart`, data);
     return response;
   }
+
+  async getOrderUser() {
+    return this.#axiosClient.get(`/order`);
+  }
+
 }
 
 export default new AxiosRepository();
