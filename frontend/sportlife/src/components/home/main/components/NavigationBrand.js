@@ -7,8 +7,12 @@ import { IoIosArrowForward } from "react-icons/io";
 
 import ImagesBrowsingCard from './ImagesBrowsingCard'
 
+import { Navigate, useNavigate } from 'react-router-dom';
+
 export default function NavigationBrand(){
 	const Carousel = useRef(null);
+
+	const navigate = useNavigate()
 
   const handleLeftClick = (e) => {
     e.preventDefault();
@@ -23,13 +27,13 @@ export default function NavigationBrand(){
 		<div className={styles.container}>
 			<p className={styles.title}>Navegue por marcas</p>
 			<div className={styles.photosContainer}>
-				<img className={styles.logo} src='https://i.imgur.com/LkO860L.png' alt='Logo Puma'/>
-				<img className={styles.logo} src='https://i.imgur.com/wAYQLwf.png' alt='Logo Fila'/>
-				<img className={styles.logo} src='https://i.imgur.com/Z48eiIA.png' alt='Logo Mizuno'/>
-				<img className={styles.logo} src='https://i.imgur.com/jQogHUN.png' alt='Logo Nike'/>
-				<img className={styles.logo} src='https://i.imgur.com/928xw6j.png' alt='Logo Asics'/>
-				<img className={styles.logo} src='https://i.imgur.com/dCoxQpf.png' alt='Logo Wilson'/>
-				<img className={styles.logo} src='https://i.imgur.com/OCqxTH0.png' alt='Logo Adidas'/>
+				<img onClick={() => {navigate('/marca/puma')}} className={styles.logo} src='https://i.imgur.com/LkO860L.png' alt='Logo Puma'/>
+				<img onClick={() => {navigate('/marca/fila')}} className={styles.logo} src='https://i.imgur.com/wAYQLwf.png' alt='Logo Fila'/>
+				<img onClick={() => {navigate('/marca/mizuno')}} className={styles.logo} src='https://i.imgur.com/Z48eiIA.png' alt='Logo Mizuno'/>
+				<img onClick={() => {navigate('/marca/nike')}} className={styles.logo} src='https://i.imgur.com/jQogHUN.png' alt='Logo Nike'/>
+				<img onClick={() => {navigate('/marca/asics')}} className={styles.logo} src='https://i.imgur.com/928xw6j.png' alt='Logo Asics'/>
+				<img onClick={() => {navigate('/marca/wilson')}} className={styles.logo} src='https://i.imgur.com/dCoxQpf.png' alt='Logo Wilson'/>
+				<img onClick={() => {navigate('/marca/adidas')}} className={styles.logo} src='https://i.imgur.com/OCqxTH0.png' alt='Logo Adidas'/>
 			</div>
 
 			<div className={styles.carousel}>
@@ -38,13 +42,13 @@ export default function NavigationBrand(){
           onClick={handleLeftClick}
         />
         <div className={styles.logos} ref={Carousel}>
-					<img className={styles.logo} src='https://i.imgur.com/LkO860L.png' alt='Logo Puma'/>
-					<img className={styles.logo} src='https://i.imgur.com/wAYQLwf.png' alt='Logo Fila'/>
-					<img className={styles.logo} src='https://i.imgur.com/Z48eiIA.png' alt='Logo Mizuno'/>
-					<img className={styles.logo} src='https://i.imgur.com/jQogHUN.png' alt='Logo Nike'/>
-					<img className={styles.logo} src='https://i.imgur.com/928xw6j.png' alt='Logo Asics'/>
-					<img className={styles.logo} src='https://i.imgur.com/dCoxQpf.png' alt='Logo Wilson'/>
-					<img className={`${styles.logo} ${styles.lastLogo}`} src='https://i.imgur.com/OCqxTH0.png' alt='Logo Adidas'/>
+					<img onClick={() => {navigate('/marca/puma')}} className={styles.logo} src='https://i.imgur.com/LkO860L.png' alt='Logo Puma'/>
+					<img onClick={() => {navigate('/marca/fila')}} className={styles.logo} src='https://i.imgur.com/wAYQLwf.png' alt='Logo Fila'/>
+					<img onClick={() => {navigate('/marca/mizuno')}} className={styles.logo} src='https://i.imgur.com/Z48eiIA.png' alt='Logo Mizuno'/>
+					<img onClick={() => {navigate('/marca/nike')}} className={styles.logo} src='https://i.imgur.com/jQogHUN.png' alt='Logo Nike'/>
+					<img onClick={() => {navigate('/marca/asics')}} className={styles.logo} src='https://i.imgur.com/928xw6j.png' alt='Logo Asics'/>
+					<img onClick={() => {navigate('/marca/wilson')}} className={styles.logo} src='https://i.imgur.com/dCoxQpf.png' alt='Logo Wilson'/>
+					<img onClick={() => {navigate('/marca/adidas')}} className={`${styles.logo} ${styles.lastLogo}`} src='https://i.imgur.com/OCqxTH0.png' alt='Logo Adidas'/>
         </div>
         <IoIosArrowForward
           className={styles.arrowRight}
@@ -53,9 +57,9 @@ export default function NavigationBrand(){
 			</div>
 
 			<div className={styles.containerCards}>
-				<ImagesBrowsingCard link='https://i.imgur.com/szq1zLD.png' title='PUMA' descrition='Confira os melhores produtos da Puma !'/>
-				<ImagesBrowsingCard link='https://i.imgur.com/AnT0I2S.png' title='NIKE' descrition='Confira os melhores produtos da Nike !'/>
-				<ImagesBrowsingCard link='https://i.imgur.com/2e6wb8R.png' title='ADIDAS' descrition='Confira os melhores produtos da Adidas !'/>
+				<ImagesBrowsingCard navigate='marca' sport='puma' link='https://i.imgur.com/szq1zLD.png' title='PUMA' descrition='Confira os melhores produtos da Puma !'/>
+				<ImagesBrowsingCard navigate='marca' sport='nike' link='https://i.imgur.com/AnT0I2S.png' title='NIKE' descrition='Confira os melhores produtos da Nike !'/>
+				<ImagesBrowsingCard navigate='marca' sport='adidas' link='https://i.imgur.com/2e6wb8R.png' title='ADIDAS' descrition='Confira os melhores produtos da Adidas !'/>
 			</div>
 
 			<div className={styles.containerCardsMobile}>

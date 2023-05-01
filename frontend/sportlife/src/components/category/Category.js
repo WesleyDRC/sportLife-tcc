@@ -9,11 +9,11 @@ import Loading from "../home/main/components/Loading";
 import { useParams } from "react-router-dom";
 
 export default function Category(props) {
-  let { name, esporte } = useParams();
+  let { name, esporte, brand } = useParams();
 
   return (
     <div className={styles.container}>
-      <p className={props.products && props.products.length > 0 ? styles.on : styles.off}>{`${name || esporte}`} ({props.products.length})</p>
+      <p className={props.products && props.products.length > 0 ? styles.on : styles.off}>{`${name || esporte || brand}`} ({props.products.length})</p>
       <div className={styles.subContainer}>
         {props.products && props.products.length > 0 ? (
           props.products.map((item, i) => (

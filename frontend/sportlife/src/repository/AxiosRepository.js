@@ -82,7 +82,6 @@ class AxiosRepository {
     }
     return this.#axiosClient.get("/products", {
       headers: {
-        category: 2,
         order: order ? order : "",
       },
       params: {
@@ -95,6 +94,14 @@ class AxiosRepository {
     return this.#axiosClient.get("/products", {
       headers: {
         category: categoryId ? categoryId : ""
+      }
+    });
+  }
+
+  async findByBrand({ brand }) {
+    return this.#axiosClient.get("/products", {
+      params: {
+        brand: brand ? brand : ""
       }
     });
   }

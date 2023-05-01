@@ -28,11 +28,11 @@ export default function ImageBrowsing(){
 		<div className={styles.container}>
 			<p className={styles.title}>Navegue por esportes</p>
 			<div className={styles.photos}>
-        <ImagesBrowsingCard sport='futebol' link='https://i.imgur.com/qAX2o93.png' title='FUTEBOL' descrition='Os melhores produtos
+        <ImagesBrowsingCard navigate='esporte' sport='futebol' link='https://i.imgur.com/qAX2o93.png' title='FUTEBOL' descrition='Os melhores produtos
         você compram aqui !' />
-        <ImagesBrowsingCard sport='basquete' link='https://i.imgur.com/30fsgu8.png' title='BASQUETE' descrition='As melhores equipes e acessórios estão aqui' />
-        <ImagesBrowsingCard sport='corrida' link='https://i.imgur.com/kKhzmLn.png' title='CORRIDA' descrition='Alta performance para o melhor desempenho' />
-        <ImagesBrowsingCard sport='volei' link='https://i.imgur.com/li18LnR.png' title='VÔLEI' descrition='Levantamento de produtos é só aqui ' />
+        <ImagesBrowsingCard navigate='esporte' sport='basquete' link='https://i.imgur.com/30fsgu8.png' title='BASQUETE' descrition='As melhores equipes e acessórios estão aqui' />
+        <ImagesBrowsingCard navigate='esporte' sport='corrida' link='https://i.imgur.com/kKhzmLn.png' title='CORRIDA' descrition='Alta performance para o melhor desempenho' />
+        <ImagesBrowsingCard navigate='esporte' sport='volei' link='https://i.imgur.com/li18LnR.png' title='VÔLEI' descrition='Levantamento de produtos é só aqui ' />
 			</div>
 
 			<div className={styles.carousel}>

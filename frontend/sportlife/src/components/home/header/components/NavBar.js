@@ -29,12 +29,14 @@ export default function NavBar() {
 
   function handleKeyDown(event) {
     if (event.key === 'Enter') {
-      const text = event.target.value;
-      navigate(`/filter/${text}`);
+      if(text.trim() == '' ) return
+      else{const text = event.target.value;
+      navigate(`/filter/${text}`);}
     }
   }
 
 	function handleSearch(){
+    if(text.trim() == '' ) return
     navigate(`/filter/${text}`)
 	}
 

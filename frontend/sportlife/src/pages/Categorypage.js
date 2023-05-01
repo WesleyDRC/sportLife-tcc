@@ -17,12 +17,11 @@ import { useEffect, useState } from "react";
 export default function CategoryPage() {
   const [loading, setLoading] = useState(true);
   const [product, setProducts] = useState();
-  let { name, esporte } = useParams();
+  let { name, esporte, brand } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
     if (name != undefined) {
-      console.log("nome");
       setLoading(true);
       AxiosRepository.findAll({ filter: name })
         .then((resp) => {
@@ -76,8 +75,17 @@ export default function CategoryPage() {
         .catch((error) => {
           console.log(error);
         });
+    } else if(brand != undefined){
+      AxiosRepository.findByBrand({ brand : brand })
+        .then((resp) => {
+          setProducts(resp.data);
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
-  }, [name]);
+  } , [name]);
   return (
     <div className={styles.container}>
       <Header />

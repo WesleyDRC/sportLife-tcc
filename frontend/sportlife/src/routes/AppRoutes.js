@@ -146,6 +146,12 @@ export default function Routes() {
     },
 
     {
+      path: "/marca/:brand",
+      element: <CategoryPage />,
+      errorElement: <ErrorPage />,
+    },
+
+    {
       path: "/checkout",
       element: <ConFirmBuyPage />,
       errorElement: <ErrorPage />,
