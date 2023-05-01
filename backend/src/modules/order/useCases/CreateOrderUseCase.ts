@@ -53,15 +53,22 @@ export default class CreateOrderUseCase implements IUseCase {
       );
 
       const productBase = [];
-      
-      products.map((product) => {
+
+      products.forEach((product) => {
         productsData.forEach((productData) => {
+          const existingProductIndex = productBase.findIndex(
+            (p) => p.product_id === productData.id && p.size === product.size
+          );
+
+          if (existingProductIndex !== -1) return;
+
           productBase.push({
             product_id: productData.id,
             price: productData.price,
             quantity: product?.quantity || 0,
-            size: product.size
+            size: product.size,
           });
+
           return productBase;
         });
       });

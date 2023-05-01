@@ -40,7 +40,6 @@ export class ProductRepository implements IProductRepository {
       .leftJoinAndSelect("products.assessments", "assessments");
 
     if (category) {
-      console.log("aqui")
       productQuery.where({ categories_id: category });
     }
 
