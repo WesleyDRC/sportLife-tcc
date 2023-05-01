@@ -43,7 +43,7 @@ export default class CreateAssessmentUseCase implements IUseCase {
     }
 
     const user = await this.usersRepository.getUserById(userId)
-    console.log(user[0].firstName)
+
     if(!user[0].firstName){
       throw new AppError(userConstants.MUST_HAVE_NAME, 401)
     }
