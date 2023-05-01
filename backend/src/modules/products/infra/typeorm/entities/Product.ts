@@ -88,6 +88,12 @@ export class Product {
 	})
 	sizes: string;
 
+	@Column({
+		type: "varchar",
+		length: 255
+	})
+	brand: string;
+
 	@Column()
 	categories_id: string
 

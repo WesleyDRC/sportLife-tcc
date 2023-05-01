@@ -12,6 +12,7 @@ export default {
 	WEIGHT_REQUIRED: 'Você deve inserir o PESO do produto!',
 	HEIGHT_REQUIRED: 'Você deve inserir a ALTURA do produto!',
 	WIDTH_REQUIRED: 'Você deve inserir a LARGURA do produto!',
+	BRAND_REQUIRED: 'Você deve inserir a MARCA do produto!',
 	CATEGORY_REQUIRED: 'Você deve inserir a CATEGORIA do produto!',
 	INVENTORY_REQUIRED: 'Você deve inserir o ID do INVENTÁRIO do produto!',
 	DISCOUNT_REQUIRED: 'Você deve inserir o ID do DESCONTO do produto!',

@@ -12,6 +12,7 @@ export default interface IStoreProductDTO {
 	width: number,
 	views: number,
 	sizes: string,
+	brand: string,
 	categories_id: string,
 	inventory_id: string,
 	discount_id: string,

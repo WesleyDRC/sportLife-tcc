@@ -24,6 +24,7 @@ export interface IProductRepository {
     height,
     width,
     sizes,
+    brand,
     categories_id,
     inventory_id,
     discount_id,
