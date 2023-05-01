@@ -29,6 +29,12 @@ export class OrderProducts {
   })
   price: number;
 
+	@Column({
+		type: "varchar",
+		length: 2
+	})
+	size: string;
+
   @Column({
     type: "enum",
     enum: ShippingStatus,

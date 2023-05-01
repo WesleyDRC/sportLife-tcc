@@ -12,6 +12,7 @@ import AppError from "../../../shared/errors/AppError";
 interface IProduct {
   id: string;
   quantity: number;
+  size: string;
 }
 
 interface IRequest {
@@ -52,13 +53,14 @@ export default class CreateOrderUseCase implements IUseCase {
       );
 
       const productBase = [];
-
+      
       products.map((product) => {
         productsData.forEach((productData) => {
           productBase.push({
             product_id: productData.id,
             price: productData.price,
             quantity: product?.quantity || 0,
+            size: product.size
           });
           return productBase;
         });
