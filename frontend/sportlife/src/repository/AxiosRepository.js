@@ -29,16 +29,16 @@ class AxiosRepository {
   async createAddress(
     city,
     postal_code,
-    country,
+    state,
     road,
     neighborhood,
     number,
-    complement
+    complement,
   ) {
     return this.#axiosClient.post(`/users/address`, {
       city,
       postal_code,
-      country,
+      state,
       road,
       neighborhood,
       number,
@@ -53,16 +53,16 @@ class AxiosRepository {
   async updateAddress(
     city,
     postal_code,
-    country,
+    state,
     road,
     neighborhood,
     number,
-    complement
+    complement,
   ) {
     return this.#axiosClient.patch(`/users/address`, {
       city,
       postal_code,
-      country,
+      state,
       road,
       neighborhood,
       number,

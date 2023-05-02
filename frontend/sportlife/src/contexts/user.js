@@ -36,7 +36,7 @@ export const UserProvider = ({ children }) => {
     CPF,
     gender,
     dateBirth,
-    telephone
+    telephone,
   ) => {
     try {
       return await AxiosRepository.updateUser(
@@ -56,7 +56,7 @@ export const UserProvider = ({ children }) => {
   const createAddress = async (
     city,
     cep,
-    country,
+    state,
     road,
     neighborhood,
     number,
@@ -66,7 +66,7 @@ export const UserProvider = ({ children }) => {
       return await AxiosRepository.createAddress(
         city,
         cep,
-        country,
+        state,
         road,
         neighborhood,
         number,
@@ -89,17 +89,17 @@ export const UserProvider = ({ children }) => {
   const updateAddress = async (
     city,
     postal_code,
-    country,
+    state,
     road,
     neighborhood,
     number,
-    complement
+    complement,
   ) => {
     try {
       return await AxiosRepository.updateAddress(
         city,
         postal_code,
-        country,
+        state,
         road,
         neighborhood,
         number,

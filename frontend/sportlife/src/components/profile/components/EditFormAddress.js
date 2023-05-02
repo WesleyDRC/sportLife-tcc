@@ -9,7 +9,7 @@ export default function FormAddress({ title }) {
   const [cep, setCep] = useState();
   const [road, setRoad] = useState();
   const [city, setCity] = useState();
-  const [country, setCountry] = useState();
+  const [state, setState] = useState();
   const [neighborhood, setNeighborhood] = useState();
   const [number, setNumber] = useState();
   const [complement, setComplement] = useState();
@@ -24,7 +24,7 @@ export default function FormAddress({ title }) {
           setRoad(data.logradouro);
           setCity(data.localidade);
           setNeighborhood(data.bairro);
-          setCountry("Brasil");
+          setState(data.uf);
         }
       });
   }
@@ -37,11 +37,11 @@ export default function FormAddress({ title }) {
     const response = await updateAddress(
       city,
       cep,
-      country,
       road,
       neighborhood,
       number,
-      complement
+      complement,
+      state
     );
     navigate("/user/personaldata");
   };
@@ -67,13 +67,13 @@ export default function FormAddress({ title }) {
               />
             </div>
             <div>
-              <label htmlFor="country">País</label>
+              <label htmlFor="state">Estado</label>
               <input
                 type="text"
-                id="country"
-                placeholder="Digite seu país"
-                value={country}
-                onChange={(e) => [setCountry(e.target.value)]}
+                id="state"
+                placeholder="Digite seu estado"
+                value={state}
+                onChange={(e) => [setState(e.target.value)]}
               />
             </div>
           </div>

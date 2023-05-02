@@ -9,7 +9,7 @@ export default function CreateFormAddress({title}){
 	const [cep,setCep] = useState()
 	const [road,setRoad] = useState()
 	const [city,setCity] = useState()
-	const [country,setCountry] = useState()
+	const [state,setState] = useState()
 	const [neighborhood,setNeighborhood] = useState()
 	const [number,setNumber] = useState()
 	const [complement,setComplement] = useState()
@@ -26,14 +26,14 @@ export default function CreateFormAddress({title}){
 				setRoad(data.logradouro)
 				setCity(data.localidade)
 				setNeighborhood(data.bairro)
-				setCountry("Brasil")
+				setState(data.uf)
 			}
 		})
 	}
 
 	const submit = async (e) =>{
 		e.preventDefault();
-		const response = await createAddress(city,cep,country,road,neighborhood,number,complement)
+		const response = await createAddress(city,cep,state,road,neighborhood,number,complement)
 		navigate('/user/address')
 	}
 	return(
@@ -53,13 +53,13 @@ export default function CreateFormAddress({title}){
 							/>
 							</div>
 							<div>
-							<label htmlFor='country'>País</label>
+							<label htmlFor='state'>Estado</label>
 								<input
 									type='text'
-									id='country'
-									placeholder='Digite seu país'
-									value={country}
-									onChange={(e) => [setCountry(e.target.value)]}
+									id='state'
+									placeholder='Digite seu estado'
+									value={state}
+									onChange={(e) => [setState(e.target.value)]}
 								/>
 							</div>
 					</div>

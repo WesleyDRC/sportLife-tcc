@@ -8,6 +8,7 @@ export default function Address(){
 	const {address,getAddress} = useUser()
 
 	useEffect(() => {
+		console.log(address)
 		getAddress()
 	}, [])
 
@@ -22,8 +23,8 @@ export default function Address(){
 							<p className={styles.res}>{address.postal_code}</p>
 						</div>
 						<div>
-						<p className={styles.quest}>País</p>
-							<p className={styles.res}>{address.country}</p>
+						<p className={styles.quest}>Estado</p>
+							<p className={styles.res}>{address.state}</p>
 						</div>
 					</div>
 					<div className={styles.display}>

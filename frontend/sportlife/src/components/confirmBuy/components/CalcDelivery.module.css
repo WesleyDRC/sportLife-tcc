@@ -14,14 +14,47 @@
 	font-size: 1.6rem;
 }
 
-.inputCep{
+.inputAddressee{
 	padding: 0px;
-	margin-right: 20px;
-	padding: 5px 10px;
+	margin-right: 0px;
+	padding: 0px 10px;
 }
 
-.inputCep:focus{
+.inputAddressee:focus{
 	outline: 0;
+}
+
+.infos{
+	width: fit-content;
+	border: 1px solid #B5B6BB;
+	color:#B5B6BB;
+	padding: 5px;
+	margin-bottom: 5px;
+}
+
+.subTitle{
+	font-weight: 700;
+}
+
+.editAddress{
+	color: #B5B6BB;
+}
+
+.editAddress span a{
+	color: #317B96;
+	font-weight: 600;
+	margin-bottom: 10px;
+}
+
+.inputContainer{
+	margin: 20px 0px;
+	display: flex;
+}
+
+.inputContainer p{
+	margin-right: 5px;
+	font-size: 1.8rem;
+	color: #B5B6BB;
 }
 
 .btnCalc{
@@ -31,7 +64,6 @@
 	padding: 5px 10px;
 	border-radius: 5px;
 }
-
 
 @media (max-width:735px){
 	.container{

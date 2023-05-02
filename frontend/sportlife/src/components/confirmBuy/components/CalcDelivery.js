@@ -1,12 +1,31 @@
-import styles from './CalcDelivery.module.css'
+import styles from "./CalcDelivery.module.css";
 
-export default function CalcDelivery(){
-	return(
-		<div className={styles.container}>
-			<h1 className={styles.title}>ENTREGA</h1>
-			<label className={styles.labelCep} htmlFor='cep'>CEP</label>
-			<input className={styles.inputCep} type='number' id='cep' name='cep' />
-			<button className={styles.btnCalc}>CALCULAR</button>
-		</div>
-	)
+import useUser from "../../../hooks/useUser";
+
+import { useEffect } from "react";
+
+import {Link} from 'react-router-dom'
+
+export default function CalcDelivery() {
+  const { address, getAddress } = useUser();
+  useEffect(() => {
+    getAddress();
+  }, []);
+  return (
+    <div className={styles.container}>
+      <h1 className={styles.title}>ENTREGA</h1>
+      <div className={styles.infos}>
+				<p className={styles.subTitle}>Endereço de entrega</p>
+				<p>{address.road}, {address.number},</p>
+				<p>{address.neighborhood}, {address.city},</p>
+				<p>{address.state}</p>
+			</div>
+			<p className={styles.editAddress}>Endereço errado ? <span><Link to='/user/address'>Edite aqui !</Link></span></p>
+			<div className={styles.inputContainer}>
+				<p>Destinatário: </p>
+				<input className={styles.inputAddressee} type='text' placeholder="Digite seu nome..." />
+			</div>
+      <button className={styles.btnCalc}>CALCULAR</button>
+    </div>
+  );
 }
