@@ -15,7 +15,7 @@ export default class CreateAddressUserUseCase implements IUseCase {
     userId,
     city,
     postal_code,
-    country,
+    state,
     road,
     neighborhood,
     number,
@@ -29,14 +29,14 @@ export default class CreateAddressUserUseCase implements IUseCase {
 				userId,
 				city,
 				postal_code,
-				country,
+				state,
 				road,
 				neighborhood,
 				number,
 				complement
 			);
 		}
-		
+
 		if(Object.keys(foundAddressUser).length > 0) {
 				throw new AppError(userConstants.ALREADY_ADDRESS, 400);
 		}

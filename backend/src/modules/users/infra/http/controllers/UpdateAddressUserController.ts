@@ -3,12 +3,12 @@ import { UpdateAddressUserUseCase } from "../../../useCases/UpdateAddressUserUse
 import { container } from "tsyringe";
 import userConstants from "../../../constants/userConstants";
 
-export default class UpdateAddressUseController {
+export default class UpdateAddressUserController {
   public async handle(request: Request, response: Response) {
     const {
       city,
       postal_code,
-      country,
+      state,
       road,
       neighborhood,
       number,
@@ -23,7 +23,7 @@ export default class UpdateAddressUseController {
 			userId,
       city,
       postal_code,
-      country,
+      state,
       road,
       neighborhood,
       number,

@@ -26,7 +26,7 @@ export class UserAddress {
 		type: "varchar",
 		length: 255
 	})
-	country: string
+	state: string
 
 	@Column({
 		type: "varchar",

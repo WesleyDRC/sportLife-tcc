@@ -70,7 +70,7 @@ export class UsersRepository implements IUsersRepository {
     userId,
     city,
     postal_code,
-    country,
+    state,
     road,
     neighborhood,
     number,
@@ -81,7 +81,7 @@ export class UsersRepository implements IUsersRepository {
     userAddress.user_id = userId;
     userAddress.city = city;
     userAddress.postal_code = postal_code;
-    userAddress.country = country;
+    userAddress.state = state;
     userAddress.road = road;
     userAddress.neighborhood = neighborhood;
     userAddress.complement = complement;
@@ -96,7 +96,7 @@ export class UsersRepository implements IUsersRepository {
     userId,
     city,
     postal_code,
-    country,
+    state,
     road,
     neighborhood,
     number,
@@ -108,7 +108,7 @@ export class UsersRepository implements IUsersRepository {
       .set({
         city,
         postal_code,
-        country,
+        state,
         road,
         neighborhood,
         number,
