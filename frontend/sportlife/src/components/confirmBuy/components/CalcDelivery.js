@@ -2,18 +2,22 @@ import styles from "./CalcDelivery.module.css";
 
 import useUser from "../../../hooks/useUser";
 
+import useCart from "../../../hooks/useCart";
+
 import { useEffect } from "react";
 
 import {Link} from 'react-router-dom'
 
 export default function CalcDelivery() {
   const { address, getAddress } = useUser();
-  useEffect(() => {
+
+	useEffect(() => {
     getAddress();
   }, []);
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>ENTREGA</h1>
+			<p className={styles.days}>Receber em até 14 dias</p>
       <div className={styles.infos}>
 				<p className={styles.subTitle}>Endereço de entrega</p>
 				<p>{address.road}, {address.number},</p>

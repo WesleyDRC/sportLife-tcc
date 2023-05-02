@@ -36,7 +36,7 @@
 	font-weight: 700;
 }
 
-.editAddress{
+.editAddress, .days{
 	color: #B5B6BB;
 }
 
@@ -69,5 +69,11 @@
 	.container{
 		margin-top: 20px;
 		width: 100%;
+	}
+}
+
+@media (max-width:400px){
+	.inputContainer{
+		flex-direction: column;
 	}
 }
