@@ -23,11 +23,21 @@ export class OrderRepository implements IOrderRepository {
   public async createOrder({
     user,
     products,
+    cep,
+    number,
+    addressee,
+    complement,
+    tracking_code,
   }: ICreateOrderDTO): Promise<OrderDetails> {
     try {
       const order = await this.ormRepositoryOrderDetails.create({
         user: user[0],
         order_products: products,
+        cep,
+        number,
+        addressee,
+        complement,
+        tracking_code
       });
 
       await this.ormRepositoryOrderDetails.save(order);
@@ -64,10 +74,6 @@ export class OrderRepository implements IOrderRepository {
         return orderProducts
       })
     })
-
-    // [0].order_products.map((order, i) => {
-
-    // });
 
     return orderProducts;
   }

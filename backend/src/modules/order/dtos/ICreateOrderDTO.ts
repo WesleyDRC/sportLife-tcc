@@ -10,4 +10,9 @@ interface IProduct {
 export default interface ICreateOrderDTO {
   user: User;
   products: IProduct[];
+  cep: string;
+  number: string;
+  addressee: string;
+  complement?: string;
+  tracking_code?: string;
 }

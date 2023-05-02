@@ -18,6 +18,11 @@ interface IProduct {
 interface IRequest {
   userId: string;
   products: IProduct[];
+  cep: string;
+  number: string;
+  addressee: string;
+  complement: string;
+  tracking_code: string;
 }
 
 @injectable()
@@ -36,7 +41,15 @@ export default class CreateOrderUseCase implements IUseCase {
     private cartRepository: ICartRepository
   ) {}
 
-  async execute({ userId, products }: IRequest): Promise<OrderDetails> {
+  async execute({
+    userId,
+    products,
+    cep,
+    number,
+    addressee,
+    complement,
+    tracking_code,
+  }: IRequest): Promise<OrderDetails> {
     try {
       const user = await this.usersRepository.getUserById(userId);
 
@@ -89,6 +102,11 @@ export default class CreateOrderUseCase implements IUseCase {
       const order = await this.orderRepository.createOrder({
         user,
         products: productBase,
+        cep,
+        number,
+        addressee,
+        complement,
+        tracking_code,
       });
 
       order.user = undefined;
