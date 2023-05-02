@@ -6,7 +6,7 @@ import UpdateUserController from "../controllers/UpdateUserController";
 import GetAddressUserController from "../controllers/GetAddressUserController";
 import CreateAddressUserController from "../controllers/CreateAddressUserController";
 import CreateAssessmentController from "../controllers/CreateAssessmentController";
-import UpdateAddressUseController from "../controllers/UpdateAddressUseController";
+import UpdateAddressUserController from "../controllers/UpdateAddressUserController";
 
 import ensureAuthenticated from "../../../../auth/infra/http/middlewares/enrsureAuthenticated";
 
@@ -18,7 +18,7 @@ const updateUserController = new UpdateUserController()
 
 const getAddressUserController = new GetAddressUserController()
 const createAddressUserController = new CreateAddressUserController()
-const updateAddressUseController = new UpdateAddressUseController()
+const updateAddressUserController = new UpdateAddressUserController()
 
 const createAssessmentController = new CreateAssessmentController()
 
@@ -55,7 +55,7 @@ usersRoutes.post(
 usersRoutes.patch(
 	"/address",
 	ensureAuthenticated,
-	updateAddressUseController.handle
+	updateAddressUserController.handle
 )
 
 usersRoutes.post(

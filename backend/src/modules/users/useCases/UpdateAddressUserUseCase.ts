@@ -13,8 +13,8 @@ export class UpdateAddressUserUseCase implements IUseCase {
     userId,
     city,
     postal_code,
-    country,
     road,
+    state,
     neighborhood,
     number,
     complement
@@ -23,7 +23,7 @@ export class UpdateAddressUserUseCase implements IUseCase {
 			userId,
 			city,
 			postal_code,
-			country,
+			state,
 			road,
 			neighborhood,
 			number,

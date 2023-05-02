@@ -19,18 +19,18 @@ export interface IUsersRepository {
     userId: string,
     city: string,
     postal_code: string,
-    country: string,
+    state: string,
     road:string,
     neighborhood:string,
     number: number,
     complement?:string,
   ): Promise<any>;
-  
+
   updateAddress(
     userId,
     city,
     postal_code,
-    country,
+    state,
     road,
     neighborhood,
     number,
