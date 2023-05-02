@@ -8,10 +8,19 @@ export default class CreateOrderController {
 
     const userId = request.user.id;
 
-    const { products } = request.body
+    const { products, cep, number, addressee, complement, tracking_code } =
+      request.body;
 
-    const order = await createOrderUseCase.execute({userId, products})
+    const order = await createOrderUseCase.execute({
+      userId,
+      products,
+      cep,
+      number,
+      addressee,
+      complement,
+      tracking_code,
+    });
 
-    return response.json({order})
+    return response.json({ order });
   }
 }
