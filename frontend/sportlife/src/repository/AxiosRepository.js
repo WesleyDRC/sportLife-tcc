@@ -158,6 +158,11 @@ class AxiosRepository {
     return this.#axiosClient.get(`/order`);
   }
 
+  async calculateShippingPrice(sCepDestino) {
+    return this.#axiosClient.post('/shipping',{
+      sCepDestino
+    });
+  }
 }
 
 export default new AxiosRepository();

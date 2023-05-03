@@ -8,7 +8,6 @@ export default function Address(){
 	const {address,getAddress} = useUser()
 
 	useEffect(() => {
-		console.log(address)
 		getAddress()
 	}, [])
 

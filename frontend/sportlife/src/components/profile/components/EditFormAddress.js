@@ -37,11 +37,11 @@ export default function FormAddress({ title }) {
     const response = await updateAddress(
       city,
       cep,
+      state,
       road,
       neighborhood,
       number,
       complement,
-      state
     );
     navigate("/user/personaldata");
   };
