@@ -8,6 +8,8 @@ import useEditProduct from "../hooks/useEditProduct";
 
 import useAuth from "../hooks/useAuth";
 
+import useUser from "../hooks/useUser";
+
 export const CartContext = createContext({});
 
 export const CartProvider = ({ children }) => {
@@ -16,9 +18,15 @@ export const CartProvider = ({ children }) => {
   const [size, setSize] = useState("");
   const [infosCart, setInfosCart] = useState([]);
   const [productsCart, setProductsCart] = useState([]);
-  const { manupilationEditProductClose } = useEditProduct();
-  const { authenticated } = useAuth();
   let [total, setTotal] = useState("1.00");
+  let[subTotal, setSubTotal] = useState('1.00')
+  let[priceShipping, setPriceShipping] = useState(0)
+
+  const { manupilationEditProductClose } = useEditProduct();
+
+  const { authenticated } = useAuth();
+
+  const { address } = useUser()
 
   const manupilationCartOpen = () => {
     window.scrollTo(0, 0);
@@ -71,8 +79,11 @@ export const CartProvider = ({ children }) => {
       );
       setInfosCart(response);
       setCart(response.data.cart);
-      setTotal(response.data.cart[0].totalAmount);
+      setSubTotal(response.data.cart[0].totalAmount);
       setProductsCart(response.data.cart[0].items);
+      const shipping = await calculateShippingPrice(address.postal_code)
+      console.log(shipping)
+      if (Object.keys(address).length > 0) calculateShippingPrice(address.postal_code);
       return;
     } catch (error) {
       console.log(error);
@@ -127,6 +138,15 @@ export const CartProvider = ({ children }) => {
     }
   };
 
+  const calculateShippingPrice = async (cep) => {
+    const response = await AxiosRepository.calculateShippingPrice(cep)
+    return response
+  }
+
+  const totalOrder = (subTotal, priceShipping) =>{
+     setTotal(subTotal + priceShipping)
+  }
+
   return (
     <CartContext.Provider
       value={{
@@ -150,6 +170,10 @@ export const CartProvider = ({ children }) => {
         setProductsCart,
         productsCart,
         notify,
+        calculateShippingPrice,
+        subTotal,
+        priceShipping,
+        totalOrder
       }}
     >
       {children}
