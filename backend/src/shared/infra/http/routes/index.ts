@@ -5,6 +5,7 @@ import usersRoutes from "../../../../modules/users/infra/http/routes/users.route
 import productRoutes from "../../../../modules/products/infra/http/routes/product.routes";
 import orderRoutes from "../../../../modules/order/infra/http/routes/order.routes";
 import cartRoutes from "../../../../modules/cart/infra/http/routes/cart.routes";
+import shippingRoutes from "../../../../modules/shipping/infra/http/routes/shipping.routes";
 
 const routes = Router()
 
@@ -21,5 +22,7 @@ routes.use("/products", productRoutes)
 routes.use("/order", orderRoutes)
 
 routes.use("/cart", cartRoutes)
+
+routes.use("/shipping", shippingRoutes)
 
 export default routes;
