@@ -1,77 +1,122 @@
-import React, { useState, useEffect, useLayoutEffect } from 'react'
-
-import { useNavigate, use } from 'react-router-dom'
-
-import { PayPalButtons, PayPalScriptProvider } from '@paypal/react-paypal-js'
+import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js'
+import axios from 'axios'
 
 import useCart from '../../../hooks/useCart'
 
-import axios from 'axios'
+function PaymentButton() {
+  const {
+    total,
+    productsCart,
+    checkCheckout,
+    subTotal,
+    priceShipping,
+    addressee,
+  } = useCart()
 
-function PaymentButton () {
-  const { total, productsCart } = useCart()
   const navigate = useNavigate()
 
-  let amount = {
+  const [paypalOptions, setPaypalOptions] = useState({
+    'client-id': process.env.REACT_APP_CLIENT_ID,
+    currency: 'BRL',
+    intent: 'capture',
+    activeFunding: '',
+  })
+
+  const [productsPayPal, setProductsPayPal] = useState([])
+
+  const [cartProducts, setCartProducts] = useState([])
+
+  const [amount, setAmount] = useState({
     currency_code: 'BRL',
     value: total,
     breakdown: {
       item_total: {
         currency_code: 'BRL',
-        value: total
-      }
-    }
-  }
-
-  const paypalOptions = {
-    'client-id': process.env.REACT_APP_CLIENT_ID,
-    currency: 'BRL',
-    intent: 'capture',
-    activeFunding: ''
-  }
-
-  const productsPayPal = productsCart.map(product => {
-    return {
-      name: product.name,
-      description: 'Wesley',
-      quantity: product.quantity,
-      unit_amount: {
+        value: total,
+      },
+      shipping: {
         currency_code: 'BRL',
-        value: product.price
-      }
-    }
+        value: priceShipping,
+      },
+    },
   })
 
-  const cartProducts = productsCart.map(product => {
-    return {
-      id: product.id,
-      quantity: product.quantity,
-      size: product.size
-    }
-  })
+  useEffect(() => {
+    setAmount({
+      currency_code: 'BRL',
+      value: total,
+      breakdown: {
+        item_total: {
+          currency_code: 'BRL',
+          value: total,
+        },
+        shipping: {
+          currency_code: 'BRL',
+          value: priceShipping,
+        },
+      },
+    })
+  }, [total, priceShipping])
+
+  useEffect(() => {
+    setProductsPayPal(
+      productsCart.map(product => {
+        return {
+          name: product.name,
+          description: 'Wesley',
+          quantity: product.quantity,
+          unit_amount: {
+            currency_code: 'BRL',
+            value: product.price,
+          },
+        }
+      })
+    )
+
+    setCartProducts(
+      productsCart.map(product => {
+        return {
+          id: product.id,
+          quantity: product.quantity,
+          size: product.size,
+        }
+      })
+    )
+  }, [productsCart])
 
   const dataProducts = { products: cartProducts }
 
-  async function createOrder (data, actions) {
+  async function createOrder(data, actions) {
+    await checkCheckout({
+      subTotal: subTotal,
+      total: total,
+      shippingValue: priceShipping,
+      addressee: addressee,
+    })
+
+    console.log(amount)
+
     return actions.order.create({
       intent: 'CAPTURE',
       purchase_units: [
         {
           amount: amount,
-          items: productsPayPal
-        }
+          items: productsPayPal,
+        },
       ],
       application_context: {
         brand_name: 'My Store',
         landing_page: 'BILLING',
         user_action: 'PAY_NOW',
         return_url: 'https://example.com/return',
-        cancel_url: 'https://example.com/cancel'
-      }
+        cancel_url: 'https://example.com/cancel',
+      },
     })
   }
 
-  async function onApprove (data, actions) {
+  async function onApprove(data, actions) {
     await actions.order.capture()
 
     var userToken = localStorage.getItem('user_token')
@@ -81,8 +126,8 @@ function PaymentButton () {
     await axios
       .post(`${process.env.REACT_APP_BASE_URL}/order`, dataProducts, {
         headers: {
-          Authorization: AuthStr
-        }
+          Authorization: AuthStr,
+        },
       })
       .then(response => {})
       .catch(error => {
@@ -98,9 +143,9 @@ function PaymentButton () {
         style={{ layout: 'horizontal', color: 'blue' }}
         createOrder={createOrder}
         onApprove={onApprove}
-      />
-    </PayPalScriptProvider>
-  )
-}
-
-export default PaymentButton
+        />
+      </PayPalScriptProvider>
+    )
+  }
+  
+  export default PaymentButton

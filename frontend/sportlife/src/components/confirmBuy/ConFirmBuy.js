@@ -11,10 +11,13 @@ import { ToastContainer } from "react-toastify";
 import { useEffect } from 'react';
 
 import useCart from '../../hooks/useCart';
+import useUser from '../../hooks/useUser';
 
 export default function ConFirmBuy(){
 
-	const { getCartUser } = useCart();
+	const { getCartUser, calculateShippingPrice } = useCart();
+
+  const { address } = useUser()
 
 	useEffect(() => {
 		async function fetchData() {
@@ -22,6 +25,12 @@ export default function ConFirmBuy(){
     }
     fetchData();
 	},[])
+
+	useEffect(() => {
+		if(address && Object.keys(address).length > 0) {
+			calculateShippingPrice(address.postal_code)
+		}
+	}, [address])
 
 	return(
 		<div className={styles.container}>

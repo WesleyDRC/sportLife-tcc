@@ -5,9 +5,16 @@ import useCart from '../../../hooks/useCart'
 import priceBRL from '../../../utils/formatPrice'
 
 import PaymentButton from './PaymentButton'
+import { useEffect, useMemo} from 'react'
 
 export default function Summary () {
-  const { subTotal,priceShipping, total, setTotal } = useCart()
+  const { subTotal, priceShipping, total, totalOrder, key} = useCart()
+
+  useEffect(() => {
+    if (parseFloat(subTotal) > 0 && parseFloat(priceShipping) > 0) {
+      totalOrder(parseFloat(subTotal), parseFloat(priceShipping))
+    }
+  }, [subTotal, priceShipping])
 
   return (
     <div className={styles.container}>
@@ -22,12 +29,9 @@ export default function Summary () {
       </div>
       <div className={styles.total}>
         <p>total</p>
-        <p className={styles.priceTotal}>
-          {priceBRL(total)}
-        </p>
+        <p className={styles.priceTotal}>{priceBRL(total)}</p>
       </div>
-
-      {subTotal !== '1.00' && total !== '1.00' ? <PaymentButton /> : ''}
+      <PaymentButton/>
     </div>
   )
 }
