@@ -1,122 +1,101 @@
-import { useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react'
+
 import { useNavigate } from 'react-router-dom'
-import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js'
-import axios from 'axios'
+
+import { PayPalButtons, PayPalScriptProvider } from '@paypal/react-paypal-js'
 
 import useCart from '../../../hooks/useCart'
 
-function PaymentButton() {
-  const {
-    total,
-    productsCart,
-    checkCheckout,
-    subTotal,
-    priceShipping,
-    addressee,
-  } = useCart()
+import axios from 'axios'
 
+// total,
+// productsCart,
+// checkCheckout,
+// subTotal,
+// priceShipping,
+// addressee,
+// key
+
+function PaymentButton () {
+  const { getCartUser, total, productsCart, priceShipping, subTotal } = useCart()
+  const [products, setProducts] = useState([])
   const navigate = useNavigate()
 
-  const [paypalOptions, setPaypalOptions] = useState({
+  useEffect(() => {
+    async function fetchData () {
+      const result = await getCartUser()
+      setProducts(result.data.cart[0].items)
+    }
+    fetchData()
+  }, [])
+
+  console.log("total", total)
+  console.log("priceShipping", parseFloat(priceShipping.replace(/,/g, ".")))
+  console.log("subTotal", subTotal)
+
+  const paypalOptions = {
     'client-id': process.env.REACT_APP_CLIENT_ID,
     currency: 'BRL',
     intent: 'capture',
-    activeFunding: '',
+    activeFunding: ''
+  }
+
+  const productsPayPal = products.map(product => {
+    return {
+      name: product.name,
+      description: 'Wesley',
+      quantity: product.quantity,
+      unit_amount: {
+        currency_code: 'BRL',
+        value: product.price
+      }
+    }
   })
 
-  const [productsPayPal, setProductsPayPal] = useState([])
-
-  const [cartProducts, setCartProducts] = useState([])
-
-  const [amount, setAmount] = useState({
+  let amount = {
     currency_code: 'BRL',
     value: total,
     breakdown: {
       item_total: {
         currency_code: 'BRL',
-        value: total,
+        value: subTotal
       },
       shipping: {
         currency_code: 'BRL',
-        value: priceShipping,
+        value: parseFloat(priceShipping.replace(/,/g, ".")),
       },
-    },
+    }
+  }
+
+  const cartProducts = productsCart.map(product => {
+    return {
+      id: product.id,
+      quantity: product.quantity
+    }
   })
-
-  useEffect(() => {
-    setAmount({
-      currency_code: 'BRL',
-      value: total,
-      breakdown: {
-        item_total: {
-          currency_code: 'BRL',
-          value: total,
-        },
-        shipping: {
-          currency_code: 'BRL',
-          value: priceShipping,
-        },
-      },
-    })
-  }, [total, priceShipping])
-
-  useEffect(() => {
-    setProductsPayPal(
-      productsCart.map(product => {
-        return {
-          name: product.name,
-          description: 'Wesley',
-          quantity: product.quantity,
-          unit_amount: {
-            currency_code: 'BRL',
-            value: product.price,
-          },
-        }
-      })
-    )
-
-    setCartProducts(
-      productsCart.map(product => {
-        return {
-          id: product.id,
-          quantity: product.quantity,
-          size: product.size,
-        }
-      })
-    )
-  }, [productsCart])
 
   const dataProducts = { products: cartProducts }
 
-  async function createOrder(data, actions) {
-    await checkCheckout({
-      subTotal: subTotal,
-      total: total,
-      shippingValue: priceShipping,
-      addressee: addressee,
-    })
-
-    console.log(amount)
-
+  async function createOrder (data, actions) {
     return actions.order.create({
       intent: 'CAPTURE',
       purchase_units: [
         {
           amount: amount,
-          items: productsPayPal,
-        },
+          items: productsPayPal
+        }
       ],
       application_context: {
         brand_name: 'My Store',
         landing_page: 'BILLING',
         user_action: 'PAY_NOW',
         return_url: 'https://example.com/return',
-        cancel_url: 'https://example.com/cancel',
-      },
+        cancel_url: 'https://example.com/cancel'
+      }
     })
   }
-
-  async function onApprove(data, actions) {
+  console.log(dataProducts)
+  async function onApprove (data, actions) {
     await actions.order.capture()
 
     var userToken = localStorage.getItem('user_token')
@@ -126,8 +105,8 @@ function PaymentButton() {
     await axios
       .post(`${process.env.REACT_APP_BASE_URL}/order`, dataProducts, {
         headers: {
-          Authorization: AuthStr,
-        },
+          Authorization: AuthStr
+        }
       })
       .then(response => {})
       .catch(error => {
@@ -143,9 +122,9 @@ function PaymentButton() {
         style={{ layout: 'horizontal', color: 'blue' }}
         createOrder={createOrder}
         onApprove={onApprove}
-        />
-      </PayPalScriptProvider>
-    )
-  }
-  
-  export default PaymentButton
+      />
+    </PayPalScriptProvider>
+  )
+}
+
+export default PaymentButton

@@ -1,75 +1,75 @@
-import { createContext, useState } from 'react'
+import { createContext, useState } from "react";
 
-import AxiosRepository from '../repository/AxiosRepository'
+import AxiosRepository from "../repository/AxiosRepository";
 
-import { toast } from 'react-toastify'
+import { toast } from "react-toastify";
 
-import useEditProduct from '../hooks/useEditProduct'
+import useEditProduct from "../hooks/useEditProduct";
 
-import useAuth from '../hooks/useAuth'
+import useAuth from "../hooks/useAuth";
 
-export const CartContext = createContext({})
+export const CartContext = createContext({});
 
 export const CartProvider = ({ children }) => {
-  const [openCart, setOpenCart] = useState(false)
-  const [cart, setCart] = useState([])
-  const [size, setSize] = useState('')
-  const [infosCart, setInfosCart] = useState([])
-  const [productsCart, setProductsCart] = useState([])
+  const [openCart, setOpenCart] = useState(false);
+  const [cart, setCart] = useState([]);
+  const [size, setSize] = useState("");
+  const [infosCart, setInfosCart] = useState([]);
+  const [productsCart, setProductsCart] = useState([]);
 
-  const [total, setTotal] = useState(0)
-  let [subTotal, setSubTotal] = useState(0)
-  let [priceShipping, setPriceShipping] = useState(0)
-  const [activatePayPalButton, setActivatePayPalButton] = useState(true)
-  const [addressee, setAddressee] = useState("")
+  const [total, setTotal] = useState(0);
+  let [subTotal, setSubTotal] = useState(0);
+  let [priceShipping, setPriceShipping] = useState(0);
+  const [activatePayPalButton, setActivatePayPalButton] = useState(true);
+  const [addressee, setAddressee] = useState("");
 
-  const [key, setKey] = useState(Date.now())
+  const [key, setKey] = useState(Date.now());
 
-  const { manupilationEditProductClose } = useEditProduct()
+  const { manupilationEditProductClose } = useEditProduct();
 
-  const { authenticated } = useAuth()
+  const { authenticated } = useAuth();
 
   const manupilationCartOpen = () => {
-    window.scrollTo(0, 0)
-    setOpenCart(true)
-    document.documentElement.style.overflow = 'hidden'
-    document.body.scroll = 'no'
-  }
+    window.scrollTo(0, 0);
+    setOpenCart(true);
+    document.documentElement.style.overflow = "hidden";
+    document.body.scroll = "no";
+  };
 
   const manupilationCartClose = () => {
-    setOpenCart(false)
-    document.documentElement.style.overflow = 'auto'
-    document.body.scroll = 'yes'
-  }
+    setOpenCart(false);
+    document.documentElement.style.overflow = "auto";
+    document.body.scroll = "yes";
+  };
 
-  const notify = message => {
-    toast(message)
-  }
+  const notify = (message) => {
+    toast(message);
+  };
 
   const addItem = async (productId, quantity, size) => {
     try {
-      if (size === '') {
-        notify('Escolha o tamanho do seu produto')
-        return
+      if (size === "") {
+        notify("Escolha o tamanho do seu produto");
+        return;
       }
       if (!authenticated) {
         notify(
-          'É necessário criar uma conta para adicionar produtos ao carrinho!'
-        )
-        return
+          "É necessário criar uma conta para adicionar produtos ao carrinho!"
+        );
+        return;
       }
-      manupilationCartOpen()
+      manupilationCartOpen();
       const response = await AxiosRepository.addItemCart(
         productId,
         quantity,
         size
-      )
-      await getCartUser()
-      return response
+      );
+      await getCartUser();
+      return response;
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
   const getCartUser = async (productId, quantity, size) => {
     try {
@@ -77,37 +77,37 @@ export const CartProvider = ({ children }) => {
         productId,
         quantity,
         size
-      )
-      setInfosCart(response)
-      setCart(response.data.cart)
-      setSubTotal(response.data.cart[0].totalAmount)
-      setProductsCart(response.data.cart[0].items)
+      );
+      setInfosCart(response);
+      setCart(response.data.cart);
+      setSubTotal(response.data.cart[0].totalAmount);
+      setProductsCart(response.data.cart[0].items);
       setKey(Date.now());
-      return
+      return;
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
-  const deleteProduct = e => {
-    const tr = e.target.parentNode.parentNode.parentNode
-    const dataProduct = JSON.parse(tr.getAttribute('data_product'))
+  const deleteProduct = (e) => {
+    const tr = e.target.parentNode.parentNode.parentNode;
+    const dataProduct = JSON.parse(tr.getAttribute("data_product"));
     if (window.confirm(`Deseja mesmo excluir o produto ${dataProduct.name}?`)) {
       AxiosRepository.deleteProductCart(dataProduct.id).then(async () => {
-        await getCartUser()
-      })
+        await getCartUser();
+      });
     }
-  }
+  };
 
-  const deleteProductCheckout = e => {
-    const tr = e.target.parentNode.parentNode
-    const dataProduct = JSON.parse(tr.getAttribute('data_product'))
+  const deleteProductCheckout = (e) => {
+    const tr = e.target.parentNode.parentNode;
+    const dataProduct = JSON.parse(tr.getAttribute("data_product"));
     if (window.confirm(`Deseja mesmo excluir o produto ${dataProduct.name}?`)) {
       AxiosRepository.deleteProductCart(dataProduct.id).then(async () => {
-        await getCartUser()
-      })
+        await getCartUser();
+      });
     }
-  }
+  };
 
   const updateProductById = async (productId, quantity, size) => {
     try {
@@ -115,57 +115,64 @@ export const CartProvider = ({ children }) => {
         productId,
         quantity,
         size
-      )
+      );
 
-      manupilationEditProductClose()
+      manupilationEditProductClose();
 
-      document.documentElement.style.overflow = 'hidden'
-      document.body.scroll = 'no'
-      document.body.style.pointerEvents = 'none'
+      document.documentElement.style.overflow = "hidden";
+      document.body.scroll = "no";
+      document.body.style.pointerEvents = "none";
 
-      await getCartUser()
+      await getCartUser();
 
-      notify('Produto atualizado com sucesso !')
+      notify("Produto atualizado com sucesso !");
 
       setTimeout(() => {
-        window.location.reload()
-      }, 1000)
+        window.location.reload();
+      }, 1000);
 
-      return response
+      return response;
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
 
-  const calculateShippingPrice = async cep => {
-    const response = await AxiosRepository.calculateShippingPrice(cep)
-    setPriceShipping(response.data[0].Valor)
+  const calculateShippingPrice = async (cep) => {
+    const response = await AxiosRepository.calculateShippingPrice(cep);
+    setPriceShipping(response.data[0].Valor);
     setKey(Date.now());
-    return response
-  }
+    return response;
+  };
 
   const totalOrder = (subTotal, priceShipping) => {
-    setTotal(subTotal + priceShipping)
-  }
-  const checkCheckout = ({ subTotal, total, shippingValue, addressee}) => {
+    setTotal(subTotal + priceShipping);
+  };
+
+  const checkCheckout = ({ subTotal, total, priceShipping, addressee }) => {
     setKey(Date.now());
     if (!subTotal) {
-      notify('Não foi possível carregar o valor de subTotal')
-      return
+      notify("Não foi possível carregar o valor do sub-total.");
+      return;
     }
-    if (!shippingValue) {
-      notify('Não foi possível carregar o valor de shippingValue')
-      return
+    if (!priceShipping) {
+      notify(
+        "Não foi possível carregar o valor do envio, insira o seu endereço!"
+      );
+      return;
     }
     if (!total) {
-      notify('Não foi possível carregar o valor de total')
-      return
+      notify("Não foi possível carregar o valor de total");
+      return;
     }
     if (!addressee) {
-      notify('Você precisa preêncher o seu nome!')
-      return
+      notify("Você precisa preêncher o seu nome!");
+      return;
     }
-  }
+    if (addressee.length < 5) {
+      notify("Nome muito curto!");
+      return;
+    }
+  };
   return (
     <CartContext.Provider
       value={{
@@ -199,10 +206,10 @@ export const CartProvider = ({ children }) => {
         setAddressee,
         addressee,
         key,
-        setKey
+        setKey,
       }}
     >
       {children}
     </CartContext.Provider>
-  )
-}
+  );
+};

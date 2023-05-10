@@ -13,7 +13,7 @@ import OptionsBurguer from "./OptionsBurguer";
 
 import { useState } from "react";
 
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 export default function NavBar() {
   const [text, setText] = useState("");
@@ -24,21 +24,37 @@ export default function NavBar() {
   const navigate = useNavigate();
 
   let handleChange = (e) => {
-    setText(e.target.value);
+    let inputValue = e.target.value.trim()
+
+    if (inputValue.match(/[^a-zA-Z0-9\s]/)) {
+      return;
+    }
+
+    setText(inputValue);
   };
 
   function handleKeyDown(event) {
-    if (event.key === 'Enter') {
-      if(text.trim() == '' ) return
-      else{const text = event.target.value;
-      navigate(`/filter/${text}`);}
+    if (event.key === "Enter") {
+
+      const text = event.target.value;
+
+      if (text.trim() == "") return;
+
+      if (text.match(/[^a-zA-Z0-9\s]/)) {
+        return;
+      }
+
+      navigate(`/filter/${text}`);
     }
   }
 
-	function handleSearch(){
-    if(text.trim() == '' ) return
-    navigate(`/filter/${text}`)
-	}
+  function handleSearch() {
+    if (text.trim() == "") return;
+    if (text.match(/[^a-zA-Z0-9\s]/)) {
+      return;
+    }
+    navigate(`/filter/${text}`);
+  }
 
   return (
     <div className={styles.container}>
@@ -60,10 +76,13 @@ export default function NavBar() {
             type="text"
             placeholder="Procurar . . ."
             onChange={handleChange}
-						onKeyDown={handleKeyDown}
+            onKeyDown={handleKeyDown}
           />
           <button onClick={handleSearch}>
-              <FaSearch onClick={handleSearch} className={styles.searchIconMobile} />{" "}
+            <FaSearch
+              onClick={handleSearch}
+              className={styles.searchIconMobile}
+            />
           </button>
           <FaHeart className={styles.icons} />
           <FaShoppingCart

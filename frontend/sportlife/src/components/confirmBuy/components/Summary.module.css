@@ -46,6 +46,18 @@
 	background-color: #000;
 }
 
+.btn {
+	text-transform: uppercase;
+	color: white;
+	font-weight: 500;
+	width: 100%;
+	margin-top: 10px;
+	background-color: #000;
+	border-radius: 5px;
+	padding: 10px;
+	cursor: pointer;
+}
+
 @media (max-width:950px){
 	.container h2{
 		font-size: 1.2rem;

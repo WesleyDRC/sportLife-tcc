@@ -48,7 +48,7 @@ export default function ConFirmBuy(){
 			<ToastContainer
         position="top-right"
 				style={{fontSize:'1.4rem'}}
-        autoClose={3000}
+        autoClose={3700}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick

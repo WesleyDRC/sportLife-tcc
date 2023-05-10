@@ -8,11 +8,11 @@ import PaymentButton from './PaymentButton'
 import { useEffect, useMemo} from 'react'
 
 export default function Summary () {
-  const { subTotal, priceShipping, total, totalOrder, key} = useCart()
+  const { subTotal, priceShipping, total, totalOrder, checkCheckout, shippingValue, addressee} = useCart()
 
   useEffect(() => {
     if (parseFloat(subTotal) > 0 && parseFloat(priceShipping) > 0) {
-      totalOrder(parseFloat(subTotal), parseFloat(priceShipping))
+      totalOrder(parseFloat(subTotal),  parseFloat(priceShipping.replace(/,/g, ".")))
     }
   }, [subTotal, priceShipping])
 
@@ -31,7 +31,9 @@ export default function Summary () {
         <p>total</p>
         <p className={styles.priceTotal}>{priceBRL(total)}</p>
       </div>
-      <PaymentButton/>
+      {total !== 0 && subTotal !== 0 && priceShipping !== 0 && addressee.length >=5 ? <PaymentButton /> : (
+        <button className={styles.btn} onClick={() => checkCheckout({subTotal, total, priceShipping, addressee})}> CONFIRMAR COMPRA </button>
+      )}
     </div>
   )
 }
