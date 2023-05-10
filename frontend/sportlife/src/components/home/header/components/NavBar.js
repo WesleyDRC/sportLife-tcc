@@ -33,16 +33,17 @@ export default function NavBar() {
     setText(inputValue);
   };
 
-  function handleKeyDown(event) {
+  function handleKeyPress(event) {
+    const keyCode = event.keyCode || event.which;
+    const char = String.fromCharCode(keyCode);
+    const regex = /^[a-zA-Z0-9\s]+$/;
+    if (!regex.test(char)) {
+      event.preventDefault();
+    }
+
     if (event.key === "Enter") {
 
-      const text = event.target.value;
-
       if (text.trim() == "") return;
-
-      if (text.match(/[^a-zA-Z0-9\s]/)) {
-        return;
-      }
 
       navigate(`/filter/${text}`);
     }
@@ -76,7 +77,7 @@ export default function NavBar() {
             type="text"
             placeholder="Procurar . . ."
             onChange={handleChange}
-            onKeyDown={handleKeyDown}
+            onKeyPress={handleKeyPress}
           />
           <button onClick={handleSearch}>
             <FaSearch
@@ -107,7 +108,7 @@ export default function NavBar() {
           />
           <button className={styles.searchButtonMobile}>
             <div onClick={handleSearch}>
-              <FaSearch className={styles.searchIconMobile} />{" "}
+              <FaSearch className={styles.searchIconMobile} />
             </div>
           </button>
         </div>
