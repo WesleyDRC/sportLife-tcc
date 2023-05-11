@@ -174,7 +174,6 @@ export default function NavBar() {
               className={styles.searchIconMobile}
             />
           </button>
-          <FaHeart className={styles.icons} />
           <FaShoppingCart
             onClick={manupilationCartOpen}
             className={styles.icons}
