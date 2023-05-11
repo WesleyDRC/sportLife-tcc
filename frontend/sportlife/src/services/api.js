@@ -28,7 +28,10 @@ api.interceptors.request.use(async (config) => {
 api.interceptors.response.use(
   response => response,
   error => {
-    if (error.response && error.response.status === 401 || error.response.status === 403) {
+    if (
+      error.response && error.response.status === 401 && error.response.data.message === 'Token not found'||
+      error.response && error.response.status === 401 && error.response.data.message === 'Token malformed'
+      ) {
       localStorage.removeItem('user_token');
     }
     return Promise.reject(error);

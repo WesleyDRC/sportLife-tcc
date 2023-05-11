@@ -16,7 +16,7 @@
 	right: 0;
 	top: 0;
 	z-index: 3;
-	padding: 20px;
+	padding: 0px 20px;
 	display: flex;
 	flex-direction: column;
 }
@@ -44,14 +44,51 @@
 }
 
 .options{
-	text-align: center;
-	font-size: 2.4rem;
-	margin-top: 30px;
+	margin-top: 20px;
+	display: flex;
+	flex-direction: column;
 }
 
-.options p{
-	margin-bottom: 20px;
+.options a{
+	margin-bottom: 10px;
 	cursor: pointer;
+}
+
+.sport{
+	margin-bottom: 5px;
+}
+
+.sportAndArrow{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-bottom: 10px;
+}
+
+.sportContainer{
+	display: flex;
+	flex-direction: column;
+	margin-left: 20px;
+}
+
+.sportContainer a{
+	font-size: 1.4rem;
+	margin: 5px 0px;
+	border-bottom:none;
+}
+
+.none{
+	display: none;
+}
+
+.rotate{
+	rotate: 270deg;
+	animation: .2s;
+}
+
+.notRotate{
+	rotate: 0deg;
+	animation: .2s;
 }
 
 @media (max-width:745px){
