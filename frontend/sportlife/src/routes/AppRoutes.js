@@ -152,6 +152,12 @@ export default function Routes() {
     },
 
     {
+      path: "/sexo/:sexo",
+      element: <CategoryPage />,
+      errorElement: <ErrorPage />,
+    },
+
+    {
       path: "/checkout",
       element: <ConFirmBuyPage />,
       errorElement: <ErrorPage />,

@@ -15,8 +15,18 @@ import { useState } from "react";
 
 import { useNavigate } from "react-router-dom";
 
+import {GiBoxingGlove} from 'react-icons/gi'
+import {GiSoccerBall} from 'react-icons/gi'
+import {GiTennisRacket} from 'react-icons/gi'
+import {GiBasketballBall} from 'react-icons/gi'
+import {GiVolleyballBall} from 'react-icons/gi'
+import {TbSwimming} from 'react-icons/tb'
+import {GrRun} from 'react-icons/gr'
+import {GiSoccerKick} from 'react-icons/gi'
+
 export default function NavBar() {
   const [text, setText] = useState("");
+  const [showBox, setShowBox] = useState(false)
 
   const { manupilationCartOpen, openCart } = useCart();
   const { manupilationBurguerOpen, openBurguer } = useBurguer();
@@ -24,7 +34,7 @@ export default function NavBar() {
   const navigate = useNavigate();
 
   let handleChange = (e) => {
-    let inputValue = e.target.value.trim()
+    let inputValue = e.target.value.trim();
 
     if (inputValue.match(/[^a-zA-Z0-9\s]/)) {
       return;
@@ -42,7 +52,6 @@ export default function NavBar() {
     }
 
     if (event.key === "Enter") {
-
       if (text.trim() == "") return;
 
       navigate(`/filter/${text}`);
@@ -57,6 +66,14 @@ export default function NavBar() {
     navigate(`/filter/${text}`);
   }
 
+  function viewBox(){
+    setShowBox(true)
+  }
+
+  function notBox(){
+    setShowBox(false)
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.navBar}>
@@ -67,9 +84,81 @@ export default function NavBar() {
           </Link>
         </div>
         <div className={styles.navOptions}>
-          <p>Masculino</p>
-          <p>Feminino</p>
-          <p>Esportes</p>
+          <Link to={`/sexo/masculino`}>
+            <p>Masculino</p>
+          </Link>
+          <Link to={`/sexo/feminino`}>
+            <p>Feminino</p>
+          </Link>
+          <div onMouseOver={viewBox} className={styles.sport}>
+            <p>Esportes</p>
+            <div onMouseOut={notBox} className={showBox ? styles.sportsContainer : styles.none}>
+              <Link to ='/esporte/futebol'>
+                <div className={styles.sports}>
+                  <div>
+                    <GiSoccerBall />
+                  </div>
+                  <p>Futebol</p>
+                </div>
+              </Link>
+              <Link to='/esporte/basquete'>
+                <div className={styles.sports}>
+                    <div>
+                      <GiBasketballBall />
+                    </div>
+                  <p>Basquete</p>
+                </div>
+              </Link>
+              <Link to='/esporte/volei'>
+                <div className={styles.sports}>
+                  <div>
+                    <GiVolleyballBall />
+                  </div>
+                  <p>Vôlei</p>
+                </div>
+              </Link>
+              <Link to='/esporte/natacao'>
+                <div className={styles.sports}>
+                  <div>
+                    <TbSwimming />
+                  </div>
+                  <p>Natação</p>
+                </div>
+              </Link>
+              <Link to='/esporte/corrida'>
+                <div className={styles.sports}>
+                  <div>
+                    <GrRun />
+                  </div>
+                  <p>Corrida</p>
+                </div>
+              </Link>
+              <Link to='/esporte/tenis'>
+                <div className={styles.sports}>
+                  <div>
+                    <GiTennisRacket />
+                  </div>
+                  <p>Tênis</p>
+                </div>
+              </Link>
+              <Link to='/esporte/futsal'>
+                <div className={styles.sports}>
+                  <div>
+                    <GiSoccerKick />
+                  </div>
+                  <p>Futsal</p>
+                </div>
+              </Link>
+              <Link to='/esporte/lutas'>
+                <div className={styles.sports}>
+                  <div>
+                    <GiBoxingGlove />
+                  </div>
+                  <p>Lutas</p>
+                </div>
+              </Link>
+            </div>
+          </div>
           <p>Novidades</p>
         </div>
         <div className={styles.searchBar}>

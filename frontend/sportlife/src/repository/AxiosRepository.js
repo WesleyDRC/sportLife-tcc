@@ -106,6 +106,14 @@ class AxiosRepository {
     });
   }
 
+  async findBySex({ sexo }) {
+    return this.#axiosClient.get("/products", {
+      params: {
+        sexo: sexo ? sexo : ""
+      }
+    });
+  }
+
   async updateViewProduct(id) {
     return this.#axiosClient.patch(`products/${id}/views`);
   }

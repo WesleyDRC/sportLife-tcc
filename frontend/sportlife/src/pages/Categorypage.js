@@ -17,7 +17,7 @@ import { useEffect, useState } from "react";
 export default function CategoryPage() {
   const [loading, setLoading] = useState(true);
   const [product, setProducts] = useState();
-  let { name, esporte, brand } = useParams();
+  let { name, esporte, brand, sexo } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -84,8 +84,29 @@ export default function CategoryPage() {
         .catch((error) => {
           console.log(error);
         });
+    }else if(sexo != undefined){
+      let letra = ''
+      switch(sexo){
+        case 'masculino':
+          letra = 'm'
+          break;
+        case 'feminino':
+          letra = 'f'
+          break;
+        default:
+          navigate("/404");
+          break;
+      }
+      AxiosRepository.findBySex({ sexo : letra })
+        .then((resp) => {
+          setProducts(resp.data);
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
-  } , [name]);
+  } , [name, sexo, esporte]);
   return (
     <div className={styles.container}>
       <Header />

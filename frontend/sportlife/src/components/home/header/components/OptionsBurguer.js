@@ -33,11 +33,14 @@ export default function OptionsBurguer(){
 				</header>
 				<div className={styles.options}>
 					<Link to ='/'><p onClick={closeBurguer}>Home</p></Link>
-					<p onClick={closeBurguer}>Masculino</p>
-					<p onClick={closeBurguer}>Feminino</p>
+					<Link to={`/sexo/masculino`}>
+						<p onClick={closeBurguer}>Masculino</p>
+					</Link>
+					<Link to={`/sexo/feminino`}>
+						<p onClick={closeBurguer}>Feminino</p>
+					</Link>
 					<p onClick={closeBurguer}>Esportes</p>
 					<p onClick={closeBurguer}>Novidades</p>
-					<p onClick={closeBurguer}>Produtos Salvos</p>
 					<p onClick={OpenMobileCart}>Meu Carrinho</p>
 				</div>
 			</div>
