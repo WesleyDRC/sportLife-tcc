@@ -1,130 +1,129 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react";
 
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 
-import { PayPalButtons, PayPalScriptProvider } from '@paypal/react-paypal-js'
+import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
 
-import useCart from '../../../hooks/useCart'
+import useCart from "../../../hooks/useCart";
 
-import axios from 'axios'
+import useUser from "../../../hooks/useUser";
 
-// total,
-// productsCart,
-// checkCheckout,
-// subTotal,
-// priceShipping,
-// addressee,
-// key
+import axios from "axios";
 
-function PaymentButton () {
-  const { getCartUser, total, productsCart, priceShipping, subTotal } = useCart()
-  const [products, setProducts] = useState([])
-  const navigate = useNavigate()
+function PaymentButton() {
+  const { getCartUser, total, productsCart, priceShipping, subTotal, addressee } =
+    useCart();
+    const { address} = useUser();
+  const [products, setProducts] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    async function fetchData () {
-      const result = await getCartUser()
-      setProducts(result.data.cart[0].items)
+    async function fetchData() {
+      const result = await getCartUser();
+      setProducts(result.data.cart[0].items);
     }
-    fetchData()
-  }, [])
-
-  console.log("total", total)
-  console.log("priceShipping", parseFloat(priceShipping.replace(/,/g, ".")))
-  console.log("subTotal", subTotal)
+    fetchData();
+  }, []);
 
   const paypalOptions = {
-    'client-id': process.env.REACT_APP_CLIENT_ID,
-    currency: 'BRL',
-    intent: 'capture',
-    activeFunding: ''
-  }
+    "client-id": process.env.REACT_APP_CLIENT_ID,
+    currency: "BRL",
+    intent: "capture",
+    activeFunding: "",
+  };
 
-  const productsPayPal = products.map(product => {
+  const productsPayPal = products.map((product) => {
     return {
       name: product.name,
-      description: 'Wesley',
+      description: "Wesley",
       quantity: product.quantity,
       unit_amount: {
-        currency_code: 'BRL',
-        value: product.price
-      }
-    }
-  })
+        currency_code: "BRL",
+        value: product.price,
+      },
+    };
+  });
 
   let amount = {
-    currency_code: 'BRL',
+    currency_code: "BRL",
     value: total,
     breakdown: {
       item_total: {
-        currency_code: 'BRL',
-        value: subTotal
+        currency_code: "BRL",
+        value: subTotal,
       },
       shipping: {
-        currency_code: 'BRL',
+        currency_code: "BRL",
         value: parseFloat(priceShipping.replace(/,/g, ".")),
       },
-    }
-  }
+    },
+  };
 
-  const cartProducts = productsCart.map(product => {
+  const cartProducts = productsCart.map((product) => {
     return {
       id: product.id,
-      quantity: product.quantity
-    }
-  })
+      quantity: product.quantity,
+      size: product.size,
+    };
+  });
 
-  const dataProducts = { products: cartProducts }
+  const dataProducts = {
+    cep: address.postal_code,
+    number: address.number,
+    addressee: addressee,
+    complement: address.complement || '',
+    tracking_code: '',
+    products: cartProducts,
+  };
 
-  async function createOrder (data, actions) {
+  async function createOrder(data, actions) {
     return actions.order.create({
-      intent: 'CAPTURE',
+      intent: "CAPTURE",
       purchase_units: [
         {
           amount: amount,
-          items: productsPayPal
-        }
+          items: productsPayPal,
+        },
       ],
       application_context: {
-        brand_name: 'My Store',
-        landing_page: 'BILLING',
-        user_action: 'PAY_NOW',
-        return_url: 'https://example.com/return',
-        cancel_url: 'https://example.com/cancel'
-      }
-    })
+        brand_name: "My Store",
+        landing_page: "BILLING",
+        user_action: "PAY_NOW",
+        return_url: "https://example.com/return",
+        cancel_url: "https://example.com/cancel",
+      },
+    });
   }
-  console.log(dataProducts)
-  async function onApprove (data, actions) {
-    await actions.order.capture()
+  async function onApprove(data, actions) {
+    await actions.order.capture();
 
-    var userToken = localStorage.getItem('user_token')
+    var userToken = localStorage.getItem("user_token");
 
-    const AuthStr = `Bearer ${JSON.parse(userToken)}`
+    const AuthStr = `Bearer ${JSON.parse(userToken)}`;
 
     await axios
       .post(`${process.env.REACT_APP_BASE_URL}/order`, dataProducts, {
         headers: {
-          Authorization: AuthStr
-        }
+          Authorization: AuthStr,
+        },
       })
-      .then(response => {})
-      .catch(error => {
-        console.error(error)
-      })
+      .then((response) => {})
+      .catch((error) => {
+        console.error(error);
+      });
 
-    navigate('/successOrder')
+    navigate("/successOrder");
   }
 
   return (
     <PayPalScriptProvider options={paypalOptions}>
       <PayPalButtons
-        style={{ layout: 'horizontal', color: 'blue' }}
+        style={{ layout: "horizontal", color: "blue" }}
         createOrder={createOrder}
         onApprove={onApprove}
       />
     </PayPalScriptProvider>
-  )
+  );
 }
 
-export default PaymentButton
+export default PaymentButton;
